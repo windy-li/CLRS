@@ -4,10 +4,10 @@ void TestDeque() {
   Deque q(5);
   q.PushBack(5);
   q.PushBack(10);
-  cout << q.PopBack() << endl;
+  std::cout << q.PopBack() << std::endl;
   q.PushFront(15);
-  cout << q.PopFront() << endl;
-  cout << q.PopFront() << endl;
+  std::cout << q.PopFront() << std::endl;
+  std::cout << q.PopFront() << std::endl;
 }
 
 int main() { TestDeque(); }

@@ -8,5 +8,5 @@ int main() {
   self.push(9);
   self.push(17);
   self.push(3);
-  cout << self.pop() << endl;
+  std::cout << self.pop() << std::endl;
 }

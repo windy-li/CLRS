@@ -4,9 +4,9 @@ class Stack {
  public:
   explicit Stack(int capacity) : q1_(new Queue(capacity)), q2_(new Queue(capacity)) {}
 
-  Queue *active() { return q1_->Empty() ? q2_ : q1_; }
+  Queue* active() { return q1_->Empty() ? q2_ : q1_; }
 
-  Queue *inactive() { return q1_->Empty() ? q1_ : q2_; }
+  Queue* inactive() { return q1_->Empty() ? q1_ : q2_; }
 
   bool isEmpty() { return active()->Empty(); }
 
@@ -14,17 +14,17 @@ class Stack {
 
   void push(int key) {
     if (isFull()) {
-      throw overflow_error("Stack overflow");
+      throw std::overflow_error("Stack overflow");
     }
     active()->Push(key);
   }
 
   int pop() {
     if (isEmpty()) {
-      throw underflow_error("Stack underflow");
+      throw std::underflow_error("Stack underflow");
     }
-    Queue *out = active();
-    Queue *in = inactive();
+    Queue* out = active();
+    Queue* in = inactive();
     while (true) {
       int tmp = out->Pop();
       if (out->Empty()) {
@@ -36,6 +36,6 @@ class Stack {
   }
 
  private:
-  Queue *q1_;
-  Queue *q2_;
+  Queue* q1_;
+  Queue* q2_;
 };

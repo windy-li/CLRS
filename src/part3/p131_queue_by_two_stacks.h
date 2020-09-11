@@ -2,7 +2,7 @@
 
 class Queue {
  public:
-  Queue() : in_(new stack<int>()), out_(new stack<int>()) {}
+  Queue() : in_(new std::stack<int>()), out_(new std::stack<int>()) {}
 
   bool Empty() { return in_->empty() && out_->empty(); }
 
@@ -10,7 +10,7 @@ class Queue {
 
   int Pop() {
     if (Empty()) {
-      throw underflow_error("queue underflow");
+      throw std::underflow_error("queue underflow");
     }
     if (out_->empty()) {
       while (!in_->empty()) {
@@ -25,6 +25,6 @@ class Queue {
   }
 
  private:
-  stack<int> *in_;
-  stack<int> *out_;
+  std::stack<int>* in_;
+  std::stack<int>* out_;
 };

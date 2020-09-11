@@ -3,7 +3,7 @@
 class Deque {
  public:
   explicit Deque(int capacity)
-      : arr_(vector<int>(capacity)), capacity_(capacity), head_(-1), tail_(0) {}
+      : arr_(std::vector<int>(capacity)), capacity_(capacity), head_(-1), tail_(0) {}
 
   bool Empty() { return head_ == -1; }
 
@@ -11,7 +11,7 @@ class Deque {
 
   void PushFront(int key) {
     if (Full()) {
-      throw overflow_error("Deque overflow");
+      throw std::overflow_error("Deque overflow");
     }
     if (head_ == -1) {
       head_ = 0;
@@ -26,7 +26,7 @@ class Deque {
 
   void PushBack(int key) {
     if (Full()) {
-      throw overflow_error("Deque overflow");
+      throw std::overflow_error("Deque overflow");
     }
     if (head_ == -1) {
       head_ = 0;
@@ -41,7 +41,7 @@ class Deque {
 
   int PopFront() {
     if (Empty()) {
-      throw underflow_error("Deque underflow");
+      throw std::underflow_error("Deque underflow");
     }
     int res = arr_[head_];
     if (head_ == tail_) {
@@ -56,7 +56,7 @@ class Deque {
 
   int PopBack() {
     if (Empty()) {
-      throw underflow_error("Deque underflow");
+      throw std::underflow_error("Deque underflow");
     }
     int res = arr_[tail_];
     if (head_ == tail_) {
@@ -70,7 +70,7 @@ class Deque {
   }
 
  private:
-  vector<int> arr_;
+  std::vector<int> arr_;
   int capacity_;
   int head_;
   int tail_;

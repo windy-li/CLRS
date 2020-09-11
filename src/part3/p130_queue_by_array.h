@@ -3,7 +3,7 @@
 class Queue {
  public:
   explicit Queue(int capacity)
-      : nums_(vector<int>(capacity)), capacity_(capacity), head_(0), tail_(0) {}
+      : nums_(std::vector<int>(capacity)), capacity_(capacity), head_(0), tail_(0) {}
 
   bool Empty() { return head_ == tail_; }
 
@@ -11,7 +11,7 @@ class Queue {
 
   void Push(int key) {
     if (Full()) {
-      throw overflow_error("queue overflow");
+      throw std::overflow_error("queue overflow");
     }
     nums_[tail_] = key;
     if (tail_ == capacity_ - 1) {
@@ -23,7 +23,7 @@ class Queue {
 
   int Pop() {
     if (Empty()) {
-      throw underflow_error("queue underflow");
+      throw std::underflow_error("queue underflow");
     }
     int ret = nums_[head_];
     if (head_ == capacity_ - 1) {
@@ -35,7 +35,7 @@ class Queue {
   }
 
  private:
-  vector<int> nums_;
+  std::vector<int> nums_;
   int capacity_;
   int head_;
   int tail_;

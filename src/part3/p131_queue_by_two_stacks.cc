@@ -7,7 +7,7 @@ int main() {
   q.Push(9);
   q.Push(8);
   q.Push(4);
-  cout << q.Pop() << endl;
+  std::cout << q.Pop() << std::endl;
 }
 
 /*

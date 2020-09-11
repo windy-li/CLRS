@@ -1,26 +1,26 @@
 #include "p132_doubly_linked_list.h"
 
-void PrintNode(Node *node) {
+void PrintNode(Node* node) {
   if (node == nullptr) {
-    cout << "null" << endl;
+    std::cout << "null" << std::endl;
     return;
   }
-  cout << "{ key: " << node->key;
+  std::cout << "{ key: " << node->key;
   if (node->prev != nullptr) {
-    cout << ", prev: " << node->prev->key;
+    std::cout << ", prev: " << node->prev->key;
   }
   if (node->next != nullptr) {
-    cout << ", next: " << node->next->key;
+    std::cout << ", next: " << node->next->key;
   }
-  cout << " }";
+  std::cout << " }";
 }
 
-void PrintLinkedList(LinkedList *l) {
-  Node *node = l->head();
+void PrintLinkedList(LinkedList* l) {
+  Node* node = l->head();
   while (node != nullptr) {
-    cout << node->key;
+    std::cout << node->key;
     if (node->next != nullptr) {
-      cout << " -> ";
+      std::cout << " -> ";
     }
     node = node->next;
   }
@@ -33,25 +33,23 @@ void TestLinkedList() {
   l.PushFront(16);
   l.PushFront(9);
   l.PushFront(25);
-  Node *x1 = l.Search(4);
+  Node* x1 = l.Search(4);
   if (x1 != nullptr) {
     PrintNode(x1);
   } else {
-    cout << "null" << endl;
+    std::cout << "null" << std::endl;
   }
   PrintLinkedList(&l);
   l.Reverse();
   PrintLinkedList(&l);
   l.RemoveKey(4);
-  Node *x2 = l.Search(4);
+  Node* x2 = l.Search(4);
   if (x2 != nullptr) {
     PrintNode(x2);
   } else {
-    cout << "null" << endl;
+    std::cout << "null" << std::endl;
   }
   PrintLinkedList(&l);
 }
 
-int main() {
-  TestLinkedList();
-}
+int main() { TestLinkedList(); }
