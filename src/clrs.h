@@ -24,7 +24,7 @@ template <typename T>
 void PrintVector(const std::vector<T> &vec) {
   int n = vec.size();
   std::cout << "[";
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     std::cout << vec[i];
     if (i != n - 1) {
       std::cout << ", ";
