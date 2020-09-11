@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CLRS_CLRS_H
+#define CLRS_CLRS_H
 
 #include <algorithm>
 #include <climits>
@@ -21,7 +22,7 @@ namespace clrs {
 using error = int;
 
 template <typename T>
-void PrintVector(const std::vector<T> &vec) {
+void PrintVector(const std::vector<T>& vec) {
   int n = vec.size();
   std::cout << "[";
   for (int i = 0; i < n; ++i) {
@@ -48,3 +49,5 @@ double Random() {
 }
 
 }  // namespace clrs
+
+#endif  // CLRS_CLRS_H
