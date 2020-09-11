@@ -1,6 +1,7 @@
 Language: Cpp
 BasedOnStyle: Google
 ColumnLimit: 100
+DerivePointerAlignment: false
 
 # Only sort headers in each include block
 SortIncludes: true

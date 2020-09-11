@@ -2,9 +2,9 @@
 
 struct Node {
   int key;
-  Node *parent;
-  Node *left;
-  Node *right;
+  Node* parent;
+  Node* left;
+  Node* right;
 
   explicit Node(int key) : key(key), parent(nullptr), left(nullptr), right(nullptr) {}
 };
@@ -13,24 +13,24 @@ class BinarySearchTree {
  public:
   BinarySearchTree() : root_(nullptr) {}
 
-  Node *root() { return root_; }
+  Node* root() { return root_; }
 
-  void InorderTreeWalk(Node *node) {
+  void InorderTreeWalk(Node* node) {
     if (node != nullptr) {
       InorderTreeWalk(node->left);
-      cout << node->key << " ";
+      std::cout << node->key << " ";
       InorderTreeWalk(node->right);
     }
   }
 
-  void MorrisTraversal(Node *node) {
+  void MorrisTraversal(Node* node) {
     while (node != nullptr) {
       if (node->left == nullptr) {
-        cout << node << endl;
+        std::cout << node << std::endl;
         node = node->right;
       } else {
         // Find the inorder predecessor of current
-        Node *pre = node->left;
+        Node* pre = node->left;
         while (pre->right != nullptr && pre->right != node) {
           pre = pre->right;
         }
@@ -42,15 +42,15 @@ class BinarySearchTree {
           // Revert the changes made in "if" part to restore the original tree,
           // fix the right child of predecessor
           pre->right = nullptr;
-          cout << node << endl;
+          std::cout << node << std::endl;
           node = node->right;
         }
       }
     }
   }
 
-  Node *Search(int key) {
-    Node *node = root_;
+  Node* Search(int key) {
+    Node* node = root_;
     while (node != nullptr && node->key != key) {
       if (key < node->key) {
         node = node->left;
@@ -62,9 +62,9 @@ class BinarySearchTree {
   }
 
   void Insert(int key) {
-    Node *node = new Node(key);
-    Node *p = nullptr;
-    Node *temp = root_;
+    Node* node = new Node(key);
+    Node* p = nullptr;
+    Node* temp = root_;
     while (temp != nullptr) {
       p = temp;
       if (key < temp->key) {
@@ -84,7 +84,7 @@ class BinarySearchTree {
   }
 
   void Remove(int key) {
-    Node *node = Search(key);
+    Node* node = Search(key);
     if (node == nullptr) {
       return;
     }
@@ -93,7 +93,7 @@ class BinarySearchTree {
     } else if (node->right == nullptr) {
       Transplant(node->left, node);
     } else {
-      Node *suc = Minimum(node->right);
+      Node* suc = Minimum(node->right);
       if (suc->parent != node) {
         Transplant(suc->right, suc);
         suc->right = node->right;
@@ -106,27 +106,27 @@ class BinarySearchTree {
   }
 
  private:
-  Node *root_;
+  Node* root_;
 
-  Node *Minimum(Node *node) {
+  Node* Minimum(Node* node) {
     while (node->left != nullptr) {
       node = node->left;
     }
     return node;
   }
 
-  Node *Maximum(Node *node) {
+  Node* Maximum(Node* node) {
     while (node->right != nullptr) {
       node = node->right;
     }
     return node;
   }
 
-  Node *Successor(Node *node) {
+  Node* Successor(Node* node) {
     if (node->right != nullptr) {
       return Minimum(node->right);
     }
-    Node *p = node->parent;
+    Node* p = node->parent;
     while (p != nullptr && node == p->right) {
       node = p;
       p = p->parent;
@@ -134,11 +134,11 @@ class BinarySearchTree {
     return p;
   }
 
-  Node *Predecessor(Node *node) {
+  Node* Predecessor(Node* node) {
     if (node->left != nullptr) {
       return Maximum(node->left);
     }
-    Node *p = node->parent;
+    Node* p = node->parent;
     while (p != nullptr && node == p->left) {
       node = p;
       p = p->parent;
@@ -146,7 +146,7 @@ class BinarySearchTree {
     return p;
   }
 
-  void Transplant(Node *src, Node *dest) {
+  void Transplant(Node* src, Node* dest) {
     if (dest->parent == nullptr) {
       root_ = src;
     } else if (dest == dest->parent->left) {

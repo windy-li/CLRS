@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void InsertionSort(std::vector<int> &a) {
+  void InsertionSort(std::vector<int>& a) {
     int n = a.size();
     for (int j = 1; j < n; j++) {
       int key = a[j];
@@ -15,7 +15,7 @@ class Solution {
     }
   }
 
-  void RecursiveInsertionSort(std::vector<int> &a, int j) {
+  void RecursiveInsertionSort(std::vector<int>& a, int j) {
     if (j >= 1) {
       RecursiveInsertionSort(a, j - 1);
       int key = a[j];
@@ -28,7 +28,7 @@ class Solution {
     }
   }
 
-  void NonIncreasingInsertionSort(std::vector<int> &a) {
+  void NonIncreasingInsertionSort(std::vector<int>& a) {
     int n = a.size();
     for (int j = 1; j < n; j++) {
       int key = a[j];
@@ -41,7 +41,7 @@ class Solution {
     }
   }
 
-  void BinaryInsertionSort(std::vector<int> &nums) {
+  void BinaryInsertionSort(std::vector<int>& nums) {
     int n = nums.size();
     for (int j = 0; j < n; j++) {
       int key = nums[j];
@@ -56,7 +56,7 @@ class Solution {
   }
 
  private:
-  int BinarySearch(std::vector<int> &nums, int low, int high, int key) {
+  int BinarySearch(std::vector<int>& nums, int low, int high, int key) {
     while (low <= high) {
       int mid = (low + high) / 2;
       if (key == nums[mid]) {
