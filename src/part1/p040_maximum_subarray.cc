@@ -1,31 +1,31 @@
 #include "p040_maximum_subarray.h"
 
-vector<int> GetArray() {
-  return vector<int>{13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
+std::vector<int> GetArray() {
+  return std::vector<int>{13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
 }
 
 void TestBruteForceMaximumSubarray() {
-  vector<int> a = GetArray();
+  std::vector<int> a = GetArray();
   Solution s;
   auto [start, end, max] = s.BruteForceMaximumSubarray(a);
-  cout << start << " " << end << " " << max << endl;
+  std::cout << start << " " << end << " " << max << std::endl;
 }
 
 void TestDivideAndConquerMaximumSubarray() {
-  vector<int> a = GetArray();
+  std::vector<int> a = GetArray();
   int n = a.size();
   Solution s;
   clrs::PrintVector(s.DivideAndConquerMaximumSubarray(a, 0, n - 1));
 }
 
 void TestBottomUpMaximumSubarray() {
-  vector<int> a = GetArray();
+  std::vector<int> a = GetArray();
   Solution s;
-  cout << s.BottomUpMaximumSubarray(a) << endl;
+  std::cout << s.BottomUpMaximumSubarray(a) << std::endl;
 }
 
 void TestExtendedBottomUpMaximumSubarray() {
-  vector<int> a = GetArray();
+  std::vector<int> a = GetArray();
   Solution s;
   clrs::PrintVector(s.ExtendedBottomUpMaximumSubarray(a));
 }

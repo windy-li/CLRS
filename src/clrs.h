@@ -16,7 +16,7 @@
 #include <utility>
 #include <vector>
 
-//typedef int error;
+// typedef int error;
 #define error int
 
 using namespace std;
@@ -24,29 +24,29 @@ using namespace std;
 namespace clrs {
 
 template <typename T>
-void PrintVector(const vector<T> &vec) {
+void PrintVector(const std::vector<T> &vec) {
   int n = vec.size();
-  cout << "[";
+  std::cout << "[";
   for (int i = 0; i < n; i++) {
-    cout << vec[i];
+    std::cout << vec[i];
     if (i != n - 1) {
-      cout << ", ";
+      std::cout << ", ";
     }
   }
-  cout << "]" << endl;
+  std::cout << "]" << std::endl;
 }
 
 int RandomInt(int include, int exclude) {
-  random_device rd;
-  auto gen = default_random_engine(rd());
-  uniform_int_distribution<int> dis(include, exclude - 1);
+  std::random_device rd;
+  auto gen = std::default_random_engine(rd());
+  std::uniform_int_distribution<int> dis(include, exclude - 1);
   return dis(gen);
 }
 
 double Random() {
-  random_device rd;
-  auto gen = default_random_engine(rd());
-  uniform_real_distribution<double> dis(0.0, 1.0);
+  std::random_device rd;
+  auto gen = std::default_random_engine(rd());
+  std::uniform_real_distribution<double> dis(0.0, 1.0);
   return dis(gen);
 }
 

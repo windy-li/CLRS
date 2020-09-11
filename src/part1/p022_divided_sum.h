@@ -2,9 +2,9 @@
 
 class Solution {
  public:
-  bool CanDivide(vector<int> &a, int x) {
+  bool CanDivide(std::vector<int> &a, int x) {
     int n = a.size();
-    sort(a.begin(), a.end());
+    std::sort(a.begin(), a.end());
     int i = 0, j = n - 1;
     while (i < j) {
       int sum = a[i] + a[j];

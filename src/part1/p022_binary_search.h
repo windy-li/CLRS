@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  int BinarySearch(const vector<int> &a, int k) {
+  int BinarySearch(const std::vector<int> &a, int k) {
     int n = a.size();
     int low = 0;
     int high = n - 1;
@@ -19,7 +19,7 @@ class Solution {
     return -(low + 1);
   }
 
-  int RecursiveBinarySearch(const vector<int> &nums, int key, int low, int high) {
+  int RecursiveBinarySearch(const std::vector<int> &nums, int key, int low, int high) {
     if (low <= high) {
       int mid = (low + high) / 2;
       if (key == nums[mid]) {

@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  int Inversions(vector<int> &a, int p, int r) {
+  int Inversions(std::vector<int> &a, int p, int r) {
     if (p < r) {
       int q = (p + r) / 2;
       return Inversions(a, p, q) + Inversions(a, q + 1, r) + Merge(a, p, q, r);
@@ -11,12 +11,12 @@ class Solution {
   }
 
  private:
-  int Merge(vector<int> &a, int p, int q, int r) {
+  int Merge(std::vector<int> &a, int p, int q, int r) {
     int inv = 0;
     int n1 = q - p + 1;
     int n2 = r - q;
-    vector<int> left(n1);
-    vector<int> right(n2);
+    std::vector<int> left(n1);
+    std::vector<int> right(n2);
     for (int i = 0; i < n1; i++) {
       left[i] = a[p + i];
     }

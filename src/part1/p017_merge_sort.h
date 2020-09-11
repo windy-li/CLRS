@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void MergeSort(vector<int> &nums, int p, int r) {
+  void MergeSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = (p + r) / 2;
       MergeSort(nums, p, q);
@@ -11,7 +11,7 @@ class Solution {
     }
   }
 
-  void MergeSortBySentinels(vector<int> &nums, int p, int r) {
+  void MergeSortBySentinels(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = (p + r) / 2;
       MergeSortBySentinels(nums, p, q);
@@ -21,11 +21,11 @@ class Solution {
   }
 
  private:
-  void Merge(vector<int> &nums, int p, int q, int r) {
+  void Merge(std::vector<int> &nums, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
-    vector<int> left(n1);
-    vector<int> right(n2);
+    std::vector<int> left(n1);
+    std::vector<int> right(n2);
     for (int i = 0; i < n1; i++) {
       left[i] = nums[p + i];
     }
@@ -48,11 +48,11 @@ class Solution {
     }
   }
 
-  void MergeBySentinels(vector<int> &a, int p, int q, int r) {
+  void MergeBySentinels(std::vector<int> &a, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
-    vector<int> left(n1 + 1);
-    vector<int> right(n2 + 1);
+    std::vector<int> left(n1 + 1);
+    std::vector<int> right(n2 + 1);
     for (int i = 0; i < n1; i++) {
       left[i] = a[p + i];
     }

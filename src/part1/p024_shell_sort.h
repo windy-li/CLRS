@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void ShellSort(vector<int> &a) {
+  void ShellSort(std::vector<int> &a) {
     int n = a.size();
     for (int gap = n / 2; gap > 0; gap /= 2) {
       for (int j = gap; j < n; j++) {
