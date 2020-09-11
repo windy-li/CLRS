@@ -2,25 +2,19 @@
 
 struct Node {
   int key;
-  vector<Node *> forward;
+  std::vector<Node*> forward;
 
-  Node(int key, int level) : key(key), forward(vector<Node *>(level + 1, nullptr)) {}
+  Node(int key, int level) : key(key), forward(std::vector<Node*>(level + 1, nullptr)) {}
 };
 
 class SkipList {
- private:
-  Node *head_;
-  int max_level_;
-  double p_;
-  int current_level_;
-
  public:
   SkipList(int max_level, double p)
       : head_(new Node(-1, max_level)), max_level_(max_level), p_(p), current_level_(0) {}
 
   void Insert(int key) {
-    Node *current_node = head_;
-    vector<Node *> update_list(max_level_ + 1, nullptr);
+    Node* current_node = head_;
+    std::vector<Node*> update_list(max_level_ + 1, nullptr);
     for (int i = current_level_; i >= 0; i--) {
       while (current_node->forward[i] != nullptr && current_node->forward[i]->key < key) {
         current_node = current_node->forward[i];
@@ -36,7 +30,7 @@ class SkipList {
         }
         current_level_ = random_level;
       }
-      Node *node = new Node(key, random_level);
+      Node* node = new Node(key, random_level);
       for (int i = 0; i <= random_level; i++) {
         node->forward[i] = update_list[i]->forward[i];
         update_list[i]->forward[i] = node;
@@ -44,8 +38,8 @@ class SkipList {
     }
   }
 
-  Node *Search(int key) {
-    Node *current = head_;
+  Node* Search(int key) {
+    Node* current = head_;
     for (int i = current_level_; i >= 0; i--) {
       while (current->forward[i] != nullptr && current->forward[i]->key < key) {
         current = current->forward[i];
@@ -59,8 +53,8 @@ class SkipList {
   }
 
   void Remove(int key) {
-    Node *current = head_;
-    vector<Node *> update(max_level_ + 1, nullptr);
+    Node* current = head_;
+    std::vector<Node*> update(max_level_ + 1, nullptr);
     for (int i = current_level_; i >= 0; i--) {
       while (current->forward[i] != nullptr && current->forward[i]->key < key) {
         current = current->forward[i];
@@ -82,6 +76,11 @@ class SkipList {
   }
 
  private:
+  Node* head_;
+  int max_level_;
+  double p_;
+  int current_level_;
+
   int RandomLevel() {
     int tmp = 0;
     while (clrs::Random() < p_ && tmp < max_level_) {

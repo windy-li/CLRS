@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  int HornerRule(std::vector<int> &a, int x) {
+  int HornerRule(std::vector<int>& a, int x) {
     int n = a.size();
     int y = 0;
     for (int i = n - 1; i >= 0; i--) {
@@ -11,7 +11,7 @@ class Solution {
     return y;
   }
 
-  int NaivePolynomialEvaluation(std::vector<int> &a, int x) {
+  int NaivePolynomialEvaluation(std::vector<int>& a, int x) {
     int n = a.size();
     int y[n];
     y[0] = 1;

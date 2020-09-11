@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  bool CanDivide(std::vector<int> &a, int x) {
+  bool CanDivide(std::vector<int>& a, int x) {
     int n = a.size();
     std::sort(a.begin(), a.end());
     int i = 0, j = n - 1;

@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void MergeSort(std::vector<int> &nums, int p, int r) {
+  void MergeSort(std::vector<int>& nums, int p, int r) {
     if (p < r) {
       int q = (p + r) / 2;
       MergeSort(nums, p, q);
@@ -11,7 +11,7 @@ class Solution {
     }
   }
 
-  void MergeSortBySentinels(std::vector<int> &nums, int p, int r) {
+  void MergeSortBySentinels(std::vector<int>& nums, int p, int r) {
     if (p < r) {
       int q = (p + r) / 2;
       MergeSortBySentinels(nums, p, q);
@@ -21,7 +21,7 @@ class Solution {
   }
 
  private:
-  void Merge(std::vector<int> &nums, int p, int q, int r) {
+  void Merge(std::vector<int>& nums, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
     std::vector<int> left(n1);
@@ -48,7 +48,7 @@ class Solution {
     }
   }
 
-  void MergeBySentinels(std::vector<int> &a, int p, int q, int r) {
+  void MergeBySentinels(std::vector<int>& a, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
     std::vector<int> left(n1 + 1);
