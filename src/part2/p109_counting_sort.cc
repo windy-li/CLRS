@@ -1,8 +1,8 @@
 #include "clrs.h"
 
 class Solution {
-public:
-  static void countingSort(int *arr, int len, int k, int *output) {
+ public:
+  void CountingSort(std::vector<int>& arr, int len, int k, std::vector<int>& output) {
     int count[k + 1];
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
@@ -20,7 +20,7 @@ public:
     }
   }
 
-  static int countingRange(int *arr, int len, int k, int left, int right) {
+  int CountingRange(std::vector<int>& arr, int len, int k, int left, int right) {
     int count[k + 1];
     for (int i = 0; i < k; ++i) {
       count[i] = 0;
@@ -40,27 +40,28 @@ public:
 };
 
 void testCountingSort() {
-  int arr[] = {2, 5, 3, 0, 2, 3, 0, 3};
-  int len = 8;
+  std::vector<int> arr = {2, 5, 3, 0, 2, 3, 0, 3};
+  int n = arr.size();
   int k = 5;
-  int output[len];
-  Solution::countingSort(arr, len, k, output);
-//  clrs::PrintArray(output, len);
+  std::vector<int> output(n);
+  Solution s;
+  s.CountingSort(arr, n, k, output);
+  //  clrs::PrintArray(output, len);
 }
 
 void testCountingRange() {
-  int arr[] = {2, 5, 3, 0, 2, 3, 0, 3};
-  int len = 8;
+  std::vector<int> arr = {2, 5, 3, 0, 2, 3, 0, 3};
+  int n = arr.size();
   int k = 5;
   int left = 2;
   int right = 3;
-  std::cout << Solution::countingRange(arr, len, k, left, right);
+  Solution s;
+  std::cout << s.CountingRange(arr, n, k, left, right);
 }
 
 int main() {
   testCountingSort();
   testCountingRange();
-  return 0;
 }
 
 /*

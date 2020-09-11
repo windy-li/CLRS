@@ -1,14 +1,14 @@
 #include "p091_max_priority_queue.h"
 
 int main() {
-  vector<int> keys = {5, 2, 4, 6, 1, 3};
+  std::vector<int> keys = {5, 2, 4, 6, 1, 3};
   int n = keys.size();
   MaxPriorityQueue self(n);
   for (int key : keys) {
     self.Insert(key);
   }
-  for (int i = 0; i < n; i++) {
-    cout << self.ExtractMax() << " ";
+  for (int i = 0; i < n; ++i) {
+    std::cout << self.ExtractMax() << " ";
   }
 }
 

@@ -8,7 +8,7 @@ int main() {
     heap.Insert(key);
   }
   for (int i = 0; i < n; i++) {
-    cout << heap.ExtractMax() << " ";
+    std::cout << heap.ExtractMax() << " ";
   }
 }
 

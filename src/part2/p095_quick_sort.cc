@@ -1,7 +1,7 @@
 #include "p095_quick_sort.h"
 
 void TestQuickSort() {
-  vector<int> a = {1, 6, 2, 8};
+  std::vector<int> a = {1, 6, 2, 8};
   int n = a.size();
   Solution s;
   s.QuickSort(a, 0, n - 1);
@@ -9,7 +9,7 @@ void TestQuickSort() {
 }
 
 void TestIterativeQuickSort() {
-  vector<int> a = {1, 6, 2, 8};
+  std::vector<int> a = {1, 6, 2, 8};
   int n = a.size();
   Solution s;
   s.IterativeQuickSort(a, 0, n - 1);

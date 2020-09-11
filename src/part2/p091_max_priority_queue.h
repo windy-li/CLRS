@@ -3,11 +3,11 @@
 class MaxPriorityQueue {
  public:
   explicit MaxPriorityQueue(int capacity)
-      : heap_size_(0), capacity_(capacity), items_(vector<int>(capacity)) {}
+      : heap_size_(0), capacity_(capacity), items_(std::vector<int>(capacity)) {}
 
   void Insert(int key) {
     if (heap_size_ == capacity_) {
-      throw overflow_error("heap overflow");
+      throw std::overflow_error("heap overflow");
     }
     heap_size_++;
     items_[heap_size_ - 1] = INT_MIN;
@@ -16,7 +16,7 @@ class MaxPriorityQueue {
 
   int ExtractMax() {
     if (heap_size_ == 0) {
-      throw underflow_error("heap overflow");
+      throw std::underflow_error("heap overflow");
     }
     int max = items_[0];
     items_[0] = items_[heap_size_ - 1];
@@ -35,13 +35,13 @@ class MaxPriorityQueue {
   int Maximum() { return items_[0]; }
 
  private:
-  vector<int> items_;
+  std::vector<int> items_;
   int heap_size_;
   int capacity_;
 
   void IncreaseKey(int i, int key) {
     if (key < items_[i]) {
-      throw invalid_argument("new key can not be less than current key");
+      throw std::invalid_argument("new key can not be less than current key");
     }
     while (i > 0 && items_[Parent(i)] < key) {
       items_[i] = items_[Parent(i)];
@@ -61,7 +61,7 @@ class MaxPriorityQueue {
       largest = r;
     }
     if (largest != i) {
-      swap(items_[largest], items_[i]);
+      std::swap(items_[largest], items_[i]);
       MaxHeapify(largest);
     }
   }

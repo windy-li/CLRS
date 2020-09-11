@@ -12,21 +12,21 @@ struct Node {
 class QueueByMaxPriorityQueue {
  public:
   explicit QueueByMaxPriorityQueue(int capacity)
-      : nodes_(vector<Node *>(capacity, nullptr)), count_(capacity), heap_size_(0) {}
+      : nodes_(std::vector<Node*>(capacity, nullptr)), count_(capacity), heap_size_(0) {}
 
   void Push(int key) {
-    Node *node = new Node(key, INT_MIN);
+    Node* node = new Node(key, INT_MIN);
     heap_size_++;
     count_--;
     nodes_[heap_size_ - 1] = node;
     IncreasePriority(heap_size_ - 1, count_);
   }
 
-  Node *Pop() {
+  Node* Pop() {
     if (heap_size_ < 1) {
-      throw runtime_error("Heap underflow");
+      throw std::runtime_error("Heap underflow");
     }
-    Node *head = nodes_[0];
+    Node* head = nodes_[0];
     nodes_[0] = nodes_[heap_size_ - 1];
     heap_size_--;
     MaxHeapify(0);
@@ -34,7 +34,7 @@ class QueueByMaxPriorityQueue {
   }
 
  private:
-  vector<Node *> nodes_;
+  std::vector<Node*> nodes_;
   int count_;
   int heap_size_;
 
@@ -49,17 +49,17 @@ class QueueByMaxPriorityQueue {
       largest = r;
     }
     if (largest != i) {
-      swap(nodes_[largest], nodes_[i]);
+      std::swap(nodes_[largest], nodes_[i]);
       MaxHeapify(largest);
     }
   }
 
   void IncreasePriority(int i, int priority) {
     if (priority < nodes_[i]->priority) {
-      throw runtime_error("new priority is lower than current priority");
+      throw std::runtime_error("new priority is lower than current priority");
     }
     nodes_[i]->priority = priority;
-    Node *node = nodes_[i];
+    Node* node = nodes_[i];
     while (i > 0 && nodes_[Parent(i)]->priority < priority) {
       nodes_[i] = nodes_[Parent(i)];
       i = Parent(i);

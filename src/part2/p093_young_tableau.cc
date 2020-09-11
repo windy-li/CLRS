@@ -1,82 +1,56 @@
 #include "clrs.h"
 
 class YoungTableau {
-public:
-  int m;
-  int n;
-  int **mat;
+ public:
+  YoungTableau(int m, int n) : m_(m), n_(n), mat_(std::vector(m, std::vector(n, INT_MAX))) {}
 
-  YoungTableau(int m, int n) {
-    this->m = m;
-    this->n = n;
-    mat = new int *[m];
-    for (int i = 0; i < m; i++) {
-      mat[i] = new int[n];
+  int ExtractMin() {
+    if (Empty()) {
+      throw std::underflow_error("young tableau underflow");
     }
-    for (int i = 0; i < m; ++i) {
-      for (int j = 0; j < n; ++j) {
-        mat[i][j] = INT_MAX;
-      }
-    }
-  }
-
-  YoungTableau(int m, int n, int **mat) {
-    this->m = m;
-    this->n = n;
-    this->mat = mat;
-  }
-
-  int extractMin() {
-    if (isEmpty()) {
-      throw std::underflow_error("Young tableau underflow");
-    }
-    int ret = mat[0][0];
-    mat[0][0] = INT_MAX;
-    youngify(0, 0);
+    int ret = mat_[0][0];
+    mat_[0][0] = INT_MAX;
+    Youngify(0, 0);
     return ret;
   }
 
-  bool isEmpty() {
-    return mat[0][0] == INT_MAX;
-  }
+  bool Empty() { return mat_[0][0] == INT_MAX; }
 
-  bool isFull() {
-    return mat[m - 1][n - 1] < INT_MAX;
-  }
+  bool Full() { return mat_[m_ - 1][n_ - 1] < INT_MAX; }
 
-  void insert(int key) {
-    if (isFull()) {
-      throw std::overflow_error("Young tableau overflow");
+  void Insert(int key) {
+    if (Full()) {
+      throw std::overflow_error("young tableau overflow");
     }
-    decreaseKey(m - 1, n - 1, key);
+    DecreaseKey(m_ - 1, n_ - 1, key);
   }
 
-  void decreaseKey(int i, int j, int key) {
-    if (key > mat[i][j]) {
-      std::cerr << "New key is greater than current key" << std::endl;
+  void DecreaseKey(int i, int j, int key) {
+    if (key > mat_[i][j]) {
+      std::cerr << "new key cannot be greater than current key" << std::endl;
     }
-    int topKey = (i > 0) ? mat[i - 1][j] : INT_MIN;
-    int leftKey = (j > 0) ? mat[i][j - 1] : INT_MIN;
-    if (key >= topKey && key >= leftKey) {
-      mat[i][j] = key;
+    int top_key = (i > 0) ? mat_[i - 1][j] : INT_MIN;
+    int left_key = (j > 0) ? mat_[i][j - 1] : INT_MIN;
+    if (key >= top_key && key >= left_key) {
+      mat_[i][j] = key;
       return;
     }
-    if (topKey > leftKey) {
-      mat[i][j] = topKey;
-      mat[i - 1][j] = key;
-      decreaseKey(i - 1, j, key);
+    if (top_key > left_key) {
+      mat_[i][j] = top_key;
+      mat_[i - 1][j] = key;
+      DecreaseKey(i - 1, j, key);
     } else {
-      mat[i][j] = leftKey;
-      mat[i][j - 1] = key;
-      decreaseKey(i, j - 1, key);
+      mat_[i][j] = left_key;
+      mat_[i][j - 1] = key;
+      DecreaseKey(i, j - 1, key);
     }
   }
 
-  bool contains(int key) {
+  bool Contains(int key) {
     int row = 0;
-    int col = n - 1;
-    while (col >= 0 && row <= n - 1) {
-      int val = mat[row][col];
+    int col = n_ - 1;
+    while (col >= 0 && row <= n_ - 1) {
+      int val = mat_[row][col];
       if (key == val) {
         return true;
       } else if (key < val) {
@@ -88,20 +62,25 @@ public:
     return false;
   }
 
-  void youngify(int i, int j) {
-    int downKey = (i < n - 1) ? mat[i + 1][j] : INT_MAX;
-    int rightKey = (j < m - 1) ? mat[i][j + 1] : INT_MAX;
-    if (downKey == INT_MAX && rightKey == INT_MAX) {
+ private:
+  int m_;
+  int n_;
+  std::vector<std::vector<int>> mat_;
+
+  void Youngify(int i, int j) {
+    int down_key = (i < n_ - 1) ? mat_[i + 1][j] : INT_MAX;
+    int right_key = (j < m_ - 1) ? mat_[i][j + 1] : INT_MAX;
+    if (down_key == INT_MAX && right_key == INT_MAX) {
       return;
     }
-    if (downKey < rightKey) {
-      mat[i][j] = downKey;
-      mat[i + 1][j] = INT_MAX;
-      youngify(i + 1, j);
+    if (down_key < right_key) {
+      mat_[i][j] = down_key;
+      mat_[i + 1][j] = INT_MAX;
+      Youngify(i + 1, j);
     } else {
-      mat[i][j] = rightKey;
-      mat[i][j + 1] = INT_MAX;
-      youngify(i, j + 1);
+      mat_[i][j] = right_key;
+      mat_[i][j + 1] = INT_MAX;
+      Youngify(i, j + 1);
     }
   }
 };
@@ -110,14 +89,14 @@ int main() {
   int keys[] = {9, 16, 3, 2, 4, 8, 5, 14, 12};
   int m = 4;
   int n = 4;
-  auto *self = new YoungTableau(m, n);
+  YoungTableau t(m, n);
   for (int key : keys) {
-    self->insert(key);
+    t.Insert(key);
   }
-  std::cout << self->contains(8) << std::endl;
-  std::cout << self->contains(7) << std::endl;
-  while (!self->isEmpty()) {
-    std::cout << self->extractMin() << " ";
+  std::cout << t.Contains(8) << std::endl;
+  std::cout << t.Contains(7) << std::endl;
+  while (!t.Empty()) {
+    std::cout << t.ExtractMin() << " ";
   }
 }
 

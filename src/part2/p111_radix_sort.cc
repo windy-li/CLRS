@@ -1,22 +1,23 @@
 #include "clrs.h"
 
 class Solution {
-public:
-  void radixSort(int *arr, int len) {
+ public:
+  void RadixSort(std::vector<int>& arr) {
     // Find the maximum number to know number of digits
-    int max = maximum(arr, len);
+    int max = Maximum(arr);
 
     // Do counting sort for every digit. Note that instead
     // of passing digit number, exp is passed. exp is 10^i
     // where i is current digit number
     for (int exp = 1; max / exp > 0; exp *= 10) {
-      countingSort(arr, len, exp);
-//      clrs::PrintArray(arr, len);
+      CountingSort(arr, exp);
+      //      clrs::PrintArray(arr, len);
     }
   }
 
-private:
-  void countingSort(int *arr, int len, int exp) {
+ private:
+  void CountingSort(std::vector<int>& arr, int exp) {
+    int len = arr.size();
     int k = 9;
     int count[k + 1];
     int output[k + 1];
@@ -44,7 +45,8 @@ private:
     }
   }
 
-  static int maximum(int *arr, int len) {
+  int Maximum(std::vector<int>& arr) {
+    int len = arr.size();
     int max = arr[0];
     for (int i = 1; i < len; ++i) {
       if (arr[i] > max) {
@@ -56,11 +58,10 @@ private:
 };
 
 int main() {
-  int arr[] = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
-  int len = 10;
+  std::vector<int> arr = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
   Solution s;
-  s.radixSort(arr, len);
-//  clrs::PrintArray(arr, len);
+  s.RadixSort(arr);
+  //  clrs::PrintArray(arr, len);
 }
 
 /*

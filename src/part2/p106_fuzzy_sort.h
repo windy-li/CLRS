@@ -9,34 +9,34 @@ struct Interval {
 
 class Solution {
  public:
-  void FuzzySort(vector<Interval> &a, int p, int r) {
+  void FuzzySort(std::vector<Interval>& a, int p, int r) {
     if (p < r) {
-      vector<int> pivots = Partition(a, p, r);
+      std::vector<int> pivots = Partition(a, p, r);
       FuzzySort(a, p, pivots[0] - 1);
       FuzzySort(a, pivots[1] + 1, r);
     }
   }
 
  private:
-  vector<int> Partition(vector<Interval> &a, int p, int r) {
+  std::vector<int> Partition(std::vector<Interval>& a, int p, int r) {
     Interval pivot(a[r].left, a[r].right);
     int i = p;
     int j = p;
     int k = r;
     while (j < k) {
       if (a[j].right <= pivot.left) {
-        swap(a[i], a[j]);
+        std::swap(a[i], a[j]);
         i++;
         j++;
       } else if (a[j].left >= pivot.right) {
-        swap(a[j], a[k]);
+        std::swap(a[j], a[k]);
         k--;
       } else {
-        pivot.left = max(a[j].left, pivot.left);
-        pivot.right = min(a[j].right, pivot.right);
+        pivot.left = std::max(a[j].left, pivot.left);
+        pivot.right = std::min(a[j].right, pivot.right);
         j++;
       }
     }
-    return vector<int>{i, k};
+    return std::vector<int>{i, k};
   }
 };

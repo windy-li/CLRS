@@ -8,8 +8,8 @@ int main() {
     q.Push(keys[i]);
   }
   for (int i = 0; i < n; ++i) {
-    Node *node = q.Pop();
-    cout << "{key: " << node->key << ", priority: " << node->priority << "}" << endl;
+    Node* node = q.Pop();
+    std::cout << "{key: " << node->key << ", priority: " << node->priority << "}" << std::endl;
   }
 }
 
