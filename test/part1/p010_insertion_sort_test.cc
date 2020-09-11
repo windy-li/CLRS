@@ -1,4 +1,4 @@
-#include "p010_insertion_sort.h"
+#include "part1/p010_insertion_sort.h"
 
 void TestInsertionSort() {
   std::vector<int> nums = {1, 3, 4, 2};

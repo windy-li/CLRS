@@ -4,12 +4,12 @@ project(CLRS)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
+include_directories(src test)
 
-file(GLOB_RECURSE SOURCE_FILES src/*.cc)
 file(GLOB_RECURSE HEADER_FILES src/*.h)
+file(GLOB_RECURSE TEST_FILES test/*.cc)
 
-foreach (file ${SOURCE_FILES})
+foreach (file ${TEST_FILES})
     get_filename_component(name ${file} NAME)
     add_executable(${name} ${file} ${HEADER_FILES})
 endforeach ()
