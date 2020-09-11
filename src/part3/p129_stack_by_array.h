@@ -2,31 +2,31 @@
 
 class Stack {
  public:
-  explicit Stack(int capacity) : nums_(vector<int>(capacity)), capacity_(capacity), top_(-1) {}
+  explicit Stack(int capacity) : nums_(std::vector<int>(capacity)), capacity_(capacity), top_(-1) {}
 
   bool Empty() { return top_ == -1; }
 
   bool Full() { return top_ == capacity_ - 1; }
 
-  error Push(int key) {
+  clrs::error Push(int key) {
     if (Full()) {
-      cerr << "stack overflow" << endl;
+      std::cerr << "stack overflow" << std::endl;
       return 1;
     }
     nums_[++top_] = key;
     return 0;
   }
 
-  tuple<int, error> Pop() {
+  std::tuple<int, clrs::error> Pop() {
     if (Empty()) {
-      cerr << "stack underflow" << endl;
+      std::cerr << "stack underflow" << std::endl;
       return {0, 1};
     }
     return {nums_[top_--], 0};
   }
 
  private:
-  vector<int> nums_;
+  std::vector<int> nums_;
   int capacity_;
   int top_;
 };

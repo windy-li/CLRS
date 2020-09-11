@@ -16,10 +16,9 @@
 #include <utility>
 #include <vector>
 
-// typedef int error;
-#define error int
-
 namespace clrs {
+
+using error = int;
 
 template <typename T>
 void PrintVector(const std::vector<T> &vec) {

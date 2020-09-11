@@ -10,6 +10,6 @@ int main() {
   s.Push(3);
   auto [ret, err] = s.Pop();
   if (!err) {
-    cout << ret;
+    std::cout << ret << std::endl;
   }
 }
