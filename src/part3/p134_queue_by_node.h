@@ -2,7 +2,7 @@
 
 struct Node {
   int key;
-  Node *next;
+  Node* next;
 
   explicit Node(int key) : key(key), next(nullptr) {}
 };
@@ -14,7 +14,7 @@ class Queue {
   bool Empty() { return head_ == nullptr; }
 
   void Push(int key) {
-    Node *node = new Node(key);
+    Node* node = new Node(key);
     if (Empty()) {
       head_ = node;
       tail_ = node;
@@ -34,6 +34,6 @@ class Queue {
   }
 
  private:
-  Node *head_;
-  Node *tail_;
+  Node* head_;
+  Node* tail_;
 };

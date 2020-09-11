@@ -2,20 +2,21 @@
 
 class Stack {
  public:
-  deque<int> *q;
+  Stack() : q_(new std::deque<int>()) {}
 
-  Stack() { q = new deque<int>(); }
+  bool Empty() { return q_->empty(); }
 
-  bool Empty() { return q->empty(); }
+  void Push(int key) { q_->push_back(key); }
 
-  void Push(int key) { q->push_back(key); }
-
-  tuple<int, error> Pop() {
+  std::tuple<int, clrs::error> Pop() {
     if (Empty()) {
       return {0, 1};
     }
-    int ret = q->back();
-    q->pop_back();
+    int ret = q_->back();
+    q_->pop_back();
     return {ret, 0};
   }
+
+ private:
+  std::deque<int>* q_;
 };
