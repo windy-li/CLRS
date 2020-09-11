@@ -19,8 +19,6 @@
 // typedef int error;
 #define error int
 
-using namespace std;
-
 namespace clrs {
 
 template <typename T>
