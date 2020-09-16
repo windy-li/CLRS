@@ -23,7 +23,7 @@ class RedBlackTree {
   void InorderTreeWalk(Node *x) {
     if (x != nil_) {
       InorderTreeWalk(x->left);
-      cout << x->key << endl;
+      std::cout << x->key << std::endl;
       InorderTreeWalk(x->right);
     }
   }

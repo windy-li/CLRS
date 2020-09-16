@@ -1,12 +1,12 @@
 #include "p177_red_black_tree.h"
 
 int main() {
-  RedBlackTree tree;
-  vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
+  RedBlackTree t;
+  std::vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
   for (int key : keys) {
-    tree.Insert(key);
+    t.Insert(key);
   }
-  cout << tree.root()->key << endl;
+  std::cout << t.root()->key << std::endl;
 }
 
 /*
