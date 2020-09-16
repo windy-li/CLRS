@@ -4,10 +4,10 @@ project(CLRS)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src test)
+include_directories(src)
 
 file(GLOB_RECURSE HEADER_FILES src/*.h)
-file(GLOB_RECURSE TEST_FILES test/*.cc)
+file(GLOB_RECURSE TEST_FILES src/*.cc)
 
 foreach (file ${TEST_FILES})
     get_filename_component(name ${file} NAME)
