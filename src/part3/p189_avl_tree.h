@@ -15,7 +15,7 @@ class AvlTree {
 
   Node* root() { return root_; }
 
-  bool IsAvl() { return DfsHeight(root_) != -1; }
+  bool IsAvlStructure() { return DfsHeight(root_) != -1; }
 
   Node* Insert(Node* node, int key) {
     if (node == nullptr) {

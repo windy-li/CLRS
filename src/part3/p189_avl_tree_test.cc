@@ -6,6 +6,6 @@ int main() {
   for (int key : keys) {
     t.Insert(key);
   }
-  std::cout << t.IsAvl() << std::endl;
+  std::cout << t.IsAvlStructure() << std::endl;
   std::cout << t.root() << std::endl;
 }
