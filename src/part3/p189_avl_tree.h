@@ -66,12 +66,12 @@ class AvlTree {
     if (node == nullptr) {
       return 0;
     }
-    int leftHeight = DfsHeight(node->left);
-    int rightHeight = DfsHeight(node->right);
-    if (leftHeight == -1 || rightHeight == -1 || std::abs(leftHeight - rightHeight) > 1) {
+    int lh = DfsHeight(node->left);
+    int rh = DfsHeight(node->right);
+    if (lh == -1 || rh == -1 || std::abs(lh - rh) > 1) {
       return -1;
     }
-    return std::max(leftHeight, rightHeight) + 1;
+    return std::max(lh, rh) + 1;
   }
 
   Node* RightRotate(Node* p) {
@@ -95,9 +95,8 @@ class AvlTree {
   int GetHeight(Node* node) {
     if (node == nullptr) {
       return 0;
-    } else {
-      return node->height;
     }
+    return node->height;
   }
 
   void UpdateHeight(Node* node) {
@@ -107,9 +106,8 @@ class AvlTree {
   int BalanceFactor(Node* node) {
     if (node == nullptr) {
       return 0;
-    } else {
-      return GetHeight(node->left) - GetHeight(node->right);
     }
+    return GetHeight(node->left) - GetHeight(node->right);
   }
 
   Node* BalanceInsert(Node* node) {
@@ -186,13 +184,3 @@ class AvlTree {
     PreOrder(node->right);
   }
 };
-
-int main() {
-  AvlTree t;
-  std::vector<int> keys = {9, 5, 10, 0, 6, 11, -1, 1, 2};
-  for (int key : keys) {
-    t.Insert(key);
-  }
-  std::cout << t.IsAvl() << std::endl;
-  std::cout << t.root() << std::endl;
-}
