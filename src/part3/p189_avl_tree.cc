@@ -178,11 +178,12 @@ class AvlTree {
   }
 
   void PreOrder(Node* node) {
-    if (node != nullptr) {
-      std::cout << node->key << " " << std::endl;
-      PreOrder(node->left);
-      PreOrder(node->right);
+    if (node == nullptr) {
+      return;
     }
+    std::cout << node->key << " " << std::endl;
+    PreOrder(node->left);
+    PreOrder(node->right);
   }
 };
 
