@@ -2,11 +2,11 @@
 
 class DiversityHeap {
  public:
-  DiversityHeap(int capacity, int d) : arr_(std::vector<int>(capacity)), d_(d), heap_size_(0) {}
+  DiversityHeap(int capacity, int d) : nums_(std::vector<int>(capacity)), d_(d), heap_size_(0) {}
 
   void Insert(int key) {
     heap_size_++;
-    arr_[heap_size_ - 1] = INT_MIN;
+    nums_[heap_size_ - 1] = INT_MIN;
     IncreaseKey(heap_size_ - 1, key);
   }
 
@@ -14,15 +14,15 @@ class DiversityHeap {
     if (heap_size_ < 1) {
       throw std::underflow_error("Heap underflow");
     }
-    int max = arr_[0];
-    arr_[0] = arr_[heap_size_ - 1];
+    int max = nums_[0];
+    nums_[0] = nums_[heap_size_ - 1];
     heap_size_--;
     MaxHeapify(0);
     return max;
   }
 
  private:
-  std::vector<int> arr_;
+  std::vector<int> nums_;
   int d_;
   int heap_size_;
 
@@ -32,12 +32,12 @@ class DiversityHeap {
       int r = Right(i);
       int largest = i;
       for (int j = l; j <= r; ++j) {
-        if (j < heap_size_ && arr_[j] > arr_[largest]) {
+        if (j < heap_size_ && nums_[j] > nums_[largest]) {
           largest = j;
         }
       }
       if (largest != i) {
-        std::swap(arr_[largest], arr_[i]);
+        std::swap(nums_[largest], nums_[i]);
         i = largest;
       } else {
         return;
@@ -46,14 +46,14 @@ class DiversityHeap {
   }
 
   void IncreaseKey(int i, int new_key) {
-    if (new_key < arr_[i]) {
+    if (new_key < nums_[i]) {
       throw std::invalid_argument("New key is lower than current key");
     }
-    while (i > 0 && arr_[Parent(i)] < new_key) {
-      arr_[i] = arr_[Parent(i)];
+    while (i > 0 && nums_[Parent(i)] < new_key) {
+      nums_[i] = nums_[Parent(i)];
       i = Parent(i);
     }
-    arr_[i] = new_key;
+    nums_[i] = new_key;
   }
 
   int Left(int i) { return d_ * i + 1; }
