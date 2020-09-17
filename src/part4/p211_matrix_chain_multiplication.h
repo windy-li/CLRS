@@ -2,14 +2,15 @@
 
 class Solution {
  public:
-  vector<vector<int>> MatrixMultiply(const vector<vector<int>> &a, const vector<vector<int>> &b) {
+  std::vector<std::vector<int>> MatrixMultiply(const std::vector<std::vector<int>> &a,
+                                               const std::vector<std::vector<int>> &b) {
     int a_row = a.size();
     int a_col = a[0].size();
     int b_row = b.size();
     int b_col = b[0].size();
-    vector<vector<int>> c(a_row, vector<int>(b_col));
+    std::vector<std::vector<int>> c(a_row, std::vector<int>(b_col));
     if (a_col != b_row) {
-      throw invalid_argument("incompatible dimensions");
+      throw std::invalid_argument("incompatible dimensions");
     }
     for (int i = 0; i < a_row; i++) {
       for (int j = 0; j < b_col; j++) {

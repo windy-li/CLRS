@@ -2,42 +2,42 @@
 
 class Solution {
  public:
-  void InsertionSort(std::vector<int>& a) {
-    int n = a.size();
+  void InsertionSort(std::vector<int>& nums) {
+    int n = nums.size();
     for (int j = 1; j < n; j++) {
-      int key = a[j];
+      int key = nums[j];
       int i = j - 1;
-      while (i >= 0 && a[i] > key) {
-        a[i + 1] = a[i];
+      while (i >= 0 && nums[i] > key) {
+        nums[i + 1] = nums[i];
         i--;
       }
-      a[i + 1] = key;
+      nums[i + 1] = key;
     }
   }
 
-  void RecursiveInsertionSort(std::vector<int>& a, int j) {
+  void RecursiveInsertionSort(std::vector<int>& nums, int j) {
     if (j >= 1) {
-      RecursiveInsertionSort(a, j - 1);
-      int key = a[j];
+      RecursiveInsertionSort(nums, j - 1);
+      int key = nums[j];
       int i = j - 1;
-      while (i >= 0 && a[i] > key) {
-        a[i + 1] = a[i];
+      while (i >= 0 && nums[i] > key) {
+        nums[i + 1] = nums[i];
         i--;
       }
-      a[i + 1] = key;
+      nums[i + 1] = key;
     }
   }
 
-  void NonIncreasingInsertionSort(std::vector<int>& a) {
-    int n = a.size();
+  void NonIncreasingInsertionSort(std::vector<int>& nums) {
+    int n = nums.size();
     for (int j = 1; j < n; j++) {
-      int key = a[j];
+      int key = nums[j];
       int i = j - 1;
-      while (i >= 0 && a[i] < key) {
-        a[i + 1] = a[i];
+      while (i >= 0 && nums[i] < key) {
+        nums[i + 1] = nums[i];
         i--;
       }
-      a[i + 1] = key;
+      nums[i + 1] = key;
     }
   }
 
