@@ -146,16 +146,16 @@ class BinarySearchTree {
     return p;
   }
 
-  void Transplant(Node* src, Node* dest) {
-    if (dest->parent == nullptr) {
+  void Transplant(Node* src, Node* dst) {
+    if (dst->parent == nullptr) {
       root_ = src;
-    } else if (dest == dest->parent->left) {
-      dest->parent->left = src;
+    } else if (dst == dst->parent->left) {
+      dst->parent->left = src;
     } else {
-      dest->parent->right = src;
+      dst->parent->right = src;
     }
     if (src != nullptr) {
-      src->parent = dest->parent;
+      src->parent = dst->parent;
     }
   }
 };
