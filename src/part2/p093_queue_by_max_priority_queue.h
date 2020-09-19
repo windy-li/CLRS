@@ -9,9 +9,9 @@ struct Node {
   Node() : key(0), priority(0) {}
 };
 
-class QueueByMaxPriorityQueue {
+class Queue {
  public:
-  explicit QueueByMaxPriorityQueue(int capacity)
+  explicit Queue(int capacity)
       : nodes_(std::vector<Node*>(capacity, nullptr)), count_(capacity), heap_size_(0) {}
 
   void Push(int key) {

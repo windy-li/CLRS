@@ -3,7 +3,7 @@
 int main() {
   int keys[] = {5, 2, 4, 6, 1, 3};
   int n = 6;
-  QueueByMaxPriorityQueue q(n);
+  Queue q(n);
   for (int i = 0; i < n; ++i) {
     q.Push(keys[i]);
   }
