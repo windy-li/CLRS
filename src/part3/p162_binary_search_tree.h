@@ -64,13 +64,13 @@ class BinarySearchTree {
   void Insert(int key) {
     Node* node = new Node(key);
     Node* p = nullptr;
-    Node* temp = root_;
-    while (temp != nullptr) {
-      p = temp;
-      if (key < temp->key) {
-        temp = temp->left;
+    Node* tmp = root_;
+    while (tmp != nullptr) {
+      p = tmp;
+      if (key < tmp->key) {
+        tmp = tmp->left;
       } else {
-        temp = temp->right;
+        tmp = tmp->right;
       }
     }
     node->parent = p;
