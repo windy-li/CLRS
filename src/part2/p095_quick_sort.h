@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void QuickSort(std::vector<int>& nums, int p, int r) {
+  void QuickSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = Partition(nums, p, r);
       QuickSort(nums, p, q - 1);
@@ -10,27 +10,27 @@ class Solution {
     }
   }
 
-  void IterativeQuickSort(std::vector<int>& nums, int p, int r) {
-    int s[r - p + 1];
+  void IterativeQuickSort(std::vector<int> &nums, int p, int r) {
+    int stack[r - p + 1];
     int top = -1;
-    s[++top] = p;
-    s[++top] = r;
+    stack[++top] = p;
+    stack[++top] = r;
     while (top >= 0) {
-      r = s[top--];
-      p = s[top--];
+      r = stack[top--];
+      p = stack[top--];
       int pivot = Partition(nums, p, r);
       if (pivot - p > 1) {
-        s[++top] = p;
-        s[++top] = pivot - 1;
+        stack[++top] = p;
+        stack[++top] = pivot - 1;
       }
       if (r - pivot > 1) {
-        s[++top] = pivot + 1;
-        s[++top] = r;
+        stack[++top] = pivot + 1;
+        stack[++top] = r;
       }
     }
   }
 
-  void RandomizedQuickSort(std::vector<int>& nums, int p, int r) {
+  void RandomizedQuickSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = RandomizedPartition(nums, p, r);
       RandomizedQuickSort(nums, p, q - 1);
@@ -38,7 +38,7 @@ class Solution {
     }
   }
 
-  void HoareQuickSort(std::vector<int>& nums, int p, int r) {
+  void HoareQuickSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = HoarePartition(nums, p, r);
       HoareQuickSort(nums, p, q);
@@ -46,7 +46,7 @@ class Solution {
     }
   }
 
-  void TailRecursiveQuickSort(std::vector<int>& nums, int p, int r) {
+  void TailRecursiveQuickSort(std::vector<int> &nums, int p, int r) {
     while (p < r) {
       int q = Partition(nums, p, r);
       TailRecursiveQuickSort(nums, p, q - 1);
@@ -54,7 +54,7 @@ class Solution {
     }
   }
 
-  void ModifiedTailRecursiveQuickSort(std::vector<int>& nums, int p, int r) {
+  void ModifiedTailRecursiveQuickSort(std::vector<int> &nums, int p, int r) {
     while (p < r) {
       int q = Partition(nums, p, r);
       if (q < (r - p) / 2) {
@@ -67,7 +67,7 @@ class Solution {
     }
   }
 
-  void MedianOfThreeQuickSort(std::vector<int>& nums, int p, int r) {
+  void MedianOfThreeQuickSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       int q = MedianOfThreePartition(nums, p, r);
       MedianOfThreeQuickSort(nums, p, q - 1);
@@ -75,7 +75,7 @@ class Solution {
     }
   }
 
-  void ThreeWayQuickSort(std::vector<int>& nums, int p, int r) {
+  void ThreeWayQuickSort(std::vector<int> &nums, int p, int r) {
     if (p < r) {
       std::vector<int> pivots = ThreeWayPartition(nums, p, r);
       ThreeWayQuickSort(nums, p, pivots[0]);
@@ -84,53 +84,53 @@ class Solution {
   }
 
  private:
-  int Partition(std::vector<int>& a, int p, int r) {
+  int Partition(std::vector<int> &nums, int p, int r) {
     int i = p - 1;
     for (int j = p; j < r; j++) {
-      if (a[j] <= a[r]) {
+      if (nums[j] <= nums[r]) {
         i++;
-        std::swap(a[i], a[j]);
+        std::swap(nums[i], nums[j]);
       }
     }
-    std::swap(a[i + 1], a[r]);
+    std::swap(nums[i + 1], nums[r]);
     return i + 1;
   }
 
-  int RandomizedPartition(std::vector<int>& a, int p, int r) {
+  int RandomizedPartition(std::vector<int> &nums, int p, int r) {
     int i = clrs::RandomInt(p, r + 1);
-    std::swap(a[i], a[r]);
-    return Partition(a, p, r);
+    std::swap(nums[i], nums[r]);
+    return Partition(nums, p, r);
   }
 
-  int HoarePartition(std::vector<int>& a, int p, int r) {
-    int x = a[p];
+  int HoarePartition(std::vector<int> &nums, int p, int r) {
+    int x = nums[p];
     int i = p - 1;
     int j = r + 1;
     while (true) {
       do {
         i++;
-      } while (a[i] < x);
+      } while (nums[i] < x);
       do {
         j--;
-      } while (a[j] > x);
+      } while (nums[j] > x);
       if (i < j) {
-        std::swap(a[i], a[j]);
+        std::swap(nums[i], nums[j]);
       } else {
         return j;
       }
     }
   }
 
-  int MedianOfThreePartition(std::vector<int>& arr, int p, int r) {
+  int MedianOfThreePartition(std::vector<int> &nums, int p, int r) {
     int a = p + clrs::RandomInt(0, r - p + 1);
     int b = p + clrs::RandomInt(0, r - p + 1);
     int c = p + clrs::RandomInt(0, r - p + 1);
-    int m = MedianOfThree(arr, a, b, c);
-    std::swap(arr[m], arr[r]);
-    return Partition(arr, p, r);
+    int m = MedianOfThree(nums, a, b, c);
+    std::swap(nums[m], nums[r]);
+    return Partition(nums, p, r);
   }
 
-  int MedianOfThree(std::vector<int>& nums, int a, int b, int c) {
+  int MedianOfThree(std::vector<int> &nums, int a, int b, int c) {
     if (nums[a] < nums[b]) {
       if (nums[b] < nums[c]) {
         return b;
@@ -150,24 +150,24 @@ class Solution {
     }
   }
 
-  std::vector<int> ThreeWayPartition(std::vector<int>& a, int p, int r) {
+  std::vector<int> ThreeWayPartition(std::vector<int> &nums, int p, int r) {
     int lt = p - 1;
     int gt = r;
     int i = p;
-    int pivot = a[r];
+    int pivot = nums[r];
     while (i < gt) {
-      if (a[i] < pivot) {
+      if (nums[i] < pivot) {
         lt++;
-        std::swap(a[i], a[lt]);
+        std::swap(nums[i], nums[lt]);
         i++;
-      } else if (a[i] > pivot) {
+      } else if (nums[i] > pivot) {
         gt--;
-        std::swap(a[i], a[gt]);
+        std::swap(nums[i], nums[gt]);
       } else {
         i++;
       }
     }
-    std::swap(a[r], a[gt]);
+    std::swap(nums[r], nums[gt]);
     return std::vector<int>{lt, gt + 1};
   }
 };
