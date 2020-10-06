@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  void SelectionSort(std::vector<int>& nums) {
+  void SelectionSort(std::vector<int> &nums) {
     int n = nums.size();
     for (int i = 0; i < n - 1; i++) {
       int min = i;
