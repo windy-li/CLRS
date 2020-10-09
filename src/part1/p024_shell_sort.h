@@ -2,17 +2,17 @@
 
 class Solution {
  public:
-  void ShellSort(std::vector<int>& a) {
-    int n = a.size();
+  void ShellSort(std::vector<int>& nums) {
+    int n = nums.size();
     for (int gap = n / 2; gap > 0; gap /= 2) {
       for (int j = gap; j < n; j++) {
-        int key = a[j];
+        int key = nums[j];
         int i = j - gap;
-        while (i >= 0 && a[i] > key) {
-          a[i + gap] = a[i];
+        while (i >= 0 && nums[i] > key) {
+          nums[i + gap] = nums[i];
           i -= gap;
         }
-        a[i + gap] = key;
+        nums[i + gap] = key;
       }
     }
   }

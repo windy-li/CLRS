@@ -2,15 +2,15 @@
 
 class Solution {
  public:
-  int BinarySearch(const std::vector<int>& a, int k) {
-    int n = a.size();
+  int BinarySearch(const std::vector<int>& nums, int k) {
+    int n = nums.size();
     int low = 0;
     int high = n - 1;
     while (low <= high) {
       int mid = (low + high) / 2;
-      if (k == a[mid]) {
+      if (k == nums[mid]) {
         return mid;
-      } else if (k < a[mid]) {
+      } else if (k < nums[mid]) {
         high = mid - 1;
       } else {
         low = mid + 1;
