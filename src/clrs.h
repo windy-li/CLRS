@@ -22,7 +22,7 @@ namespace clrs {
 using error = int;
 
 template <typename T>
-void PrintVector(const std::vector<T>& vec) {
+void PrintVector(std::vector<T>& vec) {
   int n = vec.size();
   std::cout << "[";
   for (int i = 0; i < n; ++i) {
