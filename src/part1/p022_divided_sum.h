@@ -4,7 +4,7 @@ class Solution {
  public:
   bool CanDivide(std::vector<int>& nums, int x) {
     int n = nums.size();
-    std::sort(nums.begin(), nums.end());
+    std::sort(std::begin(nums), std::end(nums));
     int i = 0, j = n - 1;
     while (i < j) {
       int sum = nums[i] + nums[j];
