@@ -2,14 +2,14 @@
 
 class Solution {
  public:
-  void RandomizeInPlace(std::vector<int> &a) {
+  void RandomizeInPlace(std::vector<int>& a) {
     int n = a.size();
     for (int i = 0; i < n; i++) {
       std::swap(a[i], a[clrs::RandomInt(i, n)]);
     }
   }
 
-  void PermuteBySorting(std::vector<int> &a) {
+  void PermuteBySorting(std::vector<int>& a) {
     int n = a.size();
     std::vector<int> p(n);
     for (int i = 0; i < n; i++) {
@@ -19,7 +19,7 @@ class Solution {
   }
 
  private:
-  void SortForPermute(std::vector<int> &a, std::vector<int> &p) {
+  void SortForPermute(std::vector<int>& a, std::vector<int>& p) {
     int n = a.size();
     for (int j = 1; j < n; j++) {
       int key = p[j];
