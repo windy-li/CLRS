@@ -5,6 +5,8 @@ void TestInsertionSort() {
   Solution s;
   s.InsertionSort(nums);
   clrs::PrintVector(nums);
+//  std::reverse(std::begin(nums), std::end(nums));
+//  clrs::PrintVector(nums);
 }
 
 void TestRecursiveInsertionSort() {
