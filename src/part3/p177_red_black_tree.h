@@ -5,9 +5,9 @@ const int kBlack = 0;
 
 struct Node {
   int key;
-  Node *parent;
-  Node *left;
-  Node *right;
+  Node* parent;
+  Node* left;
+  Node* right;
   int color;
 
   Node(int key, int color)
@@ -18,9 +18,9 @@ class RedBlackTree {
  public:
   RedBlackTree() : nil_(new Node(-1, kBlack)), root_(nil_) {}
 
-  Node *root() { return root_; }
+  Node* root() { return root_; }
 
-  void InorderTreeWalk(Node *x) {
+  void InorderTreeWalk(Node* x) {
     if (x != nil_) {
       InorderTreeWalk(x->left);
       std::cout << x->key << std::endl;
@@ -28,8 +28,8 @@ class RedBlackTree {
     }
   }
 
-  Node *Search(int k) {
-    Node *x = root_;
+  Node* Search(int k) {
+    Node* x = root_;
     while (x != nil_ && x->key != k) {
       if (k < x->key) {
         x = x->left;
@@ -41,9 +41,9 @@ class RedBlackTree {
   }
 
   void Insert(int k) {
-    Node *x = new Node(k, kRed);
-    Node *p = nil_;
-    Node *tmp = root_;
+    Node* x = new Node(k, kRed);
+    Node* p = nil_;
+    Node* tmp = root_;
     while (tmp != nil_) {
       p = tmp;
       if (k < tmp->key) {
@@ -66,12 +66,12 @@ class RedBlackTree {
   }
 
   void Remove(int k) {
-    Node *x = Search(k);
+    Node* x = Search(k);
     if (x == nil_) {
       return;
     }
     int c;
-    Node *r;
+    Node* r;
     if (x->left == nil_) {
       c = x->color;
       r = x->right;
@@ -81,7 +81,7 @@ class RedBlackTree {
       r = x->left;
       Transplant(x->left, x);
     } else {
-      Node *suc = Minimum(x->right);
+      Node* suc = Minimum(x->right);
       c = suc->color;
       r = suc->right;
       if (suc->parent != x) {
@@ -100,24 +100,24 @@ class RedBlackTree {
   }
 
  private:
-  Node *nil_;
-  Node *root_;
+  Node* nil_;
+  Node* root_;
 
-  Node *Minimum(Node *x) {
+  Node* Minimum(Node* x) {
     while (x->left != nil_) {
       x = x->left;
     }
     return x;
   }
 
-  Node *Maximum(Node *x) {
+  Node* Maximum(Node* x) {
     while (x->right != nil_) {
       x = x->right;
     }
     return x;
   }
 
-  void Transplant(Node *src, Node *dst) {
+  void Transplant(Node* src, Node* dst) {
     if (dst->parent == nil_) {
       root_ = src;
     } else if (dst == dst->parent->left) {
@@ -128,8 +128,8 @@ class RedBlackTree {
     src->parent = dst->parent;
   }
 
-  void LeftRotate(Node *x) {
-    Node *r = x->right;
+  void LeftRotate(Node* x) {
+    Node* r = x->right;
     x->right = r->left;
     x->right->parent = x;
     r->parent = x->parent;
@@ -144,8 +144,8 @@ class RedBlackTree {
     r->left->parent = r;
   }
 
-  void RightRotate(Node *x) {
-    Node *l = x->left;
+  void RightRotate(Node* x) {
+    Node* l = x->left;
     x->left = l->right;
     x->left->parent = x;
     l->parent = x->parent;
@@ -160,11 +160,11 @@ class RedBlackTree {
     l->right->parent = l;
   }
 
-  Node *Successor(Node *x) {
+  Node* Successor(Node* x) {
     if (x->right != nil_) {
       return Minimum(x->right);
     }
-    Node *ancestor = x->parent;
+    Node* ancestor = x->parent;
     while (ancestor != nil_ && x == ancestor->right) {
       x = ancestor;
       ancestor = ancestor->parent;
@@ -172,11 +172,11 @@ class RedBlackTree {
     return ancestor;
   }
 
-  Node *Predecessor(Node *x) {
+  Node* Predecessor(Node* x) {
     if (x->left != nil_) {
       return Maximum(x->left);
     }
-    Node *ancestor = x->parent;
+    Node* ancestor = x->parent;
     while (ancestor != nil_ && x == ancestor->left) {
       x = ancestor;
       ancestor = ancestor->parent;
@@ -184,10 +184,10 @@ class RedBlackTree {
     return ancestor;
   }
 
-  void InsertFixup(Node *x) {
+  void InsertFixup(Node* x) {
     while (x->parent->color == kRed) {
       if (x->parent == x->parent->parent->left) {
-        Node *uncle = x->parent->parent->right;
+        Node* uncle = x->parent->parent->right;
         if (uncle->color == kRed) {
           x->parent->color = kBlack;
           uncle->color = kBlack;
@@ -203,7 +203,7 @@ class RedBlackTree {
           RightRotate(x->parent->parent);
         }
       } else {
-        Node *uncle = x->parent->parent->left;
+        Node* uncle = x->parent->parent->left;
         if (uncle->color == kRed) {
           x->parent->color = kBlack;
           uncle->color = kBlack;
@@ -223,10 +223,10 @@ class RedBlackTree {
     root_->color = kBlack;
   }
 
-  void RemoveFixup(Node *x) {
+  void RemoveFixup(Node* x) {
     while (x != nil_ && x->color == kBlack) {
       if (x == x->parent->left) {
-        Node *sibling = x->parent->right;
+        Node* sibling = x->parent->right;
         if (sibling->color == kRed) {
           sibling->color = kBlack;
           x->parent->color = kRed;
@@ -250,7 +250,7 @@ class RedBlackTree {
           x = root_;
         }
       } else {
-        Node *sibling = x->parent->left;
+        Node* sibling = x->parent->left;
         if (sibling->color == kRed) {
           sibling->color = kBlack;
           x->parent->color = kRed;
