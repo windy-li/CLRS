@@ -2,7 +2,7 @@
 
 class MaxHeap {
  public:
-  MaxHeap() {}
+  MaxHeap() : size_(0) {}
 
   void Sort(std::vector<int>& a) {
     BuildMaxHeap(a);

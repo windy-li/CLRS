@@ -2,5 +2,6 @@
 
 int main() {
   Solution s;
-  clrs::PrintVector(s.ComplexNumberMultiply(1, 2, 3, 4));
+  std::vector<int> result = s.ComplexNumberMultiply(1, 2, 3, 4);
+  clrs::PrintVector(result);
 }
