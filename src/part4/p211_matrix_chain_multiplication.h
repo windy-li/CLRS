@@ -2,8 +2,8 @@
 
 class Solution {
  public:
-  std::vector<std::vector<int>> MatrixMultiply(const std::vector<std::vector<int>> &a,
-                                               const std::vector<std::vector<int>> &b) {
+  std::vector<std::vector<int>> MatrixMultiply(std::vector<std::vector<int>> &a,
+                                               std::vector<std::vector<int>> &b) {
     int a_row = a.size();
     int a_col = a[0].size();
     int b_row = b.size();
