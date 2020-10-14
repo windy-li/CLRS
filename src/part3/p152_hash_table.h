@@ -2,25 +2,22 @@
 
 struct Slot {
   int key;
-  bool deleted;
+  bool is_deleted;
 
-  Slot(int key, bool deleted) : key(key), deleted(deleted) {}
+  Slot(int key, bool deleted) : key(key), is_deleted(deleted) {}
 };
 
 class HashTable {
  public:
-  int m;
-  std::vector<Slot*> slots;
-
-  HashTable(int capacity)
-      : m(capacity), slots(std::vector<Slot*>(capacity, new Slot(INT_MIN, false))) {}
+  explicit HashTable(int capacity)
+      : m_(capacity), slots_(std::vector<Slot*>(capacity, new Slot(INT_MIN, false))) {}
 
   void Insert(int key) {
     int i = 0;
-    while (i < m) {
+    while (i < m_) {
       int j = H(key, i);
-      if (slots[j]->key == INT_MIN || slots[j]->deleted) {
-        slots[j] = new Slot(key, false);
+      if (slots_[j]->key == INT_MIN || slots_[j]->is_deleted) {
+        slots_[j] = new Slot(key, false);
         return;
       }
       i++;
@@ -30,12 +27,12 @@ class HashTable {
 
   Slot* Search(int key) {
     int i = 0;
-    while (i < m) {
+    while (i < m_) {
       int j = H(key, i);
-      if (slots[j] == nullptr) {
+      if (slots_[j] == nullptr) {
         return nullptr;
-      } else if (slots[j]->key == key && !slots[j]->deleted) {
-        return slots[j];
+      } else if (slots_[j]->key == key && !slots_[j]->is_deleted) {
+        return slots_[j];
       }
       i++;
     }
@@ -45,14 +42,17 @@ class HashTable {
   void Remove(int key) {
     Slot* slot = Search(key);
     if (slot != nullptr) {
-      slot->deleted = true;
+      slot->is_deleted = true;
     }
   }
 
  private:
-  int H(int key, int i) { return (H1(key) + i * H2(key)) % m; }
+  int m_;
+  std::vector<Slot*> slots_;
 
-  int H1(int key) { return key % m; }
+  int H(int key, int i) { return (H1(key) + i * H2(key)) % m_; }
 
-  int H2(int key) { return 1 + (key % (m - 1)); }
+  int H1(int key) { return key % m_; }
+
+  int H2(int key) { return 1 + (key % (m_ - 1)); }
 };
