@@ -4,7 +4,7 @@ project(clrs)
 
 set(CMAKE_CXX_STANDARD 17)
 
-include_directories(src)
+include_directories(include part1 part2 part3 part4 part5 part6)
 
 file(GLOB_RECURSE HEADER_FILES *.h)
 file(GLOB_RECURSE SOURCE_FILES *.cc)
