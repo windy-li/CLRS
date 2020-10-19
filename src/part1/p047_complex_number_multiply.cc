@@ -9,3 +9,9 @@ class Solution {
     return std::vector<int>{p1 - p2, p2 + p3};
   }
 };
+
+int main() {
+  Solution s;
+  std::vector<int> result = s.ComplexNumberMultiply(1, 2, 3, 4);
+  clrs::PrintVector(result);
+}

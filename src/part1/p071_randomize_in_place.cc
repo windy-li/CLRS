@@ -2,6 +2,13 @@
 
 class Solution {
  public:
+  void RandomizeInPlace(std::vector<int>& a) {
+    int n = a.size();
+    for (int i = 0; i < n; i++) {
+      std::swap(a[i], a[clrs::RandomInt(i, n)]);
+    }
+  }
+
   void PermuteBySorting(std::vector<int>& a) {
     int n = a.size();
     std::vector<int> p(n);
@@ -26,3 +33,16 @@ class Solution {
     }
   }
 };
+
+void TestRandomizeInPlace() {
+  int n = 10;
+  std::vector<int> a(n);
+  for (int i = 0; i < n; ++i) {
+    a[i] = i;
+  }
+  Solution s;
+  s.RandomizeInPlace(a);
+  clrs::PrintVector(a);
+}
+
+int main() { TestRandomizeInPlace(); }
