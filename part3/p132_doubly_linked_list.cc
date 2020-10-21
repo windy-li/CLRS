@@ -83,8 +83,8 @@ void PrintNode(Node* node) {
   std::cout << " }";
 }
 
-void PrintLinkedList(LinkedList* l) {
-  Node* node = l->head();
+void PrintLinkedList(LinkedList* list) {
+  Node* node = list->head();
   while (node != nullptr) {
     std::cout << node->key;
     if (node->next != nullptr) {
@@ -95,29 +95,29 @@ void PrintLinkedList(LinkedList* l) {
 }
 
 void TestLinkedList() {
-  LinkedList l;
-  l.PushFront(1);
-  l.PushFront(4);
-  l.PushFront(16);
-  l.PushFront(9);
-  l.PushFront(25);
-  Node* x1 = l.Search(4);
-  if (x1 != nullptr) {
-    PrintNode(x1);
+  LinkedList list;
+  list.PushFront(1);
+  list.PushFront(4);
+  list.PushFront(16);
+  list.PushFront(9);
+  list.PushFront(25);
+  Node* node1 = list.Search(4);
+  if (node1 != nullptr) {
+    PrintNode(node1);
   } else {
     std::cout << "null" << std::endl;
   }
-  PrintLinkedList(&l);
-  l.Reverse();
-  PrintLinkedList(&l);
-  l.RemoveKey(4);
-  Node* x2 = l.Search(4);
-  if (x2 != nullptr) {
-    PrintNode(x2);
+  PrintLinkedList(&list);
+  list.Reverse();
+  PrintLinkedList(&list);
+  list.RemoveKey(4);
+  Node* node2 = list.Search(4);
+  if (node2 != nullptr) {
+    PrintNode(node2);
   } else {
     std::cout << "null" << std::endl;
   }
-  PrintLinkedList(&l);
+  PrintLinkedList(&list);
 }
 
 int main() { TestLinkedList(); }
