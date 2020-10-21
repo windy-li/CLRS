@@ -72,3 +72,19 @@ class MaxPriorityQueue {
 
   int Parent(int i) { return (i - 1) / 2; }
 };
+
+int main() {
+  std::vector<int> keys = {5, 2, 4, 6, 1, 3};
+  int n = keys.size();
+  MaxPriorityQueue q(n);
+  for (int key : keys) {
+    q.Insert(key);
+  }
+  for (int i = 0; i < n; ++i) {
+    std::cout << q.ExtractMax() << " ";
+  }
+}
+
+/*
+ * 6 5 4 3 2 1
+ */
