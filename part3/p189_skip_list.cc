@@ -15,7 +15,7 @@ class SkipList {
   void Insert(int key) {
     Node* current_node = head_;
     std::vector<Node*> update_list(max_level_ + 1, nullptr);
-    for (int i = current_level_; i >= 0; i--) {
+    for (int i = current_level_; i >= 0; --i) {
       while (current_node->forward[i] != nullptr && current_node->forward[i]->key < key) {
         current_node = current_node->forward[i];
       }
@@ -40,7 +40,7 @@ class SkipList {
 
   Node* Search(int key) {
     Node* current = head_;
-    for (int i = current_level_; i >= 0; i--) {
+    for (int i = current_level_; i >= 0; --i) {
       while (current->forward[i] != nullptr && current->forward[i]->key < key) {
         current = current->forward[i];
       }
@@ -55,7 +55,7 @@ class SkipList {
   void Remove(int key) {
     Node* current = head_;
     std::vector<Node*> update(max_level_ + 1, nullptr);
-    for (int i = current_level_; i >= 0; i--) {
+    for (int i = current_level_; i >= 0; --i) {
       while (current->forward[i] != nullptr && current->forward[i]->key < key) {
         current = current->forward[i];
       }
@@ -63,7 +63,7 @@ class SkipList {
     }
     current = current->forward[0];
     if (current != nullptr && current->key == key) {
-      for (int i = 0; i <= current_level_; i++) {
+      for (int i = 0; i <= current_level_; ++i) {
         if (update[i]->forward[i] != current) {
           break;
         }
