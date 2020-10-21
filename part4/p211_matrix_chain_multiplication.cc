@@ -2,8 +2,8 @@
 
 class Solution {
  public:
-  std::vector<std::vector<int>> MatrixMultiply(std::vector<std::vector<int>> &a,
-                                               std::vector<std::vector<int>> &b) {
+  std::vector<std::vector<int>> MatrixMultiply(std::vector<std::vector<int>>& a,
+                                               std::vector<std::vector<int>>& b) {
     int a_row = a.size();
     int a_col = a[0].size();
     int b_row = b.size();
@@ -23,7 +23,7 @@ class Solution {
     return c;
   }
 
-  int Recursive(int *p, int i, int j) {
+  int Recursive(int* p, int i, int j) {
     if (i == j) {
       return 0;
     }
@@ -34,7 +34,7 @@ class Solution {
     return min;
   }
 
-  int Memorized(int *p, int len) {
+  int Memorized(int* p, int len) {
     int n = len - 1;
     int m[n + 1][n + 1];
     for (int i = 1; i <= n; ++i) {
@@ -46,10 +46,10 @@ class Solution {
         }
       }
     }
-    return MemorizedAux(p, (int *)m, n + 1, 1, n);
+    return MemorizedAux(p, (int*)m, n + 1, 1, n);
   }
 
-  int BottomUp(int *p, int length) {
+  int BottomUp(int* p, int length) {
     int n = length - 1;
     int m[n + 1][n + 1];
     for (int i = 1; i <= n; i++) {
@@ -68,7 +68,7 @@ class Solution {
     return m[1][n];
   }
 
-  void ExtendedBottomUp(int *p, int length, int &result, int *s, int sCol) {
+  void ExtendedBottomUp(int* p, int length, int& result, int* s, int sCol) {
     int n = length - 1;
     int m[n + 1][n + 1];
     for (int i = 1; i <= n; i++) {
@@ -90,7 +90,7 @@ class Solution {
     result = m[1][n];
   }
 
-  void ConstructSolution(int *s, int sCol, int i, int j) {
+  void ConstructSolution(int* s, int sCol, int i, int j) {
     if (i == j) {
       std::cout << "A" << i;
     } else {
@@ -102,7 +102,7 @@ class Solution {
   }
 
  private:
-  int MemorizedAux(int *p, int *m, int mCol, int i, int j) {
+  int MemorizedAux(int* p, int* m, int mCol, int i, int j) {
     if (*((m + i * mCol) + j) < INT_MAX) {
       return *((m + i * mCol) + j);
     }

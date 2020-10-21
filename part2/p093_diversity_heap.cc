@@ -72,7 +72,7 @@ int main() {
   for (int key : keys) {
     heap.Insert(key);
   }
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     std::cout << heap.ExtractMax() << " ";
   }
 }

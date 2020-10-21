@@ -2,21 +2,21 @@
 
 class YoungTableau {
  public:
-  YoungTableau(int m, int n) : m_(m), n_(n), mat_(std::vector(m, std::vector(n, INT_MAX))) {}
+  YoungTableau(int m, int n) : m_(m), n_(n), matrix_(std::vector(m, std::vector(n, INT_MAX))) {}
 
   int ExtractMin() {
     if (Empty()) {
       throw std::underflow_error("young tableau underflow");
     }
-    int ret = mat_[0][0];
-    mat_[0][0] = INT_MAX;
+    int ret = matrix_[0][0];
+    matrix_[0][0] = INT_MAX;
     Youngify(0, 0);
     return ret;
   }
 
-  bool Empty() { return mat_[0][0] == INT_MAX; }
+  bool Empty() { return matrix_[0][0] == INT_MAX; }
 
-  bool Full() { return mat_[m_ - 1][n_ - 1] < INT_MAX; }
+  bool Full() { return matrix_[m_ - 1][n_ - 1] < INT_MAX; }
 
   void Insert(int key) {
     if (Full()) {
@@ -26,22 +26,22 @@ class YoungTableau {
   }
 
   void DecreaseKey(int i, int j, int key) {
-    if (key > mat_[i][j]) {
+    if (key > matrix_[i][j]) {
       std::cerr << "new key cannot be greater than current key" << std::endl;
     }
-    int top_key = (i > 0) ? mat_[i - 1][j] : INT_MIN;
-    int left_key = (j > 0) ? mat_[i][j - 1] : INT_MIN;
+    int top_key = (i > 0) ? matrix_[i - 1][j] : INT_MIN;
+    int left_key = (j > 0) ? matrix_[i][j - 1] : INT_MIN;
     if (key >= top_key && key >= left_key) {
-      mat_[i][j] = key;
+      matrix_[i][j] = key;
       return;
     }
     if (top_key > left_key) {
-      mat_[i][j] = top_key;
-      mat_[i - 1][j] = key;
+      matrix_[i][j] = top_key;
+      matrix_[i - 1][j] = key;
       DecreaseKey(i - 1, j, key);
     } else {
-      mat_[i][j] = left_key;
-      mat_[i][j - 1] = key;
+      matrix_[i][j] = left_key;
+      matrix_[i][j - 1] = key;
       DecreaseKey(i, j - 1, key);
     }
   }
@@ -50,7 +50,7 @@ class YoungTableau {
     int row = 0;
     int col = n_ - 1;
     while (col >= 0 && row <= n_ - 1) {
-      int val = mat_[row][col];
+      int val = matrix_[row][col];
       if (key == val) {
         return true;
       } else if (key < val) {
@@ -65,21 +65,21 @@ class YoungTableau {
  private:
   int m_;
   int n_;
-  std::vector<std::vector<int>> mat_;
+  std::vector<std::vector<int>> matrix_;
 
   void Youngify(int i, int j) {
-    int down_key = (i < n_ - 1) ? mat_[i + 1][j] : INT_MAX;
-    int right_key = (j < m_ - 1) ? mat_[i][j + 1] : INT_MAX;
+    int down_key = (i < n_ - 1) ? matrix_[i + 1][j] : INT_MAX;
+    int right_key = (j < m_ - 1) ? matrix_[i][j + 1] : INT_MAX;
     if (down_key == INT_MAX && right_key == INT_MAX) {
       return;
     }
     if (down_key < right_key) {
-      mat_[i][j] = down_key;
-      mat_[i + 1][j] = INT_MAX;
+      matrix_[i][j] = down_key;
+      matrix_[i + 1][j] = INT_MAX;
       Youngify(i + 1, j);
     } else {
-      mat_[i][j] = right_key;
-      mat_[i][j + 1] = INT_MAX;
+      matrix_[i][j] = right_key;
+      matrix_[i][j + 1] = INT_MAX;
       Youngify(i, j + 1);
     }
   }

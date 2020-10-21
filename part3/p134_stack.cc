@@ -2,35 +2,35 @@
 
 class Stack {
  public:
-  Stack() : q_(new std::deque<int>()) {}
+  Stack() : dq_(new std::deque<int>()) {}
 
-  bool Empty() { return q_->empty(); }
+  bool Empty() { return dq_->empty(); }
 
-  void Push(int key) { q_->push_back(key); }
+  void Push(int key) { dq_->push_back(key); }
 
   std::tuple<int, clrs::error> Pop() {
     if (Empty()) {
       return {0, 1};
     }
-    int ret = q_->back();
-    q_->pop_back();
+    int ret = dq_->back();
+    dq_->pop_back();
     return {ret, 0};
   }
 
  private:
-  std::deque<int>* q_;
+  std::deque<int>* dq_;
 };
 
 int main() {
-  auto *self = new Stack();
-  self->Push(15);
-  self->Push(6);
-  self->Push(2);
-  self->Push(9);
-  self->Push(17);
-  self->Push(3);
-  std::cout << self->Pop() << std::endl;
-  return 0;
+  Stack self;
+  self.Push(15);
+  self.Push(6);
+  self.Push(2);
+  self.Push(9);
+  self.Push(17);
+  self.Push(3);
+  auto [result, err] = self.Pop();
+  std::cout << result << std::endl;
 }
 
 /*

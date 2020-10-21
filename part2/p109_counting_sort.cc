@@ -2,19 +2,19 @@
 
 class Solution {
  public:
-  void CountingSort(std::vector<int>& arr, int len, int k, std::vector<int>& output) {
+  void CountingSort(std::vector<int>& nums, int len, int k, std::vector<int>& output) {
     int count[k + 1];
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
     }
     for (int i = 0; i < len; ++i) {
-      count[arr[i]]++;
+      count[nums[i]]++;
     }
     for (int i = 1; i <= k; ++i) {
       count[i] += count[i - 1];
     }
     for (int i = len - 1; i >= 0; --i) {
-      int x = arr[i];
+      int x = nums[i];
       output[count[x] - 1] = x;
       count[x]--;
     }
@@ -46,7 +46,6 @@ void testCountingSort() {
   std::vector<int> output(n);
   Solution s;
   s.CountingSort(arr, n, k, output);
-  //  clrs::PrintArray(output, len);
 }
 
 void testCountingRange() {

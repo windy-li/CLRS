@@ -9,56 +9,56 @@ struct Node {
 
 class MinHeap {
  public:
-  explicit MinHeap(int capacity) : nodes(std::vector<Node*>(capacity, nullptr)), heap_size(0) {}
+  explicit MinHeap(int capacity) : nodes_(std::vector<Node*>(capacity, nullptr)), heap_size_(0) {}
 
   void Insert(int key, int arrayId) {
-    heap_size++;
-    nodes[heap_size - 1] = new Node(INT_MAX, arrayId);
-    DecreaseKey(heap_size - 1, key);
+    heap_size_++;
+    nodes_[heap_size_ - 1] = new Node(INT_MAX, arrayId);
+    DecreaseKey(heap_size_ - 1, key);
   }
 
-  bool Empty() { return heap_size == 0; }
+  bool Empty() { return heap_size_ == 0; }
 
   Node* ExtractMin() {
     if (Empty()) {
       throw std::underflow_error("Heap underflow");
     }
-    Node* head = nodes[0];
-    nodes[0] = nodes[heap_size - 1];
-    heap_size--;
+    Node* head = nodes_[0];
+    nodes_[0] = nodes_[heap_size_ - 1];
+    heap_size_--;
     MinHeapify(0);
     return head;
   }
 
  private:
-  std::vector<Node*> nodes;
-  int heap_size;
+  std::vector<Node*> nodes_;
+  int heap_size_;
 
   void DecreaseKey(int i, int new_key) {
-    if (new_key > nodes[i]->key) {
+    if (new_key > nodes_[i]->key) {
       std::cerr << "new key is lower than current key" << std::endl;
     }
-    nodes[i]->key = new_key;
-    Node* temp = nodes[i];
-    while (i > 0 && nodes[Parent(i)]->key > new_key) {
-      nodes[i] = nodes[Parent(i)];
+    nodes_[i]->key = new_key;
+    Node* temp = nodes_[i];
+    while (i > 0 && nodes_[Parent(i)]->key > new_key) {
+      nodes_[i] = nodes_[Parent(i)];
       i = Parent(i);
     }
-    nodes[i] = temp;
+    nodes_[i] = temp;
   }
 
   void MinHeapify(int i) {
     int l = Left(i);
     int r = Right(i);
     int least = i;
-    if (l < heap_size && nodes[l]->key < nodes[least]->key) {
+    if (l < heap_size_ && nodes_[l]->key < nodes_[least]->key) {
       least = l;
     }
-    if (r < heap_size && nodes[r]->key < nodes[least]->key) {
+    if (r < heap_size_ && nodes_[r]->key < nodes_[least]->key) {
       least = r;
     }
     if (least != i) {
-      std::swap(nodes[least], nodes[i]);
+      std::swap(nodes_[least], nodes_[i]);
       MinHeapify(least);
     }
   }

@@ -30,8 +30,8 @@ class Solution {
 };
 
 int main() {
-  std::vector<int> a = {1, 2, 3};
+  std::vector<int> nums = {1, 2, 3};
   int x = 2;
   Solution s;
-  std::cout << s.HornerRule(a, x) << " " << s.NaivePolynomialEvaluation(a, x);
+  std::cout << s.HornerRule(nums, x) << " " << s.NaivePolynomialEvaluation(nums, x);
 }

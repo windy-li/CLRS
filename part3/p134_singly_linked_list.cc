@@ -50,10 +50,10 @@ class LinkedList {
     Node* prev = nullptr;
     Node* current = head_;
     while (current != nullptr) {
-      Node* temp = current->next;
+      Node* tmp = current->next;
       current->next = prev;
       prev = current;
-      current = temp;
+      current = tmp;
     }
     head_ = prev;
   }
@@ -69,9 +69,9 @@ int main() {
   list.PushFront(16);
   list.PushFront(9);
   list.PushFront(25);
-  cout << list.Search(1) << endl;
+  std::cout << list.Search(1) << std::endl;
   list.Remove(4);
-  cout << list.Search(4) << endl;
+  std::cout << list.Search(4) << std::endl;
 }
 
 /*

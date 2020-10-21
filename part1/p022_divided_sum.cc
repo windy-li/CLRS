@@ -21,11 +21,11 @@ class Solution {
 };
 
 void TestCanDivide() {
-  std::vector<int> a = {8, 1, 4, 6, 9, 5};
+  std::vector<int> nums = {8, 1, 4, 6, 9, 5};
   int x1 = 7;
   int x2 = 8;
   Solution s;
-  std::cout << s.CanDivide(a, x1) << " " << s.CanDivide(a, x2);
+  std::cout << s.CanDivide(nums, x1) << " " << s.CanDivide(nums, x2);
 }
 
 int main() { TestCanDivide(); }

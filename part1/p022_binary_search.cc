@@ -2,15 +2,15 @@
 
 class Solution {
  public:
-  int BinarySearch(std::vector<int>& nums, int k) {
+  int BinarySearch(std::vector<int>& nums, int key) {
     int n = nums.size();
     int low = 0;
     int high = n - 1;
     while (low <= high) {
       int mid = (low + high) / 2;
-      if (k == nums[mid]) {
+      if (key == nums[mid]) {
         return mid;
-      } else if (k < nums[mid]) {
+      } else if (key < nums[mid]) {
         high = mid - 1;
       } else {
         low = mid + 1;
@@ -35,22 +35,22 @@ class Solution {
 };
 
 void TestBinarySearch() {
-  std::vector<int> a = {1, 2, 3, 4, 5, 6};
-  int k1 = 2;
-  int k2 = 7;
+  std::vector<int> nums = {1, 2, 3, 4, 5, 6};
+  int key1 = 2;
+  int key2 = 7;
   Solution s;
-  std::cout << s.BinarySearch(a, k1) << std::endl;
-  std::cout << s.BinarySearch(a, k2) << std::endl;
+  std::cout << s.BinarySearch(nums, key1) << std::endl;
+  std::cout << s.BinarySearch(nums, key2) << std::endl;
 }
 
 void TestRecursiveBinarySearch() {
-  std::vector<int> a = {1, 2, 3, 4, 5, 6};
-  int n = a.size();
-  int k1 = 2;
-  int k2 = 7;
+  std::vector<int> nums = {1, 2, 3, 4, 5, 6};
+  int n = nums.size();
+  int key1 = 2;
+  int key2 = 7;
   Solution s;
-  std::cout << s.RecursiveBinarySearch(a, k1, 0, n - 1) << std::endl;
-  std::cout << s.RecursiveBinarySearch(a, k2, 0, n - 1) << std::endl;
+  std::cout << s.RecursiveBinarySearch(nums, key1, 0, n - 1) << std::endl;
+  std::cout << s.RecursiveBinarySearch(nums, key2, 0, n - 1) << std::endl;
 }
 
 int main() {

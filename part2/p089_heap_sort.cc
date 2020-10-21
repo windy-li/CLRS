@@ -4,13 +4,13 @@ class MaxHeap {
  public:
   MaxHeap() : size_(0) {}
 
-  void Sort(std::vector<int>& a) {
-    BuildMaxHeap(a);
-    int n = a.size();
+  void Sort(std::vector<int>& nums) {
+    BuildMaxHeap(nums);
+    int n = nums.size();
     for (int i = n - 1; i > 0; i--) {
-      std::swap(a[0], a[i]);
+      std::swap(nums[0], nums[i]);
       size_--;
-      IterativeMaxHeapify(a, 0);
+      IterativeMaxHeapify(nums, 0);
     }
   }
 
@@ -67,10 +67,10 @@ class MaxHeap {
 };
 
 int main() {
-  std::vector<int> a = {5, 2, 4, 6, 1, 3};
-  MaxHeap heap;
-  heap.Sort(a);
-  clrs::PrintVector(a);
+  std::vector<int> nums = {5, 2, 4, 6, 1, 3};
+  MaxHeap h;
+  h.Sort(nums);
+  clrs::PrintVector(nums);
 }
 
 /*
