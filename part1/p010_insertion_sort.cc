@@ -46,8 +46,8 @@ class Solution {
     for (int j = 0; j < n; j++) {
       int key = nums[j];
       int i = j - 1;
-      int location = std::abs(BinarySearch(nums, 0, j, key) + 1);
-      while (i >= location) {
+      int position = std::abs(BinarySearch(nums, 0, j, key) + 1);
+      while (i >= position) {
         nums[i + 1] = nums[i];
         i--;
       }
