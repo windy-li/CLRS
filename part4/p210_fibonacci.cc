@@ -2,22 +2,22 @@
 
 class Solution {
  public:
-  static int Recursive(int n) {
+  int Recursive(int n) {
     if (n == 1 || n == 2) {
       return 1;
     }
     return Recursive(n - 2) + Recursive(n - 1);
   }
 
-  static int TailRecursive(int n, int a, int b) {
+  int TailRecursive(int n, int a, int b) {
     if (n == 1) {
       return a;
     }
     return TailRecursive(n - 1, b, a + b);
   }
 
-  static int Memorized(int n) {
-    int d[n + 1];
+  int Memorized(int n) {
+    std::vector<int> d(n + 1);
     d[1] = 1;
     d[2] = 1;
     for (int i = 3; i <= n; ++i) {
@@ -26,7 +26,7 @@ class Solution {
     return MemorizedAux(n, d);
   }
 
-  static void BottomUp(int n, int *d) {
+  void BottomUp(int n, std::vector<int>& d) {
     d[1] = 1;
     d[2] = 1;
     for (int i = 3; i <= n; ++i) {
@@ -35,7 +35,7 @@ class Solution {
   }
 
  private:
-  static int MemorizedAux(int i, int *d) {
+  int MemorizedAux(int i, std::vector<int>& d) {
     if (d[i] >= 0) {
       return d[i];
     }
@@ -46,13 +46,13 @@ class Solution {
 
 int main() {
   int n = 7;
-  std::cout << Solution::Recursive(n) << std::endl;
-  std::cout << Solution::TailRecursive(n, 1, 1) << std::endl;
-  std::cout << Solution::Memorized(n) << std::endl;
-  int d[n + 1];
-  Solution::BottomUp(n, d);
+  Solution s;
+  std::cout << s.Recursive(n) << std::endl;
+  std::cout << s.TailRecursive(n, 1, 1) << std::endl;
+  std::cout << s.Memorized(n) << std::endl;
+  std::vector<int> d(n + 1);
+  s.BottomUp(n, d);
   for (int i = 1; i <= n; ++i) {
     std::cout << d[i] << " " << std::endl;
   }
-  return 0;
 }

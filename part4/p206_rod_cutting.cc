@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  static int Recursive(int *p, int n) {
+  int Recursive(std::vector<int>& p, int n) {
     if (n == 0) {
       return 0;
     }
@@ -13,7 +13,7 @@ class Solution {
     return max;
   }
 
-  static int Memorized(int *p, int len) {
+  int Memorized(std::vector<int>& p, int len) {
     int r[len + 1];
     r[0] = 0;
     for (int i = 1; i <= len; ++i) {
@@ -22,7 +22,7 @@ class Solution {
     return MemorizedAux(p, len, r);
   }
 
-  static int BottomUp(int *p, int len) {
+  int BottomUp(std::vector<int>& p, int len) {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
@@ -35,7 +35,7 @@ class Solution {
     return r[len];
   }
 
-  static void ExtendedBottomUp(int *p, int len, int &result, int *s) {
+  void ExtendedBottomUp(std::vector<int>& p, int len, int& result, std::vector<int>& s) {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
@@ -51,7 +51,7 @@ class Solution {
     result = r[len];
   }
 
-  static void ConstructSolution(int *s, int n) {
+  void ConstructSolution(std::vector<int>& s, int n) {
     while (n > 0) {
       std::cout << s[n] << " " << std::endl;
       n -= s[n];
@@ -59,7 +59,7 @@ class Solution {
   }
 
  private:
-  static int MemorizedAux(int *p, int len, int *r) {
+  int MemorizedAux(std::vector<int>& p, int len, int* r) {
     if (r[len] >= 0) {
       return r[len];
     }
@@ -73,14 +73,15 @@ class Solution {
 };
 
 int main() {
-  int p[] = {1, 5, 8, 9, 10, 17, 17};
-  int len = 7;
-  std::cout << Solution::Recursive(p, len) << std::endl;
-  std::cout << Solution::Memorized(p, len) << std::endl;
-  std::cout << Solution::BottomUp(p, len) << std::endl;
+  std::vector<int> p = {1, 5, 8, 9, 10, 17, 17};
+  int n = p.size();
+  Solution solution;
+  std::cout << solution.Recursive(p, n) << std::endl;
+  std::cout << solution.Memorized(p, n) << std::endl;
+  std::cout << solution.BottomUp(p, n) << std::endl;
   int result = 0;
-  int s[len + 1];
-  Solution::ExtendedBottomUp(p, len, result, s);
+  std::vector<int> s(n + 1);
+  solution.ExtendedBottomUp(p, n, result, s);
   std::cout << result << std::endl;
-  Solution::ConstructSolution(s, len);
+  solution.ConstructSolution(s, n);
 }
