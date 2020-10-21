@@ -94,7 +94,7 @@ void PrintNode(Node* node) {
   if (node == nullptr) {
     std::cout << "null";
   } else {
-    std::cout << "{key: " << node->key;
+    std::cout << "{ key: " << node->key;
     std::cout << ", forward: [";
     for (int i = 0; i < node->forward.size(); ++i) {
       std::cout << node->forward[i]->key;
@@ -102,7 +102,7 @@ void PrintNode(Node* node) {
         std::cout << ", ";
       }
     }
-    std::cout << "]";
+    std::cout << "] }";
   }
   std::cout << std::endl;
 }
