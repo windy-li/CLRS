@@ -1,4 +1,4 @@
-#include "p134_singly_linked_list.h"
+#include "clrs.h"
 
 class Stack {
  public:
@@ -20,3 +20,19 @@ class Stack {
  private:
   std::deque<int>* q_;
 };
+
+int main() {
+  auto *self = new Stack();
+  self->Push(15);
+  self->Push(6);
+  self->Push(2);
+  self->Push(9);
+  self->Push(17);
+  self->Push(3);
+  std::cout << self->Pop() << std::endl;
+  return 0;
+}
+
+/*
+ * 3
+ */

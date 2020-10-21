@@ -56,3 +56,22 @@ class HashTable {
 
   int H2(int key) { return 1 + (key % (m_ - 1)); }
 };
+
+int main() {
+  HashTable table(13);
+  int keys[] = {79, 69, 98, 72, 14, 50};
+  for (int key : keys) {
+    table.Insert(key);
+  }
+  std::cout << table.Search(98)->key << std::endl;
+  table.Remove(98);
+  std::cout << table.Search(98) << std::endl;
+  table.Insert(98);
+  std::cout << table.Search(98)->key << std::endl;
+}
+
+/*
+ * 98
+ * 0x0
+ * 98
+ */
