@@ -23,32 +23,6 @@ class BinarySearchTree {
     }
   }
 
-  void MorrisTraversal(Node* node) {
-    while (node != nullptr) {
-      if (node->left == nullptr) {
-        std::cout << node << std::endl;
-        node = node->right;
-      } else {
-        // Find the inorder predecessor of current
-        Node* pre = node->left;
-        while (pre->right != nullptr && pre->right != node) {
-          pre = pre->right;
-        }
-        // Make current as right child of its inorder predecessor
-        if (pre->right == nullptr) {
-          pre->right = node;
-          node = node->left;
-        } else {
-          // Revert the changes made in "if" part to restore the original tree,
-          // fix the right child of predecessor
-          pre->right = nullptr;
-          std::cout << node << std::endl;
-          node = node->right;
-        }
-      }
-    }
-  }
-
   Node* Search(int key) {
     Node* node = root_;
     while (node != nullptr && node->key != key) {
@@ -161,10 +135,10 @@ class BinarySearchTree {
 };
 
 int main() {
-  BinarySearchTree t;
-  int keys[] = {6, 5, 7, 2, 5, 8};
+  BinarySearchTree tree;
+  std::vector<int> keys = {6, 5, 7, 2, 5, 8};
   for (int key : keys) {
-    t.Insert(key);
+    tree.Insert(key);
   }
-  std::cout << t.root()->key << std::endl;
+  std::cout << tree.root()->key << std::endl;
 }
