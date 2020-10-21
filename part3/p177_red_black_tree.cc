@@ -20,82 +20,82 @@ class RedBlackTree {
 
   Node* root() { return root_; }
 
-  void InorderTreeWalk(Node* x) {
-    if (x != nil_) {
-      InorderTreeWalk(x->left);
-      std::cout << x->key << std::endl;
-      InorderTreeWalk(x->right);
+  void InorderTreeWalk(Node* node) {
+    if (node != nil_) {
+      InorderTreeWalk(node->left);
+      std::cout << node->key << std::endl;
+      InorderTreeWalk(node->right);
     }
   }
 
-  Node* Search(int k) {
-    Node* x = root_;
-    while (x != nil_ && x->key != k) {
-      if (k < x->key) {
-        x = x->left;
+  Node* Search(int key) {
+    Node* node = root_;
+    while (node != nil_ && node->key != key) {
+      if (key < node->key) {
+        node = node->left;
       } else {
-        x = x->right;
+        node = node->right;
       }
     }
-    return x;
+    return node;
   }
 
-  void Insert(int k) {
-    Node* x = new Node(k, kRed);
+  void Insert(int key) {
+    Node* node = new Node(key, kRed);
     Node* p = nil_;
     Node* tmp = root_;
     while (tmp != nil_) {
       p = tmp;
-      if (k < tmp->key) {
+      if (key < tmp->key) {
         tmp = tmp->left;
       } else {
         tmp = tmp->right;
       }
     }
-    x->parent = p;
+    node->parent = p;
     if (p == nil_) {
-      root_ = x;
-    } else if (k < p->key) {
-      p->left = x;
+      root_ = node;
+    } else if (key < p->key) {
+      p->left = node;
     } else {
-      p->right = x;
+      p->right = node;
     }
-    x->left = nil_;
-    x->right = nil_;
-    InsertFixup(x);
+    node->left = nil_;
+    node->right = nil_;
+    InsertFixup(node);
   }
 
-  void Remove(int k) {
-    Node* x = Search(k);
-    if (x == nil_) {
+  void Remove(int key) {
+    Node* node = Search(key);
+    if (node == nil_) {
       return;
     }
-    int c;
-    Node* r;
-    if (x->left == nil_) {
-      c = x->color;
-      r = x->right;
-      Transplant(x->right, x);
-    } else if (x->right == nil_) {
-      c = x->color;
-      r = x->left;
-      Transplant(x->left, x);
+    int deleted_color;
+    Node* new_node;
+    if (node->left == nil_) {
+      deleted_color = node->color;
+      new_node = node->right;
+      Transplant(node->right, node);
+    } else if (node->right == nil_) {
+      deleted_color = node->color;
+      new_node = node->left;
+      Transplant(node->left, node);
     } else {
-      Node* suc = Minimum(x->right);
-      c = suc->color;
-      r = suc->right;
-      if (suc->parent != x) {
+      Node* suc = Minimum(node->right);
+      deleted_color = suc->color;
+      new_node = suc->right;
+      if (suc->parent != node) {
         Transplant(suc->right, suc);
-        suc->right = x->right;
+        suc->right = node->right;
         suc->right->parent = suc;
       }
-      Transplant(suc, x);
-      suc->left = x->left;
+      Transplant(suc, node);
+      suc->left = node->left;
       suc->left->parent = suc;
-      suc->color = x->color;
+      suc->color = node->color;
     }
-    if (c == kBlack) {
-      RemoveFixup(r);
+    if (deleted_color == kBlack) {
+      RemoveFixup(new_node);
     }
   }
 
@@ -103,18 +103,18 @@ class RedBlackTree {
   Node* nil_;
   Node* root_;
 
-  Node* Minimum(Node* x) {
-    while (x->left != nil_) {
-      x = x->left;
+  Node* Minimum(Node* node) {
+    while (node->left != nil_) {
+      node = node->left;
     }
-    return x;
+    return node;
   }
 
-  Node* Maximum(Node* x) {
-    while (x->right != nil_) {
-      x = x->right;
+  Node* Maximum(Node* node) {
+    while (node->right != nil_) {
+      node = node->right;
     }
-    return x;
+    return node;
   }
 
   void Transplant(Node* src, Node* dst) {
@@ -128,164 +128,164 @@ class RedBlackTree {
     src->parent = dst->parent;
   }
 
-  void LeftRotate(Node* x) {
-    Node* r = x->right;
-    x->right = r->left;
-    x->right->parent = x;
-    r->parent = x->parent;
-    if (x->parent == nil_) {
+  void LeftRotate(Node* node) {
+    Node* r = node->right;
+    node->right = r->left;
+    node->right->parent = node;
+    r->parent = node->parent;
+    if (node->parent == nil_) {
       root_ = r;
-    } else if (x == x->parent->left) {
-      x->parent->left = r;
+    } else if (node == node->parent->left) {
+      node->parent->left = r;
     } else {
-      x->parent->right = r;
+      node->parent->right = r;
     }
-    r->left = x;
+    r->left = node;
     r->left->parent = r;
   }
 
-  void RightRotate(Node* x) {
-    Node* l = x->left;
-    x->left = l->right;
-    x->left->parent = x;
-    l->parent = x->parent;
-    if (x->parent == nil_) {
+  void RightRotate(Node* node) {
+    Node* l = node->left;
+    node->left = l->right;
+    node->left->parent = node;
+    l->parent = node->parent;
+    if (node->parent == nil_) {
       root_ = l;
-    } else if (x == x->parent->right) {
-      x->parent->right = l;
+    } else if (node == node->parent->right) {
+      node->parent->right = l;
     } else {
-      x->parent->left = l;
+      node->parent->left = l;
     }
-    l->right = x;
+    l->right = node;
     l->right->parent = l;
   }
 
-  Node* Successor(Node* x) {
-    if (x->right != nil_) {
-      return Minimum(x->right);
+  Node* Successor(Node* node) {
+    if (node->right != nil_) {
+      return Minimum(node->right);
     }
-    Node* ancestor = x->parent;
-    while (ancestor != nil_ && x == ancestor->right) {
-      x = ancestor;
+    Node* ancestor = node->parent;
+    while (ancestor != nil_ && node == ancestor->right) {
+      node = ancestor;
       ancestor = ancestor->parent;
     }
     return ancestor;
   }
 
-  Node* Predecessor(Node* x) {
-    if (x->left != nil_) {
-      return Maximum(x->left);
+  Node* Predecessor(Node* node) {
+    if (node->left != nil_) {
+      return Maximum(node->left);
     }
-    Node* ancestor = x->parent;
-    while (ancestor != nil_ && x == ancestor->left) {
-      x = ancestor;
+    Node* ancestor = node->parent;
+    while (ancestor != nil_ && node == ancestor->left) {
+      node = ancestor;
       ancestor = ancestor->parent;
     }
     return ancestor;
   }
 
-  void InsertFixup(Node* x) {
-    while (x->parent->color == kRed) {
-      if (x->parent == x->parent->parent->left) {
-        Node* uncle = x->parent->parent->right;
+  void InsertFixup(Node* node) {
+    while (node->parent->color == kRed) {
+      if (node->parent == node->parent->parent->left) {
+        Node* uncle = node->parent->parent->right;
         if (uncle->color == kRed) {
-          x->parent->color = kBlack;
+          node->parent->color = kBlack;
           uncle->color = kBlack;
-          x->parent->parent->color = kRed;
-          x = x->parent->parent;
+          node->parent->parent->color = kRed;
+          node = node->parent->parent;
         } else {
-          if (x == x->parent->right) {
-            x = x->parent;
-            LeftRotate(x);
+          if (node == node->parent->right) {
+            node = node->parent;
+            LeftRotate(node);
           }
-          x->parent->color = kBlack;
-          x->parent->parent->color = kRed;
-          RightRotate(x->parent->parent);
+          node->parent->color = kBlack;
+          node->parent->parent->color = kRed;
+          RightRotate(node->parent->parent);
         }
       } else {
-        Node* uncle = x->parent->parent->left;
+        Node* uncle = node->parent->parent->left;
         if (uncle->color == kRed) {
-          x->parent->color = kBlack;
+          node->parent->color = kBlack;
           uncle->color = kBlack;
-          x->parent->parent->color = kRed;
-          x = x->parent->parent;
+          node->parent->parent->color = kRed;
+          node = node->parent->parent;
         } else {
-          if (x == x->parent->left) {
-            x = x->parent;
-            RightRotate(x);
+          if (node == node->parent->left) {
+            node = node->parent;
+            RightRotate(node);
           }
-          x->parent->color = kBlack;
-          x->parent->parent->color = kRed;
-          LeftRotate(x->parent->parent);
+          node->parent->color = kBlack;
+          node->parent->parent->color = kRed;
+          LeftRotate(node->parent->parent);
         }
       }
     }
     root_->color = kBlack;
   }
 
-  void RemoveFixup(Node* x) {
-    while (x != nil_ && x->color == kBlack) {
-      if (x == x->parent->left) {
-        Node* sibling = x->parent->right;
+  void RemoveFixup(Node* node) {
+    while (node != nil_ && node->color == kBlack) {
+      if (node == node->parent->left) {
+        Node* sibling = node->parent->right;
         if (sibling->color == kRed) {
           sibling->color = kBlack;
-          x->parent->color = kRed;
-          LeftRotate(x->parent);
-          sibling = x->parent->right;
+          node->parent->color = kRed;
+          LeftRotate(node->parent);
+          sibling = node->parent->right;
         }
         if (sibling->left->color == kBlack && sibling->right->color == kBlack) {
           sibling->color = kRed;
-          x = x->parent;
+          node = node->parent;
         } else {
           if (sibling->right->color == kBlack) {
             sibling->left->color = kBlack;
             sibling->color = kRed;
             RightRotate(sibling);
-            sibling = x->parent->right;
+            sibling = node->parent->right;
           }
           sibling->right->color = kBlack;
-          sibling->color = x->parent->color;
-          x->parent->color = kBlack;
-          LeftRotate(x->parent);
-          x = root_;
+          sibling->color = node->parent->color;
+          node->parent->color = kBlack;
+          LeftRotate(node->parent);
+          node = root_;
         }
       } else {
-        Node* sibling = x->parent->left;
+        Node* sibling = node->parent->left;
         if (sibling->color == kRed) {
           sibling->color = kBlack;
-          x->parent->color = kRed;
-          RightRotate(x->parent);
-          sibling = x->parent->left;
+          node->parent->color = kRed;
+          RightRotate(node->parent);
+          sibling = node->parent->left;
         }
         if (sibling->left->color == kBlack && sibling->right->color == kBlack) {
           sibling->color = kRed;
-          x = x->parent;
+          node = node->parent;
         } else {
           if (sibling->left->color == kBlack) {
             sibling->right->color = kBlack;
             sibling->color = kRed;
             LeftRotate(sibling);
-            sibling = x->parent->left;
+            sibling = node->parent->left;
           }
           sibling->left->color = kBlack;
-          sibling->color = x->parent->color;
-          x->parent->color = kBlack;
-          RightRotate(x->parent);
-          x = root_;
+          sibling->color = node->parent->color;
+          node->parent->color = kBlack;
+          RightRotate(node->parent);
+          node = root_;
         }
       }
     }
-    x->color = kBlack;
+    node->color = kBlack;
   }
 };
 
 int main() {
-  RedBlackTree t;
+  RedBlackTree tree;
   std::vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
   for (int key : keys) {
-    t.Insert(key);
+    tree.Insert(key);
   }
-  std::cout << t.root()->key << std::endl;
+  std::cout << tree.root()->key << std::endl;
 }
 
 /*
