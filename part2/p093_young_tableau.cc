@@ -6,7 +6,7 @@ class YoungTableau {
 
   int ExtractMin() {
     if (Empty()) {
-      throw std::underflow_error("young tableau underflow");
+      throw std::underflow_error("Young tableau underflow");
     }
     int ret = matrix_[0][0];
     matrix_[0][0] = INT_MAX;
