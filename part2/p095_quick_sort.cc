@@ -130,22 +130,22 @@ class Solution {
     return Partition(nums, p, r);
   }
 
-  int MedianOfThree(std::vector<int>& nums, int a, int b, int c) {
-    if (nums[a] < nums[b]) {
-      if (nums[b] < nums[c]) {
-        return b;
-      } else if (nums[a] < nums[c]) {
-        return c;
+  int MedianOfThree(std::vector<int>& nums, int i, int j, int k) {
+    if (nums[i] < nums[j]) {
+      if (nums[j] < nums[k]) {
+        return j;
+      } else if (nums[i] < nums[k]) {
+        return k;
       } else {
-        return a;
+        return i;
       }
     } else {
-      if (nums[b] > nums[c]) {
-        return b;
-      } else if (nums[a] > nums[c]) {
-        return c;
+      if (nums[j] > nums[k]) {
+        return j;
+      } else if (nums[i] > nums[k]) {
+        return k;
       } else {
-        return a;
+        return i;
       }
     }
   }
