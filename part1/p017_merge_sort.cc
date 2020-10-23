@@ -53,16 +53,16 @@ class Solution {
     int n2 = r - q;
     std::vector<int> left(n1 + 1);
     std::vector<int> right(n2 + 1);
-    for (int i = 0; i < n1; i++) {
+    for (int i = 0; i < n1; ++i) {
       left[i] = nums[p + i];
     }
     left[n1] = INT_MAX;
-    for (int i = 0; i < n2; i++) {
+    for (int i = 0; i < n2; ++i) {
       right[i] = nums[q + 1 + i];
     }
     right[n2] = INT_MAX;
     int i = 0, j = 0;
-    for (int k = p; k <= r; k++) {
+    for (int k = p; k <= r; ++k) {
       if (left[i] <= right[j]) {
         nums[k] = left[i++];
       } else {
