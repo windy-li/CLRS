@@ -1,4 +1,4 @@
-#include "../clrs.h"
+#include "clrs.h"
 
 enum Direction { LEFT, TOP, TURN };
 

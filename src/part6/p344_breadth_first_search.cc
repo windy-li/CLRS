@@ -1,4 +1,4 @@
-#include "../clrs.h"
+#include "clrs.h"
 #include "graph.h"
 
 class Solution {

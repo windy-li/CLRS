@@ -1,4 +1,4 @@
-#include "../clrs.h"
+#include "clrs.h"
 
 class DiversityHeap {
  public:

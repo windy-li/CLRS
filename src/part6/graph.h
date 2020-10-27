@@ -1,4 +1,4 @@
-#include "../clrs.h"
+#include "clrs.h"
 #include "edge.h"
 #include "vertex.h"
 

@@ -1,4 +1,4 @@
-#include "../clrs.h"
+#include "clrs.h"
 
 const int kRed = 1;
 const int kBlack = 0;
