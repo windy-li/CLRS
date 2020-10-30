@@ -186,11 +186,11 @@ class AvlTree {
 };
 
 int main() {
-  AvlTree t;
+  AvlTree tree;
   std::vector<int> keys = {9, 5, 10, 0, 6, 11, -1, 1, 2};
   for (int key : keys) {
-    t.Insert(key);
+    tree.Insert(key);
   }
-  std::cout << t.IsAvlStructure() << std::endl;
-  std::cout << t.root() << std::endl;
+  std::cout << tree.IsAvlStructure() << std::endl;
+  std::cout << tree.root() << std::endl;
 }
