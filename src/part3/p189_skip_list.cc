@@ -31,7 +31,7 @@ class SkipList {
         current_level_ = random_level;
       }
       Node* node = new Node(key, random_level);
-      for (int i = 0; i <= random_level; i++) {
+      for (int i = 0; i <= random_level; ++i) {
         node->forward[i] = update_list[i]->forward[i];
         update_list[i]->forward[i] = node;
       }
