@@ -117,15 +117,15 @@ class RedBlackTree {
     return node;
   }
 
-  void Transplant(Node* src, Node* dst) {
-    if (dst->parent == nil_) {
-      root_ = src;
-    } else if (dst == dst->parent->left) {
-      dst->parent->left = src;
+  void Transplant(Node* source, Node* destination) {
+    if (destination->parent == nil_) {
+      root_ = source;
+    } else if (destination == destination->parent->left) {
+      destination->parent->left = source;
     } else {
-      dst->parent->right = src;
+      destination->parent->right = source;
     }
-    src->parent = dst->parent;
+    source->parent = destination->parent;
   }
 
   void LeftRotate(Node* node) {
