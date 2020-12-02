@@ -37,23 +37,23 @@ class BinarySearchTree {
 
   void Insert(int key) {
     Node* node = new Node(key);
-    Node* p = nullptr;
-    Node* tmp = root_;
-    while (tmp != nullptr) {
-      p = tmp;
-      if (key < tmp->key) {
-        tmp = tmp->left;
+    Node* temp_parent = nullptr;
+    Node* temp = root_;
+    while (temp != nullptr) {
+      temp_parent = temp;
+      if (key < temp->key) {
+        temp = temp->left;
       } else {
-        tmp = tmp->right;
+        temp = temp->right;
       }
     }
-    node->parent = p;
-    if (p == nullptr) {
+    node->parent = temp_parent;
+    if (temp_parent == nullptr) {
       root_ = node;
-    } else if (key < p->key) {
-      p->left = node;
+    } else if (key < temp_parent->key) {
+      temp_parent->left = node;
     } else {
-      p->right = node;
+      temp_parent->right = node;
     }
   }
 
@@ -67,15 +67,15 @@ class BinarySearchTree {
     } else if (node->right == nullptr) {
       Transplant(node->left, node);
     } else {
-      Node* suc = Minimum(node->right);
-      if (suc->parent != node) {
-        Transplant(suc->right, suc);
-        suc->right = node->right;
-        suc->right->parent = suc;
+      Node* successor = Minimum(node->right);
+      if (successor->parent != node) {
+        Transplant(successor->right, successor);
+        successor->right = node->right;
+        successor->right->parent = successor;
       }
-      Transplant(suc, node);
-      suc->left = node->left;
-      suc->left->parent = suc;
+      Transplant(successor, node);
+      successor->left = node->left;
+      successor->left->parent = successor;
     }
   }
 
