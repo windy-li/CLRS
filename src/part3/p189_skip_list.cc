@@ -25,7 +25,7 @@ class SkipList {
     if (current_node == nullptr || current_node->key != key) {
       int random_level = RandomLevel();
       if (random_level > current_level_) {
-        for (int i = current_level_ + 1; i <= random_level; i++) {
+        for (int i = current_level_ + 1; i <= random_level; ++i) {
           update_list[i] = head_;
         }
         current_level_ = random_level;
