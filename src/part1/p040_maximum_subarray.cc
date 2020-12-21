@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  std::tuple<int, int, int> BruteForceMaximumSubarray(std::vector<int>& nums) {
+  std::tuple<int, int, int> BruteForceMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
     int start = 0, end = 0, max = INT_MIN;
     for (int i = 0; i < n; i++) {
@@ -19,7 +19,8 @@ class Solution {
     return std::make_tuple(start, end, max);
   }
 
-  std::vector<int> DivideAndConquerMaximumSubarray(std::vector<int>& nums, int low, int high) {
+  std::vector<int> DivideAndConquerMaximumSubarray(const std::vector<int>& nums, int low,
+                                                   int high) {
     if (low == high) {
       return std::vector<int>{low, high, nums[low]};
     } else {
@@ -40,7 +41,7 @@ class Solution {
     }
   }
 
-  int BottomUpMaximumSubarray(std::vector<int>& nums) {
+  int BottomUpMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
     int max = INT_MIN;
     int sum = 0;
@@ -54,7 +55,7 @@ class Solution {
     return max;
   }
 
-  std::vector<int> ExtendedBottomUpMaximumSubarray(std::vector<int>& nums) {
+  std::vector<int> ExtendedBottomUpMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
     int max = INT_MIN;
     int sum = 0;
@@ -75,7 +76,7 @@ class Solution {
   }
 
  private:
-  std::vector<int> MaxCrossingSubarray(std::vector<int>& nums, int low, int mid, int high) {
+  std::vector<int> MaxCrossingSubarray(const std::vector<int>& nums, int low, int mid, int high) {
     int sum = 0;
     int left_sum = INT_MIN;
     int max_left = mid;
