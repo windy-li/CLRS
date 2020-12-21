@@ -56,7 +56,7 @@ class Solution {
   }
 
  private:
-  int BinarySearch(std::vector<int>& nums, int low, int high, int key) {
+  int BinarySearch(const std::vector<int>& nums, int low, int high, int key) {
     while (low <= high) {
       int mid = (low + high) / 2;
       if (key == nums[mid]) {

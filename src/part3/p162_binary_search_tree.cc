@@ -15,7 +15,7 @@ class BinarySearchTree {
 
   Node* root() { return root_; }
 
-  void InorderTreeWalk(Node* node) {
+  void InorderTreeWalk(const Node* node) {
     if (node != nullptr) {
       InorderTreeWalk(node->left);
       std::cout << node->key << " ";

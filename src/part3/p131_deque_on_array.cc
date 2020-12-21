@@ -5,9 +5,9 @@ class Deque {
   explicit Deque(int capacity)
       : arr_(std::vector<int>(capacity)), capacity_(capacity), head_(-1), tail_(0) {}
 
-  bool Empty() { return head_ == -1; }
+  bool Empty() const { return head_ == -1; }
 
-  bool Full() { return (head_ == tail_ + 1) || (head_ == 0 && tail_ == capacity_ - 1); }
+  bool Full() const { return (head_ == tail_ + 1) || (head_ == 0 && tail_ == capacity_ - 1); }
 
   void PushFront(int key) {
     if (Full()) {

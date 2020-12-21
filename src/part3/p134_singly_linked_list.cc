@@ -11,7 +11,7 @@ class LinkedList {
  public:
   LinkedList() : head_(nullptr) {}
 
-  Node* head() { return head_; }
+  Node* head() const { return head_; }
 
   Node* Search(int key) {
     Node* node = head_;
