@@ -4,7 +4,7 @@ class Queue {
  public:
   Queue() : in_(new std::stack<int>()), out_(new std::stack<int>()) {}
 
-  bool Empty() { return in_->empty() && out_->empty(); }
+  bool Empty() const { return in_->empty() && out_->empty(); }
 
   void Push(int key) { in_->push(key); }
 

@@ -5,9 +5,9 @@ class Queue {
   explicit Queue(int capacity)
       : nums_(std::vector<int>(capacity)), capacity_(capacity), head_(0), tail_(0) {}
 
-  bool Empty() { return head_ == tail_; }
+  bool Empty() const { return head_ == tail_; }
 
-  bool Full() { return (head_ == tail_ + 1) || (head_ == 0 && tail_ == capacity_ - 1); }
+  bool Full() const { return (head_ == tail_ + 1) || (head_ == 0 && tail_ == capacity_ - 1); }
 
   void Push(int key) {
     if (Full()) {
