@@ -90,7 +90,7 @@ class SkipList {
   }
 };
 
-void PrintNode(Node* node) {
+void PrintNode(const Node* node) {
   if (node == nullptr) {
     std::cout << "null";
   } else {

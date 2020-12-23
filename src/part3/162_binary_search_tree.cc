@@ -15,7 +15,7 @@ class BinarySearchTree {
 
   Node* root() { return root_; }
 
-  void InorderTreeWalk(const Node* node) const {
+  void InorderTreeWalk(const Node* node) {
     if (node != nullptr) {
       InorderTreeWalk(node->left);
       std::cout << node->key << " ";
@@ -23,7 +23,7 @@ class BinarySearchTree {
     }
   }
 
-  Node* Search(int key) const {
+  Node* Search(int key) {
     Node* node = root_;
     while (node != nullptr && node->key != key) {
       if (key < node->key) {
@@ -82,21 +82,21 @@ class BinarySearchTree {
  private:
   Node* root_;
 
-  Node* Minimum(Node* node) const {
+  Node* Minimum(Node* node) {
     while (node->left != nullptr) {
       node = node->left;
     }
     return node;
   }
 
-  Node* Maximum(Node* node) const {
+  Node* Maximum(Node* node) {
     while (node->right != nullptr) {
       node = node->right;
     }
     return node;
   }
 
-  Node* Successor(Node* node) const {
+  Node* Successor(Node* node) {
     if (node->right != nullptr) {
       return Minimum(node->right);
     }
@@ -108,7 +108,7 @@ class BinarySearchTree {
     return p;
   }
 
-  Node* Predecessor(Node* node) const {
+  Node* Predecessor(Node* node) {
     if (node->left != nullptr) {
       return Maximum(node->left);
     }

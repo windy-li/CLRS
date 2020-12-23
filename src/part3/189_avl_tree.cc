@@ -62,7 +62,7 @@ class AvlTree {
  private:
   Node* root_;
 
-  int DfsHeight(Node* node) {
+  int DfsHeight(const Node* node) {
     if (node == nullptr) {
       return 0;
     }
@@ -92,7 +92,7 @@ class AvlTree {
     return r;
   }
 
-  int GetHeight(Node* node) {
+  int GetHeight(const Node* node) {
     if (node == nullptr) {
       return 0;
     }
@@ -103,7 +103,7 @@ class AvlTree {
     node->height = std::max(GetHeight(node->left), GetHeight(node->right)) + 1;
   }
 
-  int BalanceFactor(Node* node) {
+  int BalanceFactor(const Node* node) {
     if (node == nullptr) {
       return 0;
     }
@@ -175,7 +175,7 @@ class AvlTree {
     return node;
   }
 
-  void PreOrder(Node* node) {
+  void PreOrder(const Node* node) {
     if (node == nullptr) {
       return;
     }
