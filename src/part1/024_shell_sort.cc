@@ -19,10 +19,10 @@ class Solution {
 };
 
 void TestShellSort() {
-  std::vector<int> a = {2, 3, 8, 6, 1};
+  std::vector<int> nums = {2, 3, 8, 6, 1};
   Solution s;
-  s.ShellSort(a);
-  clrs::PrintVector(a);
+  s.ShellSort(nums);
+  clrs::PrintVector(nums);
 }
 
 int main() { TestShellSort(); }
