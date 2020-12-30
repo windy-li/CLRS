@@ -7,7 +7,7 @@ class MaxHeap {
   void Sort(std::vector<int>& nums) {
     BuildMaxHeap(nums);
     int n = nums.size();
-    for (int i = n - 1; i > 0; i--) {
+    for (int i = n - 1; i > 0; --i) {
       std::swap(nums[0], nums[i]);
       size_--;
       IterativeMaxHeapify(nums, 0);
@@ -17,43 +17,43 @@ class MaxHeap {
  private:
   int size_;
 
-  void BuildMaxHeap(std::vector<int>& a) {
-    int n = a.size();
+  void BuildMaxHeap(std::vector<int>& nums) {
+    int n = nums.size();
     size_ = n;
-    for (int i = size_ / 2 - 1; i >= 0; i--) {
-      IterativeMaxHeapify(a, i);
+    for (int i = size_ / 2 - 1; i >= 0; --i) {
+      IterativeMaxHeapify(nums, i);
     }
   }
 
-  void RecursiveMaxHeapify(std::vector<int>& a, int i) {
+  void RecursiveMaxHeapify(std::vector<int>& nums, int i) {
     int l = Left(i);
     int r = Right(i);
     int largest = i;
-    if (l < size_ && a[l] > a[largest]) {
+    if (l < size_ && nums[l] > nums[largest]) {
       largest = l;
     }
-    if (r < size_ && a[r] > a[largest]) {
+    if (r < size_ && nums[r] > nums[largest]) {
       largest = r;
     }
     if (largest != i) {
-      std::swap(a[i], a[largest]);
-      RecursiveMaxHeapify(a, largest);
+      std::swap(nums[i], nums[largest]);
+      RecursiveMaxHeapify(nums, largest);
     }
   }
 
-  void IterativeMaxHeapify(std::vector<int>& a, int i) {
+  void IterativeMaxHeapify(std::vector<int>& nums, int i) {
     while (true) {
       int l = Left(i);
       int r = Right(i);
       int largest = i;
-      if (l < size_ && a[l] > a[largest]) {
+      if (l < size_ && nums[l] > nums[largest]) {
         largest = l;
       }
-      if (r < size_ && a[r] > a[largest]) {
+      if (r < size_ && nums[r] > nums[largest]) {
         largest = r;
       }
       if (largest != i) {
-        std::swap(a[i], a[largest]);
+        std::swap(nums[i], nums[largest]);
         i = largest;
       } else {
         return;
