@@ -86,7 +86,7 @@ class Solution {
  private:
   int Partition(std::vector<int>& nums, int p, int r) {
     int i = p - 1;
-    for (int j = p; j < r; j++) {
+    for (int j = p; j < r; ++j) {
       if (nums[j] <= nums[r]) {
         i++;
         std::swap(nums[i], nums[j]);
