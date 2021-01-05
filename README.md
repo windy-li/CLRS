@@ -1,10 +1,3 @@
-*Introduction to Algorithms* Third Edition
-
-* Thomas H. Cormen
-* Charles E. Leiserson
-* Ronald Rivest
-* Clifford Stein
-
 ### 排序算法
 
 * [插入排序 (Insertion Sort)](./doc/sorting/insertion-sort.md)
