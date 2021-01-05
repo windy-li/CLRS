@@ -40,3 +40,31 @@
 * [B树 (B Tree)](./doc/data-structures/b-tree.md)
 
 * [不相交集合 (Disjoint Set)](./doc/data-structures/disjoint-set.md)
+
+
+### 动态规划
+
+* [动态规划 (Dynamic Programming)](./doc/dynamic-programming/dynamic-programming.md).
+
+* [矩阵链乘法 (Matrix-Chain Multiplication)](./doc/dynamic-programming/matrix-chain-multiplication.md).
+
+* [最长公共子序列 (Longest Common Subsequence)](./doc/dynamic-programming/longest-common-subsequence.md).
+
+* [最优二叉搜索树 (Optimal Binary Search Tree)](./doc/dynamic-programming/optimal-binary-search-tree.md).
+
+* [贪心算法 (Greedy Algorithm)](./doc/dynamic-programming/greedy-algorithm.md).
+
+* [赫夫曼编码 (Huffman Code)](./doc/dynamic-programming/huffman-code.md).
+
+
+### 图算法
+
+* [图的表示 (Representations of Graph)](./doc/graph-algorithms/representations-of-graph.md).
+
+* [广度优先搜索 (Breadth-First Search)](./doc/graph-algorithms/breadth-first-search.md).
+
+* [深度优先搜索 (Depth-First Search)](./doc/graph-algorithms/depth-first-search.md).
+
+* [最小生成树 (Minimum Spanning Tree)](./doc/graph-algorithms/minimum-spanning-tree.md).
+
+* [单源最短路径 (Single-Source Shortest Paths)](./doc/graph-algorithms/single-source-shortest-paths.md).
