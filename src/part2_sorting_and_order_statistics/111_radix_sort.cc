@@ -2,30 +2,29 @@
 
 class Solution {
  public:
-  void RadixSort(std::vector<int>& arr) {
+  void RadixSort(std::vector<int>& nums) {
     // Find the maximum number to know number of digits
-    int max = Maximum(arr);
+    int max = *std::max_element(nums.begin(), nums.end());
 
     // Do counting sort for every digit. Note that instead
     // of passing digit number, exp is passed. exp is 10^i
     // where i is current digit number
     for (int exp = 1; max / exp > 0; exp *= 10) {
-      CountingSort(arr, exp);
-      //      clrs::PrintArray(arr, len);
+      CountingSort(nums, exp);
     }
   }
 
  private:
-  void CountingSort(std::vector<int>& arr, int exp) {
-    int len = arr.size();
+  void CountingSort(std::vector<int>& nums, int exp) {
+    int n = nums.size();
     int k = 9;
     int count[k + 1];
     int output[k + 1];
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
     }
-    for (int i = 0; i < len; ++i) {
-      count[(arr[i] / exp) % 10]++;
+    for (int i = 0; i < n; ++i) {
+      count[(nums[i] / exp) % 10]++;
     }
     // Change count[i] so that count[i] now contains
     // actual position of this digit in output[]
@@ -33,35 +32,23 @@ class Solution {
       count[i] += count[i - 1];
     }
     // Build the output array
-    for (int i = len - 1; i >= 0; --i) {
-      int x = (arr[i] / exp) % 10;
-      output[count[x] - 1] = arr[i];
+    for (int i = n - 1; i >= 0; --i) {
+      int x = (nums[i] / exp) % 10;
+      output[count[x] - 1] = nums[i];
       count[x]--;
     }
-    // Copy the output array to arr[], so that arr[] now
+    // Copy the output array to nums[], so that nums[] now
     // contains sorted numbers according to current digit
-    for (int i = 0; i < len; ++i) {
-      arr[i] = output[i];
+    for (int i = 0; i < n; ++i) {
+      nums[i] = output[i];
     }
-  }
-
-  int Maximum(std::vector<int>& arr) {
-    int len = arr.size();
-    int max = arr[0];
-    for (int i = 1; i < len; ++i) {
-      if (arr[i] > max) {
-        max = arr[i];
-      }
-    }
-    return max;
   }
 };
 
 int main() {
-  std::vector<int> arr = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
+  std::vector<int> nums = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
   Solution s;
-  s.RadixSort(arr);
-  //  clrs::PrintArray(arr, len);
+  s.RadixSort(nums);
 }
 
 /*
