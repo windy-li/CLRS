@@ -2,7 +2,8 @@
 
 class Solution {
  public:
-  std::vector<int> BinaryIntegerAdding(const std::vector<int>& nums_a, const std::vector<int>& nums_b) {
+  std::vector<int> BinaryIntegerAdding(const std::vector<int>& nums_a,
+                                       const std::vector<int>& nums_b) {
     int n = nums_a.size();
     std::vector<int> nums_c(n + 1);
     int bit = 0;

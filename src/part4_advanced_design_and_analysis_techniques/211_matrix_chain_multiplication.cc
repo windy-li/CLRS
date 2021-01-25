@@ -12,10 +12,10 @@ class Solution {
     if (a_col != b_row) {
       throw std::invalid_argument("incompatible dimensions");
     }
-    for (int i = 0; i < a_row; i++) {
-      for (int j = 0; j < b_col; j++) {
+    for (int i = 0; i < a_row; ++i) {
+      for (int j = 0; j < b_col; ++j) {
         c[i][j] = 0;
-        for (int k = 0; k < a_col; k++) {
+        for (int k = 0; k < a_col; ++k) {
           c[i][j] += a[i][k] + b[k][j];
         }
       }
@@ -28,7 +28,7 @@ class Solution {
       return 0;
     }
     int min = INT_MAX;
-    for (int k = i; k < j; k++) {
+    for (int k = i; k < j; ++k) {
       min = std::min(min, Recursive(p, i, k) + Recursive(p, k + 1, j) + p[i - 1] * p[k] * p[j]);
     }
     return min;
@@ -38,7 +38,7 @@ class Solution {
     int n = len - 1;
     int m[n + 1][n + 1];
     for (int i = 1; i <= n; ++i) {
-      for (int j = i; j <= n; j++) {
+      for (int j = i; j <= n; ++j) {
         if (i == j) {
           m[i][j] = 0;
         } else {
@@ -52,14 +52,14 @@ class Solution {
   int BottomUp(int* p, int length) {
     int n = length - 1;
     int m[n + 1][n + 1];
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; ++i) {
       m[i][i] = 0;
     }
-    for (int len = 2; len <= n; len++) {
-      for (int i = 1; i <= n - len + 1; i++) {
+    for (int len = 2; len <= n; ++len) {
+      for (int i = 1; i <= n - len + 1; ++i) {
         int j = i + len - 1;
         int min = INT_MAX;
-        for (int k = i; k < j; k++) {
+        for (int k = i; k < j; ++k) {
           min = std::min(min, m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]);
         }
         m[i][j] = min;
@@ -71,14 +71,14 @@ class Solution {
   void ExtendedBottomUp(int* p, int length, int& result, int* s, int sCol) {
     int n = length - 1;
     int m[n + 1][n + 1];
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; ++i) {
       m[i][i] = 0;
     }
-    for (int len = 2; len <= n; len++) {
-      for (int i = 1; i <= n - len + 1; i++) {
+    for (int len = 2; len <= n; ++len) {
+      for (int i = 1; i <= n - len + 1; ++i) {
         int j = i + len - 1;
         int min = INT_MAX;
-        for (int k = i; k < j; k++) {
+        for (int k = i; k < j; ++k) {
           if (min > m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]) {
             min = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
             *((s + i * sCol) + j) = k;
@@ -90,13 +90,13 @@ class Solution {
     result = m[1][n];
   }
 
-  void ConstructSolution(int* s, int sCol, int i, int j) {
+  void ConstructSolution(int* s, int s_col, int i, int j) {
     if (i == j) {
       std::cout << "A" << i;
     } else {
       std::cout << "(";
-      ConstructSolution(s, sCol, i, *((s + i * sCol) + j));
-      ConstructSolution(s, sCol, *((s + i * sCol) + j) + 1, j);
+      ConstructSolution(s, s_col, i, *((s + i * s_col) + j));
+      ConstructSolution(s, s_col, *((s + i * s_col) + j) + 1, j);
       std::cout << ")";
     }
   }
@@ -107,7 +107,7 @@ class Solution {
       return *((m + i * mCol) + j);
     }
     int min = INT_MAX;
-    for (int k = i; k < j; k++) {
+    for (int k = i; k < j; ++k) {
       min = std::min(min, MemorizedAux(p, m, mCol, i, k) + MemorizedAux(p, m, mCol, k + 1, j) +
                               p[i - 1] * p[k] * p[j]);
     }
@@ -123,8 +123,8 @@ void TestMatrixMultiply() {
   int b_col = b[0].size();
   Solution s;
   std::vector<std::vector<int>> c = s.MatrixMultiply(a, b);
-  for (int i = 0; i < a_row; i++) {
-    for (int j = 0; j < b_col; j++) {
+  for (int i = 0; i < a_row; ++i) {
+    for (int j = 0; j < b_col; ++j) {
       std::cout << c[i][j] << " ";
     }
     std::cout << "\n";
