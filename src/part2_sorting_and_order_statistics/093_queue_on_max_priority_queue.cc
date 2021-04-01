@@ -11,8 +11,7 @@ struct Node {
 
 class Queue {
  public:
-  explicit Queue(int capacity)
-      : nodes_(std::vector<Node*>(capacity, nullptr)), count_(capacity), heap_size_(0) {}
+  explicit Queue(int capacity) : nodes_(std::vector<Node*>(capacity, nullptr)), count_(capacity), heap_size_(0) {}
 
   void Push(int key) {
     Node* node = new Node(key, INT_MIN);

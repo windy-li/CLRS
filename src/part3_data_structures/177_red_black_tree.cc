@@ -10,8 +10,7 @@ struct Node {
   Node* right;
   int color;
 
-  Node(int key, int color)
-      : key(key), parent(nullptr), left(nullptr), right(nullptr), color(color) {}
+  Node(int key, int color) : key(key), parent(nullptr), left(nullptr), right(nullptr), color(color) {}
 };
 
 class RedBlackTree {

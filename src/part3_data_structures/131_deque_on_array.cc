@@ -2,8 +2,7 @@
 
 class Deque {
  public:
-  explicit Deque(int capacity)
-      : arr_(std::vector<int>(capacity)), capacity_(capacity), head_(-1), tail_(0) {}
+  explicit Deque(int capacity) : arr_(std::vector<int>(capacity)), capacity_(capacity), head_(-1), tail_(0) {}
 
   bool Empty() const { return head_ == -1; }
 

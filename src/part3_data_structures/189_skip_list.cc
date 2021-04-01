@@ -9,8 +9,7 @@ struct Node {
 
 class SkipList {
  public:
-  SkipList(int max_level, double p)
-      : head_(new Node(-1, max_level)), max_level_(max_level), p_(p), current_level_(0) {}
+  SkipList(int max_level, double p) : head_(new Node(-1, max_level)), max_level_(max_level), p_(p), current_level_(0) {}
 
   void Insert(int key) {
     Node* current_node = head_;

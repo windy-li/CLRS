@@ -19,8 +19,7 @@ class Solution {
     return std::make_tuple(start, end, max);
   }
 
-  std::vector<int> DivideAndConquerMaximumSubarray(const std::vector<int>& nums, int low,
-                                                   int high) {
+  std::vector<int> DivideAndConquerMaximumSubarray(const std::vector<int>& nums, int low, int high) {
     if (low == high) {
       return std::vector<int>{low, high, nums[low]};
     } else {

@@ -2,8 +2,7 @@
 
 class Queue {
  public:
-  explicit Queue(int capacity)
-      : nums_(std::vector<int>(capacity)), capacity_(capacity), head_(0), tail_(0) {}
+  explicit Queue(int capacity) : nums_(std::vector<int>(capacity)), capacity_(capacity), head_(0), tail_(0) {}
 
   bool Empty() const { return head_ == tail_; }
 

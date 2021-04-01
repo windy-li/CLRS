@@ -9,8 +9,7 @@ struct Slot {
 
 class HashTable {
  public:
-  explicit HashTable(int capacity)
-      : m_(capacity), slots_(std::vector<Slot*>(capacity, new Slot(INT_MIN, false))) {}
+  explicit HashTable(int capacity) : m_(capacity), slots_(std::vector<Slot*>(capacity, new Slot(INT_MIN, false))) {}
 
   void Insert(int key) {
     int i = 0;

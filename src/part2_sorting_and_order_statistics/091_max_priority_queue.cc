@@ -2,8 +2,7 @@
 
 class MaxPriorityQueue {
  public:
-  explicit MaxPriorityQueue(int capacity)
-      : heap_size_(0), capacity_(capacity), items_(std::vector<int>(capacity)) {}
+  explicit MaxPriorityQueue(int capacity) : heap_size_(0), capacity_(capacity), items_(std::vector<int>(capacity)) {}
 
   void Insert(int key) {
     if (heap_size_ == capacity_) {
