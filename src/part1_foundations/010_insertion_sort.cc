@@ -2,66 +2,66 @@
 
 class Solution {
  public:
-  void InsertionSort(std::vector<int>& nums) {
-    int n = nums.size();
+  void InsertionSort(std::vector<int>& a) {
+    int n = a.size();
     for (int j = 1; j < n; ++j) {
-      int key = nums[j];
+      int key = a[j];
       int i = j - 1;
-      while (i >= 0 && nums[i] > key) {
-        nums[i + 1] = nums[i];
+      while (i >= 0 && a[i] > key) {
+        a[i + 1] = a[i];
         i--;
       }
-      nums[i + 1] = key;
+      a[i + 1] = key;
     }
   }
 
-  void RecursiveInsertionSort(std::vector<int>& nums, int j) {
+  void RecursiveInsertionSort(std::vector<int>& a, int j) {
     if (j >= 1) {
-      RecursiveInsertionSort(nums, j - 1);
-      int key = nums[j];
+      RecursiveInsertionSort(a, j - 1);
+      int key = a[j];
       int i = j - 1;
-      while (i >= 0 && nums[i] > key) {
-        nums[i + 1] = nums[i];
+      while (i >= 0 && a[i] > key) {
+        a[i + 1] = a[i];
         i--;
       }
-      nums[i + 1] = key;
+      a[i + 1] = key;
     }
   }
 
-  void NonIncreasingInsertionSort(std::vector<int>& nums) {
-    int n = nums.size();
+  void NonIncreasingInsertionSort(std::vector<int>& a) {
+    int n = a.size();
     for (int j = 1; j < n; ++j) {
-      int key = nums[j];
+      int key = a[j];
       int i = j - 1;
-      while (i >= 0 && nums[i] < key) {
-        nums[i + 1] = nums[i];
+      while (i >= 0 && a[i] < key) {
+        a[i + 1] = a[i];
         i--;
       }
-      nums[i + 1] = key;
+      a[i + 1] = key;
     }
   }
 
-  void BinaryInsertionSort(std::vector<int>& nums) {
-    int n = nums.size();
+  void BinaryInsertionSort(std::vector<int>& a) {
+    int n = a.size();
     for (int j = 0; j < n; ++j) {
-      int key = nums[j];
+      int key = a[j];
       int i = j - 1;
-      int position = std::abs(BinarySearch(nums, 0, j, key) + 1);
+      int position = std::abs(BinarySearch(a, 0, j, key) + 1);
       while (i >= position) {
-        nums[i + 1] = nums[i];
+        a[i + 1] = a[i];
         i--;
       }
-      nums[i + 1] = key;
+      a[i + 1] = key;
     }
   }
 
  private:
-  int BinarySearch(const std::vector<int>& nums, int low, int high, int key) {
+  int BinarySearch(const std::vector<int>& a, int low, int high, int key) {
     while (low <= high) {
       int mid = (low + high) / 2;
-      if (key == nums[mid]) {
-        return nums[mid];
-      } else if (key < nums[mid]) {
+      if (key == a[mid]) {
+        return a[mid];
+      } else if (key < a[mid]) {
         high = mid - 1;
       } else {
         low = mid + 1;
