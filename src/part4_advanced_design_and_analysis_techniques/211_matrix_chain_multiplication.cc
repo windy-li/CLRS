@@ -2,8 +2,7 @@
 
 class Solution {
  public:
-  std::vector<std::vector<int>> MatrixMultiply(std::vector<std::vector<int>>& a,
-                                               std::vector<std::vector<int>>& b) {
+  std::vector<std::vector<int>> MatrixMultiply(std::vector<std::vector<int>>& a, std::vector<std::vector<int>>& b) {
     int a_row = a.size();
     int a_col = a[0].size();
     int b_row = b.size();
@@ -108,8 +107,7 @@ class Solution {
     }
     int min = INT_MAX;
     for (int k = i; k < j; ++k) {
-      min = std::min(min, MemorizedAux(p, m, mCol, i, k) + MemorizedAux(p, m, mCol, k + 1, j) +
-                              p[i - 1] * p[k] * p[j]);
+      min = std::min(min, MemorizedAux(p, m, mCol, i, k) + MemorizedAux(p, m, mCol, k + 1, j) + p[i - 1] * p[k] * p[j]);
     }
     *((m + i * mCol) + j) = min;
     return min;

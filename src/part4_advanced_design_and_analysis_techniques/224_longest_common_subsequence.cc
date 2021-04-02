@@ -48,62 +48,60 @@ class Solution {
     return c[xLen][yLen];
   }
 
-  static void extendedBottomUp(char *x, int xLen, char *y, int yLen, int &result, int *b,
-                               int bCol) {
-    int c[xLen + 1][yLen + 1];
-    for (int i = 0; i <= xLen; i++) {
+  static void extendedBottomUp(char *x, int x_len, char *y, int y_len, int &result, int *b, int b_col) {
+    int c[x_len + 1][y_len + 1];
+    for (int i = 0; i <= x_len; i++) {
       c[i][0] = 0;
     }
-    for (int j = 0; j <= yLen; j++) {
+    for (int j = 0; j <= y_len; j++) {
       c[0][j] = 0;
     }
-    for (int i = 1; i <= xLen; i++) {
-      for (int j = 1; j <= yLen; j++) {
+    for (int i = 1; i <= x_len; i++) {
+      for (int j = 1; j <= y_len; j++) {
         if (x[i - 1] == y[j - 1]) {
           c[i][j] = c[i - 1][j - 1] + 1;
-          *((b + i * bCol) + j) = TURN;
+          *((b + i * b_col) + j) = TURN;
         } else {
           if (c[i - 1][j] >= c[i][j - 1]) {
             c[i][j] = c[i - 1][j];
-            *((b + i * bCol) + j) = TOP;
+            *((b + i * b_col) + j) = TOP;
           } else {
             c[i][j] = c[i][j - 1];
-            *((b + i * bCol) + j) = LEFT;
+            *((b + i * b_col) + j) = LEFT;
           }
         }
       }
     }
-    result = c[xLen][yLen];
+    result = c[x_len][y_len];
   }
 
-  static void constructSolution(int *b, int bCol, char *x, int i, int j) {
+  static void constructSolution(int *b, int b_col, char *x, int i, int j) {
     if (i == 0 || j == 0) {
       return;
     }
-    if (*((b + i * bCol) + j) == TURN) {
-      constructSolution(b, bCol, x, i - 1, j - 1);
+    if (*((b + i * b_col) + j) == TURN) {
+      constructSolution(b, b_col, x, i - 1, j - 1);
       std::cout << x[i - 1];
     } else {
-      if (*((b + i * bCol) + j) == TOP) {
-        constructSolution(b, bCol, x, i - 1, j);
+      if (*((b + i * b_col) + j) == TOP) {
+        constructSolution(b, b_col, x, i - 1, j);
       } else {
-        constructSolution(b, bCol, x, i, j - 1);
+        constructSolution(b, b_col, x, i, j - 1);
       }
     }
   }
 
  private:
-  static int memorizedAux(char *x, char *y, int *c, int cCol, int i, int j) {
-    if (*((c + i * cCol) + j) >= 0) {
-      return *((c + i * cCol) + j);
+  static int memorizedAux(char *x, char *y, int *c, int c_col, int i, int j) {
+    if (*((c + i * c_col) + j) >= 0) {
+      return *((c + i * c_col) + j);
     }
     if (x[i - 1] == y[j - 1]) {
-      *((c + i * cCol) + j) = memorizedAux(x, y, c, cCol, i - 1, j - 1) + 1;
+      *((c + i * c_col) + j) = memorizedAux(x, y, c, c_col, i - 1, j - 1) + 1;
     } else {
-      *((c + i * cCol) + j) =
-          std::max(memorizedAux(x, y, c, cCol, i - 1, j), memorizedAux(x, y, c, cCol, i, j - 1));
+      *((c + i * c_col) + j) = std::max(memorizedAux(x, y, c, c_col, i - 1, j), memorizedAux(x, y, c, c_col, i, j - 1));
     }
-    return *((c + i * cCol) + j);
+    return *((c + i * c_col) + j);
   }
 };
 

@@ -14,7 +14,7 @@ class LinkedList {
 
   Node* head() { return head_; }
 
-  Node* Search(int key) const {
+  Node* Search(int key) {
     Node* node = head_;
     while (node != nullptr && node->key != key) {
       node = node->next;

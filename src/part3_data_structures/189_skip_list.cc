@@ -106,7 +106,7 @@ void PrintNode(const Node* node) {
   std::cout << std::endl;
 }
 
-int main() {
+void TestSkipList() {
   SkipList list(3, 0.5);
   std::vector<int> keys = {3, 6, 7, 9, 12, 19, 17, 26, 21, 25};
   for (int key : keys) {
@@ -115,4 +115,8 @@ int main() {
   PrintNode(list.Search(19));
   list.Remove(19);
   PrintNode(list.Search(19));
+}
+
+int main() {
+  TestSkipList();
 }

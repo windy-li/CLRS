@@ -15,10 +15,12 @@ class Solution {
   }
 };
 
-int main() {
+void TestIncreament() {
   std::vector<int> nums(8);
   Solution s;
   for (int i = 1; i <= 16; ++i) {
     s.Increment(nums);
   }
 }
+
+int main() { TestIncreament(); }

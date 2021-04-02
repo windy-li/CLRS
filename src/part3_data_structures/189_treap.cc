@@ -102,9 +102,9 @@ class Treap {
   Node* root_;
 };
 
-int main() {
+void TestTreap() {
   Treap t;
-  int keys[] = {5, 3, 2, 4, 7, 6, 1, 8};
+  std::vector<int> keys{5, 3, 2, 4, 7, 6, 1, 8};
   for (int key : keys) {
     t.Insert(key);
   }
@@ -113,3 +113,5 @@ int main() {
   t.Remove(3);
   std::cout << t.Search(3) << std::endl;
 }
+
+int main() { TestTreap(); }

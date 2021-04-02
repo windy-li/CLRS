@@ -2,31 +2,31 @@
 
 class Queue {
  public:
-  Queue() : in_(new std::stack<int>()), out_(new std::stack<int>()) {}
+  Queue() : in_stack_(new std::stack<int>()), out_stack_(new std::stack<int>()) {}
 
-  bool Empty() const { return in_->empty() && out_->empty(); }
+  bool Empty() const { return in_stack_->empty() && out_stack_->empty(); }
 
-  void Push(int key) { in_->push(key); }
+  void Push(int key) { in_stack_->push(key); }
 
   int Pop() {
     if (Empty()) {
       throw std::underflow_error("queue underflow");
     }
-    if (out_->empty()) {
-      while (!in_->empty()) {
-        int x = in_->top();
-        in_->pop();
-        out_->push(x);
+    if (out_stack_->empty()) {
+      while (!in_stack_->empty()) {
+        int x = in_stack_->top();
+        in_stack_->pop();
+        out_stack_->push(x);
       }
     }
-    int ret = out_->top();
-    out_->pop();
+    int ret = out_stack_->top();
+    out_stack_->pop();
     return ret;
   }
 
  private:
-  std::stack<int>* in_;
-  std::stack<int>* out_;
+  std::stack<int>* in_stack_;
+  std::stack<int>* out_stack_;
 };
 
 int main() {
