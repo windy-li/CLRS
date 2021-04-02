@@ -66,11 +66,15 @@ class MaxHeap {
   int Right(int i) { return 2 * i + 2; }
 };
 
-int main() {
+void TestHeapSort() {
   std::vector<int> nums = {5, 2, 4, 6, 1, 3};
   MaxHeap h;
   h.Sort(nums);
   clrs::PrintVector(nums);
+}
+
+int main() {
+  TestHeapSort();
 }
 
 /*

@@ -85,7 +85,7 @@ class YoungTableau {
   }
 };
 
-int main() {
+void TestYoungTableau() {
   int keys[] = {9, 16, 3, 2, 4, 8, 5, 14, 12};
   int m = 4;
   int n = 4;
@@ -99,6 +99,8 @@ int main() {
     std::cout << t.ExtractMin() << " ";
   }
 }
+
+int main() { TestYoungTableau(); }
 
 /*
  * 1

@@ -72,7 +72,7 @@ class MaxPriorityQueue {
   int Parent(int i) { return (i - 1) / 2; }
 };
 
-int main() {
+void TestMaxPriorityQueue() {
   std::vector<int> keys = {5, 2, 4, 6, 1, 3};
   int n = keys.size();
   MaxPriorityQueue q(n);
@@ -83,6 +83,8 @@ int main() {
     std::cout << q.ExtractMax() << " ";
   }
 }
+
+int main() { TestMaxPriorityQueue(); }
 
 /*
  * 6 5 4 3 2 1
