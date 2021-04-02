@@ -2,31 +2,35 @@
 
 class Solution {
  public:
-  void CountingSort(std::vector<int>& nums, int len, int k, std::vector<int>& output) {
+  std::vector<int> CountingSort(std::vector<int>& nums, int k) {
+    int n = nums.size();
+    std::vector<int> output(n);
     int count[k + 1];
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
     }
-    for (int i = 0; i < len; ++i) {
+    for (int i = 0; i < n; ++i) {
       count[nums[i]]++;
     }
     for (int i = 1; i <= k; ++i) {
       count[i] += count[i - 1];
     }
-    for (int i = len - 1; i >= 0; --i) {
+    for (int i = n - 1; i >= 0; --i) {
       int x = nums[i];
       output[count[x] - 1] = x;
       count[x]--;
     }
+    return output;
   }
 
-  int CountingRange(std::vector<int>& arr, int len, int k, int left, int right) {
+  int CountingRange(std::vector<int>& nums, int k, int left, int right) {
+    int n = nums.size();
     int count[k + 1];
     for (int i = 0; i < k; ++i) {
       count[i] = 0;
     }
-    for (int i = 0; i < len; ++i) {
-      count[arr[i]]++;
+    for (int i = 0; i < n; ++i) {
+      count[nums[i]]++;
     }
     for (int i = 1; i <= k; ++i) {
       count[i] += count[i - 1];
@@ -39,28 +43,26 @@ class Solution {
   }
 };
 
-void testCountingSort() {
-  std::vector<int> arr = {2, 5, 3, 0, 2, 3, 0, 3};
-  int n = arr.size();
+void TestCountingSort() {
+  std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
   int k = 5;
-  std::vector<int> output(n);
   Solution s;
-  s.CountingSort(arr, n, k, output);
+  std::vector<int> output = s.CountingSort(nums, k);
+  clrs::PrintVector(output);
 }
 
-void testCountingRange() {
-  std::vector<int> arr = {2, 5, 3, 0, 2, 3, 0, 3};
-  int n = arr.size();
+void TestCountingRange() {
+  std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
   int k = 5;
   int left = 2;
   int right = 3;
   Solution s;
-  std::cout << s.CountingRange(arr, n, k, left, right);
+  std::cout << s.CountingRange(nums, k, left, right) << std::endl;
 }
 
 int main() {
-  testCountingSort();
-  testCountingRange();
+  TestCountingSort();
+  TestCountingRange();
 }
 
 /*
