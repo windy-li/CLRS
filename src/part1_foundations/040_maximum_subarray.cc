@@ -22,21 +22,20 @@ class Solution {
   std::tuple<int, int, int> DivideAndConquerMaximumSubarray(const std::vector<int>& nums, int low, int high) {
     if (low == high) {
       return {low, high, nums[low]};
+    }
+    int mid = (low + high) / 2;
+    auto left_result = DivideAndConquerMaximumSubarray(nums, low, mid);
+    auto right_result = DivideAndConquerMaximumSubarray(nums, mid + 1, high);
+    auto cross_result = MaxCrossingSubarray(nums, low, mid, high);
+    int left_sum = std::get<2>(left_result);
+    int right_sum = std::get<2>(right_result);
+    int cross_sum = std::get<2>(cross_result);
+    if (left_sum >= right_sum && left_sum >= cross_sum) {
+      return left_result;
+    } else if (right_sum >= left_sum && right_sum >= cross_sum) {
+      return right_result;
     } else {
-      int mid = (low + high) / 2;
-      auto left_result = DivideAndConquerMaximumSubarray(nums, low, mid);
-      auto right_result = DivideAndConquerMaximumSubarray(nums, mid + 1, high);
-      auto cross_result = MaxCrossingSubarray(nums, low, mid, high);
-      int left_sum = std::get<2>(left_result);
-      int right_sum = std::get<2>(right_result);
-      int cross_sum = std::get<2>(cross_result);
-      if (left_sum >= right_sum && left_sum >= cross_sum) {
-        return left_result;
-      } else if (right_sum >= left_sum && right_sum >= cross_sum) {
-        return right_result;
-      } else {
-        return cross_result;
-      }
+      return cross_result;
     }
   }
 
