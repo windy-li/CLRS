@@ -9,11 +9,11 @@ struct Interval {
 
 class Solution {
  public:
-  void FuzzySort(std::vector<Interval>& a, int p, int r) {
+  void FuzzySort(std::vector<Interval>& nums, int p, int r) {
     if (p < r) {
-      std::vector<int> pivots = Partition(a, p, r);
-      FuzzySort(a, p, pivots[0] - 1);
-      FuzzySort(a, pivots[1] + 1, r);
+      std::vector<int> pivots = Partition(nums, p, r);
+      FuzzySort(nums, p, pivots[0] - 1);
+      FuzzySort(nums, pivots[1] + 1, r);
     }
   }
 
@@ -42,7 +42,7 @@ class Solution {
 };
 
 void PrintIntervals(std::vector<Interval>& a, int n) {
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     std::cout << "[" << a[i].left << ", " << a[i].right << "] ";
   }
   std::cout << std::endl;
@@ -52,7 +52,7 @@ void TestFuzzySort() {
   std::vector<std::vector<int>> keys = {{1, 3}, {1, 2}, {3, 4}, {7, 8}, {5, 8}, {3, 5}};
   int n = keys.size();
   std::vector<Interval> intervals(n, Interval(0, 0));
-  for (int i = 0; i < n; i++) {
+  for (int i = 0; i < n; ++i) {
     intervals[i] = Interval(keys[i][0], keys[i][1]);
   }
   Solution s;

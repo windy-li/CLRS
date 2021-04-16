@@ -2,35 +2,35 @@
 
 class Solution {
  public:
-  std::vector<int> CountingSort(std::vector<int>& a, int k) {
-    int n = a.size();
+  std::vector<int> CountingSort(std::vector<int>& nums, int k) {
+    int n = nums.size();
     std::vector<int> b(n);
     std::vector<int> count(k + 1);
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
     }
     for (int i = 0; i < n; ++i) {
-      count[a[i]]++;
+      count[nums[i]]++;
     }
     for (int i = 1; i <= k; ++i) {
       count[i] += count[i - 1];
     }
     for (int i = n - 1; i >= 0; --i) {
-      int x = a[i];
+      int x = nums[i];
       b[count[x] - 1] = x;
       count[x]--;
     }
     return b;
   }
 
-  int CountingRange(std::vector<int>& a, int k, int left, int right) {
-    int n = a.size();
+  int CountingRange(std::vector<int>& nums, int k, int left, int right) {
+    int n = nums.size();
     std::vector<int> count(k + 1);
     for (int i = 0; i < k; ++i) {
       count[i] = 0;
     }
     for (int i = 0; i < n; ++i) {
-      count[a[i]]++;
+      count[nums[i]]++;
     }
     for (int i = 1; i <= k; ++i) {
       count[i] += count[i - 1];
@@ -44,20 +44,20 @@ class Solution {
 };
 
 void TestCountingSort() {
-  std::vector<int> a = {2, 5, 3, 0, 2, 3, 0, 3};
-  int k = 5;
+  std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
+  int k = *std::max_element(nums.begin(), nums.end());
   Solution s;
-  std::vector<int> b = s.CountingSort(a, k);
-  clrs::PrintVector(b);
+  std::vector<int> result = s.CountingSort(nums, k);
+  clrs::PrintVector(result);
 }
 
 void TestCountingRange() {
-  std::vector<int> a = {2, 5, 3, 0, 2, 3, 0, 3};
-  int k = 5;
+  std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
+  int k = *std::max_element(nums.begin(), nums.end());
   int left = 2;
   int right = 3;
   Solution s;
-  std::cout << s.CountingRange(a, k, left, right) << std::endl;
+  std::cout << s.CountingRange(nums, k, left, right) << std::endl;
 }
 
 int main() {

@@ -2,25 +2,25 @@
 
 class MaxHeap {
  public:
-  MaxHeap() : size_(0) {}
+  MaxHeap() : heap_size_(0) {}
 
   void Sort(std::vector<int>& nums) {
     BuildMaxHeap(nums);
     int n = nums.size();
     for (int i = n - 1; i > 0; --i) {
       std::swap(nums[0], nums[i]);
-      size_--;
+      heap_size_--;
       IterativeMaxHeapify(nums, 0);
     }
   }
 
  private:
-  int size_;
+  int heap_size_;
 
   void BuildMaxHeap(std::vector<int>& nums) {
     int n = nums.size();
-    size_ = n;
-    for (int i = size_ / 2 - 1; i >= 0; --i) {
+    heap_size_ = n;
+    for (int i = heap_size_ / 2 - 1; i >= 0; --i) {
       IterativeMaxHeapify(nums, i);
     }
   }
@@ -29,10 +29,10 @@ class MaxHeap {
     int l = Left(i);
     int r = Right(i);
     int largest = i;
-    if (l < size_ && nums[l] > nums[largest]) {
+    if (l < heap_size_ && nums[l] > nums[largest]) {
       largest = l;
     }
-    if (r < size_ && nums[r] > nums[largest]) {
+    if (r < heap_size_ && nums[r] > nums[largest]) {
       largest = r;
     }
     if (largest != i) {
@@ -46,10 +46,10 @@ class MaxHeap {
       int l = Left(i);
       int r = Right(i);
       int largest = i;
-      if (l < size_ && nums[l] > nums[largest]) {
+      if (l < heap_size_ && nums[l] > nums[largest]) {
         largest = l;
       }
-      if (r < size_ && nums[r] > nums[largest]) {
+      if (r < heap_size_ && nums[r] > nums[largest]) {
         largest = r;
       }
       if (largest != i) {
@@ -73,9 +73,7 @@ void TestHeapSort() {
   clrs::PrintVector(nums);
 }
 
-int main() {
-  TestHeapSort();
-}
+int main() { TestHeapSort(); }
 
 /*
  * 1 2 3 4 5 6

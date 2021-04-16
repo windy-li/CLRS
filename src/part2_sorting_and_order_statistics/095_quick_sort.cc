@@ -173,19 +173,19 @@ class Solution {
 };
 
 void TestQuickSort() {
-  std::vector<int> a = {1, 6, 2, 8};
-  int n = a.size();
+  std::vector<int> nums = {1, 6, 2, 8};
+  int n = nums.size();
   Solution s;
-  s.QuickSort(a, 0, n - 1);
-  clrs::PrintVector(a);
+  s.QuickSort(nums, 0, n - 1);
+  clrs::PrintVector(nums);
 }
 
 void TestIterativeQuickSort() {
-  std::vector<int> a = {1, 6, 2, 8};
-  int n = a.size();
+  std::vector<int> nums = {1, 6, 2, 8};
+  int n = nums.size();
   Solution s;
-  s.IterativeQuickSort(a, 0, n - 1);
-  clrs::PrintVector(a);
+  s.IterativeQuickSort(nums, 0, n - 1);
+  clrs::PrintVector(nums);
 }
 
 int main() {

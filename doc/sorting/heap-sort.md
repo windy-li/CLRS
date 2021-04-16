@@ -61,10 +61,10 @@ void MaxHeapify(std::vector<int>& a, int i) {
   int l = Left(i);
   int r = Right(i);
   int largest = i;
-  if (l < size_ && a[l] > a[largest]) {
+  if (l < heap_size_ && a[l] > a[largest]) {
     largest = l;
   }
-  if (r < size_ && a[r] > a[largest]) {
+  if (r < heap_size_ && a[r] > a[largest]) {
     largest = r;
   }
   if (largest != i) {
@@ -88,10 +88,10 @@ void MaxHeapify(std::vector<int>& a, int i) {
     int l = Left(i);
     int r = Right(i);
     int largest = i;
-    if (l < size_ && a[l] > a[largest]) {
+    if (l < heap_size_ && a[l] > a[largest]) {
       largest = l;
     }
-    if (r < size_ && a[r] > a[largest]) {
+    if (r < heap_size_ && a[r] > a[largest]) {
       largest = r;
     }
     if (largest != i) {
@@ -111,8 +111,8 @@ void MaxHeapify(std::vector<int>& a, int i) {
 ```c++
 void BuildMaxHeap(std::vector<int>& a) {
   int n = a.size();
-  size_ = n;
-  for (int i = size_ / 2 - 1; i >= 0; i--) {
+  heap_size_ = n;
+  for (int i = heap_size_ / 2 - 1; i >= 0; i--) {
     IterativeMaxHeapify(a, i);
   }
 }
@@ -132,7 +132,7 @@ void Sort(std::vector<int>& nums) {
   int n = nums.size();
   for (int i = n - 1; i > 0; i--) {
     std::swap(nums[0], nums[i]);
-    size_--;
+    heap_size_--;
     IterativeMaxHeapify(nums, 0);
   }
 }
@@ -151,20 +151,20 @@ heapSort 的时间复杂度是 O(n lgn)，因为每次调用 buildMaxHeap 的时
 ```c++
 class MaxHeap {
  public:
-  MaxHeap() : size_(0) {}
+  MaxHeap() : heap_size_(0) {}
 
   void Sort(std::vector<int>& nums) {
     BuildMaxHeap(nums);
     int n = nums.size();
     for (int i = n - 1; i > 0; i--) {
       std::swap(nums[0], nums[i]);
-      size_--;
+      heap_size_--;
       IterativeMaxHeapify(nums, 0);
     }
   }
 
  private:
-  int size_;
+  int heap_size_;
 };
 ```
 

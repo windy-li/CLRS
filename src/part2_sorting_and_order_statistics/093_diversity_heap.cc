@@ -12,7 +12,7 @@ class DiversityHeap {
 
   int ExtractMax() {
     if (heap_size_ < 1) {
-      throw std::underflow_error("Heap underflow");
+      throw std::underflow_error("heap underflow");
     }
     int max = nums_[0];
     nums_[0] = nums_[heap_size_ - 1];
@@ -47,7 +47,7 @@ class DiversityHeap {
 
   void IncreaseKey(int i, int new_key) {
     if (new_key < nums_[i]) {
-      throw std::invalid_argument("New key is lower than current key");
+      throw std::invalid_argument("new key is lower than current key");
     }
     while (i > 0 && nums_[Parent(i)] < new_key) {
       nums_[i] = nums_[Parent(i)];
@@ -65,9 +65,9 @@ class DiversityHeap {
   int Child(int i, int k) { return d_ * i + 1 + k; }
 };
 
-int main() {
-  int keys[] = {2, 8, 7, 1, 3, 5, 6, 4};
-  int n = 8;
+void TestDiversityHeap() {
+  std::vector<int> keys = {2, 8, 7, 1, 3, 5, 6, 4};
+  int n = keys.size();
   DiversityHeap heap(n, 3);
   for (int key : keys) {
     heap.Insert(key);
@@ -76,6 +76,8 @@ int main() {
     std::cout << heap.ExtractMax() << " ";
   }
 }
+
+int main() { TestDiversityHeap(); }
 
 /*
  * 8 7 6 5 4 3 2 1

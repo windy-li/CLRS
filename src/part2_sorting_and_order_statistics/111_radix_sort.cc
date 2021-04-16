@@ -45,10 +45,14 @@ class Solution {
   }
 };
 
-int main() {
+void TestRadixSort() {
   std::vector<int> nums = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
   Solution s;
   s.RadixSort(nums);
+}
+
+int main() {
+  TestRadixSort();
 }
 
 /*

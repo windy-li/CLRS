@@ -86,7 +86,7 @@ class YoungTableau {
 };
 
 void TestYoungTableau() {
-  int keys[] = {9, 16, 3, 2, 4, 8, 5, 14, 12};
+  std::vector<int> keys = {9, 16, 3, 2, 4, 8, 5, 14, 12};
   int m = 4;
   int n = 4;
   YoungTableau t(m, n);
