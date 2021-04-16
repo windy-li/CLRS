@@ -66,12 +66,12 @@ class AvlTree {
     if (node == nullptr) {
       return 0;
     }
-    int lh = DfsHeight(node->left);
-    int rh = DfsHeight(node->right);
-    if (lh == -1 || rh == -1 || std::abs(lh - rh) > 1) {
+    int left_height = DfsHeight(node->left);
+    int right_height = DfsHeight(node->right);
+    if (left_height == -1 || right_height == -1 || std::abs(left_height - right_height) > 1) {
       return -1;
     }
-    return std::max(lh, rh) + 1;
+    return std::max(left_height, right_height) + 1;
   }
 
   Node* RightRotate(Node* p) {
@@ -99,9 +99,7 @@ class AvlTree {
     return node->height;
   }
 
-  void UpdateHeight(Node* node) {
-    node->height = std::max(GetHeight(node->left), GetHeight(node->right)) + 1;
-  }
+  void UpdateHeight(Node* node) { node->height = std::max(GetHeight(node->left), GetHeight(node->right)) + 1; }
 
   int BalanceFactor(const Node* node) {
     if (node == nullptr) {
@@ -111,60 +109,60 @@ class AvlTree {
   }
 
   Node* BalanceInsert(Node* node) {
-    // If this node becomes unbalanced, then there are 4 cases
+    // if this node becomes unbalanced, then there are 4 cases
 
-    // Left Left Case
+    // left left case
     if (BalanceFactor(node) == 2 && BalanceFactor(node->left) == 1) {
       return RightRotate(node);
     }
 
-    // Right Right Case
+    // right right case
     if (BalanceFactor(node) == -2 && BalanceFactor(node->right) == -1) {
       return LeftRotate(node);
     }
 
-    // Left Right Case
+    // left right case
     if (BalanceFactor(node) == 2 && BalanceFactor(node->left) == -1) {
       node->left = LeftRotate(node->left);
       return RightRotate(node);
     }
 
-    // Right Left Case
+    // right left case
     if (BalanceFactor(node) == -2 && BalanceFactor(node->right) == 1) {
       node->right = RightRotate(node->right);
       return LeftRotate(node);
     }
 
-    // Return the (unchanged) node pointer
+    // return the (unchanged) node pointer
     return node;
   }
 
   Node* BalanceDelete(Node* node) {
-    // If this node becomes unbalanced, then there are 4 cases
+    // if this node becomes unbalanced, then there are 4 cases
 
-    // Left Left Case
+    // left left case
     if (BalanceFactor(node) == 2 && BalanceFactor(node->left) >= 0) {
       return RightRotate(node);
     }
 
-    // Right Right Case
+    // right right case
     if (BalanceFactor(node) == -2 && BalanceFactor(node->right) <= 0) {
       return LeftRotate(node);
     }
 
-    // Left Right Case
+    // left right case
     if (BalanceFactor(node) == 2 && BalanceFactor(node->left) == -1) {
       node->left = LeftRotate(node->left);
       return RightRotate(node);
     }
 
-    // Right Left Case
+    // right left case
     if (BalanceFactor(node) == -2 && BalanceFactor(node->right) == 1) {
       node->right = RightRotate(node->right);
       return LeftRotate(node);
     }
 
-    // Return the (unchanged) node pointer
+    // return the (unchanged) node pointer
     return node;
   }
 
@@ -175,13 +173,13 @@ class AvlTree {
     return node;
   }
 
-  void PreOrder(const Node* node) {
+  void PreorderTreeWalk(const Node* node) {
     if (node == nullptr) {
       return;
     }
     std::cout << node->key << " " << std::endl;
-    PreOrder(node->left);
-    PreOrder(node->right);
+    PreorderTreeWalk(node->left);
+    PreorderTreeWalk(node->right);
   }
 };
 
