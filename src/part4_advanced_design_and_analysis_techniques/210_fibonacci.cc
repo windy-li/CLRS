@@ -44,15 +44,27 @@ class Solution {
   }
 };
 
-int main() {
-  int n = 7;
-  Solution s;
-  std::cout << s.Recursive(n) << std::endl;
-  std::cout << s.TailRecursive(n, 1, 1) << std::endl;
-  std::cout << s.Memorized(n) << std::endl;
+const int n = 7;
+Solution s;
+
+void TestRecursive() { std::cout << s.Recursive(n) << std::endl; }
+
+void TestTailRecursive() { std::cout << s.TailRecursive(n, 1, 1) << std::endl; }
+
+void TestMemorized() { std::cout << s.Memorized(n) << std::endl; }
+
+void TestBottomUp() {
   std::vector<int> d(n + 1);
   s.BottomUp(n, d);
   for (int i = 1; i <= n; ++i) {
-    std::cout << d[i] << " " << std::endl;
+    std::cout << d[i] << " ";
   }
+  std::cout << std::endl;
+}
+
+int main() {
+  TestRecursive();
+  TestTailRecursive();
+  TestMemorized();
+  TestBottomUp();
 }
