@@ -77,25 +77,25 @@ class Solution {
   std::tuple<int, int, int> MaxCrossingSubarray(const std::vector<int>& nums, int low, int mid, int high) {
     int sum = 0;
     int left_sum = std::numeric_limits<int>::min();
-    int max_left = mid;
+    int left_bound = mid;
     for (int i = mid; i >= low; --i) {
       sum += nums[i];
       if (sum > left_sum) {
         left_sum = sum;
-        max_left = i;
+        left_bound = i;
       }
     }
     sum = 0;
     int right_sum = std::numeric_limits<int>::min();
-    int max_right = mid + 1;
+    int right_bound = mid + 1;
     for (int j = mid + 1; j <= high; ++j) {
       sum += nums[j];
       if (sum > right_sum) {
         right_sum = sum;
-        max_right = j;
+        right_bound = j;
       }
     }
-    return {max_left, max_right, left_sum + right_sum};
+    return {left_bound, right_bound, left_sum + right_sum};
   }
 };
 

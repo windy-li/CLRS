@@ -2,27 +2,27 @@
 
 class Solution {
  public:
-  void SelectionSort(std::vector<int>& a) {
-    int n = a.size();
+  void SelectionSort(std::vector<int>& nums) {
+    int n = nums.size();
     for (int i = 0; i < n - 1; ++i) {
       int min = i;
       for (int j = i + 1; j < n; ++j) {
-        if (a[j] < a[min]) {
+        if (nums[j] < nums[min]) {
           min = j;
         }
       }
       if (min != i) {
-        std::swap(a[min], a[i]);
+        std::swap(nums[min], nums[i]);
       }
     }
   }
 };
 
 void TestSelectionSort() {
-  std::vector<int> a = {1, 3, 4, 2};
+  std::vector<int> nums = {1, 3, 4, 2};
   Solution s;
-  s.SelectionSort(a);
-  clrs::PrintVector(a);
+  s.SelectionSort(nums);
+  clrs::PrintVector(nums);
 }
 
 int main() { TestSelectionSort(); }
