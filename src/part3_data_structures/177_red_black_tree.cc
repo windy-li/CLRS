@@ -1,16 +1,16 @@
 #include "clrs.h"
 
-const int kRed = 1;
-const int kBlack = 0;
+const bool kRed = true;
+const bool kBlack = false;
 
 struct Node {
   int key;
   Node* parent;
   Node* left;
   Node* right;
-  int color;
+  bool color;
 
-  Node(int key, int color) : key(key), parent(nullptr), left(nullptr), right(nullptr), color(color) {}
+  Node(int key, bool color) : key(key), parent(nullptr), left(nullptr), right(nullptr), color(color) {}
 };
 
 class RedBlackTree {
@@ -278,7 +278,7 @@ class RedBlackTree {
   }
 };
 
-int main() {
+void TestRedBlackTree() {
   RedBlackTree tree;
   std::vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
   for (int key : keys) {
@@ -286,6 +286,8 @@ int main() {
   }
   std::cout << tree.root()->key << std::endl;
 }
+
+int main() { TestRedBlackTree(); }
 
 /*
  * {key: 11, color: BLACK, parent: -1, left: 2, right: 14}
