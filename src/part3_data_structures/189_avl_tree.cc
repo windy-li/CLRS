@@ -17,14 +17,16 @@ class AvlTree {
 
   bool IsAvlStructure() { return DfsHeight(root_) != -1; }
 
-  Node* Insert(Node* node, int key) {
+  void InsertKey(int key) { root_ = InsertInto(root_, key); }
+
+  Node* InsertInto(Node* node, int key) {
     if (node == nullptr) {
       return new Node(key);
     }
     if (key < node->key) {
-      node->left = Insert(node->left, key);
+      node->left = InsertInto(node->left, key);
     } else if (key > node->key) {
-      node->right = Insert(node->right, key);
+      node->right = InsertInto(node->right, key);
     } else {
       return node;
     }
@@ -32,18 +34,16 @@ class AvlTree {
     return BalanceInsert(node);
   }
 
-  void Insert(int key) { root_ = Insert(root_, key); }
+  void RemoveKey(int key) { root_ = RemoveFrom(root_, key); }
 
-  void Remove(int key) { root_ = Remove(root_, key); }
-
-  Node* Remove(Node* node, int key) {
+  Node* RemoveFrom(Node* node, int key) {
     if (node == nullptr) {
       return nullptr;
     }
     if (key < node->key) {
-      node->left = Remove(node->left, key);
+      node->left = RemoveFrom(node->left, key);
     } else if (key > node->key) {
-      node->right = Remove(node->right, key);
+      node->right = RemoveFrom(node->right, key);
     } else {
       if (node->left == nullptr) {
         node = node->right;
@@ -52,7 +52,7 @@ class AvlTree {
       } else {
         Node* successor = Minimum(node->right);
         node->key = successor->key;
-        node->right = Remove(node->right, successor->key);
+        node->right = RemoveFrom(node->right, successor->key);
       }
     }
     UpdateHeight(node);
@@ -183,12 +183,14 @@ class AvlTree {
   }
 };
 
-int main() {
-  AvlTree tree;
+void TestAvlTree() {
   std::vector<int> keys = {9, 5, 10, 0, 6, 11, -1, 1, 2};
+  AvlTree tree;
   for (int key : keys) {
-    tree.Insert(key);
+    tree.InsertKey(key);
   }
   std::cout << tree.IsAvlStructure() << std::endl;
   std::cout << tree.root() << std::endl;
 }
+
+int main() { TestAvlTree(); }

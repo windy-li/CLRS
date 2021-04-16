@@ -109,7 +109,7 @@ void insert(int key) {
         // Create new node with random level generated
         Node node = new Node(key, rLevel);
 
-        // Insert node by rearranging pointers
+        // InsertInto node by rearranging pointers
         for (int i = 0; i <= rLevel; i++) {
             node.forward[i] = update[i].forward[i];
             update[i].forward[i] = node;
@@ -189,7 +189,7 @@ void delete(int key) {
             update[i].forward[i] = current.forward[i];
         }
 
-        // Remove levels having no elements
+        // RemoveKey levels having no elements
         while (currentLevel > 0 && head.forward[currentLevel] == null) {
             currentLevel--;
         }
