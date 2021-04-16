@@ -6,7 +6,7 @@ class Solution {
     if (n == 0) {
       return 0;
     }
-    int max = INT_MIN;
+    int max = std::numeric_limits<int>::min();
     for (int i = 1; i <= n; ++i) {
       max = std::max(max, p[i - 1] + Recursive(p, n - i));
     }
@@ -17,7 +17,7 @@ class Solution {
     int r[len + 1];
     r[0] = 0;
     for (int i = 1; i <= len; ++i) {
-      r[i] = INT_MIN;
+      r[i] = std::numeric_limits<int>::min();
     }
     return MemorizedAux(p, len, r);
   }
@@ -26,7 +26,7 @@ class Solution {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
-      int max = INT_MIN;
+      int max = std::numeric_limits<int>::min();
       for (int i = 1; i <= j; ++i) {
         max = std::max(max, p[i - 1] + r[j - i]);
       }
@@ -39,7 +39,7 @@ class Solution {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
-      int max = INT_MIN;
+      int max = std::numeric_limits<int>::min();
       for (int i = 1; i <= j; ++i) {
         if (max < p[i - 1] + r[j - i]) {
           max = p[i - 1] + r[j - i];
@@ -63,7 +63,7 @@ class Solution {
     if (r[len] >= 0) {
       return r[len];
     }
-    int max = INT_MIN;
+    int max = std::numeric_limits<int>::min();
     for (int i = 1; i <= len; i++) {
       max = std::max(max, p[i - 1] + MemorizedAux(p, len - i, r));
     }

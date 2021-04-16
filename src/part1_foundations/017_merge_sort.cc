@@ -56,11 +56,11 @@ class Solution {
     for (int i = 0; i < n1; ++i) {
       left[i] = nums[p + i];
     }
-    left[n1] = INT_MAX;
+    left[n1] = std::numeric_limits<int>::max();
     for (int i = 0; i < n2; ++i) {
       right[i] = nums[q + 1 + i];
     }
-    right[n2] = INT_MAX;
+    right[n2] = std::numeric_limits<int>::max();
     int i = 0, j = 0;
     for (int k = p; k <= r; ++k) {
       if (left[i] <= right[j]) {
@@ -73,19 +73,19 @@ class Solution {
 };
 
 void TestMergeSort() {
-  std::vector<int> a = {1, 3, 4, 2};
-  int n = a.size();
+  std::vector<int> nums = {1, 3, 4, 2};
+  int n = nums.size();
   Solution s;
-  s.MergeSort(a, 0, n - 1);
-  clrs::PrintVector(a);
+  s.MergeSort(nums, 0, n - 1);
+  clrs::PrintVector(nums);
 }
 
 void TestMergeSortBySentinels() {
-  std::vector<int> a = {1, 3, 4, 2};
-  int n = a.size();
+  std::vector<int> nums = {1, 3, 4, 2};
+  int n = nums.size();
   Solution s;
-  s.MergeSortBySentinels(a, 0, n - 1);
-  clrs::PrintVector(a);
+  s.MergeSortBySentinels(nums, 0, n - 1);
+  clrs::PrintVector(nums);
 }
 
 int main() {

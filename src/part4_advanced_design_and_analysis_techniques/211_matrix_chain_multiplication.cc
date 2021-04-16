@@ -26,7 +26,7 @@ class Solution {
     if (i == j) {
       return 0;
     }
-    int min = INT_MAX;
+    int min = std::numeric_limits<int>::max();
     for (int k = i; k < j; ++k) {
       min = std::min(min, Recursive(p, i, k) + Recursive(p, k + 1, j) + p[i - 1] * p[k] * p[j]);
     }
@@ -41,7 +41,7 @@ class Solution {
         if (i == j) {
           m[i][j] = 0;
         } else {
-          m[i][j] = INT_MAX;
+          m[i][j] = std::numeric_limits<int>::max();
         }
       }
     }
@@ -57,7 +57,7 @@ class Solution {
     for (int len = 2; len <= n; ++len) {
       for (int i = 1; i <= n - len + 1; ++i) {
         int j = i + len - 1;
-        int min = INT_MAX;
+        int min = std::numeric_limits<int>::max();
         for (int k = i; k < j; ++k) {
           min = std::min(min, m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]);
         }
@@ -76,7 +76,7 @@ class Solution {
     for (int len = 2; len <= n; ++len) {
       for (int i = 1; i <= n - len + 1; ++i) {
         int j = i + len - 1;
-        int min = INT_MAX;
+        int min = std::numeric_limits<int>::max();
         for (int k = i; k < j; ++k) {
           if (min > m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]) {
             min = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
@@ -102,10 +102,10 @@ class Solution {
 
  private:
   int MemorizedAux(int* p, int* m, int mCol, int i, int j) {
-    if (*((m + i * mCol) + j) < INT_MAX) {
+    if (*((m + i * mCol) + j) < std::numeric_limits<int>::max()) {
       return *((m + i * mCol) + j);
     }
-    int min = INT_MAX;
+    int min = std::numeric_limits<int>::max();
     for (int k = i; k < j; ++k) {
       min = std::min(min, MemorizedAux(p, m, mCol, i, k) + MemorizedAux(p, m, mCol, k + 1, j) + p[i - 1] * p[k] * p[j]);
     }

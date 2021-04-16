@@ -21,7 +21,7 @@ class Solution {
     d[1] = 1;
     d[2] = 1;
     for (int i = 3; i <= n; ++i) {
-      d[i] = INT_MIN;
+      d[i] = std::numeric_limits<int>::min();
     }
     return MemorizedAux(n, d);
   }

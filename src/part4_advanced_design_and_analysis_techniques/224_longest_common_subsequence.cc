@@ -21,7 +21,7 @@ class Solution {
         if (i == 0 || j == 0) {
           c[i][j] = 0;
         } else {
-          c[i][j] = INT_MIN;
+          c[i][j] = std::numeric_limits<int>::min();
         }
       }
     }

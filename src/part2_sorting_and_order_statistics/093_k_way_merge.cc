@@ -13,7 +13,7 @@ class MinHeap {
 
   void Insert(int key, int arrayId) {
     heap_size_++;
-    nodes_[heap_size_ - 1] = new Node(INT_MAX, arrayId);
+    nodes_[heap_size_ - 1] = new Node(std::numeric_limits<int>::max(), arrayId);
     DecreaseKey(heap_size_ - 1, key);
   }
 

@@ -6,7 +6,7 @@ class DiversityHeap {
 
   void Insert(int key) {
     heap_size_++;
-    nums_[heap_size_ - 1] = INT_MIN;
+    nums_[heap_size_ - 1] = std::numeric_limits<int>::min();
     IncreaseKey(heap_size_ - 1, key);
   }
 

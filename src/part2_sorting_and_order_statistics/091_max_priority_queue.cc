@@ -9,7 +9,7 @@ class MaxPriorityQueue {
       throw std::overflow_error("heap overflow");
     }
     heap_size_++;
-    items_[heap_size_ - 1] = INT_MIN;
+    items_[heap_size_ - 1] = std::numeric_limits<int>::min();
     IncreaseKey(heap_size_ - 1, key);
   }
 
@@ -25,7 +25,7 @@ class MaxPriorityQueue {
   }
 
   void Remove(int i) {
-    IncreaseKey(i, INT_MAX);
+    IncreaseKey(i, std::numeric_limits<int>::max());
     items_[0] = items_[heap_size_ - 1];
     heap_size_--;
     MaxHeapify(0);

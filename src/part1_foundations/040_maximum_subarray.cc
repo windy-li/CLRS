@@ -4,7 +4,7 @@ class Solution {
  public:
   std::tuple<int, int, int> BruteForceMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
-    int start = 0, end = 0, max = INT_MIN;
+    int start = 0, end = 0, max = std::numeric_limits<int>::min();
     for (int i = 0; i < n; ++i) {
       int sum = 0;
       for (int j = i; j < n; ++j) {
@@ -41,7 +41,7 @@ class Solution {
 
   int BottomUpMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
-    int max = INT_MIN;
+    int max = std::numeric_limits<int>::min();
     int sum = 0;
     for (int i = 0; i < n; ++i) {
       sum += nums[i];
@@ -55,7 +55,7 @@ class Solution {
 
   std::tuple<int, int, int> ExtendedBottomUpMaximumSubarray(const std::vector<int>& nums) {
     int n = nums.size();
-    int max = INT_MIN;
+    int max = std::numeric_limits<int>::min();
     int sum = 0;
     int start = 0;
     int end = 0;
@@ -76,7 +76,7 @@ class Solution {
  private:
   std::tuple<int, int, int> MaxCrossingSubarray(const std::vector<int>& nums, int low, int mid, int high) {
     int sum = 0;
-    int left_sum = INT_MIN;
+    int left_sum = std::numeric_limits<int>::min();
     int max_left = mid;
     for (int i = mid; i >= low; --i) {
       sum += nums[i];
@@ -86,7 +86,7 @@ class Solution {
       }
     }
     sum = 0;
-    int right_sum = INT_MIN;
+    int right_sum = std::numeric_limits<int>::min();
     int max_right = mid + 1;
     for (int j = mid + 1; j <= high; ++j) {
       sum += nums[j];

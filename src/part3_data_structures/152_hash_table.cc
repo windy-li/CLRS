@@ -9,13 +9,14 @@ struct Slot {
 
 class HashTable {
  public:
-  explicit HashTable(int capacity) : m_(capacity), slots_(std::vector<Slot*>(capacity, new Slot(INT_MIN, false))) {}
+  explicit HashTable(int capacity)
+      : m_(capacity), slots_(std::vector<Slot*>(capacity, new Slot(std::numeric_limits<int>::min(), false))) {}
 
   void Insert(int key) {
     int i = 0;
     while (i < m_) {
       int j = H(key, i);
-      if (slots_[j]->key == INT_MIN || slots_[j]->is_deleted) {
+      if (slots_[j]->key == std::numeric_limits<int>::min() || slots_[j]->is_deleted) {
         slots_[j] = new Slot(key, false);
         return;
       }
