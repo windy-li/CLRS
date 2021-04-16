@@ -50,9 +50,9 @@ class AvlTree {
       } else if (node->right == nullptr) {
         node = node->left;
       } else {
-        Node* suc = Minimum(node->right);
-        node->key = suc->key;
-        node->right = Remove(node->right, suc->key);
+        Node* successor = Minimum(node->right);
+        node->key = successor->key;
+        node->right = Remove(node->right, successor->key);
       }
     }
     UpdateHeight(node);
