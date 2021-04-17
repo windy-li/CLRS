@@ -34,10 +34,10 @@ void PrintVector(std::vector<T>& vec) {
   std::cout << "]" << std::endl;
 }
 
-int RandomInt(int include, int exclude) {
+int RandomInt(int left_bound_included, int right_bound_excluded) {
   std::random_device rd;
   auto gen = std::default_random_engine(rd());
-  std::uniform_int_distribution<int> dis(include, exclude - 1);
+  std::uniform_int_distribution<int> dis(left_bound_included, right_bound_excluded - 1);
   return dis(gen);
 }
 
