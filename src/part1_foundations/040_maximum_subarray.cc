@@ -99,11 +99,11 @@ class Solution {
   }
 };
 
+Solution s;
 std::vector<int> GetSampleVector() { return {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}; }
 
 void TestBruteForceMaximumSubarray() {
   std::vector<int> nums = GetSampleVector();
-  Solution s;
   auto [start, end, max] = s.BruteForceMaximumSubarray(nums);
   std::cout << start << " " << end << " " << max << std::endl;
 }
@@ -111,19 +111,16 @@ void TestBruteForceMaximumSubarray() {
 void TestDivideAndConquerMaximumSubarray() {
   std::vector<int> nums = GetSampleVector();
   int n = nums.size();
-  Solution s;
   auto result = s.DivideAndConquerMaximumSubarray(nums, 0, n - 1);
 }
 
 void TestBottomUpMaximumSubarray() {
   std::vector<int> nums = GetSampleVector();
-  Solution s;
   std::cout << s.BottomUpMaximumSubarray(nums) << std::endl;
 }
 
 void TestExtendedBottomUpMaximumSubarray() {
   std::vector<int> nums = GetSampleVector();
-  Solution s;
   auto result = s.ExtendedBottomUpMaximumSubarray(nums);
 }
 
