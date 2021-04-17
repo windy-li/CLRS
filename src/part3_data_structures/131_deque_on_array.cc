@@ -10,7 +10,7 @@ class Deque {
 
   void PushFront(int key) {
     if (Full()) {
-      throw std::overflow_error("Deque overflow");
+      throw std::overflow_error("deque overflow");
     }
     if (head_ == -1) {
       head_ = 0;
@@ -25,7 +25,7 @@ class Deque {
 
   void PushBack(int key) {
     if (Full()) {
-      throw std::overflow_error("Deque overflow");
+      throw std::overflow_error("deque overflow");
     }
     if (head_ == -1) {
       head_ = 0;
@@ -40,7 +40,7 @@ class Deque {
 
   int PopFront() {
     if (Empty()) {
-      throw std::underflow_error("Deque underflow");
+      throw std::underflow_error("deque underflow");
     }
     int res = nums_[head_];
     if (head_ == tail_) {
@@ -55,7 +55,7 @@ class Deque {
 
   int PopBack() {
     if (Empty()) {
-      throw std::underflow_error("Deque underflow");
+      throw std::underflow_error("deque underflow");
     }
     int res = nums_[tail_];
     if (head_ == tail_) {
