@@ -19,14 +19,14 @@ class Solution {
     return {start, end, max};
   }
 
-  std::tuple<int, int, int> DivideAndConquer(const std::vector<int>& nums, int low, int high) {
-    if (low == high) {
-      return {low, high, nums[low]};
+  std::tuple<int, int, int> DivideAndConquer(const std::vector<int>& nums, int left_bound, int right_bound) {
+    if (left_bound == right_bound) {
+      return {left_bound, right_bound, nums[left_bound]};
     }
-    int mid = (low + high) / 2;
-    auto left_result = DivideAndConquer(nums, low, mid);
-    auto right_result = DivideAndConquer(nums, mid + 1, high);
-    auto cross_result = MaxCrossingSubarray(nums, low, mid, high);
+    int middle = (left_bound + right_bound) / 2;
+    auto left_result = DivideAndConquer(nums, left_bound, middle);
+    auto right_result = DivideAndConquer(nums, middle + 1, right_bound);
+    auto cross_result = MaxCrossingSubarray(nums, left_bound, middle, right_bound);
     int left_sum = std::get<2>(left_result);
     int right_sum = std::get<2>(right_result);
     int cross_sum = std::get<2>(cross_result);
