@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  std::tuple<int, int, int> BruteForceMaximumSubarray(const std::vector<int>& nums) {
+  std::tuple<int, int, int> BruteForce(const std::vector<int>& nums) {
     int n = nums.size();
     int start = 0, end = 0, max = std::numeric_limits<int>::min();
     for (int i = 0; i < n; ++i) {
@@ -19,13 +19,13 @@ class Solution {
     return {start, end, max};
   }
 
-  std::tuple<int, int, int> DivideAndConquerMaximumSubarray(const std::vector<int>& nums, int low, int high) {
+  std::tuple<int, int, int> DivideAndConquer(const std::vector<int>& nums, int low, int high) {
     if (low == high) {
       return {low, high, nums[low]};
     }
     int mid = (low + high) / 2;
-    auto left_result = DivideAndConquerMaximumSubarray(nums, low, mid);
-    auto right_result = DivideAndConquerMaximumSubarray(nums, mid + 1, high);
+    auto left_result = DivideAndConquer(nums, low, mid);
+    auto right_result = DivideAndConquer(nums, mid + 1, high);
     auto cross_result = MaxCrossingSubarray(nums, low, mid, high);
     int left_sum = std::get<2>(left_result);
     int right_sum = std::get<2>(right_result);
@@ -39,7 +39,7 @@ class Solution {
     }
   }
 
-  int BottomUpMaximumSubarray(const std::vector<int>& nums) {
+  int BottomUp(const std::vector<int>& nums) {
     int n = nums.size();
     int max = std::numeric_limits<int>::min();
     int sum = 0;
@@ -53,7 +53,7 @@ class Solution {
     return max;
   }
 
-  std::tuple<int, int, int> ExtendedBottomUpMaximumSubarray(const std::vector<int>& nums) {
+  std::tuple<int, int, int> ExtendedBottomUp(const std::vector<int>& nums) {
     int n = nums.size();
     int max = std::numeric_limits<int>::min();
     int sum = 0;
@@ -102,31 +102,31 @@ class Solution {
 Solution s;
 std::vector<int> GetSampleVector() { return {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}; }
 
-void TestBruteForceMaximumSubarray() {
+void TestBruteForce() {
   std::vector<int> nums = GetSampleVector();
-  auto [start, end, max] = s.BruteForceMaximumSubarray(nums);
+  auto [start, end, max] = s.BruteForce(nums);
   std::cout << start << " " << end << " " << max << std::endl;
 }
 
-void TestDivideAndConquerMaximumSubarray() {
+void TestDivideAndConquer() {
   std::vector<int> nums = GetSampleVector();
   int n = nums.size();
-  auto result = s.DivideAndConquerMaximumSubarray(nums, 0, n - 1);
+  auto result = s.DivideAndConquer(nums, 0, n - 1);
 }
 
-void TestBottomUpMaximumSubarray() {
+void TestBottomUp() {
   std::vector<int> nums = GetSampleVector();
-  std::cout << s.BottomUpMaximumSubarray(nums) << std::endl;
+  std::cout << s.BottomUp(nums) << std::endl;
 }
 
-void TestExtendedBottomUpMaximumSubarray() {
+void TestExtendedBottomUp() {
   std::vector<int> nums = GetSampleVector();
-  auto result = s.ExtendedBottomUpMaximumSubarray(nums);
+  auto result = s.ExtendedBottomUp(nums);
 }
 
 int main() {
-  TestBruteForceMaximumSubarray();
-  TestDivideAndConquerMaximumSubarray();
-  TestBottomUpMaximumSubarray();
-  TestExtendedBottomUpMaximumSubarray();
+  TestBruteForce();
+  TestDivideAndConquer();
+  TestBottomUp();
+  TestExtendedBottomUp();
 }

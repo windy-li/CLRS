@@ -72,16 +72,39 @@ class Solution {
   }
 };
 
-int main() {
+Solution s;
+
+void TestRecursive() {
   std::vector<int> p = {1, 5, 8, 9, 10, 17, 17};
   int n = p.size();
-  Solution solution;
-  std::cout << solution.Recursive(p, n) << std::endl;
-  std::cout << solution.Memorized(p, n) << std::endl;
-  std::cout << solution.BottomUp(p, n) << std::endl;
+  std::cout << s.Recursive(p, n) << std::endl;
+}
+
+void TestMemorized() {
+  std::vector<int> p = {1, 5, 8, 9, 10, 17, 17};
+  int n = p.size();
+  std::cout << s.Memorized(p, n) << std::endl;
+}
+
+void TestBottomUp() {
+  std::vector<int> p = {1, 5, 8, 9, 10, 17, 17};
+  int n = p.size();
+  std::cout << s.BottomUp(p, n) << std::endl;
+}
+
+void TestExtendedBottomUp() {
+  std::vector<int> p = {1, 5, 8, 9, 10, 17, 17};
+  int n = p.size();
   int result = 0;
-  std::vector<int> s(n + 1);
-  solution.ExtendedBottomUp(p, n, result, s);
+  std::vector<int> nums(n + 1);
+  s.ExtendedBottomUp(p, n, result, nums);
   std::cout << result << std::endl;
-  solution.ConstructSolution(s, n);
+  s.ConstructSolution(nums, n);
+}
+
+int main() {
+  TestRecursive();
+  TestMemorized();
+  TestBottomUp();
+  TestExtendedBottomUp();
 }

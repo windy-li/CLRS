@@ -28,6 +28,4 @@ void TestBinaryBaseRandom() {
   }
 }
 
-int main() {
-  TestBinaryBaseRandom();
-}
+int main() { TestBinaryBaseRandom(); }

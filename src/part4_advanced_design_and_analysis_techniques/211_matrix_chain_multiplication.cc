@@ -125,7 +125,7 @@ void TestMatrixMultiply() {
     for (int j = 0; j < b_col; ++j) {
       std::cout << c[i][j] << " ";
     }
-    std::cout << "\n";
+    std::cout << std::endl;
   }
 }
 
