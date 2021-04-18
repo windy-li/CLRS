@@ -46,8 +46,8 @@ class Solution {
     for (int j = 0; j < n; ++j) {
       int key = nums[j];
       int i = j - 1;
-      int position = std::abs(BinarySearch(nums, 0, j, key) + 1);
-      while (i >= position) {
+      int insert_position = std::abs(BinarySearch(nums, 0, j, key) + 1);
+      while (i >= insert_position) {
         nums[i + 1] = nums[i];
         i--;
       }
@@ -56,18 +56,18 @@ class Solution {
   }
 
  private:
-  int BinarySearch(const std::vector<int>& nums, int low, int high, int key) {
-    while (low <= high) {
-      int mid = (low + high) / 2;
-      if (key == nums[mid]) {
-        return nums[mid];
-      } else if (key < nums[mid]) {
-        high = mid - 1;
+  int BinarySearch(const std::vector<int>& nums, int left_bound, int right_bound, int key) {
+    while (left_bound <= right_bound) {
+      int middle = (left_bound + right_bound) / 2;
+      if (key == nums[middle]) {
+        return nums[middle];
+      } else if (key < nums[middle]) {
+        right_bound = middle - 1;
       } else {
-        low = mid + 1;
+        left_bound = middle + 1;
       }
     }
-    return -(low + 1);
+    return -(left_bound + 1);
   }
 };
 
