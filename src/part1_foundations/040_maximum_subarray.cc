@@ -57,7 +57,7 @@ class Solution {
     int n = nums.size();
     int max = std::numeric_limits<int>::min();
     int sum = 0;
-    int start = 0;
+    int begin = 0;
     int end = 0;
     for (int i = 0; i < n; ++i) {
       sum += nums[i];
@@ -67,10 +67,10 @@ class Solution {
       }
       if (sum < 0) {
         sum = 0;
-        start = i + 1;
+        begin = i + 1;
       }
     }
-    return {start, end, max};
+    return {begin, end, max};
   }
 
  private:
@@ -104,8 +104,8 @@ std::vector<int> GetSampleVector() { return {13, -3, -25, 20, -3, -16, -23, 18, 
 
 void TestBruteForce() {
   std::vector<int> nums = GetSampleVector();
-  auto [start, end, max] = s.BruteForce(nums);
-  std::cout << start << " " << end << " " << max << std::endl;
+  auto [begin, end, max] = s.BruteForce(nums);
+  std::cout << begin << " " << end << " " << max << std::endl;
 }
 
 void TestDivideAndConquer() {
