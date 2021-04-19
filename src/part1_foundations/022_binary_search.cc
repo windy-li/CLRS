@@ -4,33 +4,33 @@ class Solution {
  public:
   int BinarySearch(const std::vector<int>& nums, int key) {
     int n = nums.size();
-    int left_bound = 0;
-    int right_bound = n - 1;
-    while (left_bound <= right_bound) {
-      int mid = (left_bound + right_bound) / 2;
+    int begin = 0;
+    int end = n - 1;
+    while (begin <= end) {
+      int mid = (begin + end) / 2;
       if (key == nums[mid]) {
         return mid;
       } else if (key < nums[mid]) {
-        right_bound = mid - 1;
+        end = mid - 1;
       } else {
-        left_bound = mid + 1;
+        begin = mid + 1;
       }
     }
-    return -(left_bound + 1);
+    return -(begin + 1);
   }
 
-  int RecursiveBinarySearch(const std::vector<int>& nums, int key, int left_bound, int right_bound) {
-    if (left_bound <= right_bound) {
-      int mid = (left_bound + right_bound) / 2;
+  int RecursiveBinarySearch(const std::vector<int>& nums, int key, int begin, int end) {
+    if (begin <= end) {
+      int mid = (begin + end) / 2;
       if (key == nums[mid]) {
         return mid;
       } else if (key < nums[mid]) {
-        return RecursiveBinarySearch(nums, key, left_bound, mid - 1);
+        return RecursiveBinarySearch(nums, key, begin, mid - 1);
       } else {
-        return RecursiveBinarySearch(nums, key, mid + 1, right_bound);
+        return RecursiveBinarySearch(nums, key, mid + 1, end);
       }
     }
-    return -(left_bound + 1);
+    return -(begin + 1);
   }
 };
 
