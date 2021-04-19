@@ -43,10 +43,11 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestCountingSort() {
   std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
   int k = *std::max_element(nums.begin(), nums.end());
-  Solution s;
   std::vector<int> result = s.CountingSort(nums, k);
   clrs::PrintVector(result);
 }
@@ -56,7 +57,6 @@ void TestCountingRange() {
   int k = *std::max_element(nums.begin(), nums.end());
   int left = 2;
   int right = 3;
-  Solution s;
   std::cout << s.CountingRange(nums, k, left, right) << std::endl;
 }
 
