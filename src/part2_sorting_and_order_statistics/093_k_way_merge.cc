@@ -11,9 +11,9 @@ class MinHeap {
  public:
   explicit MinHeap(int capacity) : nodes_(std::vector<Node*>(capacity, nullptr)), heap_size_(0) {}
 
-  void Insert(int key, int arrayId) {
+  void Insert(int key, int array_id) {
     heap_size_++;
-    nodes_[heap_size_ - 1] = new Node(std::numeric_limits<int>::max(), arrayId);
+    nodes_[heap_size_ - 1] = new Node(std::numeric_limits<int>::max(), array_id);
     DecreaseKey(heap_size_ - 1, key);
   }
 
@@ -36,7 +36,7 @@ class MinHeap {
 
   void DecreaseKey(int i, int new_key) {
     if (new_key > nodes_[i]->key) {
-      std::cerr << "new key is lower than current key" << std::endl;
+      throw std::invalid_argument("new key is lower than current key");
     }
     nodes_[i]->key = new_key;
     Node* temp = nodes_[i];

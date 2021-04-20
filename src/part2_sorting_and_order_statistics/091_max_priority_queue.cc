@@ -40,7 +40,7 @@ class MaxPriorityQueue {
 
   void IncreaseKey(int i, int key) {
     if (key < items_[i]) {
-      throw std::invalid_argument("new key can not be lower than current key");
+      throw std::invalid_argument("new key should not be lower than current key");
     }
     while (i > 0 && items_[Parent(i)] < key) {
       items_[i] = items_[Parent(i)];

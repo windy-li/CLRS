@@ -4,9 +4,9 @@ class Stack {
  public:
   explicit Stack(int capacity) : nums_(std::vector<int>(capacity)), capacity_(capacity), top_(-1) {}
 
-  bool Empty() const { return top_ == -1; }
+  bool Empty() { return top_ == -1; }
 
-  bool Full() const { return top_ == capacity_ - 1; }
+  bool Full() { return top_ == capacity_ - 1; }
 
   clrs::error Push(int key) {
     if (Full()) {

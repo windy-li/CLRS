@@ -47,7 +47,7 @@ class DiversityHeap {
 
   void IncreaseKey(int i, int new_key) {
     if (new_key < nums_[i]) {
-      throw std::invalid_argument("new key is lower than current key");
+      throw std::invalid_argument("new key should not be lower than current key");
     }
     while (i > 0 && nums_[Parent(i)] < new_key) {
       nums_[i] = nums_[Parent(i)];

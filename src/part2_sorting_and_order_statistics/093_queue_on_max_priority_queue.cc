@@ -23,7 +23,7 @@ class Queue {
 
   Node* Pop() {
     if (heap_size_ < 1) {
-      throw std::runtime_error("Heap underflow");
+      throw std::runtime_error("heap underflow");
     }
     Node* head = nodes_[0];
     nodes_[0] = nodes_[heap_size_ - 1];
@@ -55,7 +55,7 @@ class Queue {
 
   void IncreasePriority(int i, int priority) {
     if (priority < nodes_[i]->priority) {
-      throw std::runtime_error("new priority is lower than current priority");
+      throw std::runtime_error("new priority should not be lower than current priority");
     }
     nodes_[i]->priority = priority;
     Node* node = nodes_[i];
