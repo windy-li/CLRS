@@ -10,13 +10,14 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestRandomizeInPlace() {
   int n = 10;
   std::vector<int> nums(n);
   for (int i = 0; i < n; ++i) {
     nums[i] = i;
   }
-  Solution s;
   s.RandomizeInPlace(nums);
   clrs::PrintVector(nums);
 }

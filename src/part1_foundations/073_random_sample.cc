@@ -34,8 +34,9 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestRandomSample() {
-  Solution s;
   for (int i = 0; i < 10; ++i) {
     auto list = s.RandomSample(3, 7);
     for (auto item : list) {

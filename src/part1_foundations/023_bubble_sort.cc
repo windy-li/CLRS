@@ -14,9 +14,10 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestBubbleSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  Solution s;
   s.BubbleSort(nums);
   clrs::PrintVector(nums);
 }

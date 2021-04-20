@@ -34,11 +34,12 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestBinarySearch() {
   std::vector<int> nums = {1, 2, 3, 4, 5, 6};
   int key1 = 2;
   int key2 = 7;
-  Solution s;
   std::cout << s.BinarySearch(nums, key1) << std::endl;
   std::cout << s.BinarySearch(nums, key2) << std::endl;
 }
@@ -48,7 +49,6 @@ void TestRecursiveBinarySearch() {
   int n = nums.size();
   int key1 = 2;
   int key2 = 7;
-  Solution s;
   std::cout << s.RecursiveBinarySearch(nums, key1, 0, n - 1) << std::endl;
   std::cout << s.RecursiveBinarySearch(nums, key2, 0, n - 1) << std::endl;
 }

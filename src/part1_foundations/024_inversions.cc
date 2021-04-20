@@ -45,10 +45,11 @@ class Solution {
   }
 };
 
+Solution s;
+
 void TestInversions() {
   std::vector<int> nums = {2, 3, 8, 6, 1};
   int n = nums.size();
-  Solution s;
   std::cout << s.Inversions(nums, 0, n - 1) << " inversion pairs";
   clrs::PrintVector(nums);
 }
