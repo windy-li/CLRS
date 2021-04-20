@@ -61,7 +61,7 @@ class RedBlackTree {
     }
     node->left = nil_;
     node->right = nil_;
-    InsertFixup(node);
+    FixupInsert(node);
   }
 
   void Remove(int key) {
@@ -94,7 +94,7 @@ class RedBlackTree {
       suc->color = node->color;
     }
     if (deleted_color == kBlack) {
-      RemoveFixup(new_node);
+      FixupRemove(new_node);
     }
   }
 
@@ -183,7 +183,7 @@ class RedBlackTree {
     return ancestor;
   }
 
-  void InsertFixup(Node* node) {
+  void FixupInsert(Node* node) {
     while (node->parent->color == kRed) {
       if (node->parent == node->parent->parent->left) {
         Node* uncle = node->parent->parent->right;
@@ -222,7 +222,7 @@ class RedBlackTree {
     root_->color = kBlack;
   }
 
-  void RemoveFixup(Node* node) {
+  void FixupRemove(Node* node) {
     while (node != nil_ && node->color == kBlack) {
       if (node == node->parent->left) {
         Node* sibling = node->parent->right;
