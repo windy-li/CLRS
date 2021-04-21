@@ -2,26 +2,19 @@
 
 class Table {
  public:
-  Table() {
-    num_ = 0;
-    size_ = 0;
-  }
+  Table() : num_(0), size_(0) {}
 
-  int *slots() { return slots_; }
+  std::vector<int> slots() { return slots_; }
 
-  Table(int capacity) {
-    num_ = 0;
-    slots_ = new int[capacity];
-    this->size_ = capacity;
-  }
+  Table(int capacity) : num_(0), slots_(std::vector<int>(capacity)), size_(capacity) {}
 
   void insert(int key) {
     if (size_ == 0) {
-      slots_ = new int[1];
+      slots_ = std::vector<int>(1);
       size_ = 1;
     }
     if (num_ == size_) {
-      int *tmp = new int[2 * size_];
+      std::vector<int> tmp(2 * size_);
       for (int i = 0; i < size_; i++) {
         tmp[i] = slots_[i];
       }
@@ -34,7 +27,7 @@ class Table {
 
  private:
   int num_;
-  int *slots_;
+  std::vector<int> slots_;
   int size_;
 };
 
