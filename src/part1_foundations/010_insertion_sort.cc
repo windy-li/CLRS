@@ -56,18 +56,18 @@ class Solution {
   }
 
  private:
-  int BinarySearch(const std::vector<int>& nums, int left_bound, int right_bound, int key) {
-    while (left_bound <= right_bound) {
-      int middle = (left_bound + right_bound) / 2;
+  int BinarySearch(const std::vector<int>& nums, int left, int right, int key) {
+    while (left <= right) {
+      int middle = (left + right) / 2;
       if (key == nums[middle]) {
         return nums[middle];
       } else if (key < nums[middle]) {
-        right_bound = middle - 1;
+        right = middle - 1;
       } else {
-        left_bound = middle + 1;
+        left = middle + 1;
       }
     }
-    return -(left_bound + 1);
+    return -(left + 1);
   }
 };
 
