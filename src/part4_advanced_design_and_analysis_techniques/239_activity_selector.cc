@@ -1,8 +1,8 @@
-#include <iostream>
+#include "clrs.h"
 
 class Solution {
  public:
-  static int Recursive(int *s, int *f, int k, int n, int a) {
+  int Recursive(std::vector<int>& s, std::vector<int>& f, int k, int n, int a) {
     int m = k + 1;
     while (m <= n && s[m] < f[k]) {
       m++;
@@ -15,10 +15,11 @@ class Solution {
     }
   }
 
-  static int Greedy(int *s, int sLen, int *f) {
+  int Greedy(std::vector<int>& s, std::vector<int>& f) {
+    int n = s.size();
     int i = 0;
     int c = 0;
-    for (int j = 1; j < sLen; ++j) {
+    for (int j = 1; j < n; ++j) {
       if (s[j] >= f[i]) {
         i = j;
         c++;
@@ -27,10 +28,11 @@ class Solution {
     return c;
   }
 
-  static void ConstructSolution(int *s, int sLen, int *f) {
+  void ConstructSolution(std::vector<int>& s, std::vector<int>& f) {
+    int n = s.size();
     int i = 1;
     std::cout << i << " ";
-    for (int j = 1; j < sLen; ++j) {
+    for (int j = 1; j < n; ++j) {
       if (s[j] >= f[i]) {
         std::cout << j << " ";
         i = j;
@@ -39,19 +41,30 @@ class Solution {
   }
 };
 
-int main() {
-  int s[] = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
-  int f[] = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
-  int sLen = 12;
-  int n = sLen - 1;
-  std::cout << Solution::Recursive(s, f, 0, n, 0) << std::endl;
-  std::cout << Solution::Greedy(s, sLen, f) << std::endl;
-  Solution::ConstructSolution(s, sLen, f);
-  return 0;
+void TestRecursive() {
+  Solution solution;
+  std::vector<int> s = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
+  std::vector<int> f = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
+  int n = s.size() - 1;
+  std::cout << solution.Recursive(s, f, 0, n, 0) << std::endl;
 }
 
-/*
- * 4
- * 4
- * 1 4 8 11
- */
+void TestGreedy() {
+  Solution solution;
+  std::vector<int> s = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
+  std::vector<int> f = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
+  std::cout << solution.Greedy(s, f) << std::endl;
+}
+
+void TestConstructSolution() {
+  Solution solution;
+  std::vector<int> s = {0, 1, 3, 0, 5, 3, 5, 6, 8, 8, 2, 12};
+  std::vector<int> f = {0, 4, 5, 6, 7, 9, 9, 10, 11, 12, 14, 16};
+  solution.ConstructSolution(s, f);
+}
+
+int main() {
+  TestRecursive();
+  TestGreedy();
+  TestConstructSolution();
+}
