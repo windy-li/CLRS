@@ -22,7 +22,7 @@ class Solution {
     return c;
   }
 
-  int Recursive(int* p, int i, int j) {
+  int Recursive(std::vector<int>& p, int i, int j) {
     if (i == j) {
       return 0;
     }
@@ -33,9 +33,9 @@ class Solution {
     return min;
   }
 
-  int Memorized(int* p, int len) {
-    int n = len - 1;
-    int m[n + 1][n + 1];
+  int Memorized(std::vector<int>& p) {
+    int n = p.size() - 1;
+    std::vector<std::vector<int>> m(n + 1, std::vector<int>(n + 1));
     for (int i = 1; i <= n; ++i) {
       for (int j = i; j <= n; ++j) {
         if (i == j) {
@@ -45,11 +45,11 @@ class Solution {
         }
       }
     }
-    return MemorizedAux(p, (int*)m, n + 1, 1, n);
+    return MemorizedAux(p, m, 1, n);
   }
 
-  int BottomUp(int* p, int length) {
-    int n = length - 1;
+  int BottomUp(std::vector<int>& p) {
+    int n = p.size() - 1;
     int m[n + 1][n + 1];
     for (int i = 1; i <= n; ++i) {
       m[i][i] = 0;
@@ -67,9 +67,10 @@ class Solution {
     return m[1][n];
   }
 
-  void ExtendedBottomUp(int* p, int length, int& result, int* s, int sCol) {
-    int n = length - 1;
-    int m[n + 1][n + 1];
+  std::tuple<int, std::vector<std::vector<int>>> ExtendedBottomUp(std::vector<int>& p) {
+    int n = p.size() - 1;
+    std::vector<std::vector<int>> m(n + 1, std::vector<int>(n + 1));
+    std::vector<std::vector<int>> s(n + 1, std::vector<int>(n + 1));
     for (int i = 1; i <= n; ++i) {
       m[i][i] = 0;
     }
@@ -80,44 +81,44 @@ class Solution {
         for (int k = i; k < j; ++k) {
           if (min > m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j]) {
             min = m[i][k] + m[k + 1][j] + p[i - 1] * p[k] * p[j];
-            *((s + i * sCol) + j) = k;
+            s[i][j] = k;
           }
         }
         m[i][j] = min;
       }
     }
-    result = m[1][n];
+    return {m[1][n], s};
   }
 
-  void ConstructSolution(int* s, int s_col, int i, int j) {
+  void ConstructSolution(std::vector<std::vector<int>>& s, int i, int j) {
     if (i == j) {
       std::cout << "A" << i;
     } else {
       std::cout << "(";
-      ConstructSolution(s, s_col, i, *((s + i * s_col) + j));
-      ConstructSolution(s, s_col, *((s + i * s_col) + j) + 1, j);
+      ConstructSolution(s, i, s[i][j]);
+      ConstructSolution(s, s[i][j] + 1, j);
       std::cout << ")";
     }
   }
 
  private:
-  int MemorizedAux(int* p, int* m, int mCol, int i, int j) {
-    if (*((m + i * mCol) + j) < std::numeric_limits<int>::max()) {
-      return *((m + i * mCol) + j);
+  int MemorizedAux(std::vector<int>& p, std::vector<std::vector<int>>& m, int i, int j) {
+    if (m[i][j] < std::numeric_limits<int>::max()) {
+      return m[i][j];
     }
     int min = std::numeric_limits<int>::max();
     for (int k = i; k < j; ++k) {
-      min = std::min(min, MemorizedAux(p, m, mCol, i, k) + MemorizedAux(p, m, mCol, k + 1, j) + p[i - 1] * p[k] * p[j]);
+      min = std::min(min, MemorizedAux(p, m, i, k) + MemorizedAux(p, m, k + 1, j) + p[i - 1] * p[k] * p[j]);
     }
-    *((m + i * mCol) + j) = min;
+    m[i][j] = min;
     return min;
   }
 };
 
 void TestMatrixMultiply() {
+  Solution s;
   std::vector<std::vector<int>> a = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 1, 2, 3}};
   std::vector<std::vector<int>> b = {{1, 2}, {3, 4}, {5, 6}, {7, 8}};
-  Solution s;
   std::vector<std::vector<int>> c = s.MatrixMultiply(a, b);
   int a_row = a.size();
   int b_col = b[0].size();
@@ -129,4 +130,37 @@ void TestMatrixMultiply() {
   }
 }
 
-int main() { TestMatrixMultiply(); }
+void TestRecursive() {
+  Solution s;
+  std::vector<int> p = {30, 35, 15, 5, 10, 20, 25};
+  std::cout << s.Recursive(p, 1, p.size() - 1) << std::endl;
+}
+
+void TestMemorized() {
+  Solution s;
+  std::vector<int> p = {30, 35, 15, 5, 10, 20, 25};
+  std::cout << s.Memorized(p) << std::endl;
+}
+
+void TestBottomUp() {
+  Solution s;
+  std::vector<int> p = {30, 35, 15, 5, 10, 20, 25};
+  std::cout << s.BottomUp(p) << std::endl;
+}
+
+void TestExtendedBottomUp() {
+  Solution solution;
+  std::vector<int> p = {30, 35, 15, 5, 10, 20, 25};
+  int n = p.size() - 1;
+  auto [m, s] = solution.ExtendedBottomUp(p);
+  std::cout << m << std::endl;
+  solution.ConstructSolution(s, 1, n);
+}
+
+int main() {
+  TestMatrixMultiply();
+  TestRecursive();
+  TestMemorized();
+  TestBottomUp();
+  TestExtendedBottomUp();
+}
