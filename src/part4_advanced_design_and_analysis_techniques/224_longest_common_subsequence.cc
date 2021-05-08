@@ -1,23 +1,27 @@
 #include "clrs.h"
 
-enum Direction { LEFT, TOP, TURN };
+const int kLeft = 0;
+const int kTop = 1;
+const int kTurn = 2;
 
 class Solution {
  public:
-  static int recursive(char *x, char *y, int m, int n) {
+  int Recursive(std::vector<char>& x, std::vector<char>& y, int m, int n) {
     if (m == 0 || n == 0) {
       return 0;
     } else if (x[m - 1] == y[n - 1]) {
-      return recursive(x, y, m - 1, n - 1) + 1;
+      return Recursive(x, y, m - 1, n - 1) + 1;
     } else {
-      return std::max(recursive(x, y, m - 1, n), recursive(x, y, m, n - 1));
+      return std::max(Recursive(x, y, m - 1, n), Recursive(x, y, m, n - 1));
     }
   }
 
-  static int memorized(char *x, int xLen, char *y, int yLen) {
-    int c[xLen + 1][yLen + 1];
-    for (int i = 0; i <= xLen; i++) {
-      for (int j = 0; j <= yLen; j++) {
+  int Memorized(std::vector<char>& x, std::vector<char>& y) {
+    int m = x.size();
+    int n = y.size();
+    std::vector<std::vector<int>> c(m + 1, std::vector<int>(n + 1));
+    for (int i = 0; i <= m; ++i) {
+      for (int j = 0; j <= n; ++j) {
         if (i == 0 || j == 0) {
           c[i][j] = 0;
         } else {
@@ -25,19 +29,21 @@ class Solution {
         }
       }
     }
-    return memorizedAux(x, y, (int *)c, yLen + 1, xLen, yLen);
+    return MemorizedAux(x, y, c, m, n);
   }
 
-  static int bottomUp(char *x, int xLen, char *y, int yLen) {
-    int c[xLen + 1][yLen + 1];
-    for (int i = 0; i <= xLen; i++) {
+  int BottomUp(std::vector<char>& x, std::vector<char>& y) {
+    int m = x.size();
+    int n = y.size();
+    std::vector<std::vector<int>> c(m + 1, std::vector<int>(n + 1));
+    for (int i = 0; i <= m; ++i) {
       c[i][0] = 0;
     }
-    for (int j = 0; j <= yLen; j++) {
+    for (int j = 0; j <= n; ++j) {
       c[0][j] = 0;
     }
-    for (int i = 1; i <= xLen; i++) {
-      for (int j = 1; j <= yLen; j++) {
+    for (int i = 1; i <= m; ++i) {
+      for (int j = 1; j <= n; ++j) {
         if (x[i - 1] == y[j - 1]) {
           c[i][j] = c[i - 1][j - 1] + 1;
         } else {
@@ -45,77 +51,104 @@ class Solution {
         }
       }
     }
-    return c[xLen][yLen];
+    return c[m][n];
   }
 
-  static void extendedBottomUp(char *x, int x_len, char *y, int y_len, int &result, int *b, int b_col) {
-    int c[x_len + 1][y_len + 1];
-    for (int i = 0; i <= x_len; i++) {
+  std::tuple<int, std::vector<std::vector<int>>> ExtendedBottomUp(std::vector<char>& x, std::vector<char>& y) {
+    int m = x.size();
+    int n = y.size();
+    std::vector<std::vector<int>> c(m + 1, std::vector<int>(n + 1));
+    std::vector<std::vector<int>> b(m + 1, std::vector<int>(n + 1));
+    for (int i = 0; i <= m; ++i) {
       c[i][0] = 0;
     }
-    for (int j = 0; j <= y_len; j++) {
+    for (int j = 0; j <= n; ++j) {
       c[0][j] = 0;
     }
-    for (int i = 1; i <= x_len; i++) {
-      for (int j = 1; j <= y_len; j++) {
+    for (int i = 1; i <= m; ++i) {
+      for (int j = 1; j <= n; ++j) {
         if (x[i - 1] == y[j - 1]) {
           c[i][j] = c[i - 1][j - 1] + 1;
-          *((b + i * b_col) + j) = TURN;
+          b[i][j] = kTurn;
         } else {
           if (c[i - 1][j] >= c[i][j - 1]) {
             c[i][j] = c[i - 1][j];
-            *((b + i * b_col) + j) = TOP;
+            b[i][j] = kTop;
           } else {
             c[i][j] = c[i][j - 1];
-            *((b + i * b_col) + j) = LEFT;
+            b[i][j] = kLeft;
           }
         }
       }
     }
-    result = c[x_len][y_len];
+    return {c[m][n], b};
   }
 
-  static void constructSolution(int *b, int b_col, char *x, int i, int j) {
+  void ConstructSolution(std::vector<std::vector<int>>& b, std::vector<char>& x, int i, int j) {
     if (i == 0 || j == 0) {
       return;
     }
-    if (*((b + i * b_col) + j) == TURN) {
-      constructSolution(b, b_col, x, i - 1, j - 1);
+    if (b[i][j] == kTurn) {
+      ConstructSolution(b, x, i - 1, j - 1);
       std::cout << x[i - 1];
     } else {
-      if (*((b + i * b_col) + j) == TOP) {
-        constructSolution(b, b_col, x, i - 1, j);
+      if (b[i][j] == kTop) {
+        ConstructSolution(b, x, i - 1, j);
       } else {
-        constructSolution(b, b_col, x, i, j - 1);
+        ConstructSolution(b, x, i, j - 1);
       }
     }
   }
 
  private:
-  static int memorizedAux(char *x, char *y, int *c, int c_col, int i, int j) {
-    if (*((c + i * c_col) + j) >= 0) {
-      return *((c + i * c_col) + j);
+  int MemorizedAux(std::vector<char>& x, std::vector<char>& y, std::vector<std::vector<int>>& c, int i, int j) {
+    if (c[i][j] >= 0) {
+      return c[i][j];
     }
     if (x[i - 1] == y[j - 1]) {
-      *((c + i * c_col) + j) = memorizedAux(x, y, c, c_col, i - 1, j - 1) + 1;
+      c[i][j] = MemorizedAux(x, y, c, i - 1, j - 1) + 1;
     } else {
-      *((c + i * c_col) + j) = std::max(memorizedAux(x, y, c, c_col, i - 1, j), memorizedAux(x, y, c, c_col, i, j - 1));
+      c[i][j] = std::max(MemorizedAux(x, y, c, i - 1, j), MemorizedAux(x, y, c, i, j - 1));
     }
-    return *((c + i * c_col) + j);
+    return c[i][j];
   }
 };
 
+Solution s;
+
+void TestRecursive() {
+  std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
+  std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
+  int m = x.size();
+  int n = y.size();
+  std::cout << s.Recursive(x, y, m, n) << std::endl;
+}
+
+void TestMemorized() {
+  std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
+  std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
+  std::cout << s.Memorized(x, y) << std::endl;
+}
+
+void TestBottomUp() {
+  std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
+  std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
+  std::cout << s.BottomUp(x, y) << std::endl;
+}
+
+void TestExtendedBottomUp() {
+  std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
+  std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
+  int m = x.size();
+  int n = y.size();
+  auto [a, b] = s.ExtendedBottomUp(x, y);
+  std::cout << a << std::endl;
+  s.ConstructSolution(b, x, m, n);
+}
+
 int main() {
-  char x[] = {'A', 'B', 'C', 'B', 'D', 'A', 'B'};
-  char y[] = {'B', 'D', 'C', 'A', 'B', 'A'};
-  int xSize = 7;
-  int ySize = 6;
-  std::cout << Solution::recursive(x, y, xSize, ySize) << std::endl;
-  std::cout << Solution::memorized(x, xSize, y, ySize) << std::endl;
-  std::cout << Solution::bottomUp(x, xSize, y, ySize) << std::endl;
-  int result = 0;
-  int b[xSize + 1][ySize + 1];
-  Solution::extendedBottomUp(x, xSize, y, ySize, result, (int *)b, ySize + 1);
-  std::cout << result << std::endl;
-  Solution::constructSolution((int *)b, ySize + 1, x, xSize, ySize);
+  TestRecursive();
+  TestMemorized();
+  TestBottomUp();
+  TestExtendedBottomUp();
 }
