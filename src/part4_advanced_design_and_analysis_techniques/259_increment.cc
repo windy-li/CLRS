@@ -15,7 +15,7 @@ class Solution {
   }
 };
 
-void TestIncreament() {
+void TestIncrement() {
   std::vector<int> nums(8);
   Solution s;
   for (int i = 1; i <= 16; ++i) {
@@ -23,4 +23,4 @@ void TestIncreament() {
   }
 }
 
-int main() { TestIncreament(); }
+int main() { TestIncrement(); }
