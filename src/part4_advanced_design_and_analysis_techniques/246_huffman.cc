@@ -20,7 +20,7 @@ class Solution {
  public:
   Node* BuildTree(std::vector<char>& keys, std::vector<int>& weights) {
     int n = keys.size();
-    std::vector<Node*> nodes(n, new Node());
+    std::vector<Node*> nodes(n, nullptr);
     for (int i = 0; i < n; ++i) {
       nodes[i] = new Node(keys[i], weights[i]);
     }
