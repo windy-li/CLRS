@@ -17,8 +17,8 @@ class Solution {
   double Memorized(std::vector<double>& p, std::vector<double>& q) {
     int n = p.size() - 1;
     std::vector<std::vector<double>> e(n + 2, std::vector<double>(n + 2));
-    for (int i = 1; i <= n + 1; i++) {
-      for (int j = i - 1; j <= n + 1; j++) {
+    for (int i = 1; i <= n + 1; ++i) {
+      for (int j = i - 1; j <= n + 1; ++j) {
         if (j == i - 1) {
           e[i][j] = q[i - 1];
         } else {
