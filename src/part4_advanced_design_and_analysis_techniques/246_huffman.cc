@@ -13,7 +13,10 @@ class Node {
 
   bool operator<(const Node& target) const { return weight_ < target.weight_; }
 
-  bool operator>(const Node& target) const { return weight_ > target.weight_; }
+  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << "Node{ key: " << node.key_ << ", weight: " << node.weight_ << " }";
+    return os;
+  }
 };
 
 class Solution {
@@ -24,23 +27,20 @@ class Solution {
     for (int i = 0; i < n; ++i) {
       nodes[i] = new Node(keys[i], weights[i]);
     }
-    std::priority_queue<Node*> queue;
-    for (Node* node : nodes) {
-      queue.push(node);
-    }
+    std::priority_queue<Node*, std::vector<Node*>, std::greater<>> pq(nodes.begin(), nodes.end());
     for (int i = 0; i < n - 1; ++i) {
       Node* z = new Node();
-      Node* x = queue.top();
-      queue.pop();
-      Node* y = queue.top();
-      queue.pop();
+      Node* x = pq.top();
+      pq.pop();
+      Node* y = pq.top();
+      pq.pop();
       z->left_ = x;
       z->right_ = y;
       z->weight_ = x->weight_ + y->weight_;
-      queue.push(z);
+      pq.push(z);
     }
-    Node* ret = queue.top();
-    queue.pop();
+    Node* ret = pq.top();
+    pq.pop();
     return ret;
   }
 
@@ -60,7 +60,7 @@ void TestHuffman() {
   std::vector<char> keys = {'a', 'b', 'c', 'd', 'e', 'f'};
   std::vector<int> weights = {45, 13, 12, 16, 9, 5};
   Node* root = solution.BuildTree(keys, weights);
-  std::cout << root << std::endl;
+  std::cout << *root << std::endl;
   solution.PrintCode(root, "");
 }
 

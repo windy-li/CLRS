@@ -21,6 +21,7 @@ void TestIncrement() {
   for (int i = 1; i <= 16; ++i) {
     s.Increment(nums);
   }
+  clrs::PrintVector(nums);
 }
 
 int main() { TestIncrement(); }
