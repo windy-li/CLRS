@@ -27,7 +27,7 @@ class Solution {
     for (int i = 0; i < n; ++i) {
       nodes[i] = new Node(keys[i], weights[i]);
     }
-    std::priority_queue<Node*, std::vector<Node*>, std::greater<>> pq(nodes.begin(), nodes.end());
+    std::priority_queue<Node*, std::vector<Node*>, std::less<>> pq(nodes.begin(), nodes.end());
     for (int i = 0; i < n - 1; ++i) {
       Node* z = new Node();
       Node* x = pq.top();
