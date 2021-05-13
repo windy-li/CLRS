@@ -51,6 +51,19 @@ struct Graph {
     adj[end_id].push_back(e);
     E += 2;
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
+    for (int i = 0; i < graph.V; ++i) {
+      os << *graph.vertices[i];
+      os << ": ";
+      for (Edge* e : graph.adj[i]) {
+        os << *graph.vertices[e->Other(i)];
+        os << " ";
+      }
+      os << "\n";
+    }
+    return os;
+  }
 };
 
 class Solution {
@@ -109,6 +122,10 @@ void TestBreadthFirstSearch() {
   graph->AddEdge(3, 5);
   s.BreadthFirstSearch(graph, 0);
   s.PrintPath(graph->vertices[0], graph->vertices[5]);
+  std::cout << std::endl;
+  s.PrintPath(graph->vertices[0], graph->vertices[6]);
+  std::cout << std::endl;
+  std::cout << *graph << std::endl;
 }
 
 int main() { TestBreadthFirstSearch(); }
