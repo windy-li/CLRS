@@ -22,10 +22,7 @@ struct Graph {
   std::vector<std::list<Edge*>> adj;
 
   explicit Graph(int v_count)
-      : V(v_count),
-        E(0),
-        vertices(std::vector<Vertex*>(v_count)),
-        adj(std::vector<std::list<Edge*>>(v_count, std::list<Edge*>())) {
+      : V(v_count), E(0), vertices(std::vector<Vertex*>(v_count)), adj(std::vector<std::list<Edge*>>(v_count)) {
     for (int i = 0; i < v_count; ++i) {
       vertices[i] = new Vertex(i);
       adj[i] = std::list<Edge*>();
