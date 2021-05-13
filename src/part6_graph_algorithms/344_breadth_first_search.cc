@@ -7,12 +7,30 @@ struct Vertex {
   int id;
 
   explicit Vertex(int id) : visited(false), d(0), pre(nullptr), id(id) {}
+
+  friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
+    os << vertex.id;
+    return os;
+  }
 };
 
 struct Edge {
-  int Other(int id) { return 0; }
+  int start_id;
+  int end_id;
 
-  Edge(int begin_id, int end_id) {}
+  Edge(int start_id, int end_id) : start_id(start_id), end_id(end_id) {}
+
+  int Either() { return start_id; }
+
+  int Other(int vertex_id) {
+    if (vertex_id == start_id) {
+      return end_id;
+    } else if (vertex_id == end_id) {
+      return start_id;
+    } else {
+      throw std::invalid_argument("no such vertex in this edge");
+    }
+  }
 };
 
 struct Graph {
@@ -29,9 +47,9 @@ struct Graph {
     }
   }
 
-  void AddEdge(int begin_id, int end_id) {
-    auto* e = new Edge(begin_id, end_id);
-    adj[begin_id].push_back(e);
+  void AddEdge(int start_id, int end_id) {
+    auto* e = new Edge(start_id, end_id);
+    adj[start_id].push_back(e);
     adj[end_id].push_back(e);
     E += 2;
   }
@@ -44,7 +62,7 @@ class Solution {
     for (int i = 0; i < V; ++i) {
       Vertex* u = graph->vertices[i];
       u->visited = false;
-      u->d = std::numeric_limits<int>::max();
+      u->d = INT_MAX;
       u->pre = nullptr;
     }
     Vertex* src = graph->vertices[src_id];
@@ -67,6 +85,19 @@ class Solution {
       u->visited = true;
     }
   }
+
+  void PrintPath(Vertex* src, Vertex* dest) {
+    if (src == dest) {
+      std::cout << *src << " ";
+    } else {
+      if (dest->pre == nullptr) {
+        std::cout << "no path from " << *src << " to " << *dest << std::endl;
+      } else {
+        PrintPath(src, dest->pre);
+        std::cout << *dest << " ";
+      }
+    }
+  }
 };
 
 void TestBreadthFirstSearch() {
@@ -79,6 +110,7 @@ void TestBreadthFirstSearch() {
   graph->AddEdge(3, 4);
   graph->AddEdge(3, 5);
   s.BreadthFirstSearch(graph, 0);
+  s.PrintPath(graph->vertices[0], graph->vertices[5]);
 }
 
 int main() { TestBreadthFirstSearch(); }
