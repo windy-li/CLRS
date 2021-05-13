@@ -20,8 +20,6 @@ struct Edge {
 
   Edge(int start_id, int end_id) : start_id(start_id), end_id(end_id) {}
 
-  int Either() { return start_id; }
-
   int Other(int vertex_id) {
     if (vertex_id == start_id) {
       return end_id;
