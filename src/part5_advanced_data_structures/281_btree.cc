@@ -26,7 +26,7 @@ class BTree {
       return {node, i};
     } else {
       if (node->leaf) {
-        return {};
+        return {nullptr, 0};
       } else {
         return Search(node->children[i], key);
       }
