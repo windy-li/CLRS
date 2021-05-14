@@ -85,7 +85,7 @@ class Solution {
     while (!queue.empty()) {
       Vertex* u = queue.front();
       queue.pop();
-      for (auto* e : graph->adj[u->id]) {
+      for (Edge* e : graph->adj[u->id]) {
         Vertex* v = graph->vertices[e->Other(u->id)];
         if (!v->visited) {
           v->visited = true;
