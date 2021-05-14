@@ -37,11 +37,13 @@ struct Graph {
   std::vector<Vertex*> vertices;
   std::vector<std::list<Edge*>> adj;
 
-  explicit Graph(int v_count)
-      : V(v_count), E(0), vertices(std::vector<Vertex*>(v_count)), adj(std::vector<std::list<Edge*>>(v_count)) {
-    for (int i = 0; i < v_count; ++i) {
+  explicit Graph(int vertices_count)
+      : V(vertices_count),
+        E(0),
+        vertices(std::vector<Vertex*>(vertices_count, nullptr)),
+        adj(std::vector<std::list<Edge*>>(vertices_count, std::list<Edge*>())) {
+    for (int i = 0; i < vertices_count; ++i) {
       vertices[i] = new Vertex(i);
-      adj[i] = std::list<Edge*>();
     }
   }
 
@@ -69,50 +71,49 @@ struct Graph {
 class Solution {
  public:
   void BreadthFirstSearch(Graph* graph, int src_id) {
-    int V = graph->V;
-    for (int i = 0; i < V; ++i) {
+    for (int i = 0; i < graph->V; ++i) {
       Vertex* u = graph->vertices[i];
       u->visited = false;
-      u->d = INT_MAX;
+      u->d = std::numeric_limits<int>::max();
       u->pre = nullptr;
     }
     Vertex* src = graph->vertices[src_id];
     src->visited = true;
     src->d = 0;
-    std::queue<Vertex*> q;
-    q.push(src);
-    while (!q.empty()) {
-      Vertex* u = q.front();
-      q.pop();
+    std::queue<Vertex*> queue;
+    queue.push(src);
+    while (!queue.empty()) {
+      Vertex* u = queue.front();
+      queue.pop();
       for (auto* e : graph->adj[u->id]) {
         Vertex* v = graph->vertices[e->Other(u->id)];
         if (!v->visited) {
           v->visited = true;
           v->d = u->d + 1;
           v->pre = u;
-          q.push(v);
+          queue.push(v);
         }
       }
       u->visited = true;
     }
   }
 
-  void PrintPath(Vertex* src, Vertex* dest) {
-    if (src == dest) {
+  void PrintPath(Vertex* src, Vertex* dst) {
+    if (src == dst) {
       std::cout << *src << " ";
     } else {
-      if (dest->pre == nullptr) {
-        std::cout << "no path from " << *src << " to " << *dest << std::endl;
+      if (dst->pre == nullptr) {
+        std::cout << "no path from " << *src << " to " << *dst << std::endl;
       } else {
-        PrintPath(src, dest->pre);
-        std::cout << *dest << " ";
+        PrintPath(src, dst->pre);
+        std::cout << *dst << " ";
       }
     }
   }
 };
 
 void TestBreadthFirstSearch() {
-  Solution s;
+  Solution solution;
   auto* graph = new Graph(7);
   graph->AddEdge(0, 1);
   graph->AddEdge(0, 2);
@@ -120,10 +121,10 @@ void TestBreadthFirstSearch() {
   graph->AddEdge(2, 3);
   graph->AddEdge(3, 4);
   graph->AddEdge(3, 5);
-  s.BreadthFirstSearch(graph, 0);
-  s.PrintPath(graph->vertices[0], graph->vertices[5]);
+  solution.BreadthFirstSearch(graph, 0);
+  solution.PrintPath(graph->vertices[0], graph->vertices[5]);
   std::cout << std::endl;
-  s.PrintPath(graph->vertices[0], graph->vertices[6]);
+  solution.PrintPath(graph->vertices[0], graph->vertices[6]);
   std::cout << std::endl;
   std::cout << *graph << std::endl;
 }
