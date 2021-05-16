@@ -41,7 +41,7 @@ class Solution {
 };
 
 void Test() {
-  Solution self;
+  Solution solution;
   Digraph digraph(5);
   digraph.AddEdge(0, 1);
   digraph.AddEdge(0, 3);
@@ -51,7 +51,7 @@ void Test() {
   digraph.AddEdge(3, 2);
   digraph.AddEdge(3, 4);
   std::cout << Digraph::ToString(&digraph) << std::endl;
-  std::list<Vertex*> sorted_vertices = self.TopologicalSort(&digraph);
+  std::list<Vertex*> sorted_vertices = solution.TopologicalSort(&digraph);
   for (Vertex* v : sorted_vertices) {
     std::cout << std::to_string(v->id) + " ";
   }
