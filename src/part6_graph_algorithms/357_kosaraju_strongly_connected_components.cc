@@ -44,10 +44,11 @@ class Solution {
       }
     }
 
-    components_ = std::vector<std::list<Vertex*>>(count_);
-    for (int i = 0; i < count_; i++) {
-      components_[i] = std::list<Vertex*>();
-    }
+    components_ = std::vector<std::list<Vertex*>>(count_, std::list<Vertex*>());
+    //    for (int i = 0; i < count_; i++) {
+    //      components_[i] = std::list<Vertex*>();
+    //    }
+
     //    for (int i = 0; i < digraph->V; i++) {
     //      Vertex* u = t_digraph->vertices[i];
     //      components_[u->component_id].push_back(u);
@@ -59,9 +60,9 @@ class Solution {
     result_digraph_ = t_digraph;
   }
 
-  bool Connected(int u_id, int v_id) {
-    Vertex* u = result_digraph_->vertices[u_id];
-    Vertex* v = result_digraph_->vertices[v_id];
+  bool Connected(int u_vertex_id, int v_vertex_id) {
+    Vertex* u = result_digraph_->vertices[u_vertex_id];
+    Vertex* v = result_digraph_->vertices[v_vertex_id];
     return u->component_id == v->component_id;
   }
 
