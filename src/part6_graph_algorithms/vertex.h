@@ -10,7 +10,7 @@ struct Vertex {
   int id;
   int f;
 
-  explicit Vertex(int id) : visited(false), d(0), pre(nullptr), id(id) {}
+  explicit Vertex(int id) : id(id) {}
 
   friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
     os << vertex.id;

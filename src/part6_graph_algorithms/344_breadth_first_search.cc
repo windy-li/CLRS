@@ -1,7 +1,8 @@
 #include "clrs.h"
-#include "part6_graph_algorithms/vertex.h"
 #include "part6_graph_algorithms/edge.h"
 #include "part6_graph_algorithms/graph.h"
+#include "part6_graph_algorithms/graph_util.h"
+#include "part6_graph_algorithms/vertex.h"
 
 class Solution {
  public:
@@ -32,19 +33,6 @@ class Solution {
       u->visited = true;
     }
   }
-
-  void PrintPath(Vertex* src, Vertex* dst) {
-    if (src == dst) {
-      std::cout << *src << " ";
-    } else {
-      if (dst->pre == nullptr) {
-        std::cout << "no path from " << *src << " to " << *dst << std::endl;
-      } else {
-        PrintPath(src, dst->pre);
-        std::cout << *dst << " ";
-      }
-    }
-  }
 };
 
 void TestBreadthFirstSearch() {
@@ -57,9 +45,9 @@ void TestBreadthFirstSearch() {
   graph->AddEdge(3, 4);
   graph->AddEdge(3, 5);
   solution.BreadthFirstSearch(graph, 0);
-  solution.PrintPath(graph->vertices[0], graph->vertices[5]);
+  graph_util::PrintPath(graph->vertices[0], graph->vertices[5]);
   std::cout << std::endl;
-  solution.PrintPath(graph->vertices[0], graph->vertices[6]);
+  graph_util::PrintPath(graph->vertices[0], graph->vertices[6]);
   std::cout << std::endl;
   std::cout << *graph << std::endl;
 }
