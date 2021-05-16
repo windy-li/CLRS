@@ -41,7 +41,12 @@ struct Graph {
     return os;
   }
 
-  static std::string ToString(Graph* graph) { return ""; }
+  static std::string ToString(Graph* graph) {
+    std::string str;
+    for (int i = 0; i < graph->V; i++) {
+    }
+    return "";
+  }
 };
 
 #endif  // CLRS_SRC_PART6_GRAPH_ALGORITHMS_GRAPH_H_
