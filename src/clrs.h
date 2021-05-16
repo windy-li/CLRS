@@ -19,8 +19,6 @@
 
 namespace clrs {
 
-using error = int;
-
 template <typename T>
 void PrintVector(std::vector<T>& vec) {
   int n = vec.size();

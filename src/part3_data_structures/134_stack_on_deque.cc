@@ -8,7 +8,7 @@ class Stack {
 
   void Push(int key) { dq_->push_back(key); }
 
-  std::tuple<int, clrs::error> Pop() {
+  std::tuple<int, int> Pop() {
     if (Empty()) {
       return {0, 1};
     }

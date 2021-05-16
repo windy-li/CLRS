@@ -8,7 +8,7 @@ class Stack {
 
   bool Full() { return top_ == capacity_ - 1; }
 
-  clrs::error Push(int key) {
+  int Push(int key) {
     if (Full()) {
       std::cerr << "stack overflow" << std::endl;
       return 1;
@@ -17,7 +17,7 @@ class Stack {
     return 0;
   }
 
-  std::tuple<int, clrs::error> Pop() {
+  std::tuple<int, int> Pop() {
     if (Empty()) {
       std::cerr << "stack underflow" << std::endl;
       return {0, 1};
