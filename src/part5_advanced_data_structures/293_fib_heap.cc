@@ -214,7 +214,7 @@ FibHeap* TestFibHeap1() {
   std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
   std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
   std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << "------------------" << std::endl;
+  clrs::PrintBorder();
   return fib_heap;
 }
 
@@ -225,7 +225,7 @@ FibHeap* TestFibHeap2() {
   fib_heap->Insert(9);
   std::cout << Node::ToString(fib_heap->Minimum()) << std::endl;
   std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << "------------------" << std::endl;
+  clrs::PrintBorder();
   return fib_heap;
 }
 

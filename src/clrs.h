@@ -48,6 +48,8 @@ double Random() {
   return dis(gen);
 }
 
+void PrintBorder() { std::cout << "------------------------------" << std::endl; }
+
 }  // namespace clrs
 
 #endif  // CLRS_CLRS_H

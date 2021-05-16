@@ -80,14 +80,14 @@ void TestDisjointSet() {
     self.Union(nodes[i], nodes[i + 1]);
   }
 
-  // In this line, we now have:
+  // in this line, we now have:
   // {1, 2} {3, 4} {5, 6} {7, 8} {9, 10} {11, 12} {13, 14} {15, 16}
 
   for (int i = 1; i <= 13; i += 4) {
     self.Union(nodes[i], nodes[i + 2]);
   }
 
-  // In this line, we now have:
+  // in this line, we now have:
   // {1, 2, 3, 4} {5, 6, 7, 8} {9, 10, 11, 12} {13, 14, 15, 16}
 
   self.Union(nodes[1], nodes[5]);
