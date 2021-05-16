@@ -2,7 +2,6 @@
 #define CLRS_SRC_PART6_GRAPH_ALGORITHMS_GRAPH_H_
 
 #include "clrs.h"
-#include "part6_graph_algorithms/graph.h"
 #include "part6_graph_algorithms/vertex.h"
 
 struct Graph {
@@ -28,24 +27,16 @@ struct Graph {
     E += 2;
   }
 
-  friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
-    for (int i = 0; i < graph.V; ++i) {
-      os << *graph.vertices[i];
-      os << ": ";
-      for (Edge* e : graph.adj[i]) {
-        os << *graph.vertices[e->Other(i)];
-        os << " ";
-      }
-      os << "\n";
-    }
-    return os;
-  }
-
   static std::string ToString(Graph* graph) {
     std::string str;
     for (int i = 0; i < graph->V; i++) {
+      str += Vertex::ToString(graph->vertices[i]) + ": ";
+      for (Edge* e : graph->adj[i]) {
+        str += std::to_string(e->Other(i)) + " ";
+      }
+      str += "\n";
     }
-    return "";
+    return str;
   }
 };
 

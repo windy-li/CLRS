@@ -49,7 +49,20 @@ void TestBreadthFirstSearch() {
   std::cout << std::endl;
   graph_util::PrintPath(graph->vertices[0], graph->vertices[6]);
   std::cout << std::endl;
-  std::cout << *graph << std::endl;
+  std::cout << Graph::ToString(graph) << std::endl;
 }
 
 int main() { TestBreadthFirstSearch(); }
+
+/*
+0 1 3 5
+No path from 0 to 6
+
+0: 1 2
+1: 0 3
+2: 0 3
+3: 1 2 4 5
+4: 3
+5: 3
+6:
+ */
