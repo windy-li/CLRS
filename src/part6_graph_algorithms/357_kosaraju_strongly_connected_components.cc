@@ -60,9 +60,9 @@ class Solution {
     result_digraph_ = t_digraph;
   }
 
-  bool Connected(int u_vertex_id, int v_vertex_id) {
-    Vertex* u = result_digraph_->vertices[u_vertex_id];
-    Vertex* v = result_digraph_->vertices[v_vertex_id];
+  bool Connected(int u_id, int v_id) {
+    Vertex* u = result_digraph_->vertices[u_id];
+    Vertex* v = result_digraph_->vertices[v_id];
     return u->component_id == v->component_id;
   }
 
