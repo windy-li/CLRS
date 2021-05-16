@@ -71,30 +71,30 @@ class DisjointSet {
 };
 
 void TestDisjointSet() {
-  DisjointSet self;
+  DisjointSet disjoint_set;
   std::vector<Node*> nodes(17, nullptr);
   for (int i = 1; i <= 16; i++) {
-    nodes[i] = self.MakeSet(i);
+    nodes[i] = disjoint_set.MakeSet(i);
   }
   for (int i = 1; i <= 15; i += 2) {
-    self.Union(nodes[i], nodes[i + 1]);
+    disjoint_set.Union(nodes[i], nodes[i + 1]);
   }
 
   // in this line, we now have:
   // {1, 2} {3, 4} {5, 6} {7, 8} {9, 10} {11, 12} {13, 14} {15, 16}
 
   for (int i = 1; i <= 13; i += 4) {
-    self.Union(nodes[i], nodes[i + 2]);
+    disjoint_set.Union(nodes[i], nodes[i + 2]);
   }
 
   // in this line, we now have:
   // {1, 2, 3, 4} {5, 6, 7, 8} {9, 10, 11, 12} {13, 14, 15, 16}
 
-  self.Union(nodes[1], nodes[5]);
-  self.Union(nodes[11], nodes[13]);
-  self.Union(nodes[1], nodes[10]);
-  std::cout << Set::ToString(self.FindSet(nodes[2])->set) << std::endl;
-  std::cout << Set::ToString(self.FindSet(nodes[9])->set) << std::endl;
+  disjoint_set.Union(nodes[1], nodes[5]);
+  disjoint_set.Union(nodes[11], nodes[13]);
+  disjoint_set.Union(nodes[1], nodes[10]);
+  std::cout << Set::ToString(disjoint_set.FindSet(nodes[2])->set) << std::endl;
+  std::cout << Set::ToString(disjoint_set.FindSet(nodes[9])->set) << std::endl;
 }
 
 int main() { TestDisjointSet(); }

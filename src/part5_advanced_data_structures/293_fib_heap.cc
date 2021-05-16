@@ -202,35 +202,33 @@ class FibHeap {
 };
 
 FibHeap* TestFibHeap1() {
-  auto* fib_heap = new FibHeap();
-  fib_heap->Insert(7);
-  fib_heap->Insert(5);
-  fib_heap->Insert(8);
-  std::cout << Node::ToString(fib_heap->Minimum()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  clrs::PrintBorder();
-  return fib_heap;
+  auto* heap = new FibHeap();
+  heap->Insert(7);
+  heap->Insert(5);
+  heap->Insert(8);
+  std::cout << Node::ToString(heap->Minimum()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  return heap;
 }
 
 FibHeap* TestFibHeap2() {
-  auto* fib_heap = new FibHeap();
-  fib_heap->Insert(10);
-  fib_heap->Insert(11);
-  fib_heap->Insert(9);
-  std::cout << Node::ToString(fib_heap->Minimum()) << std::endl;
-  std::cout << Node::ToString(fib_heap->ExtractMin()) << std::endl;
-  clrs::PrintBorder();
-  return fib_heap;
+  auto* heap = new FibHeap();
+  heap->Insert(10);
+  heap->Insert(11);
+  heap->Insert(9);
+  std::cout << Node::ToString(heap->Minimum()) << std::endl;
+  std::cout << Node::ToString(heap->ExtractMin()) << std::endl;
+  return heap;
 }
 
 void TestFibHeap3(FibHeap* heap1, FibHeap* heap2) {
-  auto heap3 = heap1->Union(heap1, heap2);
+  FibHeap* heap3 = heap1->Union(heap1, heap2);
   std::cout << Node::ToString(heap3->Minimum()) << std::endl;
   std::cout << Node::ToString(heap3->ExtractMin()) << std::endl;
   std::cout << Node::ToString(heap3->ExtractMin()) << std::endl;
@@ -244,7 +242,9 @@ void TestFibHeap3(FibHeap* heap1, FibHeap* heap2) {
 }
 
 int main() {
-  auto heap1 = TestFibHeap1();
-  auto heap2 = TestFibHeap2();
+  FibHeap* heap1 = TestFibHeap1();
+  clrs::PrintBorder();
+  FibHeap* heap2 = TestFibHeap2();
+  clrs::PrintBorder();
   TestFibHeap3(heap1, heap2);
 }

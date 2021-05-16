@@ -54,31 +54,31 @@ class DisjointSetForest {
 };
 
 void TestDisjointSetForest() {
-  DisjointSetForest self;
+  DisjointSetForest forest;
 
   std::vector<Node*> nodes(17, nullptr);
   for (int i = 1; i <= 16; i++) {
-    nodes[i] = self.MakeSet(i);
+    nodes[i] = forest.MakeSet(i);
   }
   for (int i = 1; i <= 15; i += 2) {
-    self.Union(nodes[i], nodes[i + 1]);
+    forest.Union(nodes[i], nodes[i + 1]);
   }
 
-  self.PrintSets(nodes);
+  forest.PrintSets(nodes);
   clrs::PrintBorder();
 
   // in this line, we now have:
   // {1, 2, 3, 4} {5, 6, 7, 8} {9, 10, 11, 12} {13, 14, 15, 16}
 
-  self.Union(nodes[1], nodes[5]);
-  self.Union(nodes[11], nodes[13]);
-  self.Union(nodes[1], nodes[10]);
+  forest.Union(nodes[1], nodes[5]);
+  forest.Union(nodes[11], nodes[13]);
+  forest.Union(nodes[1], nodes[10]);
 
-  self.PrintSets(nodes);
+  forest.PrintSets(nodes);
   clrs::PrintBorder();
 
-  std::cout << Node::ToString(self.FindSet(nodes[2])) << std::endl;
-  std::cout << Node::ToString(self.FindSet(nodes[9])) << std::endl;
+  std::cout << Node::ToString(forest.FindSet(nodes[2])) << std::endl;
+  std::cout << Node::ToString(forest.FindSet(nodes[9])) << std::endl;
 }
 
 int main() { TestDisjointSetForest(); }
