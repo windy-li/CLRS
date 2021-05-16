@@ -7,11 +7,16 @@
 class Solution {
  public:
   void BreadthFirstSearch(Graph* graph, int src_id) {
-    for (int i = 0; i < graph->V; ++i) {
-      Vertex* u = graph->vertices[i];
-      u->visited = false;
-      u->d = std::numeric_limits<int>::max();
-      u->pre = nullptr;
+    //    for (int i = 0; i < graph->V; ++i) {
+    //      Vertex* u = graph->vertices[i];
+    //      u->visited = false;
+    //      u->d = std::numeric_limits<int>::max();
+    //      u->pre = nullptr;
+    //    }
+    for (Vertex* v : graph->vertices) {
+      v->visited = false;
+      v->d = std::numeric_limits<int>::max();
+      v->pre = nullptr;
     }
     Vertex* src = graph->vertices[src_id];
     src->visited = true;
