@@ -41,7 +41,7 @@ class Solution {
 };
 
 void TestDepthFirstSearch() {
-  Solution s;
+  Solution solution;
   auto* graph = new Graph(6);
   graph->AddEdge(0, 1);
   graph->AddEdge(0, 2);
@@ -49,7 +49,7 @@ void TestDepthFirstSearch() {
   graph->AddEdge(2, 3);
   graph->AddEdge(3, 4);
   graph->AddEdge(3, 5);
-  s.DFS(graph);
+  solution.DFS(graph);
 }
 
 int main() { TestDepthFirstSearch(); }

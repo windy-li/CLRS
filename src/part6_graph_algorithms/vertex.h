@@ -11,6 +11,7 @@ struct Vertex {
   int f;
   std::string label;
   int key;
+  int component_id;
 
   explicit Vertex(int id) : id(id) {}
 
@@ -22,7 +23,10 @@ struct Vertex {
     if (vertex == nullptr) {
       return "nullptr";
     }
-    return std::to_string(vertex->id);
+    if (vertex->label.empty()) {
+      return std::to_string(vertex->id);
+    }
+    return vertex->label;
   }
 };
 

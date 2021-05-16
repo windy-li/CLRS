@@ -29,7 +29,7 @@ struct Digraph {
         adj(std::vector<std::list<Edge*>>(vertices_count, std::list<Edge*>())),
         labels(std::vector<std::string>(labels)) {
     for (int i = 0; i < vertices_count; ++i) {
-      vertices[i] = new Vertex(i);
+      vertices[i] = new Vertex(i, labels[i]);
     }
   }
 
@@ -79,7 +79,7 @@ struct Digraph {
     for (int i = 0; i < digraph->V; i++) {
       str += Vertex::ToString(digraph->vertices[i]) + ": ";
       for (Edge* e : digraph->adj[i]) {
-        str += std::to_string(e->Other(i)) + " ";
+        str += Vertex::ToString(digraph->vertices[e->Other(i)]) + " ";
       }
       str += "\n";
     }
