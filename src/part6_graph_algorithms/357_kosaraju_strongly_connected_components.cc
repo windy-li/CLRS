@@ -113,8 +113,8 @@ void Test() {
   size_t count = components.size();
   std::cout << count << " components" << std::endl;
 
-  for (std::list<Vertex*>& vertices : components) {
-    for (Vertex* v : vertices) {
+  for (std::list<Vertex*>& vertex_list : components) {
+    for (Vertex* v : vertex_list) {
       std::cout << Vertex::ToString(v) + " ";
     }
     std::cout << std::endl;
