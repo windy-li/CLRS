@@ -9,19 +9,30 @@ class Solution {
   std::vector<std::list<Vertex*>> components() { return components_; }
 
   void StronglyConnectedComponents(Digraph* digraph) {
-    for (int i = 0; i < digraph->V; i++) {
-      digraph->vertices[i]->visited = false;
+    //    for (int i = 0; i < digraph->V; i++) {
+    //      digraph->vertices[i]->visited = false;
+    //    }
+    for (Vertex* v : digraph->vertices) {
+      v->visited = false;
     }
-    for (int i = 0; i < digraph->V; i++) {
-      Vertex* u = digraph->vertices[i];
-      if (!u->visited) {
-        DFS(digraph, u, false);
+    //    for (int i = 0; i < digraph->V; i++) {
+    //      Vertex* u = digraph->vertices[i];
+    //      if (!u->visited) {
+    //        DFS(digraph, u, false);
+    //      }
+    //    }
+    for (Vertex* v : digraph->vertices) {
+      if (!v->visited) {
+        DFS(digraph, v, false);
       }
     }
 
     Digraph* t_digraph = digraph->Transpose();
-    for (int i = 0; i < digraph->V; i++) {
-      t_digraph->vertices[i]->visited = false;
+    //    for (int i = 0; i < digraph->V; i++) {
+    //      t_digraph->vertices[i]->visited = false;
+    //    }
+    for (Vertex* v : t_digraph->vertices) {
+      v->visited = false;
     }
     while (!stack_.empty()) {
       Vertex* top = stack_.top();
@@ -37,9 +48,12 @@ class Solution {
     for (int i = 0; i < count_; i++) {
       components_[i] = std::list<Vertex*>();
     }
-    for (int i = 0; i < digraph->V; i++) {
-      Vertex* u = t_digraph->vertices[i];
-      components_[u->component_id].push_back(u);
+    //    for (int i = 0; i < digraph->V; i++) {
+    //      Vertex* u = t_digraph->vertices[i];
+    //      components_[u->component_id].push_back(u);
+    //    }
+    for (Vertex* v : t_digraph->vertices) {
+      components_[v->component_id].push_back(v);
     }
 
     result_digraph_ = t_digraph;
