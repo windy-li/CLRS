@@ -20,12 +20,12 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestBinaryIntegerAdding() {
   std::vector<int> a = {1, 0, 1, 1, 1, 0};
   std::vector<int> b = {0, 1, 1, 1, 0, 0};
-  std::vector<int> c = s.BinaryIntegerAdding(a, b);
+  std::vector<int> c = solution.BinaryIntegerAdding(a, b);
   clrs::PrintVector(c);
 }
 

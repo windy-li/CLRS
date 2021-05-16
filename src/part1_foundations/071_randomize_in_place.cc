@@ -10,7 +10,7 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestRandomizeInPlace() {
   int n = 10;
@@ -18,7 +18,7 @@ void TestRandomizeInPlace() {
   for (int i = 0; i < n; ++i) {
     nums[i] = i;
   }
-  s.RandomizeInPlace(nums);
+  solution.RandomizeInPlace(nums);
   clrs::PrintVector(nums);
 }
 

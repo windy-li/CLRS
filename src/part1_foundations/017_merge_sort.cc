@@ -74,19 +74,19 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestMergeSort() {
   std::vector<int> nums = {1, 3, 4, 2};
   int n = nums.size();
-  s.MergeSort(nums, 0, n - 1);
+  solution.MergeSort(nums, 0, n - 1);
   clrs::PrintVector(nums);
 }
 
 void TestMergeSortBySentinels() {
   std::vector<int> nums = {1, 3, 4, 2};
   int n = nums.size();
-  s.MergeSortBySentinels(nums, 0, n - 1);
+  solution.MergeSortBySentinels(nums, 0, n - 1);
   clrs::PrintVector(nums);
 }
 

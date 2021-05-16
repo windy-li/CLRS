@@ -20,13 +20,13 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestCanDivide() {
   std::vector<int> nums = {8, 1, 4, 6, 9, 5};
   int x1 = 7;
   int x2 = 8;
-  std::cout << s.CanDivide(nums, x1) << " " << s.CanDivide(nums, x2);
+  std::cout << solution.CanDivide(nums, x1) << " " << solution.CanDivide(nums, x2);
 }
 
 int main() { TestCanDivide(); }

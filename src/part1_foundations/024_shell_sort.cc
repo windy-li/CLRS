@@ -18,11 +18,11 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestShellSort() {
   std::vector<int> nums = {2, 3, 8, 6, 1};
-  s.ShellSort(nums);
+  solution.ShellSort(nums);
   clrs::PrintVector(nums);
 }
 

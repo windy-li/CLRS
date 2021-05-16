@@ -29,18 +29,18 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestHornerRule() {
   std::vector<int> nums = {1, 2, 3};
   int x = 2;
-  std::cout << s.HornerRule(nums, x) << std::endl;
+  std::cout << solution.HornerRule(nums, x) << std::endl;
 }
 
 void TestNaivePolynomialEvaluation() {
   std::vector<int> nums = {1, 2, 3};
   int x = 2;
-  std::cout << s.NaivePolynomialEvaluation(nums, x) << std::endl;
+  std::cout << solution.NaivePolynomialEvaluation(nums, x) << std::endl;
 }
 
 int main() {

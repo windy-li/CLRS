@@ -14,11 +14,11 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestBubbleSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  s.BubbleSort(nums);
+  solution.BubbleSort(nums);
   clrs::PrintVector(nums);
 }
 

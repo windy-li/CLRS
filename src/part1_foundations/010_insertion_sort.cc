@@ -4,7 +4,7 @@ class Solution {
  public:
   void InsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 1; j < n; ++j) {
+    for (int j = 1; j < n; j++) {
       int key = nums[j];
       int i = j - 1;
       while (i >= 0 && nums[i] > key) {
@@ -30,7 +30,7 @@ class Solution {
 
   void NonIncreasingInsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 1; j < n; ++j) {
+    for (int j = 1; j < n; j++) {
       int key = nums[j];
       int i = j - 1;
       while (i >= 0 && nums[i] < key) {
@@ -43,7 +43,7 @@ class Solution {
 
   void BinaryInsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 0; j < n; ++j) {
+    for (int j = 0; j < n; j++) {
       int key = nums[j];
       int i = j - 1;
       int insert_position = std::abs(BinarySearch(nums, 0, j, key) + 1);
@@ -71,30 +71,30 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestInsertionSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  s.InsertionSort(nums);
+  solution.InsertionSort(nums);
   clrs::PrintVector(nums);
 }
 
 void TestRecursiveInsertionSort() {
   std::vector<int> nums = {1, 3, 4, 2};
   int n = nums.size();
-  s.RecursiveInsertionSort(nums, n - 1);
+  solution.RecursiveInsertionSort(nums, n - 1);
   clrs::PrintVector(nums);
 }
 
 void TestNonIncreasingInsertionSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  s.NonIncreasingInsertionSort(nums);
+  solution.NonIncreasingInsertionSort(nums);
   clrs::PrintVector(nums);
 }
 
 void TestBinaryInsertionSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  s.BinaryInsertionSort(nums);
+  solution.BinaryInsertionSort(nums);
   clrs::PrintVector(nums);
 }
 

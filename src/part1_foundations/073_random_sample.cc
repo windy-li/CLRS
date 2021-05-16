@@ -34,11 +34,11 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestRandomSample() {
   for (int i = 0; i < 10; ++i) {
-    auto list = s.RandomSample(3, 7);
+    auto list = solution.RandomSample(3, 7);
     for (auto item : list) {
       std::cout << item << " ";
     }

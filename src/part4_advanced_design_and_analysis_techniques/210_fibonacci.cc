@@ -45,17 +45,17 @@ class Solution {
 };
 
 const int n = 7;
-Solution s;
+Solution solution;
 
-void TestRecursive() { std::cout << s.Recursive(n) << std::endl; }
+void TestRecursive() { std::cout << solution.Recursive(n) << std::endl; }
 
-void TestTailRecursive() { std::cout << s.TailRecursive(n, 1, 1) << std::endl; }
+void TestTailRecursive() { std::cout << solution.TailRecursive(n, 1, 1) << std::endl; }
 
-void TestMemorized() { std::cout << s.Memorized(n) << std::endl; }
+void TestMemorized() { std::cout << solution.Memorized(n) << std::endl; }
 
 void TestBottomUp() {
   std::vector<int> d(n + 1);
-  s.BottomUp(n, d);
+  solution.BottomUp(n, d);
   for (int i = 1; i <= n; ++i) {
     std::cout << d[i] << " ";
   }

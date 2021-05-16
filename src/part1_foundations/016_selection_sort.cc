@@ -18,11 +18,11 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestSelectionSort() {
   std::vector<int> nums = {1, 3, 4, 2};
-  s.SelectionSort(nums);
+  solution.SelectionSort(nums);
   clrs::PrintVector(nums);
 }
 

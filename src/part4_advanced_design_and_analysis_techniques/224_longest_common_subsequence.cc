@@ -114,26 +114,26 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestRecursive() {
   std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
   std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
   int m = x.size();
   int n = y.size();
-  std::cout << s.Recursive(x, y, m, n) << std::endl;
+  std::cout << solution.Recursive(x, y, m, n) << std::endl;
 }
 
 void TestMemorized() {
   std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
   std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
-  std::cout << s.Memorized(x, y) << std::endl;
+  std::cout << solution.Memorized(x, y) << std::endl;
 }
 
 void TestBottomUp() {
   std::vector<char> x = {'A', 'B', 'C', 'B', 'D', 'B', 'A'};
   std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
-  std::cout << s.BottomUp(x, y) << std::endl;
+  std::cout << solution.BottomUp(x, y) << std::endl;
 }
 
 void TestExtendedBottomUp() {
@@ -141,9 +141,9 @@ void TestExtendedBottomUp() {
   std::vector<char> y = {'B', 'D', 'C', 'A', 'B', 'A'};
   int m = x.size();
   int n = y.size();
-  auto [a, b] = s.ExtendedBottomUp(x, y);
+  auto [a, b] = solution.ExtendedBottomUp(x, y);
   std::cout << a << std::endl;
-  s.ConstructSolution(b, x, m, n);
+  solution.ConstructSolution(b, x, m, n);
 }
 
 int main() {

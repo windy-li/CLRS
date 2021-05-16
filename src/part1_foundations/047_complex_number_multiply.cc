@@ -10,10 +10,10 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestComplexNumberMultiply() {
-  std::vector<int> result = s.ComplexNumberMultiply(1, 2, 3, 4);
+  std::vector<int> result = solution.ComplexNumberMultiply(1, 2, 3, 4);
   clrs::PrintVector(result);
 }
 

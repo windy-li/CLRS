@@ -19,11 +19,11 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestBucketSort() {
   std::vector<double> nums = {0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.68};
-  s.BucketSort(nums);
+  solution.BucketSort(nums);
   clrs::PrintVector(nums);
 }
 

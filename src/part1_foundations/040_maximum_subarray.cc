@@ -99,29 +99,29 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 std::vector<int> GetSampleVector() { return {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7}; }
 
 void TestBruteForce() {
   std::vector<int> nums = GetSampleVector();
-  auto [begin, end, max] = s.BruteForce(nums);
+  auto [begin, end, max] = solution.BruteForce(nums);
   std::cout << begin << " " << end << " " << max << std::endl;
 }
 
 void TestDivideAndConquer() {
   std::vector<int> nums = GetSampleVector();
   int n = nums.size();
-  auto result = s.DivideAndConquer(nums, 0, n - 1);
+  auto result = solution.DivideAndConquer(nums, 0, n - 1);
 }
 
 void TestBottomUp() {
   std::vector<int> nums = GetSampleVector();
-  std::cout << s.BottomUp(nums) << std::endl;
+  std::cout << solution.BottomUp(nums) << std::endl;
 }
 
 void TestExtendedBottomUp() {
   std::vector<int> nums = GetSampleVector();
-  auto result = s.ExtendedBottomUp(nums);
+  auto result = solution.ExtendedBottomUp(nums);
 }
 
 int main() {

@@ -27,7 +27,7 @@ class Solution {
   }
 };
 
-Solution s;
+Solution solution;
 
 void TestPermuteBySorting() {
   int n = 10;
@@ -35,7 +35,7 @@ void TestPermuteBySorting() {
   for (int i = 0; i < n; ++i) {
     nums[i] = i;
   }
-  s.PermuteBySorting(nums);
+  solution.PermuteBySorting(nums);
   clrs::PrintVector(nums);
 }
 
