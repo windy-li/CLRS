@@ -1,21 +1,24 @@
 #include "clrs.h"
 
-class Node {
- public:
-  char key_;
-  int weight_;
-  Node* left_;
-  Node* right_;
+struct Node {
+  char key;
+  int weight;
+  Node* left;
+  Node* right;
 
-  Node() : key_('-'), weight_(0), left_(nullptr), right_(nullptr) {}
+  Node() : key('-'), weight(0), left(nullptr), right(nullptr) {}
 
-  Node(char key, int weight) : key_(key), weight_(weight), left_(nullptr), right_(nullptr) {}
+  Node(char key, int weight) : key(key), weight(weight), left(nullptr), right(nullptr) {}
 
-  bool operator<(const Node& target) const { return weight_ < target.weight_; }
+  friend bool operator<(const Node& lhs, const Node& rhs) { return lhs.weight < rhs.weight; }
 
-  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
-    os << "Node{ key: " << node.key_ << ", weight: " << node.weight_ << " }";
-    return os;
+  static std::string ToString(Node* node) {
+    if (node == nullptr) {
+      return "nullptr";
+    }
+    std::string str;
+    str += "Node{ key: " + std::to_string(node->key) + ", weight: " + std::to_string(node->weight) + " }";
+    return str;
   }
 };
 
@@ -27,16 +30,19 @@ class Solution {
     for (int i = 0; i < n; ++i) {
       nodes[i] = new Node(keys[i], weights[i]);
     }
-    std::priority_queue<Node*, std::vector<Node*>, std::less<>> pq(nodes.begin(), nodes.end());
+    std::priority_queue<Node*> pq;
+    for (Node* node : nodes) {
+      pq.push(node);
+    }
     for (int i = 0; i < n - 1; ++i) {
       Node* z = new Node();
       Node* x = pq.top();
       pq.pop();
       Node* y = pq.top();
       pq.pop();
-      z->left_ = x;
-      z->right_ = y;
-      z->weight_ = x->weight_ + y->weight_;
+      z->left = x;
+      z->right = y;
+      z->weight = x->weight + y->weight;
       pq.push(z);
     }
     Node* ret = pq.top();
@@ -44,13 +50,13 @@ class Solution {
     return ret;
   }
 
-  void PrintCode(Node* node, const std::string& s) {
+  void PrintCode(Node* node, const std::string& str) {
     if (node != nullptr) {
-      PrintCode(node->left_, s + "0");
-      if (node->left_ == nullptr && node->right_ == nullptr) {
-        std::cout << node->key_ << ": " << s;
+      PrintCode(node->left, str + "0");
+      if (node->left == nullptr && node->right == nullptr) {
+        std::cout << std::to_string(node->key) << ": " << str;
       }
-      PrintCode(node->right_, s + "1");
+      PrintCode(node->right, str + "1");
     }
   }
 };
@@ -60,7 +66,7 @@ void TestHuffman() {
   std::vector<char> keys = {'a', 'b', 'c', 'd', 'e', 'f'};
   std::vector<int> weights = {45, 13, 12, 16, 9, 5};
   Node* root = solution.BuildTree(keys, weights);
-  std::cout << *root << std::endl;
+  std::cout << Node::ToString(root) << std::endl;
   solution.PrintCode(root, "");
 }
 

@@ -9,8 +9,14 @@ struct Vertex {
   Vertex* pre;
   int id;
   int f;
+  std::string label;
+  int key;
 
   explicit Vertex(int id) : id(id) {}
+
+  Vertex(int id, std::string& label) : id(id), label(std::string(label)) {}
+
+  friend bool operator<(const Vertex& lhs, const Vertex& rhs) { return lhs.key < rhs.key; }
 
   static std::string ToString(Vertex* vertex) {
     if (vertex == nullptr) {
