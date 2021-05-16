@@ -2,7 +2,7 @@
 
 class Solution {
  public:
-  int Recursive(const std::vector<int>& p, int n) {
+  int Recursive(std::vector<int>& p, int n) {
     if (n == 0) {
       return 0;
     }
@@ -13,7 +13,7 @@ class Solution {
     return max;
   }
 
-  int Memorized(const std::vector<int>& p, int len) {
+  int Memorized(std::vector<int>& p, int len) {
     int r[len + 1];
     r[0] = 0;
     for (int i = 1; i <= len; ++i) {
@@ -22,7 +22,7 @@ class Solution {
     return MemorizedAux(p, len, r);
   }
 
-  int BottomUp(const std::vector<int>& p, int len) {
+  int BottomUp(std::vector<int>& p, int len) {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
@@ -35,7 +35,7 @@ class Solution {
     return r[len];
   }
 
-  void ExtendedBottomUp(const std::vector<int>& p, int len, int& result, std::vector<int>& s) {
+  void ExtendedBottomUp(std::vector<int>& p, int len, int& result, std::vector<int>& s) {
     int r[len + 1];
     r[0] = 0;
     for (int j = 1; j <= len; ++j) {
@@ -51,7 +51,7 @@ class Solution {
     result = r[len];
   }
 
-  void ConstructSolution(const std::vector<int>& s, int n) {
+  void ConstructSolution(std::vector<int>& s, int n) {
     while (n > 0) {
       std::cout << s[n] << " " << std::endl;
       n -= s[n];
@@ -59,7 +59,7 @@ class Solution {
   }
 
  private:
-  int MemorizedAux(const std::vector<int>& p, int len, int* r) {
+  int MemorizedAux(std::vector<int>& p, int len, int* r) {
     if (r[len] >= 0) {
       return r[len];
     }

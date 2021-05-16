@@ -129,36 +129,32 @@ class Solution {
   }
 };
 
+Solution solution;
+
 void TestRecursive() {
-  Solution s;
   std::vector<double> p = {0.00, 0.15, 0.10, 0.05, 0.10, 0.20};
   std::vector<double> q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};
-  int n = p.size() - 1;
-  std::cout << s.Recursive(p, q, 1, n) << std::endl;
+  std::cout << solution.Recursive(p, q, 1, p.size() - 1) << std::endl;
 }
 
 void TestMemorized() {
-  Solution s;
   std::vector<double> p = {0.00, 0.15, 0.10, 0.05, 0.10, 0.20};
   std::vector<double> q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};
-  std::cout << s.Memorized(p, q) << std::endl;
+  std::cout << solution.Memorized(p, q) << std::endl;
 }
 
 void TestBottomUp() {
-  Solution s;
   std::vector<double> p = {0.00, 0.15, 0.10, 0.05, 0.10, 0.20};
   std::vector<double> q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};
-  std::cout << s.BottomUp(p, q) << std::endl;
+  std::cout << solution.BottomUp(p, q) << std::endl;
 }
 
 void TestExtendedBottomUp() {
-  Solution s;
   std::vector<double> p = {0.00, 0.15, 0.10, 0.05, 0.10, 0.20};
   std::vector<double> q = {0.05, 0.10, 0.05, 0.05, 0.05, 0.10};
-  int n = p.size() - 1;
-  auto [a, b] = s.ExtendedBottomUp(p, q);
+  auto [a, b] = solution.ExtendedBottomUp(p, q);
   std::cout << a << std::endl;
-  std::cout << b[1][n] << std::endl;
+  std::cout << b[1][p.size() - 1] << std::endl;
 }
 
 int main() {
