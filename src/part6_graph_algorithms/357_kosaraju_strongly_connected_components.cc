@@ -110,3 +110,22 @@ void Test() {
 }
 
 int main() { Test(); }
+
+/*
+a: b
+b: c e
+c: d
+d: c h
+e: a f
+f: g
+g: f h
+h: h
+
+4 components
+a b e
+f g
+c d
+h
+1
+0
+ */
