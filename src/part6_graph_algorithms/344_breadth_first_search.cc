@@ -1,72 +1,7 @@
 #include "clrs.h"
-
-struct Vertex {
-  bool visited;
-  int d;
-  Vertex* pre;
-  int id;
-
-  explicit Vertex(int id) : visited(false), d(0), pre(nullptr), id(id) {}
-
-  friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
-    os << vertex.id;
-    return os;
-  }
-};
-
-struct Edge {
-  int start_id;
-  int end_id;
-
-  Edge(int start_id, int end_id) : start_id(start_id), end_id(end_id) {}
-
-  int Other(int vertex_id) {
-    if (vertex_id == start_id) {
-      return end_id;
-    } else if (vertex_id == end_id) {
-      return start_id;
-    } else {
-      throw std::invalid_argument("no such vertex in this edge");
-    }
-  }
-};
-
-struct Graph {
-  int V;
-  int E;
-  std::vector<Vertex*> vertices;
-  std::vector<std::list<Edge*>> adj;
-
-  explicit Graph(int vertices_count)
-      : V(vertices_count),
-        E(0),
-        vertices(std::vector<Vertex*>(vertices_count, nullptr)),
-        adj(std::vector<std::list<Edge*>>(vertices_count, std::list<Edge*>())) {
-    for (int i = 0; i < vertices_count; ++i) {
-      vertices[i] = new Vertex(i);
-    }
-  }
-
-  void AddEdge(int start_id, int end_id) {
-    auto* e = new Edge(start_id, end_id);
-    adj[start_id].push_back(e);
-    adj[end_id].push_back(e);
-    E += 2;
-  }
-
-  friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
-    for (int i = 0; i < graph.V; ++i) {
-      os << *graph.vertices[i];
-      os << ": ";
-      for (Edge* e : graph.adj[i]) {
-        os << *graph.vertices[e->Other(i)];
-        os << " ";
-      }
-      os << "\n";
-    }
-    return os;
-  }
-};
+#include "part6_graph_algorithms/vertex.h"
+#include "part6_graph_algorithms/edge.h"
+#include "part6_graph_algorithms/graph.h"
 
 class Solution {
  public:
