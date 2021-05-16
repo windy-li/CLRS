@@ -12,9 +12,11 @@ struct Vertex {
 
   explicit Vertex(int id) : id(id) {}
 
-  friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
-    os << vertex.id;
-    return os;
+  static std::string ToString(Vertex* vertex) {
+    if (vertex == nullptr) {
+      return "nullptr";
+    }
+    return std::to_string(vertex->id);
   }
 };
 

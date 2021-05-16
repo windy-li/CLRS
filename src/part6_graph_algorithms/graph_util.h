@@ -8,13 +8,13 @@ namespace graph_util {
 
 void PrintPath(Vertex* src, Vertex* dst) {
   if (src == dst) {
-    std::cout << *src << " ";
+    std::cout << Vertex::ToString(src) + " ";
   } else {
     if (dst->pre == nullptr) {
-      std::cout << "no path from " << *src << " to " << *dst << std::endl;
+      std::cout << "no path from " + Vertex::ToString(src) + " to " + Vertex::ToString(dst) << std::endl;
     } else {
       PrintPath(src, dst->pre);
-      std::cout << *dst << " ";
+      std::cout << Vertex::ToString(dst) + " ";
     }
   }
 }
