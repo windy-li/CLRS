@@ -8,6 +8,11 @@ struct Node {
   explicit Node(int key) : key(key), parent(nullptr), rank(0) {}
 
   static std::string ToString(Node* node) { return std::to_string(node->key); }
+
+  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << Node::ToString(const_cast<Node*>(&node));
+    return os;
+  }
 };
 
 class DisjointSetForest {

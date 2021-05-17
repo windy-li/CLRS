@@ -32,6 +32,11 @@ struct Set {
     str += "}";
     return str;
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Set& set) {
+    os << Set::ToString(const_cast<Set*>(&set));
+    return os;
+  }
 };
 
 class DisjointSet {
@@ -56,15 +61,15 @@ class DisjointSet {
     }
   }
 
-  void Link(Set* src, Set* dest) {
-    dest->tail->next = src->head;
+  void Link(Set* src, Set* dst) {
+    dst->tail->next = src->head;
     Node* node = src->head;
     while (node != nullptr) {
-      node->set = dest;
-      dest->weight++;
+      node->set = dst;
+      dst->weight++;
       node = node->next;
     }
-    dest->tail = src->tail;
+    dst->tail = src->tail;
   }
 
   Node* FindSet(Node* node) { return node->set->head; }

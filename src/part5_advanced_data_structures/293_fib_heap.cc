@@ -24,6 +24,11 @@ struct Node {
     return str + "Node{" + "key=" + std::to_string(node->key) + parent_str + left_str + right_str + child_str +
            ", degree=" + std::to_string(node->degree) + ",mark=" + std::to_string(node->mark) + "}";
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << Node::ToString(const_cast<Node*>(&node));
+    return os;
+  }
 };
 
 class FibHeap {
