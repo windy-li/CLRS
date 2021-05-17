@@ -57,7 +57,7 @@ struct Graph {
     return edges;
   }
 
-  static std::string ToString(Graph* graph) {
+  static std::string ToString(const Graph* graph) {
     if (graph == nullptr) {
       return "nullptr";
     }
@@ -70,6 +70,11 @@ struct Graph {
       str += "\n";
     }
     return str;
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Graph& graph) {
+    os << Graph::ToString(const_cast<Graph*>(&graph));
+    return os;
   }
 };
 

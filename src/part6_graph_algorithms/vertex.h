@@ -19,7 +19,7 @@ struct Vertex {
 
   friend bool operator<(const Vertex& lhs, const Vertex& rhs) { return lhs.key < rhs.key; }
 
-  static std::string ToString(Vertex* vertex) {
+  static std::string ToString(const Vertex* vertex) {
     if (vertex == nullptr) {
       return "nullptr";
     }
@@ -27,6 +27,11 @@ struct Vertex {
       return std::to_string(vertex->id);
     }
     return vertex->label;
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Vertex& vertex) {
+    os << Vertex::ToString(const_cast<Vertex*>(&vertex));
+    return os;
   }
 };
 

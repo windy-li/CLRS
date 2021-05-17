@@ -85,6 +85,11 @@ struct Digraph {
     }
     return str;
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Digraph& digraph) {
+    os << Digraph::ToString(const_cast<Digraph*>(&digraph));
+    return os;
+  }
 };
 
 #endif  // CLRS_SRC_PART6_GRAPH_ALGORITHMS_DIGRAPH_H_

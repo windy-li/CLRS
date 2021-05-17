@@ -26,13 +26,18 @@ struct Edge {
 
   friend bool operator<(const Edge& lhs, const Edge& rhs) { return lhs.weight < rhs.weight; }
 
-  static std::string ToString(Edge* edge) {
+  static std::string ToString(const Edge* edge) {
     if (edge == nullptr) {
       return "nullptr";
     }
     std::string str;
     return str + std::to_string(edge->start_id) + ", " + std::to_string(edge->end_id) + ", " +
            std::to_string(edge->weight);
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Edge& edge) {
+    os << Edge::ToString(const_cast<Edge*>(&edge));
+    return os;
   }
 };
 
