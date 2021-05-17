@@ -88,7 +88,7 @@ class Solution {
   }
 };
 
-void Test() {
+void TestStronglyConnectedComponents() {
   std::vector<std::string> labels = {"a", "b", "c", "d", "e", "f", "g", "h"};
   Digraph digraph(8, labels);
   digraph.AddEdge(0, 1);
@@ -124,7 +124,7 @@ void Test() {
   std::cout << solution.Connected(1, 7) << std::endl;
 }
 
-int main() { Test(); }
+int main() { TestStronglyConnectedComponents(); }
 
 /*
 a: b

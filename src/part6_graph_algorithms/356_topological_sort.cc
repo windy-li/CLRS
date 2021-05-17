@@ -48,7 +48,7 @@ class Solution {
   }
 };
 
-void Test() {
+void TestTopologicalSort() {
   Solution solution;
   Digraph digraph(5);
   digraph.AddEdge(0, 1);
@@ -65,7 +65,7 @@ void Test() {
   }
 }
 
-int main() { Test(); }
+int main() { TestTopologicalSort(); }
 
 /*
 0: 1 3
