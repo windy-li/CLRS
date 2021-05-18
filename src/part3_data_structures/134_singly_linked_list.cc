@@ -5,13 +5,20 @@ struct Node {
   Node* next;
 
   explicit Node(int key) : key(key), next(nullptr) {}
+
+  static std::string ToString(const Node* node) {
+    if (node == nullptr) {
+      return "nullptr";
+    }
+    return "";
+  }
 };
 
 class LinkedList {
  public:
   LinkedList() : head_(nullptr) {}
 
-  Node* head() const { return head_; }
+  Node* head() { return head_; }
 
   Node* Search(int key) {
     Node* node = head_;
