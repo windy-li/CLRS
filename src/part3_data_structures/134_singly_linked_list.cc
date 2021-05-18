@@ -12,6 +12,11 @@ struct Node {
     }
     return "";
   }
+
+  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << Node::ToString(const_cast<Node*>(&node));
+    return os;
+  }
 };
 
 class LinkedList {
