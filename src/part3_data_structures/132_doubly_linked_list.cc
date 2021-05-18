@@ -6,6 +6,19 @@ struct Node {
   Node* next;
 
   explicit Node(int key) : key(key), prev(nullptr), next(nullptr) {}
+
+  // TODO
+  static std::string ToString(const Node* node) {
+    if (node == nullptr) {
+      return "nullptr";
+    }
+    return "";
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const Node& node) {
+    os << Node::ToString(const_cast<Node*>(&node));
+    return os;
+  }
 };
 
 class LinkedList {
@@ -62,6 +75,19 @@ class LinkedList {
     if (tmp != nullptr) {
       head_ = tmp->prev;
     }
+  }
+
+  // TODO
+  static std::string ToString(const LinkedList* list) {
+    if (list == nullptr) {
+      return "nullptr";
+    }
+    return "";
+  }
+
+  friend std::ostream& operator<<(std::ostream& os, const LinkedList& list) {
+    os << LinkedList::ToString(const_cast<LinkedList*>(&list));
+    return os;
   }
 
  private:
