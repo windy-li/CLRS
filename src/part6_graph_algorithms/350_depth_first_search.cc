@@ -8,21 +8,10 @@ class Solution {
   Solution() : time_(0) {}
 
   void DFS(Graph* graph) {
-    //    for (int i = 0; i < graph->V; i++) {
-    //      Vertex* u = graph->vertices[i];
-    //      u->visited = false;
-    //      u->pre = nullptr;
-    //    }
     for (Vertex* v : graph->vertices) {
       v->visited = false;
       v->pre = nullptr;
     }
-    //    for (int i = 0; i < graph->V; i++) {
-    //      Vertex* u = graph->vertices[i];
-    //      if (!u->visited) {
-    //        Visit(graph, u);
-    //      }
-    //    }
     for (Vertex* v : graph->vertices) {
       if (!v->visited) {
         Visit(graph, v);

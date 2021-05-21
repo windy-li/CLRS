@@ -16,19 +16,9 @@ class Solution {
   std::list<Vertex*> vertices_;
 
   void DFS(Digraph* digraph) {
-    //    for (int i = 0; i < digraph->V; i++) {
-    //      Vertex* u = digraph->vertices[i];
-    //      u->visited = false;
-    //    }
     for (Vertex* v : digraph->vertices) {
       v->visited = false;
     }
-    //    for (int i = 0; i < digraph->V; i++) {
-    //      Vertex* u = digraph->vertices[i];
-    //      if (!u->visited) {
-    //        Visit(digraph, u);
-    //      }
-    //    }
     for (Vertex* v : digraph->vertices) {
       if (!v->visited) {
         Visit(digraph, v);
