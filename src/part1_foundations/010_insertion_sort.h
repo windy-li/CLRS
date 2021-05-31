@@ -1,3 +1,6 @@
+#ifndef CLRS_SRC_PART1_FOUNDATIONS_010_INSERTION_SORT_H_
+#define CLRS_SRC_PART1_FOUNDATIONS_010_INSERTION_SORT_H_
+
 #include "clrs.h"
 
 class Solution {
@@ -71,36 +74,4 @@ class Solution {
   }
 };
 
-Solution solution;
-
-void TestInsertionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
-  solution.InsertionSort(nums);
-  clrs::PrintVector(nums);
-}
-
-void TestRecursiveInsertionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
-  int n = nums.size();
-  solution.RecursiveInsertionSort(nums, n - 1);
-  clrs::PrintVector(nums);
-}
-
-void TestNonIncreasingInsertionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
-  solution.NonIncreasingInsertionSort(nums);
-  clrs::PrintVector(nums);
-}
-
-void TestBinaryInsertionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
-  solution.BinaryInsertionSort(nums);
-  clrs::PrintVector(nums);
-}
-
-int main() {
-  TestInsertionSort();
-  TestRecursiveInsertionSort();
-  TestNonIncreasingInsertionSort();
-  TestBinaryInsertionSort();
-}
+#endif  // CLRS_SRC_PART1_FOUNDATIONS_010_INSERTION_SORT_H_
