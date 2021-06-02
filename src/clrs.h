@@ -48,6 +48,17 @@ double Random() {
 
 void PrintBorder() { std::cout << "------------------------------" << std::endl; }
 
+std::vector<int> RandomVector() {
+  int n = 10;
+  int low = 0;
+  int high = 100;
+  std::vector<int> vec(n);
+  for (int i = 0; i < n; ++i) {
+    vec[i] = RandomInt(low, high);
+  }
+  return vec;
+}
+
 }  // namespace clrs
 
 #endif  // CLRS_CLRS_H
