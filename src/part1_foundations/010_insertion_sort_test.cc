@@ -1,6 +1,5 @@
 #include "part1_foundations/010_insertion_sort.h"
 
-#include "clrs.h"
 #include "gtest/gtest.h"
 
 Solution solution;
