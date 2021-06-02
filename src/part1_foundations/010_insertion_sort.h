@@ -63,7 +63,7 @@ class Solution {
     while (left <= right) {
       int middle = (left + right) / 2;
       if (key == nums[middle]) {
-        return nums[middle];
+        return middle;
       } else if (key < nums[middle]) {
         right = middle - 1;
       } else {

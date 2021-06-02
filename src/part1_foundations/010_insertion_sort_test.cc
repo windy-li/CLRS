@@ -22,9 +22,9 @@ TEST(InsertionSortTest, RecursiveInsertionSort) {
 
 TEST(InsertionSortTest, NonIncreasingInsertionSort) {
   std::vector<int> nums = clrs::RandomVector();
-  ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end(), [](int a, int b) { return b <= a; }));
+  ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end(), [](int a, int b) { return b < a; }));
   solution.NonIncreasingInsertionSort(nums);
-  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end(), [](int a, int b) { return b <= a; }));
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end(), [](int a, int b) { return b < a; }));
 }
 
 TEST(InsertionSortTest, BinaryInsertionSort) {

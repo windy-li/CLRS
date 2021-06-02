@@ -49,7 +49,7 @@ double Random() {
 void PrintBorder() { std::cout << "------------------------------" << std::endl; }
 
 std::vector<int> RandomVector() {
-  int n = 10;
+  int n = 1000;
   int low = 0;
   int high = 100;
   std::vector<int> vec(n);
