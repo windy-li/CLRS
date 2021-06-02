@@ -29,7 +29,14 @@ TEST(InsertionSortTest, NonIncreasingInsertionSort) {
 
 TEST(InsertionSortTest, BinaryInsertionSort) {
   std::vector<int> nums = clrs::RandomVector();
+  clrs::PrintVector(nums);
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.BinaryInsertionSort(nums);
+  clrs::PrintVector(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
+}
+
+int main(int argc, char* argv[]) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
