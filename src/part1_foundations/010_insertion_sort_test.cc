@@ -5,37 +5,27 @@
 
 Solution solution;
 
-TEST(InsertionSortTest1, TestInsertionSort) {
-  // Expect two strings not to be equal.
-  EXPECT_STRNE("hello", "world");
-  // Expect equality.
-  EXPECT_EQ(7 * 6, 42);
+TEST(InsertionSortTest, InsertionSort) {
   std::vector<int> nums = {1, 3, 4, 2};
   solution.InsertionSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
 
-void TestInsertionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
-  solution.InsertionSort(nums);
-  clrs::PrintVector(nums);
-}
-
-void TestRecursiveInsertionSort() {
+TEST(InsertionSortTest, RecursiveInsertionSort) {
   std::vector<int> nums = {1, 3, 4, 2};
   int n = nums.size();
   solution.RecursiveInsertionSort(nums, n - 1);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
 
-void TestNonIncreasingInsertionSort() {
+TEST(InsertionSortTest, NonIncreasingInsertionSort) {
   std::vector<int> nums = {1, 3, 4, 2};
   solution.NonIncreasingInsertionSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end(), [](int a, int b) { return b <= a; }));
 }
 
-void TestBinaryInsertionSort() {
+TEST(InsertionSortTest, BinaryInsertionSort) {
   std::vector<int> nums = {1, 3, 4, 2};
   solution.BinaryInsertionSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
