@@ -1,3 +1,6 @@
+#ifndef CLRS_SRC_PART1_FOUNDATIONS_012_BINARY_INTEGER_ADDING_H_
+#define CLRS_SRC_PART1_FOUNDATIONS_012_BINARY_INTEGER_ADDING_H_
+
 #include "clrs.h"
 
 class Solution {
@@ -20,13 +23,4 @@ class Solution {
   }
 };
 
-Solution solution;
-
-void TestBinaryIntegerAdding() {
-  std::vector<int> a = {1, 0, 1, 1, 1, 0};
-  std::vector<int> b = {0, 1, 1, 1, 0, 0};
-  std::vector<int> c = solution.BinaryIntegerAdding(a, b);
-  clrs::PrintVector(c);
-}
-
-int main() { TestBinaryIntegerAdding(); }
+#endif  // CLRS_SRC_PART1_FOUNDATIONS_012_BINARY_INTEGER_ADDING_H_
