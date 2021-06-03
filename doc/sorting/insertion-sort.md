@@ -84,7 +84,7 @@ int BinarySearch(const std::vector<int>& nums, int low, int high, int key) {
   while (low <= high) {
     int mid = (low + high) / 2;
     if (key == nums[mid]) {
-      return nums[mid];
+      return mid;
     } else if (key < nums[mid]) {
       high = mid - 1;
     } else {
