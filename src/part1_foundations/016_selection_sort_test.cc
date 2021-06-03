@@ -1,29 +1,18 @@
-#include "clrs.h"
+#include "part1_foundations/016_selection_sort.h"
 
-class Solution {
- public:
-  void SelectionSort(std::vector<int>& nums) {
-    int n = nums.size();
-    for (int i = 0; i < n - 1; ++i) {
-      int min = i;
-      for (int j = i + 1; j < n; ++j) {
-        if (nums[j] < nums[min]) {
-          min = j;
-        }
-      }
-      if (min != i) {
-        std::swap(nums[min], nums[i]);
-      }
-    }
-  }
-};
+#include "clrs.h"
+#include "gtest/gtest.h"
 
 Solution solution;
 
-void TestSelectionSort() {
-  std::vector<int> nums = {1, 3, 4, 2};
+TEST(SelectionSortTest, SelectionSort) {
+  std::vector<int> nums = clrs::RandomVector();
+  ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.SelectionSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
 
-int main() { TestSelectionSort(); }
+int main(int argc, char* argv[]) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
+}
