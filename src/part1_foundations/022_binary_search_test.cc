@@ -1,59 +1,27 @@
-#include "clrs.h"
+#include "part1_foundations/022_binary_search.h"
 
-class Solution {
- public:
-  int BinarySearch(const std::vector<int>& nums, int key) {
-    int n = nums.size();
-    int begin = 0;
-    int end = n - 1;
-    while (begin <= end) {
-      int mid = (begin + end) / 2;
-      if (key == nums[mid]) {
-        return mid;
-      } else if (key < nums[mid]) {
-        end = mid - 1;
-      } else {
-        begin = mid + 1;
-      }
-    }
-    return -(begin + 1);
-  }
-
-  int RecursiveBinarySearch(const std::vector<int>& nums, int key, int begin, int end) {
-    if (begin <= end) {
-      int mid = (begin + end) / 2;
-      if (key == nums[mid]) {
-        return mid;
-      } else if (key < nums[mid]) {
-        return RecursiveBinarySearch(nums, key, begin, mid - 1);
-      } else {
-        return RecursiveBinarySearch(nums, key, mid + 1, end);
-      }
-    }
-    return -(begin + 1);
-  }
-};
+#include "gtest/gtest.h"
 
 Solution solution;
 
-void TestBinarySearch() {
+TEST(BinarySearchTest, BinarySearch) {
   std::vector<int> nums = {1, 2, 3, 4, 5, 6};
   int key1 = 2;
   int key2 = 7;
-  std::cout << solution.BinarySearch(nums, key1) << std::endl;
-  std::cout << solution.BinarySearch(nums, key2) << std::endl;
+  ASSERT_EQ(solution.BinarySearch(nums, key1), 1);
+  ASSERT_EQ(solution.BinarySearch(nums, key2), -7);
 }
 
-void TestRecursiveBinarySearch() {
+TEST(BinarySearchTest, RecursiveBinarySearch) {
   std::vector<int> nums = {1, 2, 3, 4, 5, 6};
   int n = nums.size();
   int key1 = 2;
   int key2 = 7;
-  std::cout << solution.RecursiveBinarySearch(nums, key1, 0, n - 1) << std::endl;
-  std::cout << solution.RecursiveBinarySearch(nums, key2, 0, n - 1) << std::endl;
+  ASSERT_EQ(solution.RecursiveBinarySearch(nums, key1, 0, n - 1), 1);
+  ASSERT_EQ(solution.RecursiveBinarySearch(nums, key2, 0, n - 1), -7);
 }
 
-int main() {
-  TestBinarySearch();
-  TestRecursiveBinarySearch();
+int main(int argc, char* argv[]) {
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }
