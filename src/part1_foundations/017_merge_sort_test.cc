@@ -1,8 +1,5 @@
 #include "part1_foundations/017_merge_sort.h"
 
-#include "clrs.h"
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(MergeSortTest, MergeSort) {

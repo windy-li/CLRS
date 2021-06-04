@@ -1,8 +1,5 @@
 #include "part1_foundations/023_horner_rule.h"
 
-#include "clrs.h"
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(HornerRuleTest, HornerRule) {

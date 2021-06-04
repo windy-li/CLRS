@@ -1,8 +1,5 @@
 #include "part1_foundations/024_inversions.h"
 
-#include "clrs.h"
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(InversionsTest, Inversions) {

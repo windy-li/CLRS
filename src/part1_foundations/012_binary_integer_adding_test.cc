@@ -1,8 +1,5 @@
 #include "part1_foundations/012_binary_integer_adding.h"
 
-#include "clrs.h"
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(BinaryIntegerAddingTest, BinaryIntegerAdding) {

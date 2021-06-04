@@ -1,7 +1,5 @@
 #include "part1_foundations/023_bubble_sort.h"
 
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(BubbleSortTest, BubbleSort) {

@@ -1,8 +1,5 @@
 #include "part1_foundations/022_divided_sum.h"
 
-#include "clrs.h"
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(DividecSumTest, CanDivide) {

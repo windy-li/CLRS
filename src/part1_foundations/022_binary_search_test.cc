@@ -1,7 +1,5 @@
 #include "part1_foundations/022_binary_search.h"
 
-#include "gtest/gtest.h"
-
 Solution solution;
 
 TEST(BinarySearchTest, BinarySearch) {
