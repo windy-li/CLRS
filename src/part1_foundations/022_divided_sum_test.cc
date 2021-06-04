@@ -10,8 +10,3 @@ TEST(DividecSumTest, CanDivide) {
   ASSERT_TRUE(solution.CanDivide(nums, 7));
   ASSERT_FALSE(solution.CanDivide(nums, 8));
 }
-
-int main(int argc, char* argv[]) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}

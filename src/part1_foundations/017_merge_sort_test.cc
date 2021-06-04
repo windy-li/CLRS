@@ -20,8 +20,3 @@ TEST(MergeSortTest, MergeSortBySentinels) {
   solution.MergeSortBySentinels(nums, 0, n - 1);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
-
-int main(int argc, char* argv[]) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}

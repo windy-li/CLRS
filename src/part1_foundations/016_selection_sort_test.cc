@@ -11,8 +11,3 @@ TEST(SelectionSortTest, SelectionSort) {
   solution.SelectionSort(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
-
-int main(int argc, char* argv[]) {
-  ::testing::InitGoogleTest(&argc, argv);
-  return RUN_ALL_TESTS();
-}
