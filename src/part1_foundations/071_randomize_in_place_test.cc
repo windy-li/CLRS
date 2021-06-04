@@ -1,18 +1,8 @@
-#include "clrs.h"
-
-class Solution {
- public:
-  void RandomizeInPlace(std::vector<int>& nums) {
-    int n = nums.size();
-    for (int i = 0; i < n; ++i) {
-      std::swap(nums[i], nums[clrs::RandomInt(i, n)]);
-    }
-  }
-};
+#include "part1_foundations/071_randomize_in_place.h"
 
 Solution solution;
 
-void TestRandomizeInPlace() {
+TEST(RandomizeInPlaceTest, RandomizeInPlace) {
   int n = 10;
   std::vector<int> nums(n);
   for (int i = 0; i < n; ++i) {
@@ -21,5 +11,3 @@ void TestRandomizeInPlace() {
   solution.RandomizeInPlace(nums);
   clrs::PrintVector(nums);
 }
-
-int main() { TestRandomizeInPlace(); }

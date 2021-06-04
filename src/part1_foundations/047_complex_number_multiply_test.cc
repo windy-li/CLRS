@@ -1,20 +1,8 @@
-#include "clrs.h"
-
-class Solution {
- public:
-  std::vector<int> ComplexNumberMultiply(int a, int b, int c, int d) {
-    int p1 = (a + b) * c;
-    int p2 = b * (c + d);
-    int p3 = (a - b) * d;
-    return std::vector<int>{p1 - p2, p2 + p3};
-  }
-};
+#include "part1_foundations/047_complex_number_multiply.h"
 
 Solution solution;
 
-void TestComplexNumberMultiply() {
+TEST(ComplexNumberMultiplyTest, ComplexNumberMultiply) {
   std::vector<int> result = solution.ComplexNumberMultiply(1, 2, 3, 4);
   clrs::PrintVector(result);
 }
-
-int main() { TestComplexNumberMultiply(); }
