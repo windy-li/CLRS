@@ -45,24 +45,12 @@ class Random {
   }
 
  private:
-  static bool initialized_;
-  static std::default_random_engine engine_;
-
-  static std::default_random_engine GetEngine();
-};
-
-bool Random::initialized_ = false;
-std::default_random_engine Random::engine_;
-
-std::default_random_engine Random::GetEngine() {
-  if (initialized_) {
-    return engine_;
+  static std::default_random_engine GetEngine() {
+    std::random_device device;
+    std::default_random_engine engine(device());
+    return engine;
   }
-  initialized_ = true;
-  std::random_device device;
-  engine_ = std::default_random_engine(device());
-  return engine_;
-}
+};
 
 template <typename T>
 void PrintVector(std::vector<T>& vec) {
