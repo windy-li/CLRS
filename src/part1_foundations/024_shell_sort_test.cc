@@ -1,29 +1,10 @@
-#include "clrs.h"
-
-class Solution {
- public:
-  void ShellSort(std::vector<int>& nums) {
-    int n = nums.size();
-    for (int gap = n / 2; gap > 0; gap /= 2) {
-      for (int j = gap; j < n; ++j) {
-        int key = nums[j];
-        int i = j - gap;
-        while (i >= 0 && nums[i] > key) {
-          nums[i + gap] = nums[i];
-          i -= gap;
-        }
-        nums[i + gap] = key;
-      }
-    }
-  }
-};
+#include "part1_foundations/024_shell_sort.h"
 
 Solution solution;
 
-void TestShellSort() {
-  std::vector<int> nums = {2, 3, 8, 6, 1};
+TEST(ShellSortTest, ShellSort) {
+  std::vector<int> nums = clrs::Random::Vector();
+  ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.ShellSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
-
-int main() { TestShellSort(); }
