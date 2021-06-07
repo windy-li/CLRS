@@ -40,7 +40,7 @@ class Random {
     int low = 0;
     int high = 100;
     std::vector<int> vec(n);
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; ++i) {
       vec[i] = Get(low, high);
     }
     return vec;
