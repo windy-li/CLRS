@@ -7,7 +7,7 @@ class Solution {
  public:
   void InsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 1; j < n; j++) {
+    for (int j = 1; j < n; ++j) {
       int key = nums[j];
       int i = j - 1;
       while (i >= 0 && nums[i] > key) {
@@ -33,7 +33,7 @@ class Solution {
 
   void NonIncreasingInsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 1; j < n; j++) {
+    for (int j = 1; j < n; ++j) {
       int key = nums[j];
       int i = j - 1;
       while (i >= 0 && nums[i] < key) {
@@ -46,7 +46,7 @@ class Solution {
 
   void BinaryInsertionSort(std::vector<int>& nums) {
     int n = nums.size();
-    for (int j = 0; j < n; j++) {
+    for (int j = 0; j < n; ++j) {
       int key = nums[j];
       int i = j - 1;
       int insert_position = std::abs(BinarySearch(nums, 0, j, key) + 1);
