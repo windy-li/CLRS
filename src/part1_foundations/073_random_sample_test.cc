@@ -2,7 +2,7 @@
 
 Solution solution;
 
-void TestRandomSample() {
+TEST(RandomSampleTest, RandomSample) {
   for (int i = 0; i < 10; ++i) {
     auto list = solution.RandomSample(3, 7);
     for (auto item : list) {
@@ -12,9 +12,4 @@ void TestRandomSample() {
   }
 }
 
-void TestReservoirSample() {}
-
-int main() {
-  TestRandomSample();
-  TestReservoirSample();
-}
+TEST(RandomSampleTest, ReservoirSample) {}
