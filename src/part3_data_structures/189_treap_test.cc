@@ -6,7 +6,7 @@ struct Node {
   Node* left;
   Node* right;
 
-  explicit Node(int key) : key(key), priority(clrs::RandomInt(0, 100)), left(nullptr), right(nullptr) {}
+  explicit Node(int key) : key(key), priority(clrs::Random::Get(0, 100)), left(nullptr), right(nullptr) {}
 };
 
 class Treap {
