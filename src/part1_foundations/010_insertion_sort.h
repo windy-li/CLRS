@@ -1,6 +1,7 @@
 #ifndef CLRS_SRC_PART1_FOUNDATIONS_010_INSERTION_SORT_H_
 #define CLRS_SRC_PART1_FOUNDATIONS_010_INSERTION_SORT_H_
 
+#include <cstdlib>
 #include <vector>
 
 class Solution {
