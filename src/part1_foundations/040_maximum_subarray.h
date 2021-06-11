@@ -22,14 +22,14 @@ class Solution {
     return {start, end, max};
   }
 
-  std::tuple<int, int, int> DivideAndConquer(const std::vector<int>& nums, int left_bound, int right_bound) {
-    if (left_bound == right_bound) {
-      return {left_bound, right_bound, nums[left_bound]};
+  std::tuple<int, int, int> DivideAndConquer(const std::vector<int>& nums, int left, int right) {
+    if (left == right) {
+      return {left, right, nums[left]};
     }
-    int middle = (left_bound + right_bound) / 2;
-    auto left_result = DivideAndConquer(nums, left_bound, middle);
-    auto right_result = DivideAndConquer(nums, middle + 1, right_bound);
-    auto cross_result = MaxCrossingSubarray(nums, left_bound, middle, right_bound);
+    int mid = (left + right) / 2;
+    auto left_result = DivideAndConquer(nums, left, mid);
+    auto right_result = DivideAndConquer(nums, mid + 1, right);
+    auto cross_result = MaxCrossingSubarray(nums, left, mid, right);
     int left_sum = std::get<2>(left_result);
     int right_sum = std::get<2>(right_result);
     int cross_sum = std::get<2>(cross_result);
@@ -80,25 +80,25 @@ class Solution {
   std::tuple<int, int, int> MaxCrossingSubarray(const std::vector<int>& nums, int low, int mid, int high) {
     int sum = 0;
     int left_sum = std::numeric_limits<int>::min();
-    int left_bound = mid;
+    int left = mid;
     for (int i = mid; i >= low; --i) {
       sum += nums[i];
       if (sum > left_sum) {
         left_sum = sum;
-        left_bound = i;
+        left = i;
       }
     }
     sum = 0;
     int right_sum = std::numeric_limits<int>::min();
-    int right_bound = mid + 1;
+    int right = mid + 1;
     for (int j = mid + 1; j <= high; ++j) {
       sum += nums[j];
       if (sum > right_sum) {
         right_sum = sum;
-        right_bound = j;
+        right = j;
       }
     }
-    return {left_bound, right_bound, left_sum + right_sum};
+    return {left, right, left_sum + right_sum};
   }
 };
 
