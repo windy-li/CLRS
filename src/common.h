@@ -36,4 +36,16 @@ class Random {
   }
 };
 
+class Demo {
+ public:
+  explicit Demo(std::string& username) : username_(std::string(username)){}
+
+  std::string GetUsername() {
+    return username_;
+  }
+
+ private:
+  std::string username_;
+};
+
 #endif  // CLRS_SRC_COMMON_H_

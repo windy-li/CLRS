@@ -1,0 +1,81 @@
+#ifndef CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_091_MAX_PRIORITY_QUEUE_H_
+#define CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_091_MAX_PRIORITY_QUEUE_H_
+
+#include <algorithm>
+#include <exception>
+#include <limits>
+#include <vector>
+
+class MaxPriorityQueue {
+ public:
+  explicit MaxPriorityQueue(int capacity) : heap_size_(0), capacity_(capacity), items_(std::vector<int>(capacity)) {}
+
+  void Insert(int key) {
+    if (heap_size_ == capacity_) {
+      throw std::overflow_error("heap overflow");
+    }
+    heap_size_++;
+    items_[heap_size_ - 1] = std::numeric_limits<int>::min();
+    IncreaseKey(heap_size_ - 1, key);
+  }
+
+  int ExtractMax() {
+    if (heap_size_ == 0) {
+      throw std::underflow_error("heap overflow");
+    }
+    int max = items_[0];
+    items_[0] = items_[heap_size_ - 1];
+    heap_size_--;
+    MaxHeapify(0);
+    return max;
+  }
+
+  void Remove(int i) {
+    IncreaseKey(i, std::numeric_limits<int>::max());
+    items_[0] = items_[heap_size_ - 1];
+    heap_size_--;
+    MaxHeapify(0);
+  }
+
+  int Maximum() { return items_[0]; }
+
+ private:
+  std::vector<int> items_;
+  int heap_size_;
+  int capacity_;
+
+  void IncreaseKey(int i, int key) {
+    if (key < items_[i]) {
+      throw std::invalid_argument("new key should not be lower than current key");
+    }
+    while (i > 0 && items_[Parent(i)] < key) {
+      items_[i] = items_[Parent(i)];
+      i = Parent(i);
+    }
+    items_[i] = key;
+  }
+
+  void MaxHeapify(int i) {
+    int l = Left(i);
+    int r = Right(i);
+    int largest = i;
+    if (l < heap_size_ && items_[l] > items_[largest]) {
+      largest = l;
+    }
+    if (r < heap_size_ && items_[r] > items_[largest]) {
+      largest = r;
+    }
+    if (largest != i) {
+      std::swap(items_[largest], items_[i]);
+      MaxHeapify(largest);
+    }
+  }
+
+  int Left(int i) { return 2 * i + 1; }
+
+  int Right(int i) { return 2 * i + 2; }
+
+  int Parent(int i) { return (i - 1) / 2; }
+};
+
+#endif  // CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_091_MAX_PRIORITY_QUEUE_H_
