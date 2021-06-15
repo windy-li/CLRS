@@ -1,7 +1,8 @@
 #ifndef CLRS_SRC_PART1_FOUNDATIONS_016_SELECTION_SORT_H_
 #define CLRS_SRC_PART1_FOUNDATIONS_016_SELECTION_SORT_H_
 
-#include "clrs.h"
+#include <algorithm>
+#include <vector>
 
 class Solution {
  public:

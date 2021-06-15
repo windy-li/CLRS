@@ -1,5 +1,8 @@
 #include "part1_foundations/016_selection_sort.h"
 
+#include "clrs.h"
+#include "gtest/gtest.h"
+
 Solution solution;
 
 TEST(SelectionSortTest, SelectionSort) {
