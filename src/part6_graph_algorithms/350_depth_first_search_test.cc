@@ -1,45 +1,8 @@
-#include "clrs.h"
-#include "part6_graph_algorithms/edge.h"
-#include "part6_graph_algorithms/graph.h"
-#include "part6_graph_algorithms/vertex.h"
+#include "part6_graph_algorithms/344_depth_first_search.h"
 
-class Solution {
- public:
-  Solution() : time_(0) {}
+Solution solution;
 
-  void DFS(Graph* graph) {
-    for (Vertex* v : graph->vertices) {
-      v->visited = false;
-      v->pre = nullptr;
-    }
-    for (Vertex* v : graph->vertices) {
-      if (!v->visited) {
-        Visit(graph, v);
-      }
-    }
-  }
-
- private:
-  int time_;
-
-  void Visit(Graph* graph, Vertex* u) {
-    time_++;
-    u->d = time_;
-    u->visited = true;
-    for (Edge* e : graph->adj[u->id]) {
-      Vertex* v = graph->vertices[e->Other(u->id)];
-      if (!v->visited) {
-        v->pre = u;
-        Visit(graph, v);
-      }
-    }
-    time_++;
-    u->f = time_;
-  }
-};
-
-void TestDepthFirstSearch() {
-  Solution solution;
+TEST(DepthFirstSearchTest, DepthFirstSearch) {
   auto* graph = new Graph(6);
   graph->AddEdge(0, 1);
   graph->AddEdge(0, 2);
@@ -49,5 +12,3 @@ void TestDepthFirstSearch() {
   graph->AddEdge(3, 5);
   solution.DFS(graph);
 }
-
-int main() { TestDepthFirstSearch(); }
