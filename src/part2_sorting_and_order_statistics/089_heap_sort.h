@@ -1,8 +1,7 @@
 #ifndef CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_089_HEAP_SORT_H_
 #define CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_089_HEAP_SORT_H_
 
-#include <vector>
-#include <algorithm>
+#include "clrs.h"
 
 class MaxHeap {
  public:
