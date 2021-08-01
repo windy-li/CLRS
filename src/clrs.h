@@ -30,7 +30,7 @@
 
 namespace clrs {
 
-// [a, b]
+// 返回[a, b]区间的随机数
 int RandomInt(int a, int b) {
   static std::random_device rd;
   static std::mt19937 engine(rd());
@@ -38,18 +38,19 @@ int RandomInt(int a, int b) {
   return distribution(engine);
 }
 
-// [a, b]
-std::vector<int> RandomVector(int a, int b, int size) {
-  std::vector<int> v(size);
-  for (int i = 0; i < size; ++i) {
+// 返回元素个数为n的数列，且每个元素是[a, b]区间的随机数
+std::vector<int> RandomVector(int a, int b, int n) {
+  std::vector<int> v(n);
+  for (int i = 0; i < n; ++i) {
     v[i] = RandomInt(a, b);
   }
   return v;
 }
 
-std::vector<int> DefaultRandomVector() { return RandomVector(0, 100, 100); }
+// 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机数
+std::vector<int> DefaultRandomVector() { return RandomVector(-100, 100, 1000); }
 
-// [0, 1)
+// 返回[0, 1)区间的小数
 double Random() {
   static std::random_device rd;
   static std::mt19937 engine(rd());
@@ -57,6 +58,7 @@ double Random() {
   return distribution(engine);
 }
 
+// 打印一个数列
 template <typename T>
 void PrintVector(std::vector<T>& vec) {
   int n = vec.size();
@@ -67,7 +69,7 @@ void PrintVector(std::vector<T>& vec) {
       std::cout << ", ";
     }
   }
-  std::cout << "]" << std::endl;
+  std::cout << "]\n";
 }
 
 void PrintBorder() { std::cout << "------------------------------" << std::endl; }
