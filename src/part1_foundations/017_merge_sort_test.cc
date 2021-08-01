@@ -3,7 +3,7 @@
 Solution solution;
 
 TEST(MergeSortTest, MergeSort) {
-  std::vector<int> nums = clrs::Random::Vector();
+  std::vector<int> nums = clrs::DefaultRandomVector();
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   int n = nums.size();
   solution.MergeSort(nums, 0, n - 1);
@@ -11,9 +11,11 @@ TEST(MergeSortTest, MergeSort) {
 }
 
 TEST(MergeSortTest, MergeSortBySentinels) {
-  std::vector<int> nums = clrs::Random::Vector();
+  std::vector<int> nums = clrs::DefaultRandomVector();
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   int n = nums.size();
   solution.MergeSortBySentinels(nums, 0, n - 1);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
+
+RUN_TESTS()

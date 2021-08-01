@@ -18,3 +18,5 @@ TEST(BinarySearchTest, RecursiveBinarySearch) {
   ASSERT_EQ(solution.RecursiveBinarySearch(nums, key1, 0, n - 1), 1);
   ASSERT_EQ(solution.RecursiveBinarySearch(nums, key2, 0, n - 1), -7);
 }
+
+RUN_TESTS()
