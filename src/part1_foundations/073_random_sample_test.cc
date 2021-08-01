@@ -13,3 +13,5 @@ TEST(RandomSampleTest, RandomSample) {
 }
 
 TEST(RandomSampleTest, ReservoirSample) {}
+
+RUN_TESTS()
