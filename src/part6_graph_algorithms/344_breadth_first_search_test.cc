@@ -30,3 +30,5 @@ No path from 0 to 6
 5: 3
 6:
  */
+
+RUN_TESTS()

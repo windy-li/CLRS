@@ -1,7 +1,5 @@
 #include "part6_graph_algorithms/344_depth_first_search.h"
 
-Solution solution;
-
 TEST(DepthFirstSearchTest, DepthFirstSearch) {
   auto* graph = new Graph(6);
   graph->AddEdge(0, 1);
@@ -10,5 +8,8 @@ TEST(DepthFirstSearchTest, DepthFirstSearch) {
   graph->AddEdge(2, 3);
   graph->AddEdge(3, 4);
   graph->AddEdge(3, 5);
+  Solution solution;
   solution.DFS(graph);
 }
+
+RUN_TESTS()
