@@ -5,8 +5,8 @@
 
 struct Vertex {
   bool visited;
-  int d;
-  Vertex* pre;
+  int depth;
+  Vertex* predecessor;
   int id;
   int f;
   std::string label;

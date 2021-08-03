@@ -12,10 +12,10 @@ void PrintPath(Vertex* src, Vertex* dst) {
   if (src == dst) {
     std::cout << Vertex::ToString(src) + " ";
   } else {
-    if (dst->pre == nullptr) {
+    if (dst->predecessor == nullptr) {
       std::cout << "no path from " + Vertex::ToString(src) + " to " + Vertex::ToString(dst) << std::endl;
     } else {
-      PrintPath(src, dst->pre);
+      PrintPath(src, dst->predecessor);
       std::cout << Vertex::ToString(dst) + " ";
     }
   }
@@ -23,19 +23,19 @@ void PrintPath(Vertex* src, Vertex* dst) {
 
 void InitializeSingleSource(Digraph* digraph, Vertex* src) {
   for (Vertex* u : digraph->vertices) {
-    u->d = std::numeric_limits<int>::max();
-    u->pre = nullptr;
+    u->depth = std::numeric_limits<int>::max();
+    u->predecessor = nullptr;
   }
-  src->d = 0;
+  src->depth = 0;
 }
 
 void Relax(Digraph* digraph, Edge* e) {
   Vertex* u = digraph->vertices[e->Either()];
   Vertex* v = digraph->vertices[e->Other(u->id)];
   int weight = e->weight;
-  if (v->d > u->d + weight) {
-    v->d = u->d + weight;
-    v->pre = u;
+  if (v->depth > u->depth + weight) {
+    v->depth = u->depth + weight;
+    v->predecessor = u;
   }
 }
 

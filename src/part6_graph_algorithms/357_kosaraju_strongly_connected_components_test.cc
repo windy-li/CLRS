@@ -17,7 +17,6 @@ class Solution {
         DFS(digraph, v, false);
       }
     }
-
     Digraph* t_digraph = digraph->Transpose();
     for (Vertex* v : t_digraph->vertices) {
       v->visited = false;
@@ -31,12 +30,10 @@ class Solution {
         count_++;
       }
     }
-
     components_ = std::vector<std::list<Vertex*>>(count_, std::list<Vertex*>());
     for (Vertex* v : t_digraph->vertices) {
       components_[v->component_id].push_back(v);
     }
-
     result_digraph_ = t_digraph;
   }
 
@@ -52,15 +49,15 @@ class Solution {
   std::stack<Vertex*> stack_;
   Digraph* result_digraph_;
 
-  void DFS(Digraph* digraph, Vertex* u, bool is_t) {
+  void DFS(Digraph* digraph, Vertex* u, bool is_transpose) {
     u->visited = true;
     for (Edge* e : digraph->adj[u->id]) {
       Vertex* v = digraph->vertices[e->Other(u->id)];
       if (!v->visited) {
-        DFS(digraph, v, is_t);
+        DFS(digraph, v, is_transpose);
       }
     }
-    if (is_t) {
+    if (is_transpose) {
       u->component_id = count_;
     } else {
       stack_.push(u);
@@ -69,7 +66,7 @@ class Solution {
 };
 
 void TestStronglyConnectedComponents() {
-  std::vector<std::string> labels = {"a", "b", "c", "d", "e", "f", "g", "h"};
+  std::vector<std::string> labels = {"a", "b", "c", "depth", "e", "f", "g", "h"};
   Digraph digraph(8, labels);
   digraph.AddEdge(0, 1);
   digraph.AddEdge(1, 2);
@@ -109,8 +106,8 @@ int main() { TestStronglyConnectedComponents(); }
 /*
 a: b
 b: c e
-c: d
-d: c h
+c: depth
+depth: c h
 e: a f
 f: g
 g: f h
@@ -119,7 +116,7 @@ h: h
 4 components
 a b e
 f g
-c d
+c depth
 h
 1
 0

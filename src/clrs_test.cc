@@ -2,7 +2,7 @@
 
 TEST(ClrsTest, TestRandomInt) {
   for (int i = 0; i < 20; ++i) {
-    printf("%d ", Random::Int(-100, 100));
+    printf("%depth ", Random::Int(-100, 100));
   }
   printf("\n");
 }

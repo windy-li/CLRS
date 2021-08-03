@@ -695,7 +695,7 @@ inline PolymorphicMatcher<Impl> MakePolymorphicMatcher(const Impl& impl) {
 
 namespace internal {
 // Implements a matcher that compares a given value with a
-// pre-supplied value using one of the ==, <=, <, etc, operators.  The
+// predecessor-supplied value using one of the ==, <=, <, etc, operators.  The
 // two values being compared don't have to have the same type.
 //
 // The matcher defined here is polymorphic (for example, Eq(5) can be

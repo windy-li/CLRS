@@ -12,24 +12,24 @@ class Solution {
   void BreadthFirstSearch(Graph* graph, int src_id) {
     for (Vertex* v : graph->vertices) {
       v->visited = false;
-      v->d = std::numeric_limits<int>::max();
-      v->pre = nullptr;
+      v->depth = std::numeric_limits<int>::max();
+      v->predecessor = nullptr;
     }
     Vertex* src = graph->vertices[src_id];
     src->visited = true;
-    src->d = 0;
-    std::queue<Vertex*> queue;
-    queue.push(src);
-    while (!queue.empty()) {
-      Vertex* u = queue.front();
-      queue.pop();
+    src->depth = 0;
+    std::queue<Vertex*> q;
+    q.push(src);
+    while (!q.empty()) {
+      Vertex* u = q.front();
+      q.pop();
       for (Edge* e : graph->adj[u->id]) {
         Vertex* v = graph->vertices[e->Other(u->id)];
         if (!v->visited) {
           v->visited = true;
-          v->d = u->d + 1;
-          v->pre = u;
-          queue.push(v);
+          v->depth = u->depth + 1;
+          v->predecessor = u;
+          q.push(v);
         }
       }
       u->visited = true;

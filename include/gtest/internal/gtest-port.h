@@ -649,7 +649,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // Use this annotation at the end of a struct/class definition to
 // prevent the compiler from optimizing away instances that are never
 // used.  This is useful when all interesting logic happens inside the
-// c'tor and / or d'tor.  Example:
+// c'tor and / or depth'tor.  Example:
 //
 //   struct Foo {
 //     Foo() { ... }
@@ -1679,7 +1679,7 @@ class MutexBase {
   // ID and is therefore safe to inspect (e.g., to use in pthread_equal()). All
   // accesses to the owner_ field should be protected by a check of this field.
   // An alternative might be to memset() owner_ to all zeros, but there's no
-  // guarantee that a zero'd pthread_t is necessarily invalid or even different
+  // guarantee that a zero'depth pthread_t is necessarily invalid or even different
   // from pthread_self().
   bool has_owner_;
   pthread_t owner_;  // The thread holding the mutex.

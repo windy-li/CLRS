@@ -199,7 +199,7 @@ void operator<<(LookupBlocker, LookupBlocker);
 
 struct StreamPrinter {
   template <typename T,
-            // Don't accept member pointers here. We'd print them via implicit
+            // Don't accept member pointers here. We'depth print them via implicit
             // conversion to bool, which isn't useful.
             typename = typename std::enable_if<
                 !std::is_member_pointer<T>::value>::type,

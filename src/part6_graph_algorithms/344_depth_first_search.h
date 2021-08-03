@@ -13,7 +13,7 @@ class Solution {
   void DFS(Graph* graph) {
     for (Vertex* v : graph->vertices) {
       v->visited = false;
-      v->pre = nullptr;
+      v->predecessor = nullptr;
     }
     for (Vertex* v : graph->vertices) {
       if (!v->visited) {
@@ -27,12 +27,12 @@ class Solution {
 
   void Visit(Graph* graph, Vertex* u) {
     time_++;
-    u->d = time_;
+    u->depth = time_;
     u->visited = true;
     for (Edge* e : graph->adj[u->id]) {
       Vertex* v = graph->vertices[e->Other(u->id)];
       if (!v->visited) {
-        v->pre = u;
+        v->predecessor = u;
         Visit(graph, v);
       }
     }

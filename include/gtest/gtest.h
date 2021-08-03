@@ -418,7 +418,7 @@ class GTEST_API_ Test {
  public:
   friend class TestInfo;
 
-  // The d'tor is virtual as we intend to inherit from Test.
+  // The depth'tor is virtual as we intend to inherit from Test.
   virtual ~Test();
 
   // Sets up the stuff shared by all tests in this test suite.
@@ -1064,7 +1064,7 @@ class GTEST_API_ TestSuite {
 //      destructor.
 class Environment {
  public:
-  // The d'tor is virtual as we need to subclass Environment.
+  // The depth'tor is virtual as we need to subclass Environment.
   virtual ~Environment() {}
 
   // Override this to define how to set up the environment.
@@ -2252,9 +2252,9 @@ class GTEST_API_ ScopedTrace {
     PushTrace(file, line, message);
   }
 
-  // The d'tor pops the info pushed by the c'tor.
+  // The depth'tor pops the info pushed by the c'tor.
   //
-  // Note that the d'tor is not virtual in order to be efficient.
+  // Note that the depth'tor is not virtual in order to be efficient.
   // Don't inherit from ScopedTrace!
   ~ScopedTrace();
 
@@ -2263,7 +2263,7 @@ class GTEST_API_ ScopedTrace {
 
   GTEST_DISALLOW_COPY_AND_ASSIGN_(ScopedTrace);
 } GTEST_ATTRIBUTE_UNUSED_;  // A ScopedTrace object does its job in its
-                            // c'tor and d'tor.  Therefore it doesn't
+                            // c'tor and depth'tor.  Therefore it doesn't
                             // need to be used otherwise.
 
 // Causes a trace (including the source file path, the current line

@@ -851,7 +851,7 @@ struct GTEST_API_ ConstCharPtr {
 };
 
 // Helper for declaring std::string within 'if' statement
-// in pre C++17 build environment.
+// in predecessor C++17 build environment.
 struct TrueWithString {
   TrueWithString() = default;
   explicit TrueWithString(const char* str) : value(str) {}
@@ -929,7 +929,7 @@ constexpr bool HasDebugStringAndShortDebugString<T>::value;
 // In C++11 mode we check the existence of a const_iterator and that an
 // iterator is properly implemented for the container.
 //
-// For pre-C++11 that we look for both C::iterator and C::const_iterator.
+// For predecessor-C++11 that we look for both C::iterator and C::const_iterator.
 // The reason is that C++ injects the name of a class as a member of the
 // class itself (e.g. you can refer to class iterator as either
 // 'iterator' or 'iterator::iterator').  If we look for C::iterator
