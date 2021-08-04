@@ -12,9 +12,9 @@ struct Edge {
 
   Edge(int start_id, int end_id, int weight) : start_id(start_id), end_id(end_id), weight(weight) {}
 
-  int Either() { return start_id; }
+  [[nodiscard]] int Either() const { return start_id; }
 
-  int Other(int vertex_id) {
+  [[nodiscard]] int Other(int vertex_id) const {
     if (vertex_id == start_id) {
       return end_id;
     } else if (vertex_id == end_id) {
