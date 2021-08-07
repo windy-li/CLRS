@@ -4,7 +4,7 @@ TEST(HeapSortTest, HeapSort) {
   std::vector<int> nums = {5, 2, 4, 6, 1, 3};
   MaxHeap h;
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
-  h.Sort(nums);
+  h.SortHeap(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
 
