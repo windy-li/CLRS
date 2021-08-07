@@ -3,7 +3,7 @@
 Solution solution;
 
 TEST(ShellSortTest, ShellSort) {
-  std::vector<int> nums = clrs::Random::Vector();
+  std::vector<int> nums = GenerateRandomVector();
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.ShellSort(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));

@@ -3,7 +3,7 @@
 Solution solution;
 
 TEST(SelectionSortTest, SelectionSort) {
-  std::vector<int> nums = clrs::DefaultRandomVector();
+  std::vector<int> nums = clrs::GenerateRandomVector();
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.SelectionSort(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));

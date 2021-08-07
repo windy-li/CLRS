@@ -28,8 +28,6 @@
     return RUN_ALL_TESTS();                 \
   }
 
-namespace clrs {
-
 // 返回[a, b]区间的随机数
 int RandomInt(int a, int b) {
   static std::random_device rd;
@@ -48,7 +46,7 @@ std::vector<int> RandomVector(int a, int b, int n) {
 }
 
 // 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机数
-std::vector<int> DefaultRandomVector() { return RandomVector(-100, 100, 1000); }
+std::vector<int> GenerateRandomVector() { return RandomVector(-100, 100, 1000); }
 
 // 返回[0, 1)区间的小数
 double Random() {
@@ -71,7 +69,6 @@ void PrintVector(std::vector<T>& v) {
   }
   std::cout << "]\n";
 }
-}  // namespace clrs
 
 class Random {
  public:
