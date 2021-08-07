@@ -28,11 +28,19 @@
     return RUN_ALL_TESTS();                 \
   }
 
-// 返回[a, b]区间的随机数
+// 返回[a, b]区间的随机整数
 int RandomInt(int a, int b) {
   static std::random_device rd;
   static std::mt19937 engine(rd());
   static std::uniform_int_distribution<int> distribution(a, b);
+  return distribution(engine);
+}
+
+// 返回[a, b)区间的随机实数
+double RandomDouble(double a, double b) {
+  static std::random_device rd;
+  static std::mt19937 engine(rd());
+  static std::uniform_real_distribution<double> distribution(a, b);
   return distribution(engine);
 }
 
