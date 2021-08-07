@@ -9,7 +9,7 @@
 
 class Solution {
  public:
-  void BreadthFirstSearch(Graph* graph, int src_id) {
+  void BFS(Graph* graph, int src_id) {
     for (Vertex* v : graph->vertices) {
       v->visited = false;
       v->depth = std::numeric_limits<int>::max();

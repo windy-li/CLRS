@@ -10,7 +10,7 @@ TEST(BreadthFirstSearchTest, TestBreadthFirstSearch) {
   graph.AddEdge(2, 3);
   graph.AddEdge(3, 4);
   graph.AddEdge(3, 5);
-  solution.BreadthFirstSearch(&graph, 0);
+  solution.BFS(&graph, 0);
   graph_util::PrintPath(graph.vertices[0], graph.vertices[5]);
   std::cout << std::endl;
   graph_util::PrintPath(graph.vertices[0], graph.vertices[6]);
