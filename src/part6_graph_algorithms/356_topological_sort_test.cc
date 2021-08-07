@@ -1,44 +1,6 @@
-#include "clrs.h"
-#include "part6_graph_algorithms/digraph.h"
-#include "part6_graph_algorithms/edge.h"
-#include "part6_graph_algorithms/vertex.h"
+#include "part6_graph_algorithms/356_topological_sort.h"
 
-class Solution {
- public:
-  Solution() : vertices_(std::list<Vertex*>()) {}
-
-  std::list<Vertex*> TopologicalSort(Digraph* digraph) {
-    DFS(digraph);
-    return vertices_;
-  }
-
- private:
-  std::list<Vertex*> vertices_;
-
-  void DFS(Digraph* digraph) {
-    for (Vertex* v : digraph->vertices) {
-      v->visited = false;
-    }
-    for (Vertex* v : digraph->vertices) {
-      if (!v->visited) {
-        Visit(digraph, v);
-      }
-    }
-  }
-
-  void Visit(Digraph* digraph, Vertex* u) {
-    u->visited = true;
-    for (Edge* e : digraph->adj[u->id]) {
-      Vertex* v = digraph->vertices[e->Other(u->id)];
-      if (!v->visited) {
-        Visit(digraph, v);
-      }
-    }
-    vertices_.push_front(u);
-  }
-};
-
-void TestTopologicalSort() {
+TEST(TopologicalSortTest, TestTopologicalSort) {
   Solution solution;
   Digraph digraph(5);
   digraph.AddEdge(0, 1);
@@ -55,7 +17,7 @@ void TestTopologicalSort() {
   }
 }
 
-int main() { TestTopologicalSort(); }
+RUN_TESTS()
 
 /*
 0: 1 3
