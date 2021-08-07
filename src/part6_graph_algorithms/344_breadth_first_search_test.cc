@@ -2,7 +2,7 @@
 
 Solution solution;
 
-TEST(BreadthFirstSearchTest, TestBreadthFirstSearch) {
+TEST(BFSTest, TestBFS) {
   Graph graph(7);
   graph.AddEdge(0, 1);
   graph.AddEdge(0, 2);
