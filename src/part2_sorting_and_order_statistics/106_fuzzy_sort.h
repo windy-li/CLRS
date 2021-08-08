@@ -21,7 +21,7 @@ class Solution {
   }
 
  private:
-  std::vector<int> Partition(std::vector<Interval*>& intervals, int p, int r) {
+  static std::vector<int> Partition(std::vector<Interval*>& intervals, int p, int r) {
     Interval pivot(intervals[r]->left, intervals[r]->right);
     int i = p;
     int j = p;
