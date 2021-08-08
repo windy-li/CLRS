@@ -1,10 +1,7 @@
 #ifndef CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_093_DIVERSITY_HEAP_H_
 #define CLRS_SRC_PART2_SORTING_AND_ORDER_STATISTICS_093_DIVERSITY_HEAP_H_
 
-#include <algorithm>
-#include <exception>
-#include <limits>
-#include <vector>
+#include "clrs.h"
 
 class DiversityHeap {
  public:

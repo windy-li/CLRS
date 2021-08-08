@@ -11,7 +11,7 @@ TEST(QueueOnMaxPriorityQueueTest, TestQueue) {
   }
   for (int i = 0; i < n; ++i) {
     Node* node = q.Pop();
-    std::cout << "{key: " << node->key << ", priority: " << node->priority << "}" << std::endl;
+    printf("{ key: %d, priority: %d }\n", node->key, node->priority);
   }
 }
 

@@ -1,6 +1,4 @@
-#include <algorithm>
-#include <limits>
-#include <vector>
+#include "clrs.h"
 
 struct Node {
   int key;

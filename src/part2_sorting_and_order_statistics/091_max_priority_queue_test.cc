@@ -11,6 +11,6 @@ TEST(MaxPriorityQueueTest, MaxPriorityQueue) {
     q.Insert(key);
   }
   for (int i = 0; i < n; ++i) {
-    std::cout << q.ExtractMax() << " ";
+    printf("%d ", q.ExtractMax());
   }
 }
