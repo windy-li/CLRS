@@ -56,14 +56,6 @@ std::vector<int> RandomIntVector(int a, int b, int n) {
 // 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机数
 std::vector<int> RandomIntVector() { return RandomIntVector(-100, 100, 1000); }
 
-// 返回[0, 1)区间的小数
-double Random() {
-  static std::random_device rd;
-  static std::mt19937 engine(rd());
-  static std::uniform_real_distribution<double> distribution(0.0, 1.0);
-  return distribution(engine);
-}
-
 // 打印一个数列
 template <typename T>
 void PrintVector(std::vector<T>& v) {
