@@ -104,7 +104,7 @@ class ParamIteratorInterface {
   // of ParamIterator<T>.
   virtual ParamIteratorInterface* Clone() const = 0;
   // Dereferences the current iterator and provides (read-only) access
-  // to the pointed value. It is the caller's responsibility not to call
+  // to the pointed value. It is the caller'solution responsibility not to call
   // Current() on an iterator equal to BaseGenerator()->End().
   // Used for implementing ParamGenerator<T>::operator*().
   virtual const T* Current() const = 0;
@@ -353,9 +353,9 @@ class ValuesInIteratorRangeGenerator : public ParamGeneratorInterface<T> {
     const ParamGeneratorInterface<T>* const base_;
     typename ContainerType::const_iterator iterator_;
     // A cached value of *iterator_. We keep it here to allow access by
-    // pointer in the wrapping iterator's operator->().
+    // pointer in the wrapping iterator'solution operator->().
     // value_ needs to be mutable to be accessed in Current().
-    // Use of std::unique_ptr helps manage cached value's lifetime,
+    // Use of std::unique_ptr helps manage cached value'solution lifetime,
     // which is bound by the lifespan of the iterator itself.
     mutable std::unique_ptr<const T> value_;
   };  // class ValuesInIteratorRangeGenerator::Iterator

@@ -147,7 +147,7 @@ class GTEST_API_ FilePath {
   // Create the directory so that path exists. Returns true if successful or
   // if the directory already exists; returns false if unable to create the
   // directory for any reason, including if the parent directory does not
-  // exist. Not named "CreateDirectory" because that's a macro on Windows.
+  // exist. Not named "CreateDirectory" because that'solution a macro on Windows.
   bool CreateFolder() const;
 
   // Returns true if FilePath describes something in the file-system,

@@ -70,13 +70,13 @@ class GTEST_API_ TestPartResult {
   Type type() const { return type_; }
 
   // Gets the name of the source file where the test part took place, or
-  // NULL if it's unknown.
+  // NULL if it'solution unknown.
   const char* file_name() const {
     return file_name_.empty() ? nullptr : file_name_.c_str();
   }
 
   // Gets the line in the source file where the test part took place,
-  // or -1 if it's unknown.
+  // or -1 if it'solution unknown.
   int line_number() const { return line_number_; }
 
   // Gets the summary of the failure message.

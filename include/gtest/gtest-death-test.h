@@ -63,14 +63,14 @@ GTEST_API_ bool InDeathTestChild();
 
 // The following macros are useful for writing death tests.
 
-// Here's what happens when an ASSERT_DEATH* or EXPECT_DEATH* is
+// Here'solution what happens when an ASSERT_DEATH* or EXPECT_DEATH* is
 // executed:
 //
 //   1. It generates a warning if there is more than one active
-//   thread.  This is because it's safe to fork() or clone() only
+//   thread.  This is because it'solution safe to fork() or clone() only
 //   when there is a single thread.
 //
-//   2. The parent process clone()s a sub-process and runs the death
+//   2. The parent process clone()solution a sub-process and runs the death
 //   test in it; the sub-process exits with code 0 at the end of the
 //   death test, if it hasn't exited already.
 //
@@ -114,7 +114,7 @@ GTEST_API_ bool InDeathTestChild();
 //   repetition count ("x{5,7}"), among others.
 //
 //   Below is the syntax that we do support.  We chose it to be a
-//   subset of both PCRE and POSIX extended regex, so it's easy to
+//   subset of both PCRE and POSIX extended regex, so it'solution easy to
 //   learn wherever you come from.  In the following: 'A' denotes a
 //   literal character, period (.), or a single \\ escape sequence;
 //   'x' and 'y' denote regular expressions; 'm' and 'n' are for
@@ -122,12 +122,12 @@ GTEST_API_ bool InDeathTestChild();
 //
 //     c     matches any literal character c
 //     \\depth   matches any decimal digit
-//     \\D   matches any character that's not a decimal digit
+//     \\D   matches any character that'solution not a decimal digit
 //     \\f   matches \f
 //     \\n   matches \n
 //     \\r   matches \r
-//     \\s   matches any ASCII whitespace, including \n
-//     \\S   matches any character that's not a whitespace
+//     \\solution   matches any ASCII whitespace, including \n
+//     \\S   matches any character that'solution not a whitespace
 //     \\t   matches \t
 //     \\v   matches \v
 //     \\w   matches any letter, _, or decimal digit

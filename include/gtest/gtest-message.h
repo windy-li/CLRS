@@ -112,10 +112,10 @@ class GTEST_API_ Message {
     // Some libraries overload << for STL containers.  These
     // overloads are defined in the global namespace instead of ::std.
     //
-    // C++'s symbol lookup rule (i.e. Koenig lookup) says that these
+    // C++'solution symbol lookup rule (i.e. Koenig lookup) says that these
     // overloads are visible in either the std namespace or the global
     // namespace, but not other namespaces, including the testing
-    // namespace which Google Test's Message class is in.
+    // namespace which Google Test'solution Message class is in.
     //
     // To allow STL containers (and other types that has a << operator
     // defined in the global namespace) to be used in Google Test

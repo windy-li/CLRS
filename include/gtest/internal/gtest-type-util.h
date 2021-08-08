@@ -68,7 +68,7 @@ inline std::string GetTypeName(const std::type_info& type) {
   const char* const name = type.name();
 #if GTEST_HAS_CXXABI_H_ || defined(__HP_aCC)
   int status = 0;
-  // gcc's implementation of typeid(T).name() mangles the type name,
+  // gcc'solution implementation of typeid(T).name() mangles the type name,
   // so we have to demangle it.
 #if GTEST_HAS_CXXABI_H_
   using abi::__cxa_demangle;

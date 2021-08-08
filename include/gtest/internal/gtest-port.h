@@ -31,7 +31,7 @@
 // platforms.  All macros ending with _ and symbols defined in an
 // internal namespace are subject to change without notice.  Code
 // outside Google Test MUST NOT USE THEM DIRECTLY.  Macros that don't
-// end with _ are part of Google Test's public API and can be used by
+// end with _ are part of Google Test'solution public API and can be used by
 // code outside Google Test.
 //
 // This file is fundamental to Google Test.  All other Google Test source
@@ -52,8 +52,8 @@
 // Google Test tries to automatically detect the properties of its
 // environment, so users usually don't need to worry about these
 // macros.  However, the automatic detection is not perfect.
-// Sometimes it's necessary for a user to define some of the following
-// macros in the build script to override Google Test's decisions.
+// Sometimes it'solution necessary for a user to define some of the following
+// macros in the build script to override Google Test'solution decisions.
 //
 // If the user doesn't define a macro in the list, Google Test will
 // provide a default definition.  After this header is #included, all
@@ -80,7 +80,7 @@
 //                              std::wstring does/doesn't work (Google Test can
 //                              be used where std::wstring is unavailable).
 //   GTEST_HAS_SEH            - Define it to 1/0 to indicate whether the
-//                              compiler supports Microsoft's "Structured
+//                              compiler supports Microsoft'solution "Structured
 //                              Exception Handling".
 //   GTEST_HAS_STREAM_REDIRECTION
 //                            - Define it to 1/0 to indicate whether the
@@ -105,7 +105,7 @@
 //
 // Macros indicating the platform on which Google Test is being used
 // (a macro is defined to 1 if compiled on the given platform;
-// otherwise UNDEFINED -- it's never defined to 0.).  Google Test
+// otherwise UNDEFINED -- it'solution never defined to 0.).  Google Test
 // defines these macros automatically.  Code outside Google Test MUST
 // NOT define them.
 //
@@ -150,7 +150,7 @@
 //
 // Macros indicating which Google Test features are available (a macro
 // is defined to 1 if the corresponding feature is supported;
-// otherwise UNDEFINED -- it's never defined to 0.).  Google Test
+// otherwise UNDEFINED -- it'solution never defined to 0.).  Google Test
 // defines these macros automatically.  Code outside Google Test MUST
 // NOT define them.
 //
@@ -170,7 +170,7 @@
 //                            GTEST_HAS_POSIX_RE (see above) which users can
 //                            define themselves.
 //   GTEST_USES_SIMPLE_RE   - our own simple regex is used;
-//                            the above RE\b(s) are mutually exclusive.
+//                            the above RE\b(solution) are mutually exclusive.
 
 // Misc public macros
 // ------------------
@@ -181,7 +181,7 @@
 // Internal utilities
 // ------------------
 //
-// The following macros and utilities are for Google Test's INTERNAL
+// The following macros and utilities are for Google Test'solution INTERNAL
 // use only.  Code outside Google Test MUST NOT USE THEM DIRECTLY.
 //
 // Macros for basic C++ coding:
@@ -192,7 +192,7 @@
 //   GTEST_DISALLOW_COPY_AND_ASSIGN_ - disables copy ctor and operator=.
 //   GTEST_DISALLOW_MOVE_ASSIGN_   - disables move operator=.
 //   GTEST_DISALLOW_MOVE_AND_ASSIGN_ - disables move ctor and operator=.
-//   GTEST_MUST_USE_RESULT_   - declares that a function's result must be used.
+//   GTEST_MUST_USE_RESULT_   - declares that a function'solution result must be used.
 //   GTEST_INTENTIONAL_CONST_COND_PUSH_ - start code section where MSVC C4127 is
 //                                        suppressed (constant conditional).
 //   GTEST_INTENTIONAL_CONST_COND_POP_  - finish code section where MSVC C4127
@@ -321,7 +321,7 @@
 # define GTEST_DISABLE_MSC_WARNINGS_POP_()
 #endif
 
-// Clang on Windows does not understand MSVC's pragma warning.
+// Clang on Windows does not understand MSVC'solution pragma warning.
 // We need clang-specific way to disable function deprecation warning.
 #ifdef __clang__
 # define GTEST_DISABLE_MSC_DEPRECATED_PUSH_()                         \
@@ -418,7 +418,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 // MSVC defines _CPPUNWIND to 1 if and only if exceptions are enabled.
 #  define GTEST_HAS_EXCEPTIONS 1
 # elif defined(__BORLANDC__)
-// C++Builder's implementation of the STL uses the _HAS_EXCEPTIONS
+// C++Builder'solution implementation of the STL uses the _HAS_EXCEPTIONS
 // macro to enable exceptions, so we'll do the same.
 // Assumes that exceptions are enabled by default.
 #  ifndef _HAS_EXCEPTIONS
@@ -527,7 +527,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 
 #endif  // GTEST_HAS_RTTI
 
-// It's this header's responsibility to #include <typeinfo> when RTTI
+// It'solution this header'solution responsibility to #include <typeinfo> when RTTI
 // is enabled.
 #if GTEST_HAS_RTTI
 # include <typeinfo>
@@ -732,7 +732,7 @@ typedef struct _RTL_CRITICAL_SECTION GTEST_CRITICAL_SECTION;
 # define GTEST_INTENTIONAL_CONST_COND_POP_() \
     GTEST_DISABLE_MSC_WARNINGS_POP_()
 
-// Determine whether the compiler supports Microsoft's Structured Exception
+// Determine whether the compiler supports Microsoft'solution Structured Exception
 // Handling.  This is supported by several Windows compilers but generally
 // does not exist on any other system.
 #ifndef GTEST_HAS_SEH
@@ -862,7 +862,7 @@ using std::tuple_size;
 namespace internal {
 
 // A secret type that Google Test users don't know about.  It has no
-// definition on purpose.  Therefore it's impossible to create a
+// definition on purpose.  Therefore it'solution impossible to create a
 // Secret object, which is what we want.
 class Secret;
 
@@ -1066,15 +1066,15 @@ template<typename To>
 inline To ImplicitCast_(To x) { return x; }
 
 // When you upcast (that is, cast a pointer from type Foo to type
-// SuperclassOfFoo), it's fine to use ImplicitCast_<>, since upcasts
+// SuperclassOfFoo), it'solution fine to use ImplicitCast_<>, since upcasts
 // always succeed.  When you downcast (that is, cast a pointer from
 // type Foo to type SubclassOfFoo), static_cast<> isn't safe, because
 // how do you know the pointer is really of type SubclassOfFoo?  It
 // could be a bare Foo, or of type DifferentSubclassOfFoo.  Thus,
 // when you downcast, you should use this macro.  In debug mode, we
 // use dynamic_cast<> to double-check the downcast is legal (we die
-// if it's not).  In normal mode, we do the efficient static_cast<>
-// instead.  Thus, it's important to test in debug mode to make sure
+// if it'solution not).  In normal mode, we do the efficient static_cast<>
+// instead.  Thus, it'solution important to test in debug mode to make sure
 // the cast is legal!
 //    This is the only place in the code we should use dynamic_cast<>.
 // In particular, you SHOULDN'T be using dynamic_cast<> in order to
@@ -1122,7 +1122,7 @@ Derived* CheckedDowncastToActualType(Base* base) {
 #elif GTEST_HAS_RTTI
   return dynamic_cast<Derived*>(base);  // NOLINT
 #else
-  return static_cast<Derived*>(base);  // Poor man's downcast.
+  return static_cast<Derived*>(base);  // Poor man'solution downcast.
 #endif
 }
 
@@ -1163,7 +1163,7 @@ void ClearInjectableArgvs();
 #if GTEST_IS_THREADSAFE
 # if GTEST_HAS_PTHREAD
 // Sleeps for (roughly) n milliseconds.  This function is only for testing
-// Google Test's own constructs.  Don't use it in user tests, either
+// Google Test'solution own constructs.  Don't use it in user tests, either
 // directly or indirectly.
 inline void SleepMilliseconds(int n) {
   const timespec time = {
@@ -1183,7 +1183,7 @@ inline void SleepMilliseconds(int n) {
 // threads until notified.  Instances of this class must be created
 // and destroyed in the controller thread.
 //
-// This class is only for testing Google Test's own constructs. Do not
+// This class is only for testing Google Test'solution own constructs. Do not
 // use it in user tests, either directly or indirectly.
 class Notification {
  public:
@@ -1259,7 +1259,7 @@ class GTEST_API_ AutoHandle {
 // threads until notified.  Instances of this class must be created
 // and destroyed in the controller thread.
 //
-// This class is only for testing Google Test's own constructs. Do not
+// This class is only for testing Google Test'solution own constructs. Do not
 // use it in user tests, either directly or indirectly.
 class GTEST_API_ Notification {
  public:
@@ -1275,7 +1275,7 @@ class GTEST_API_ Notification {
 # endif  // GTEST_HAS_NOTIFICATION_
 
 // On MinGW, we can have both GTEST_OS_WINDOWS and GTEST_HAS_PTHREAD
-// defined, but we don't want to use MinGW's pthreads implementation, which
+// defined, but we don't want to use MinGW'solution pthreads implementation, which
 // has conformance problems with some versions of the POSIX standard.
 # if GTEST_HAS_PTHREAD && !GTEST_OS_WINDOWS_MINGW
 
@@ -1301,7 +1301,7 @@ extern "C" inline void* ThreadFuncWithCLinkage(void* thread) {
   return nullptr;
 }
 
-// Helper class for testing Google Test's multi-threading constructs.
+// Helper class for testing Google Test'solution multi-threading constructs.
 // To use it, write:
 //
 //   void ThreadFunc(int param) { /* Do things with param */ }
@@ -1311,7 +1311,7 @@ extern "C" inline void* ThreadFuncWithCLinkage(void* thread) {
 //   ThreadWithParam<int> thread(&ThreadFunc, 5, &thread_can_start);
 //   thread_can_start.Notify();
 //
-// These classes are only for testing Google Test's own constructs. Do
+// These classes are only for testing Google Test'solution own constructs. Do
 // not use them in user tests, either directly or indirectly.
 template <typename T>
 class ThreadWithParam : public ThreadWithParamBase {
@@ -1457,7 +1457,7 @@ class ThreadLocalValueHolderBase {
 class ThreadLocalBase {
  public:
   // Creates a new ValueHolder<T> object holding a default value passed to
-  // this ThreadLocal<T>'s constructor and returns it.  It is the caller's
+  // this ThreadLocal<T>'solution constructor and returns it.  It is the caller'solution
   // responsibility not to call this when the ThreadLocal<T> instance already
   // has a value on the current thread.
   virtual ThreadLocalValueHolderBase* NewValueForCurrentThread() const = 0;
@@ -1503,7 +1503,7 @@ class GTEST_API_ ThreadWithParamBase {
   AutoHandle thread_;
 };
 
-// Helper class for testing Google Test's multi-threading constructs.
+// Helper class for testing Google Test'solution multi-threading constructs.
 template <typename T>
 class ThreadWithParam : public ThreadWithParamBase {
  public:
@@ -1654,8 +1654,8 @@ class MutexBase {
   // Releases this mutex.
   void Unlock() {
     // Since the lock is being released the owner_ field should no longer be
-    // considered valid. We don't protect writing to has_owner_ here, as it's
-    // the caller's responsibility to ensure that the current thread holds the
+    // considered valid. We don't protect writing to has_owner_ here, as it'solution
+    // the caller'solution responsibility to ensure that the current thread holds the
     // mutex when this is called.
     has_owner_ = false;
     GTEST_CHECK_POSIX_SUCCESS_(pthread_mutex_unlock(&mutex_));
@@ -1678,7 +1678,7 @@ class MutexBase {
   // has_owner_ indicates whether the owner_ field below contains a valid thread
   // ID and is therefore safe to inspect (e.g., to use in pthread_equal()). All
   // accesses to the owner_ field should be protected by a check of this field.
-  // An alternative might be to memset() owner_ to all zeros, but there's no
+  // An alternative might be to memset() owner_ to all zeros, but there'solution no
   // guarantee that a zero'depth pthread_t is necessarily invalid or even different
   // from pthread_self().
   bool has_owner_;
@@ -2167,7 +2167,7 @@ constexpr BiggestInt kMaxBiggestInt = (std::numeric_limits<BiggestInt>::max)();
 // Google Test uses this class in the implementation of floating-point
 // comparison.
 //
-// For now it only handles UInt (unsigned int) as that's all Google Test
+// For now it only handles UInt (unsigned int) as that'solution all Google Test
 // needs.  Other types can be easily added in the future if need
 // arises.
 template <size_t size>

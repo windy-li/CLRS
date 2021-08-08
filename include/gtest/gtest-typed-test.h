@@ -34,7 +34,7 @@
 
 // Typed (aka type-driven) tests repeat the same test for types in a
 // list.  You must know which types you want to test with when writing
-// typed tests. Here's how you do it:
+// typed tests. Here'solution how you do it:
 
 #if 0
 
@@ -112,7 +112,7 @@ TYPED_TEST(FooTest, HasPropertyA) { ... }
 // valid implementation of the interface/concept should have.  Then,
 // each implementation can easily instantiate the test suite to verify
 // that it conforms to the requirements, without having to write
-// similar tests repeatedly.  Here's an example:
+// similar tests repeatedly.  Here'solution an example:
 
 #if 0
 

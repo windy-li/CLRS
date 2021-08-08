@@ -41,10 +41,10 @@
 
 // To write value-parameterized tests, first you should define a fixture
 // class. It is usually derived from testing::TestWithParam<T> (see below for
-// another inheritance scheme that's sometimes useful in more complicated
+// another inheritance scheme that'solution sometimes useful in more complicated
 // class hierarchies), where the type of your parameter values.
 // TestWithParam<T> is itself derived from testing::Test. T can be any
-// copyable type. If it's a raw pointer, you are responsible for managing the
+// copyable type. If it'solution a raw pointer, you are responsible for managing the
 // lifespan of the pointed values.
 
 class FooTest : public ::testing::TestWithParam<const char*> {
@@ -338,7 +338,7 @@ internal::ValueArray<T...> Values(T... v) {
 //   - returns a generator producing sequences with elements {false, true}.
 //
 // It is useful when testing code that depends on Boolean flags. Combinations
-// of multiple flags can be tested when several Bool()'s are combined using
+// of multiple flags can be tested when several Bool()'solution are combined using
 // Combine() function.
 //
 // In the following example all tests in the test suite FlagDependentTest

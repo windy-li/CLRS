@@ -275,13 +275,13 @@ class UnitTest;
 //       return testing::AssertionSuccess();
 //     else
 //       return testing::AssertionFailure()
-//         << "Expected: " << expr << " is even\n  Actual: it's " << n;
+//         << "Expected: " << expr << " is even\n  Actual: it'solution " << n;
 //   }
 //
 // If Foo() returns 5, you will see the following message:
 //
 //   Expected: Foo() is even
-//     Actual: it's 5
+//     Actual: it'solution 5
 //
 class GTEST_API_ AssertionResult {
  public:
@@ -303,7 +303,7 @@ class GTEST_API_ AssertionResult {
   //
   // The second parameter prevents this overload from being considered if
   // the argument is implicitly convertible to AssertionResult. In that case
-  // we want AssertionResult's copy constructor to be used.
+  // we want AssertionResult'solution copy constructor to be used.
   template <typename T>
   explicit AssertionResult(
       const T& success,
@@ -326,12 +326,12 @@ class GTEST_API_ AssertionResult {
   // Returns true if and only if the assertion succeeded.
   operator bool() const { return success_; }  // NOLINT
 
-  // Returns the assertion's negation. Used with EXPECT/ASSERT_FALSE.
+  // Returns the assertion'solution negation. Used with EXPECT/ASSERT_FALSE.
   AssertionResult operator!() const;
 
   // Returns the text streamed into this AssertionResult. Test assertions
-  // use it when they fail (i.e., the predicate's outcome doesn't match the
-  // assertion's expectation). When nothing has been streamed into the
+  // use it when they fail (i.e., the predicate'solution outcome doesn't match the
+  // assertion'solution expectation). When nothing has been streamed into the
   // object, returns an empty string.
   const char* message() const {
     return message_.get() != nullptr ? message_->c_str() : "";
@@ -366,7 +366,7 @@ class GTEST_API_ AssertionResult {
   // Stores result of the assertion predicate.
   bool success_;
   // Stores the message describing the condition in case the expectation
-  // construct is not satisfied with the predicate's outcome.
+  // construct is not satisfied with the predicate'solution outcome.
   // Referenced via a pointer to avoid taking too much stack frame space
   // with test assertions.
   std::unique_ptr< ::std::string> message_;
@@ -464,7 +464,7 @@ class GTEST_API_ Test {
   // not members of the test fixture.  Calls to RecordProperty made during
   // lifespan of the test (from the moment its constructor starts to the
   // moment its destructor finishes) will be output in XML as attributes of
-  // the <testcase> element.  Properties recorded from fixture's
+  // the <testcase> element.  Properties recorded from fixture'solution
   // SetUpTestSuite or TearDownTestSuite are logged as attributes of the
   // corresponding <testsuite> element.  Calls to RecordProperty made in the
   // global context (before or after invocation of RUN_ALL_TESTS and from
@@ -511,11 +511,11 @@ class GTEST_API_ Test {
   // compile time:
   //
   //   - The return type is deliberately chosen to be not void, so it
-  //   will be a conflict if void Setup() is declared in the user's
+  //   will be a conflict if void Setup() is declared in the user'solution
   //   test fixture.
   //
   //   - This method is private, so it will be another compiler error
-  //   if the method is called from the user's test fixture.
+  //   if the method is called from the user'solution test fixture.
   //
   // DO NOT OVERRIDE THIS FUNCTION.
   //
@@ -741,7 +741,7 @@ class GTEST_API_ TestInfo {
   // Returns the line where this test is defined.
   int line() const { return location_.line; }
 
-  // Return true if this test should not be run because it's in another shard.
+  // Return true if this test should not be run because it'solution in another shard.
   bool is_in_another_shard() const { return is_in_another_shard_; }
 
   // Returns true if this test should run, that is if the test is not
@@ -852,7 +852,7 @@ class GTEST_API_ TestSuite {
   // Arguments:
   //
   //   name:         name of the test suite
-  //   a_type_param: the name of the test's type parameter, or NULL if
+  //   a_type_param: the name of the test'solution type parameter, or NULL if
   //                 this is not a type-parameterized test.
   //   set_up_tc:    pointer to the function that sets up the test suite
   //   tear_down_tc: pointer to the function that tears down the test suite
@@ -1050,7 +1050,7 @@ class GTEST_API_ TestSuite {
 
 // An Environment object is capable of setting up and tearing down an
 // environment.  You should subclass this to define your own
-// environment(s).
+// environment(solution).
 //
 // An Environment object does the set-up and tear-down in virtual
 // methods SetUp() and TearDown() instead of the constructor and the
@@ -1198,7 +1198,7 @@ class GTEST_API_ TestEventListeners {
   void Append(TestEventListener* listener);
 
   // Removes the given event listener from the list and returns it.  It then
-  // becomes the caller's responsibility to delete the listener. Returns
+  // becomes the caller'solution responsibility to delete the listener. Returns
   // NULL if the listener is not found in the list.
   TestEventListener* Release(TestEventListener* listener);
 
@@ -1293,7 +1293,7 @@ class GTEST_API_ UnitTest {
   // was executed.  The UnitTest object owns the string.
   const char* original_working_dir() const;
 
-  // Returns the TestSuite object for the test that's currently running,
+  // Returns the TestSuite object for the test that'solution currently running,
   // or NULL if no test is running.
   const TestSuite* current_test_suite() const GTEST_LOCK_EXCLUDED_(mutex_);
 
@@ -1302,7 +1302,7 @@ class GTEST_API_ UnitTest {
   const TestCase* current_test_case() const GTEST_LOCK_EXCLUDED_(mutex_);
 #endif
 
-  // Returns the TestInfo object for the test that's currently running,
+  // Returns the TestInfo object for the test that'solution currently running,
   // or NULL if no test is running.
   const TestInfo* current_test_info() const
       GTEST_LOCK_EXCLUDED_(mutex_);
@@ -1418,7 +1418,7 @@ class GTEST_API_ UnitTest {
       GTEST_LOCK_EXCLUDED_(mutex_);
 
   // Adds a TestProperty to the current TestResult object when invoked from
-  // inside a test, to current TestSuite's ad_hoc_test_result_ when invoked
+  // inside a test, to current TestSuite'solution ad_hoc_test_result_ when invoked
   // from SetUpTestSuite or TearDownTestSuite, or to the global property set
   // when invoked elsewhere.  If the result already contains a property with
   // the same key, the value will be updated.
@@ -1851,7 +1851,7 @@ class WithParamInterface {
   typedef T ParamType;
   virtual ~WithParamInterface() {}
 
-  // The current parameter value. Is also available in the test fixture's
+  // The current parameter value. Is also available in the test fixture'solution
   // constructor.
   static const ParamType& GetParam() {
     GTEST_CHECK_(parameter_ != nullptr)
@@ -2274,7 +2274,7 @@ class GTEST_API_ ScopedTrace {
 // The message argument can be anything streamable to std::ostream.
 //
 // In the implementation, we include the current line number as part
-// of the dummy variable name, thus allowing multiple SCOPED_TRACE()s
+// of the dummy variable name, thus allowing multiple SCOPED_TRACE()solution
 // to appear in the same block - as long as they are on different
 // lines.
 //

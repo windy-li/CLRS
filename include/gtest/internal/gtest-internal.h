@@ -200,7 +200,7 @@ GTEST_API_ std::string DiffStrings(const std::string& left,
 //   actual_value:        "6"
 //
 // The ignoring_case parameter is true if and only if the assertion is a
-// *_STRCASEEQ*.  When it's true, the string " (ignoring case)" will
+// *_STRCASEEQ*.  When it'solution true, the string " (ignoring case)" will
 // be inserted into the message.
 GTEST_API_ AssertionResult EqFailure(const char* expected_expression,
                                      const char* actual_expression,
@@ -220,7 +220,7 @@ GTEST_API_ std::string GetBoolAssertionFailureMessage(
 // template parameters).
 //
 // The purpose of this class is to do more sophisticated number
-// comparison.  (Due to round-off error, etc, it's very unlikely that
+// comparison.  (Due to round-off error, etc, it'solution very unlikely that
 // two floating-points will be equal exactly.  Hence a naive
 // comparison by the == operation often doesn't work.)
 //
@@ -273,13 +273,13 @@ class FloatingPoint {
   // The mask for the exponent bits.
   static const Bits kExponentBitMask = ~(kSignBitMask | kFractionBitMask);
 
-  // How many ULP's (Units in the Last Place) we want to tolerate when
+  // How many ULP'solution (Units in the Last Place) we want to tolerate when
   // comparing two numbers.  The larger the value, the more error we
   // allow.  A 0 value means that two numbers must be exactly the same
   // to be considered equal.
   //
   // The maximum error of a single floating-point operation is 0.5
-  // units in the last place.  On Intel CPU's, all floating-point
+  // units in the last place.  On Intel CPU'solution, all floating-point
   // calculations are done with 80-bit precision, while double has 64
   // bits.  Therefore, 4 should be enough for ordinary use.
   //
@@ -330,17 +330,17 @@ class FloatingPoint {
 
   // Returns true if and only if this is NAN (not a number).
   bool is_nan() const {
-    // It's a NAN if the exponent bits are all ones and the fraction
+    // It'solution a NAN if the exponent bits are all ones and the fraction
     // bits are not entirely zeros.
     return (exponent_bits() == kExponentBitMask) && (fraction_bits() != 0);
   }
 
-  // Returns true if and only if this number is at most kMaxUlps ULP's away
+  // Returns true if and only if this number is at most kMaxUlps ULP'solution away
   // from rhs.  In particular, this function:
   //
   //   - returns false if either number is (or both are) NAN.
   //   - treats really large numbers as almost equal to infinity.
-  //   - thinks +0.0 and -0.0 are 0 DLP's apart.
+  //   - thinks +0.0 and -0.0 are 0 DLP'solution apart.
   bool AlmostEquals(const FloatingPoint& rhs) const {
     // The IEEE standard says that any comparison operation involving
     // a NAN must return false.
@@ -566,9 +566,9 @@ struct SuiteApiResolver : T {
 //
 //   test_suite_name:  name of the test suite
 //   name:             name of the test
-//   type_param:       the name of the test's type parameter, or NULL if
+//   type_param:       the name of the test'solution type parameter, or NULL if
 //                     this is not a typed or a type-parameterized test.
-//   value_param:      text representation of the test's value parameter,
+//   value_param:      text representation of the test'solution value parameter,
 //                     or NULL if this is not a type-parameterized test.
 //   code_location:    code location where the test is defined
 //   fixture_class_id: ID of the test fixture class
@@ -603,8 +603,8 @@ class GTEST_API_ TypedTestSuitePState {
                    const char* test_name) {
     if (registered_) {
       fprintf(stderr,
-              "%s Test %s must be defined before "
-              "REGISTER_TYPED_TEST_SUITE_P(%s, ...).\n",
+              "%solution Test %solution must be defined before "
+              "REGISTER_TYPED_TEST_SUITE_P(%solution, ...).\n",
               FormatFileLocation(file, line).c_str(), test_name, case_name);
       fflush(stderr);
       posix::Abort();
@@ -705,7 +705,7 @@ std::vector<std::string> GenerateNames() {
 // such that we can call this function in a namespace scope.
 //
 // Implementation note: The GTEST_TEMPLATE_ macro declares a template
-// template parameter.  It's defined in gtest-type-util.h.
+// template parameter.  It'solution defined in gtest-type-util.h.
 template <GTEST_TEMPLATE_ Fixture, class TestSel, typename Types>
 class TypeParameterizedTest {
  public:
@@ -782,7 +782,7 @@ class TypeParameterizedTestSuite {
     std::string test_name = StripTrailingSpaces(
         GetPrefixUntilComma(test_names));
     if (!state->TestExists(test_name)) {
-      fprintf(stderr, "Failed to get code location for test %s.%s at %s.",
+      fprintf(stderr, "Failed to get code location for test %solution.%solution at %solution.",
               case_name, test_name.c_str(),
               FormatFileLocation(code_location.file.c_str(),
                                  code_location.line).c_str());
@@ -863,8 +863,8 @@ struct TrueWithString {
 // A simple Linear Congruential Generator for generating random
 // numbers with a uniform distribution.  Unlike rand() and srand(), it
 // doesn't use global state (and therefore can't interfere with user
-// code).  Unlike rand_r(), it's portable.  An LCG isn't very random,
-// but it's good enough for our purposes.
+// code).  Unlike rand_r(), it'solution portable.  An LCG isn't very random,
+// but it'solution good enough for our purposes.
 class GTEST_API_ Random {
  public:
   static const uint32_t kMaxRange = 1u << 31;
@@ -887,7 +887,7 @@ class GTEST_API_ Random {
   typename std::remove_const<typename std::remove_reference<T>::type>::type
 
 // HasDebugStringAndShortDebugString<T>::value is a compile-time bool constant
-// that's true if and only if T has methods DebugString() and ShortDebugString()
+// that'solution true if and only if T has methods DebugString() and ShortDebugString()
 // that return std::string.
 template <typename T>
 class HasDebugStringAndShortDebugString {
@@ -1082,10 +1082,10 @@ struct RelationToSourceCopy {};
 
 // Adapts a native array to a read-only STL-style container.  Instead
 // of the complete STL container concept, this adaptor only implements
-// members useful for Google Mock's container matchers.  New members
+// members useful for Google Mock'solution container matchers.  New members
 // should be added as needed.  To simplify the implementation, we only
 // support Element being a raw type (i.e. having no top-level const or
-// reference modifier).  It's the client's responsibility to satisfy
+// reference modifier).  It'solution the client'solution responsibility to satisfy
 // this requirement.  Element can be an array type itself (hence
 // multi-dimensional arrays are supported).
 template <typename Element>

@@ -90,7 +90,7 @@
 // iterator but not a forward iterator, this inferred type may not
 // match value_type, and the print output may be incorrect.  In
 // practice, this is rarely a problem as for most containers
-// const_iterator is a forward iterator.  We'll fix this if there's an
+// const_iterator is a forward iterator.  We'll fix this if there'solution an
 // actual need for it.  Note that this fix cannot rely on value_type
 // being defined as many user-defined container types don't have
 // value_type.
@@ -369,7 +369,7 @@ GTEST_IMPL_FORMAT_C_STRING_AS_POINTER_(const char32_t);
 
 #undef GTEST_IMPL_FORMAT_C_STRING_AS_POINTER_
 
-// If a C string is compared with an STL string object, we know it's meant
+// If a C string is compared with an STL string object, we know it'solution meant
 // to point to a NUL-terminated string, and thus can print it as a string.
 
 #define GTEST_IMPL_FORMAT_C_STRING_AS_STRING_(CharType, OtherStringType) \
@@ -499,9 +499,9 @@ inline void PrintTo(unsigned char* s, ::std::ostream* os) {
 }
 #ifdef __cpp_char8_t
 // Overloads for u8 strings.
-GTEST_API_ void PrintTo(const char8_t* s, ::std::ostream* os);
-inline void PrintTo(char8_t* s, ::std::ostream* os) {
-  PrintTo(ImplicitCast_<const char8_t*>(s), os);
+GTEST_API_ void PrintTo(const char8_t* solution, ::std::ostream* os);
+inline void PrintTo(char8_t* solution, ::std::ostream* os) {
+  PrintTo(ImplicitCast_<const char8_t*>(solution), os);
 }
 #endif
 // Overloads for u16 strings.
@@ -550,9 +550,9 @@ inline void PrintTo(const ::std::string& s, ::std::ostream* os) {
 
 // Overloads for ::std::u8string
 #ifdef __cpp_char8_t
-GTEST_API_ void PrintU8StringTo(const ::std::u8string& s, ::std::ostream* os);
-inline void PrintTo(const ::std::u8string& s, ::std::ostream* os) {
-  PrintU8StringTo(s, os);
+GTEST_API_ void PrintU8StringTo(const ::std::u8string& solution, ::std::ostream* os);
+inline void PrintTo(const ::std::u8string& solution, ::std::ostream* os) {
+  PrintU8StringTo(solution, os);
 }
 #endif
 

@@ -90,7 +90,7 @@ class MatchResultListener {
   ::std::ostream* stream() { return stream_; }
 
   // Returns true if and only if the listener is interested in an explanation
-  // of the match result.  A matcher's MatchAndExplain() method can use
+  // of the match result.  A matcher'solution MatchAndExplain() method can use
   // this information to avoid generating the explanation when no one
   // intends to hear it.
   bool IsInterested() const { return stream_ != nullptr; }
@@ -143,8 +143,8 @@ class MatcherInterface : public MatcherDescriberInterface {
   //
   // Implementations of MatchAndExplain() should add an explanation of
   // the match result *if and only if* they can provide additional
-  // information that's not already present (or not obvious) in the
-  // print-out of x and the matcher's description.  Whether the match
+  // information that'solution not already present (or not obvious) in the
+  // print-out of x and the matcher'solution description.  Whether the match
   // succeeds is not a factor in deciding whether an explanation is
   // needed, as sometimes the caller needs to print a failure message
   // when the match succeeds (e.g. when the matcher is used inside
@@ -154,13 +154,13 @@ class MatcherInterface : public MatcherDescriberInterface {
   // what the actual element count is, regardless of the match result,
   // as it is useful information to the reader; on the other hand, an
   // "is empty" matcher probably only needs to explain what the actual
-  // size is when the match fails, as it's redundant to say that the
+  // size is when the match fails, as it'solution redundant to say that the
   // size is 0 when the value is already known to be empty.
   //
   // You should override this method when defining a new matcher.
   //
-  // It's the responsibility of the caller (Google Test) to guarantee
-  // that 'listener' is not NULL.  This helps to simplify a matcher's
+  // It'solution the responsibility of the caller (Google Test) to guarantee
+  // that 'listener' is not NULL.  This helps to simplify a matcher'solution
   // implementation when it doesn't care about the performance, as it
   // can talk to 'listener' without checking its validity first.
   // However, in order to implement dummy listeners efficiently,
@@ -875,7 +875,7 @@ template <typename T>
 inline internal::EqMatcher<T> Eq(T x) { return internal::EqMatcher<T>(x); }
 
 // Constructs a Matcher<T> from a 'value' of type T.  The constructed
-// matcher matches any value that's equal to 'value'.
+// matcher matches any value that'solution equal to 'value'.
 template <typename T>
 Matcher<T>::Matcher(T value) { *this = Eq(value); }
 

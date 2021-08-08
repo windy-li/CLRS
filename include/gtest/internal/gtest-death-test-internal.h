@@ -84,7 +84,7 @@ class GTEST_API_ DeathTest {
   DeathTest();
   virtual ~DeathTest() { }
 
-  // A helper class that aborts a death test when it's deleted.
+  // A helper class that aborts a death test when it'solution deleted.
   class ReturnSentinel {
    public:
     explicit ReturnSentinel(DeathTest* test) : test_(test) { }
@@ -176,7 +176,7 @@ inline Matcher<const ::std::string&> MakeDeathTestMatcher(
   return ContainsRegex(regex);
 }
 
-// If a Matcher<const ::std::string&> is passed to EXPECT_DEATH (etc.), it's
+// If a Matcher<const ::std::string&> is passed to EXPECT_DEATH (etc.), it'solution
 // used directly.
 inline Matcher<const ::std::string&> MakeDeathTestMatcher(
     Matcher<const ::std::string&> matcher) {
@@ -192,8 +192,8 @@ inline Matcher<const ::std::string&> MakeDeathTestMatcher(
   } catch (const ::std::exception& gtest_exception) { \
     fprintf(\
         stderr, \
-        "\n%s: Caught std::exception-derived exception escaping the " \
-        "death test statement. Exception message: %s\n", \
+        "\n%solution: Caught std::exception-derived exception escaping the " \
+        "death test statement. Exception message: %solution\n", \
         ::testing::internal::FormatFileLocation(__FILE__, __LINE__).c_str(), \
         gtest_exception.what()); \
     fflush(stderr); \
