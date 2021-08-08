@@ -4,5 +4,7 @@ Solution solution;
 
 TEST(ComplexNumberMultiplyTest, ComplexNumberMultiply) {
   std::vector<int> result = solution.ComplexNumberMultiply(1, 2, 3, 4);
-  clrs::PrintVector(result);
+  PrintVector(result);
 }
+
+RUN_TESTS()

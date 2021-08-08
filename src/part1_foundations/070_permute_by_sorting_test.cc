@@ -9,5 +9,5 @@ TEST(PermuteBySortingTest, PermuteBySorting) {
     nums[i] = i;
   }
   solution.PermuteBySorting(nums);
-  clrs::PrintVector(nums);
+  PrintVector(nums);
 }

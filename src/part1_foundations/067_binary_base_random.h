@@ -10,7 +10,7 @@ class Solution {
     std::vector<int> nums(n);
     while (true) {
       for (int i = 0; i < n; ++i) {
-        nums[i] = clrs::Random::Get(0, 2);
+        nums[i] = RandomInt(0, 2);
       }
       int val = a;
       for (int i = n - 1; i >= 0; --i) {

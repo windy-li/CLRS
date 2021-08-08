@@ -45,7 +45,7 @@ double RandomDouble(double a, double b) {
 }
 
 // 返回元素个数为n的数列，且每个元素是[a, b]区间的随机数
-std::vector<int> RandomVector(int a, int b, int n) {
+std::vector<int> RandomIntVector(int a, int b, int n) {
   std::vector<int> v(n);
   for (int i = 0; i < n; ++i) {
     v[i] = RandomInt(a, b);
@@ -54,7 +54,7 @@ std::vector<int> RandomVector(int a, int b, int n) {
 }
 
 // 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机数
-std::vector<int> GenerateRandomVector() { return RandomVector(-100, 100, 1000); }
+std::vector<int> RandomIntVector() { return RandomIntVector(-100, 100, 1000); }
 
 // 返回[0, 1)区间的小数
 double Random() {
@@ -77,52 +77,5 @@ void PrintVector(std::vector<T>& v) {
   }
   std::cout << "]\n";
 }
-
-class Random {
- public:
-  static int Int(int a, int b) {
-    static std::random_device rd;
-    static std::mt19937 engine(rd());
-    static std::uniform_int_distribution<int> distribution(a, b);
-    return distribution(engine);
-  }
-
-  static int Int(int n) { return Int(0, n); }
-
-  static double Double(double a, double b) {
-    static std::random_device rd;
-    static std::mt19937 engine(rd());
-    static std::uniform_real_distribution<double> distribution(a, b);
-    return distribution(engine);
-  }
-
-  static double Double() { return Double(0, 1.0); }
-
-  static std::vector<int> Vector(int a, int b, int n) {
-    std::vector<int> v(n);
-    for (int i = 0; i < n; ++i) {
-      v[i] = Int(a, b);
-    }
-    return v;
-  }
-
-  static std::vector<int> Vector() { return Vector(0, 100, 1000); }
-};
-
-class Format {
- public:
-  template <typename T>
-  static void Println(std::vector<T>& v) {
-    int n = v.size();
-    std::cout << "[";
-    for (int i = 0; i < n; ++i) {
-      std::cout << v[i];
-      if (i != n - 1) {
-        std::cout << ", ";
-      }
-    }
-    std::cout << "]\n";
-  }
-};
 
 #endif  // CLRS_CLRS_H

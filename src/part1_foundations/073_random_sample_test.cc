@@ -6,9 +6,9 @@ TEST(RandomSampleTest, RandomSample) {
   for (int i = 0; i < 10; ++i) {
     auto list = solution.RandomSample(3, 7);
     for (auto item : list) {
-      std::cout << item << " ";
+      printf("%d ", item);
     }
-    std::cout << std::endl;
+    printf("\n");
   }
 }
 

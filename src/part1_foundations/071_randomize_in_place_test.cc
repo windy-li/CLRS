@@ -9,5 +9,7 @@ TEST(RandomizeInPlaceTest, RandomizeInPlace) {
     nums[i] = i;
   }
   solution.RandomizeInPlace(nums);
-  clrs::PrintVector(nums);
+  PrintVector(nums);
 }
+
+RUN_TESTS()

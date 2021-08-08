@@ -18,7 +18,7 @@ class Solution {
  private:
   int BiasedRandom() {
     double p = 0.4;
-    double r = clrs::Random::Get();
+    double r = RandomDouble(0, 1);
     if (r < p) {
       return 0;
     } else {

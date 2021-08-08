@@ -10,7 +10,7 @@ class Solution {
       return {};
     }
     std::list<int> s = RandomSample(m - 1, n - 1);
-    int i = clrs::RandomInt(0, n + 1);
+    int i = RandomInt(0, n + 1);
     if (!s.empty()) {
       if (std::find(s.begin(), s.end(), i) != s.end()) {
         s.push_back(n);
@@ -27,7 +27,7 @@ class Solution {
       if (i < m) {
         s[i] = nums[i];
       } else {
-        int temp = (int)(clrs::Random() * (i + 1));
+        int temp = (int)(RandomDouble(0, 1) * (i + 1));
         if (temp < m) {
           s[temp] = nums[i];
         }

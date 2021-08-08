@@ -33,7 +33,7 @@ class Solution {
       } else {
         count += n1 - i;
         for (int s = i; s < n1; ++s) {
-          std::cout << left[s] << " " << right[j] << "\n";
+          printf("%d %d \n", left[s], right[j]);
         }
         nums[k++] = right[j++];
       }

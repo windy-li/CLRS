@@ -9,7 +9,7 @@ class Solution {
     int n = nums.size();
     std::vector<int> p(n);
     for (int i = 0; i < n; ++i) {
-      p[i] = clrs::RandomInt(0, n * n * n);
+      p[i] = RandomInt(0, n * n * n);
     }
     Sort(nums, p);
   }

@@ -5,6 +5,8 @@ Solution solution;
 TEST(BinaryBaseRandomTest, BinaryBaseRandom) {
   int a = 4, b = 9;
   for (int i = 0; i < 20; i++) {
-    std::cout << solution.BinaryBaseRandom(a, b) << " ";
+    printf("%d ", solution.BinaryBaseRandom(a, b));
   }
 }
+
+RUN_TESTS()
