@@ -180,7 +180,7 @@ class AvlTree {
     if (node == nullptr) {
       return;
     }
-    std::cout << node->key << " " << std::endl;
+    printf("%d ", node->key);
     PreorderTreeWalk(node->left);
     PreorderTreeWalk(node->right);
   }
