@@ -11,7 +11,7 @@ Solution solution;
 
 TEST(FuzzySortTest, TestFuzzySort) {
   std::vector<std::vector<int>> keys = {{1, 3}, {1, 2}, {3, 4}, {7, 8}, {5, 8}, {3, 5}};
-  int n = keys.size();
+  int n = (int)keys.size();
   std::vector<Interval*> intervals(n, nullptr);
   for (int i = 0; i < n; ++i) {
     intervals[i] = new Interval(keys[i][0], keys[i][1]);
