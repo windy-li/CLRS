@@ -97,7 +97,7 @@ class Solution {
   }
 
   int RandomizedPartition(std::vector<int>& nums, int p, int r) {
-    int i = clrs::RandomInt(p, r + 1);
+    int i = RandomInt(p, r + 1);
     std::swap(nums[i], nums[r]);
     return Partition(nums, p, r);
   }
@@ -122,9 +122,9 @@ class Solution {
   }
 
   int MedianOfThreePartition(std::vector<int>& nums, int p, int r) {
-    int a = p + clrs::RandomInt(0, r - p + 1);
-    int b = p + clrs::RandomInt(0, r - p + 1);
-    int c = p + clrs::RandomInt(0, r - p + 1);
+    int a = p + RandomInt(0, r - p + 1);
+    int b = p + RandomInt(0, r - p + 1);
+    int c = p + RandomInt(0, r - p + 1);
     int m = MedianOfThree(nums, a, b, c);
     std::swap(nums[m], nums[r]);
     return Partition(nums, p, r);
@@ -177,7 +177,7 @@ void TestQuickSort() {
   int n = nums.size();
   Solution s;
   s.QuickSort(nums, 0, n - 1);
-  clrs::PrintVector(nums);
+  PrintVector(nums);
 }
 
 void TestIterativeQuickSort() {
@@ -185,7 +185,7 @@ void TestIterativeQuickSort() {
   int n = nums.size();
   Solution s;
   s.IterativeQuickSort(nums, 0, n - 1);
-  clrs::PrintVector(nums);
+  PrintVector(nums);
 }
 
 int main() {
