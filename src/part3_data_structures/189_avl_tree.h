@@ -14,7 +14,7 @@ struct Node {
 
 class AvlTree {
  public:
-  AvlTree() { root_ = nullptr; }
+  AvlTree() : root_(nullptr) {}
 
   Node* root() { return root_; }
 
