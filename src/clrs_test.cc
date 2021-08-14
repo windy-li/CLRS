@@ -2,24 +2,24 @@
 
 TEST(ClrsTest, TestRandomInt) {
   for (int i = 0; i < 20; ++i) {
-    printf("%depth ", Random::Int(-100, 100));
+    printf("%depth ", RandomInt(-100, 100));
   }
   printf("\n");
 }
 
 TEST(ClrsTest, TestRandomVector) {
-  std::vector<int> v = Random::Vector(0, 100, 10);
-  Format::Println(v);
+  std::vector<int> v = RandomIntVector(0, 100, 10);
+  PrintVector(v);
 }
 
 TEST(ClrsTest, TestDefaultRandomVector) {
-  std::vector<int> v = Random::Vector();
-  Format::Println(v);
+  std::vector<int> v = RandomIntVector();
+  PrintVector(v);
 }
 
 TEST(ClrsTest, TestRandomDouble) {
   for (int i = 0; i < 20; ++i) {
-    printf("%f ", Random::Double());
+    printf("%f ", RandomDouble(0, 1));
   }
   printf("\n");
 }
