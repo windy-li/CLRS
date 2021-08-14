@@ -1,33 +1,15 @@
-#include "clrs.h"
-
-class Solution {
- public:
-  void BucketSort(std::vector<double>& nums) {
-    int n = nums.size();
-    std::vector<double> buckets[n];
-    for (int i = 0; i < n; ++i) {
-      buckets[(int)(n * nums[i])].push_back(nums[i]);
-    }
-    int p = 0;
-    for (int i = 0; i < n; ++i) {
-      std::vector<double> vec = buckets[i];
-      std::sort(vec.begin(), vec.end());
-      for (double item : vec) {
-        nums[p++] = item;
-      }
-    }
-  }
-};
+#include "part2_sorting_and_order_statistics/112_bucket_sort.h"
 
 Solution solution;
 
-void TestBucketSort() {
-  std::vector<double> nums = {0.78, 0.17, 0.39, 0.26, 0.72, 0.94, 0.21, 0.12, 0.68};
+TEST(BucketSortTest, TestBucketSort) {
+  std::vector<double> nums = RandomDoubleVector();
+  ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.BucketSort(nums);
-  clrs::PrintVector(nums);
+  ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
 
-int main() { TestBucketSort(); }
+RUN_TESTS()
 
 /*
  * 0.12 0.17 0.21 0.26 0.39 0.68 0.72 0.78 0.94

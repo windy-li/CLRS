@@ -44,7 +44,7 @@ double RandomDouble(double a, double b) {
   return distribution(engine);
 }
 
-// 返回元素个数为n的数列，且每个元素是[a, b]区间的随机数
+// 返回元素个数为n的数列，且每个元素是[a, b]区间的随机整数
 std::vector<int> RandomIntVector(int a, int b, int n) {
   std::vector<int> v(n);
   for (int i = 0; i < n; ++i) {
@@ -53,8 +53,20 @@ std::vector<int> RandomIntVector(int a, int b, int n) {
   return v;
 }
 
-// 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机数
+// 返回元素个数为n的数列，且每个元素是[a, b)区间的随机实数
+std::vector<double> RandomDoubleVector(double a, double b, int n) {
+  std::vector<double> v(n);
+  for (int i = 0; i < n; ++i) {
+    v[i] = RandomDouble(a, b);
+  }
+  return v;
+}
+
+// 返回元素个数为1000的数列，且每个元素是[-100, 100]区间的随机整数
 std::vector<int> RandomIntVector() { return RandomIntVector(-100, 100, 1000); }
+
+// 返回元素个数为1000的数列，且每个元素是[0, 1)区间的随机实数
+std::vector<double> RandomDoubleVector() { return RandomDoubleVector(0, 1, 1000); }
 
 // 打印一个数列
 template <typename T>
