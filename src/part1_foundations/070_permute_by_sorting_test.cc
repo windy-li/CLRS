@@ -11,3 +11,5 @@ TEST(PermuteBySortingTest, PermuteBySorting) {
   solution.PermuteBySorting(nums);
   PrintVector(nums);
 }
+
+RUN_TESTS()

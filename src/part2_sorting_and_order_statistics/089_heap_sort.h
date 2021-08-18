@@ -8,7 +8,7 @@ class MaxHeap {
   MaxHeap() : heap_size_(0) {}
 
   void SortHeap(std::vector<int>& nums) {
-    MakeHeap(nums);
+    BuildMaxHeap(nums);
     int n = nums.size();
     for (int i = n - 1; i > 0; --i) {
       std::swap(nums[0], nums[i]);
@@ -20,7 +20,7 @@ class MaxHeap {
  private:
   int heap_size_;
 
-  void MakeHeap(std::vector<int>& nums) {
+  void BuildMaxHeap(std::vector<int>& nums) {
     int n = nums.size();
     heap_size_ = n;
     for (int i = heap_size_ / 2 - 1; i >= 0; --i) {

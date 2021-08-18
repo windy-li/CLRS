@@ -8,3 +8,5 @@ TEST(InversionsTest, Inversions) {
   ASSERT_EQ(solution.Inversions(nums, 0, n - 1), 5);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
+
+RUN_TESTS()

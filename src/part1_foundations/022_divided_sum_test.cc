@@ -7,3 +7,5 @@ TEST(DividecSumTest, CanDivide) {
   ASSERT_TRUE(solution.CanDivide(nums, 7));
   ASSERT_FALSE(solution.CanDivide(nums, 8));
 }
+
+RUN_TESTS()

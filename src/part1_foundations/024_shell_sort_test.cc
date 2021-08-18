@@ -8,3 +8,5 @@ TEST(ShellSortTest, ShellSort) {
   solution.ShellSort(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));
 }
+
+RUN_TESTS()
