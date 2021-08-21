@@ -21,7 +21,7 @@ struct Graph {
     }
   }
 
-  explicit Graph(int vertices_count, std::vector<std::string>& labels)
+  Graph(int vertices_count, std::vector<std::string>& labels)
       : V(vertices_count),
         E(0),
         vertices(std::vector<Vertex*>(vertices_count, nullptr)),
