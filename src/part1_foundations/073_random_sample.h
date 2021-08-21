@@ -27,9 +27,9 @@ class Solution {
       if (i < m) {
         s[i] = nums[i];
       } else {
-        int temp = (int)(RandomDouble(0, 1) * (i + 1));
-        if (temp < m) {
-          s[temp] = nums[i];
+        int tmp = static_cast<int>(RandomDouble(0, 1) * (i + 1));
+        if (tmp < m) {
+          s[tmp] = nums[i];
         }
       }
     }

@@ -7,15 +7,15 @@ class Solution {
  public:
   void BucketSort(std::vector<double>& nums) {
     int n = nums.size();
-    std::vector<double> buckets[n];
+    std::vector<std::vector<double>> buckets(n, std::vector<double>());
     for (int i = 0; i < n; ++i) {
-      buckets[(int)(n * nums[i])].push_back(nums[i]);
+      buckets[static_cast<int>(n * nums[i])].push_back(nums[i]);
     }
     int p = 0;
     for (int i = 0; i < n; ++i) {
-      std::vector<double> vec = buckets[i];
-      std::sort(vec.begin(), vec.end());
-      for (double item : vec) {
+      std::vector<double> v = buckets[i];
+      std::sort(v.begin(), v.end());
+      for (double item : v) {
         nums[p++] = item;
       }
     }

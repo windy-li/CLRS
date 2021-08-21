@@ -14,7 +14,7 @@ class Solution {
       }
       int val = a;
       for (int i = n - 1; i >= 0; --i) {
-        val += nums[i] * (int)(std::pow(2, n - 1 - i));
+        val += nums[i] * static_cast<int>(std::pow(2, n - 1 - i));
       }
       if (val <= b) {
         return val;

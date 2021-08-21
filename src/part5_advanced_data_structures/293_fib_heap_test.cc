@@ -171,7 +171,7 @@ class FibHeap {
     }
   }
 
-  int D() { return (int)(std::log((double)n_) / std::log(1.618)) + 1; }
+  int D() { return static_cast<int>(std::log(static_cast<double>(n_)) / std::log(1.618)) + 1; }
 
   void Link(Node* c, Node* p) {
     RemoveFromCycle(c);
