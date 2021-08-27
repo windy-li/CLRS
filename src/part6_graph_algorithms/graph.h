@@ -47,9 +47,9 @@ struct Graph {
   }
 
   std::vector<Edge*> AllEdges() {
-    auto edges = std::vector<Edge*>(E);
+    auto edges = std::vector<Edge*>(E, nullptr);
     int i = 0;
-    for (int j = 0; j < V; j++) {
+    for (int j = 0; j < V; ++j) {
       for (Edge* e : adj[j]) {
         edges[i++] = e;
       }
@@ -62,7 +62,7 @@ struct Graph {
       return "nullptr";
     }
     auto str = std::string();
-    for (int i = 0; i < graph->V; i++) {
+    for (int i = 0; i < graph->V; ++i) {
       str += Vertex::ToString(graph->vertices[i]) + ": ";
       for (Edge* e : graph->adj[i]) {
         str += std::to_string(e->Other(i)) + " ";

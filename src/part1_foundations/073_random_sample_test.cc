@@ -4,8 +4,8 @@ Solution solution;
 
 TEST(RandomSampleTest, RandomSample) {
   for (int i = 0; i < 10; ++i) {
-    auto list = solution.RandomSample(3, 7);
-    for (auto item : list) {
+    std::list<int> list = solution.RandomSample(3, 7);
+    for (int item : list) {
       printf("%d ", item);
     }
     printf("\n");

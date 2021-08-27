@@ -8,7 +8,7 @@ class Solution {
     }
     int n = right_bound - left_bound + 1;
     int g = (n + 4) / 5;
-    std::vector<int> medians(g);
+    auto medians = std::vector<int>(g);
     for (int j = 0; j < g; ++j) {
       int start = left_bound + j * 5;
       int end = (start + 4 > right_bound) ? right_bound : (start + 4);
@@ -53,8 +53,8 @@ class Solution {
 };
 
 void TestSelect() {
-  Solution s;
-  std::vector<int> nums = {2, 8, 7, 1, 3, 5, 6, 4};
+  auto s = Solution();
+  auto nums = std::vector<int>{2, 8, 7, 1, 3, 5, 6, 4};
   std::cout << s.Select(nums, 0, nums.size() - 1, 4) << std::endl;
 }
 

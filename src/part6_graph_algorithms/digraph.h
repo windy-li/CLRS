@@ -46,9 +46,9 @@ struct Digraph {
   }
 
   std::vector<Edge*> AllEdges() {
-    std::vector<Edge*> edges(E);
+    auto edges = std::vector<Edge*>(E, nullptr);
     int i = 0;
-    for (int j = 0; j < V; j++) {
+    for (int j = 0; j < V; ++j) {
       for (Edge* e : adj[j]) {
         edges[i++] = e;
       }
@@ -63,7 +63,7 @@ struct Digraph {
     } else {
       t_digraph = new Digraph(V, labels);
     }
-    for (int i = 0; i < V; i++) {
+    for (int i = 0; i < V; ++i) {
       for (Edge* e : adj[i]) {
         t_digraph->AddEdge(e->Other(i), i);
       }

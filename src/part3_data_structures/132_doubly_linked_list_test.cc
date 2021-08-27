@@ -36,7 +36,7 @@ class LinkedList {
   }
 
   void PushFront(int k) {
-    Node* node = new Node(k);
+    auto node = new Node(k);
     node->prev = nullptr;
     node->next = head_;
     if (head_ != nullptr) {

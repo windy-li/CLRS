@@ -30,23 +30,23 @@
 
 // 返回[a, b]区间的随机整数
 int RandomInt(int a, int b) {
-  static std::random_device rd;
-  static std::mt19937 engine(rd());
-  static std::uniform_int_distribution<int> distribution(a, b);
+  static auto rd = std::random_device();
+  static auto engine = std::mt19937(rd());
+  static auto distribution = std::uniform_int_distribution<int>(a, b);
   return distribution(engine);
 }
 
 // 返回[a, b)区间的随机实数
 double RandomDouble(double a, double b) {
-  static std::random_device rd;
-  static std::mt19937 engine(rd());
-  static std::uniform_real_distribution<double> distribution(a, b);
+  static auto rd = std::random_device();
+  static auto engine = std::mt19937(rd());
+  static auto distribution = std::uniform_real_distribution<double>(a, b);
   return distribution(engine);
 }
 
 // 返回元素个数为n的数列，且每个元素是[a, b]区间的随机整数
 std::vector<int> RandomIntVector(int a, int b, int n) {
-  std::vector<int> v(n);
+  auto v = std::vector<int>(n);
   for (int i = 0; i < n; ++i) {
     v[i] = RandomInt(a, b);
   }

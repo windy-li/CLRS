@@ -22,7 +22,7 @@ class Solution {
   }
 
   std::vector<int> ReservoirSample(std::vector<int>& nums, int m) {
-    std::vector<int> s(m);
+    auto s = std::vector<int>(m);
     for (int i = 0; i < nums.size(); ++i) {
       if (i < m) {
         s[i] = nums[i];

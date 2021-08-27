@@ -40,7 +40,7 @@ class BinarySearchTree {
   }
 
   void Insert(int key) {
-    Node* node = new Node(key);
+    auto node = new Node(key);
     Node* temp_parent = nullptr;
     Node* temp = root_;
     while (temp != nullptr) {

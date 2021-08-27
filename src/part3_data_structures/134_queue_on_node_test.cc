@@ -14,7 +14,7 @@ class Queue {
   bool Empty() { return head_ == nullptr; }
 
   void Push(int key) {
-    Node* node = new Node(key);
+    auto node = new Node(key);
     if (Empty()) {
       head_ = node;
       tail_ = node;

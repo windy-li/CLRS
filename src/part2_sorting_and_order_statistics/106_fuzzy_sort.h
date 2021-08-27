@@ -22,7 +22,7 @@ class Solution {
 
  private:
   static std::vector<int> Partition(std::vector<Interval*>& intervals, int p, int r) {
-    Interval pivot(intervals[r]->left, intervals[r]->right);
+    auto pivot = Interval(intervals[r]->left, intervals[r]->right);
     int i = p;
     int j = p;
     int k = r;

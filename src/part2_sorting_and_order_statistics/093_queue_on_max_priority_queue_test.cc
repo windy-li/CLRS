@@ -3,9 +3,9 @@
 #include "gtest/gtest.h"
 
 TEST(QueueOnMaxPriorityQueueTest, TestQueue) {
-  std::vector<int> keys = {5, 2, 4, 6, 1, 3};
+  auto keys = std::vector<int>{5, 2, 4, 6, 1, 3};
   int n = keys.size();
-  Queue q(n);
+  auto q = Queue(n);
   for (int i = 0; i < n; ++i) {
     q.Push(keys[i]);
   }

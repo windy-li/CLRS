@@ -86,10 +86,10 @@ class YoungTableau {
 };
 
 void TestYoungTableau() {
-  std::vector<int> keys = {9, 16, 3, 2, 4, 8, 5, 14, 12};
+  auto keys = std::vector<int>{9, 16, 3, 2, 4, 8, 5, 14, 12};
   int m = 4;
   int n = 4;
-  YoungTableau t(m, n);
+  auto t = YoungTableau(m, n);
   for (int key : keys) {
     t.Insert(key);
   }

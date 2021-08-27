@@ -54,14 +54,14 @@ class Solution {
 };
 
 void TestRecursive() {
-  std::vector<int> nums = {2, 8, 7, 1, 3, 5, 6, 4};
-  Solution s;
+  auto nums = std::vector<int>{2, 8, 7, 1, 3, 5, 6, 4};
+  auto s = Solution();
   std::cout << s.Recursive(nums, 0, nums.size() - 1, 1) << std::endl;
 }
 
 void TestIterative() {
-  std::vector<int> nums = {2, 8, 7, 1, 3, 5, 6, 4};
-  Solution s;
+  auto nums = std::vector<int>{2, 8, 7, 1, 3, 5, 6, 4};
+  auto s = Solution();
   std::cout << s.Iterative(nums, 0, nums.size() - 1, 1) << std::endl;
 }
 

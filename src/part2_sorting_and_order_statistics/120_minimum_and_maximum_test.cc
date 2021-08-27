@@ -50,14 +50,14 @@ class Solution {
 };
 
 void TestMinimum() {
-  std::vector<int> nums = {2, 8, 7, 1, 3, 5, 6, 4};
-  Solution s;
+  auto nums = std::vector<int>{2, 8, 7, 1, 3, 5, 6, 4};
+  auto s = Solution();
   std::cout << "min = " << s.Minimum(nums) << std::endl;
 }
 
 void TestMinimumAndMaximum() {
-  std::vector<int> nums = {2, 8, 7, 1, 3, 5, 6, 4};
-  Solution s;
+  auto nums = std::vector<int>{2, 8, 7, 1, 3, 5, 6, 4};
+  auto s = Solution();
   auto [min, max] = s.MinimumAndMaximum(nums);
   std::cout << "min = " << min << ", max = " << max << std::endl;
 }

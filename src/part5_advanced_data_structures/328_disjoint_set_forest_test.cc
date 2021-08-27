@@ -18,7 +18,7 @@ struct Node {
 class DisjointSetForest {
  public:
   Node* MakeSet(int key) {
-    Node* node = new Node(key);
+    auto node = new Node(key);
     node->parent = node;
     return node;
   }
@@ -27,7 +27,7 @@ class DisjointSetForest {
 
   void PrintSets(std::vector<Node*>& nodes) {
     for (int i = 1; i < nodes.size(); i++) {
-      std::string str;
+      auto str = std::string();
       Node* node = nodes[i];
       str += std::to_string(node->key);
       while (node != node->parent) {
@@ -59,10 +59,9 @@ class DisjointSetForest {
 };
 
 void TestDisjointSetForest() {
-  DisjointSetForest forest;
-
-  std::vector<Node*> nodes(17, nullptr);
-  for (int i = 1; i <= 16; i++) {
+  auto forest = DisjointSetForest();
+  auto nodes = std::vector<Node*>(17, nullptr);
+  for (int i = 1; i <= 16; ++i) {
     nodes[i] = forest.MakeSet(i);
   }
   for (int i = 1; i <= 15; i += 2) {
@@ -70,7 +69,6 @@ void TestDisjointSetForest() {
   }
 
   forest.PrintSets(nodes);
-  clrs::PrintBorder();
 
   // in this line, we now have:
   // {1, 2, 3, 4} {5, 6, 7, 8} {9, 10, 11, 12} {13, 14, 15, 16}
@@ -80,7 +78,6 @@ void TestDisjointSetForest() {
   forest.Union(nodes[1], nodes[10]);
 
   forest.PrintSets(nodes);
-  clrs::PrintBorder();
 
   std::cout << Node::ToString(forest.FindSet(nodes[2])) << std::endl;
   std::cout << Node::ToString(forest.FindSet(nodes[9])) << std::endl;

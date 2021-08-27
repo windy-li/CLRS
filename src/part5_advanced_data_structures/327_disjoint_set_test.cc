@@ -42,8 +42,8 @@ struct Set {
 class DisjointSet {
  public:
   Node* MakeSet(int key) {
-    Node* node = new Node(key);
-    Set* set = new Set();
+    auto node = new Node(key);
+    auto set = new Set();
     set->head = node;
     set->tail = node;
     node->set = set;
@@ -76,8 +76,8 @@ class DisjointSet {
 };
 
 void TestDisjointSet() {
-  DisjointSet disjoint_set;
-  std::vector<Node*> nodes(17, nullptr);
+  auto disjoint_set = DisjointSet();
+  auto nodes = std::vector<Node*>(17, nullptr);
   for (int i = 1; i <= 16; i++) {
     nodes[i] = disjoint_set.MakeSet(i);
   }

@@ -36,7 +36,7 @@ class BTree {
   void Insert(int key) {
     Node* r = root_;
     if (r->n == 2 * t_ - 1) {
-      Node* node = new Node(t_);
+      auto node = new Node(t_);
       root_ = node;
       node->leaf = false;
       node->n = 0;
@@ -54,7 +54,7 @@ class BTree {
 
   void SplitChild(Node* x, int i) {
     Node* y = x->children[i];
-    Node* z = new Node(t_);
+    auto z = new Node(t_);
     z->leaf = y->leaf;
     z->n = t_ - 1;
     y->n = t_ - 1;

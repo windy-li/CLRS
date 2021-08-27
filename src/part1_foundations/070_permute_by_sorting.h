@@ -7,7 +7,7 @@ class Solution {
  public:
   void PermuteBySorting(std::vector<int>& nums) {
     int n = nums.size();
-    std::vector<int> p(n);
+    auto p = std::vector<int>(n);
     for (int i = 0; i < n; ++i) {
       p[i] = RandomInt(0, n * n * n);
     }

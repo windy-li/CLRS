@@ -59,7 +59,7 @@ class HashTable {
 
 int main() {
   auto t = HashTable(13);
-  int keys[] = {79, 69, 98, 72, 14, 50};
+  auto keys = std::vector<int>{79, 69, 98, 72, 14, 50};
   for (int key : keys) {
     t.Insert(key);
   }

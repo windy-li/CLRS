@@ -43,7 +43,7 @@ class RedBlackTree {
   }
 
   void Insert(int key) {
-    Node* node = new Node(key, kRed);
+    auto node = new Node(key, kRed);
     Node* p = nil_;
     Node* tmp = root_;
     while (tmp != nil_) {

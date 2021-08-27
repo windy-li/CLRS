@@ -11,7 +11,7 @@ TEST(CountingSortTest, TestCountingSort) {
 }
 
 TEST(CountingSortTest, TestCountingRange) {
-  std::vector<int> nums = {2, 5, 3, 0, 2, 3, 0, 3};
+  auto nums = std::vector<int>{2, 5, 3, 0, 2, 3, 0, 3};
   int k = *std::max_element(nums.begin(), nums.end());
   int left = 2;
   int right = 3;

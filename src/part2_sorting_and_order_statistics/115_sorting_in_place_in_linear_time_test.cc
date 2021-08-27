@@ -43,7 +43,7 @@ class Solution {
 
   void CountingSortInPlace(std::vector<int>& nums, int k) {
     int n = nums.size();
-    std::vector<int> c(k + 1);
+    auto c = std::vector<int>(k + 1);
     for (int i = 0; i < k; ++i) {
       c[i] = 0;
     }

@@ -36,7 +36,7 @@ class FibHeap {
   FibHeap() : min_(nullptr), n_(0) {}
 
   void Insert(int key) {
-    Node* new_node = new Node(key);
+    auto new_node = new Node(key);
     if (min_ == nullptr) {
       CreateCycle(new_node);
       min_ = new_node;
@@ -50,14 +50,14 @@ class FibHeap {
   }
 
   FibHeap* Union(FibHeap* heap1, FibHeap* heap2) {
-    auto* newHeap = new FibHeap();
-    newHeap->min_ = heap1->min_;
-    newHeap->n_ = heap1->n_ + heap2->n_;
+    auto new_heap = new FibHeap();
+    new_heap->min_ = heap1->min_;
+    new_heap->n_ = heap1->n_ + heap2->n_;
     ConcatenateCycle(heap1->min_, heap2->min_);
     if (heap1->min_ == nullptr || (heap2->min_ != nullptr && heap2->min_->key < heap1->min_->key)) {
-      newHeap->min_ = heap2->min_;
+      new_heap->min_ = heap2->min_;
     }
-    return newHeap;
+    return new_heap;
   }
 
   Node* ExtractMin() {
@@ -133,7 +133,7 @@ class FibHeap {
   }
 
   void Consolidate() {
-    std::vector<Node*> a(D() + 1, nullptr);
+    auto a = std::vector<Node*>(D() + 1, nullptr);
     for (int i = 0; i <= D(); i++) {
       a[i] = nullptr;
     }
@@ -207,7 +207,7 @@ class FibHeap {
 };
 
 FibHeap* TestFibHeap1() {
-  auto* heap = new FibHeap();
+  auto heap = new FibHeap();
   heap->Insert(7);
   heap->Insert(5);
   heap->Insert(8);
@@ -223,7 +223,7 @@ FibHeap* TestFibHeap1() {
 }
 
 FibHeap* TestFibHeap2() {
-  auto* heap = new FibHeap();
+  auto heap = new FibHeap();
   heap->Insert(10);
   heap->Insert(11);
   heap->Insert(9);
@@ -248,8 +248,6 @@ void TestFibHeap3(FibHeap* heap1, FibHeap* heap2) {
 
 int main() {
   FibHeap* heap1 = TestFibHeap1();
-  clrs::PrintBorder();
   FibHeap* heap2 = TestFibHeap2();
-  clrs::PrintBorder();
   TestFibHeap3(heap1, heap2);
 }
