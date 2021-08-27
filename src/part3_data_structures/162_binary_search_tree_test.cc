@@ -136,10 +136,10 @@ class BinarySearchTree {
 };
 
 int main() {
-  BinarySearchTree tree;
+  auto t = BinarySearchTree();
   std::vector<int> keys = {6, 5, 7, 2, 5, 8};
   for (int key : keys) {
-    tree.Insert(key);
+    t.Insert(key);
   }
-  std::cout << tree.root()->key << std::endl;
+  std::cout << t.root()->key << std::endl;
 }

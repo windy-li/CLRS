@@ -56,7 +56,7 @@ class SkipList {
 
   void Remove(int key) {
     Node* current = head_;
-    std::vector<Node*> update(max_level_ + 1, nullptr);
+    auto update = std::vector<Node*>(max_level_ + 1, nullptr);
     for (int i = current_level_; i >= 0; --i) {
       while (current->forward[i] != nullptr && current->forward[i]->key < key) {
         current = current->forward[i];

@@ -7,8 +7,8 @@ class Solution {
  public:
   std::vector<int> CountingSort(std::vector<int>& nums, int k) {
     int n = nums.size();
-    std::vector<int> b(n);
-    std::vector<int> count(k + 1);
+    auto b = std::vector<int>(n);
+    auto count = std::vector<int>(k + 1);
     for (int i = 0; i <= k; ++i) {
       count[i] = 0;
     }
@@ -28,7 +28,7 @@ class Solution {
 
   int CountingRange(std::vector<int>& nums, int k, int left, int right) {
     int n = nums.size();
-    std::vector<int> count(k + 1);
+    auto count = std::vector<int>(k + 1);
     for (int i = 0; i < k; ++i) {
       count[i] = 0;
     }

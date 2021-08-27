@@ -15,7 +15,7 @@ class Solution {
 
   void JugSort(std::vector<int>& red, std::vector<int>& blue, int p, int r) {
     if (p < r) {
-      int pivot = clrs::RandomInt(p, r);
+      int pivot = RandomInt(p, r);
       std::swap(red[pivot], red[r]);
       int q = Partition(blue, p, r, red[r]);
       Partition(red, p, r, blue[q]);
@@ -45,21 +45,21 @@ class Solution {
 };
 
 void TestBruteForceJugPair() {
-  std::vector<int> red = {1, 2, 3, 4, 5, 99, 7, 8, 9, 10};
-  std::vector<int> blue = {10, 9, 8, 7, 99, 5, 4, 3, 2, 1};
-  Solution s;
+  auto red = std::vector<int>{1, 2, 3, 4, 5, 99, 7, 8, 9, 10};
+  auto blue = std::vector<int>{10, 9, 8, 7, 99, 5, 4, 3, 2, 1};
+  auto s = Solution();
   s.BruteForceJugPair(red, blue);
-  clrs::PrintVector(red);
-  clrs::PrintVector(blue);
+  PrintVector(red);
+  PrintVector(blue);
 }
 
 void TestJugSort() {
-  std::vector<int> red = {1, 2, 3, 4, 5, 99, 7, 8, 9, 10};
-  std::vector<int> blue = {10, 9, 8, 7, 99, 5, 4, 3, 2, 1};
-  Solution s;
+  auto red = std::vector<int>{1, 2, 3, 4, 5, 99, 7, 8, 9, 10};
+  auto blue = std::vector<int>{10, 9, 8, 7, 99, 5, 4, 3, 2, 1};
+  auto s = Solution();
   s.JugSort(red, blue, 0, 9);
-  clrs::PrintVector(red);
-  clrs::PrintVector(blue);
+  PrintVector(red);
+  PrintVector(blue);
 }
 
 int main() {

@@ -41,7 +41,7 @@ class Queue {
 };
 
 int main() {
-  Queue q(12);
+  auto q = Queue(12);
   q.Push(15);
   q.Push(6);
   q.Push(9);

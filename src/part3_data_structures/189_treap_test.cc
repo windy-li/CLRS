@@ -1,7 +1,7 @@
 #include "part3_data_structures/189_treap.h"
 
 TEST(TreapTest, TestTreap) {
-  Treap t;
+  auto t = Treap();
   std::vector<int> keys{5, 3, 2, 4, 7, 6, 1, 8};
   for (int key : keys) {
     t.Insert(key);

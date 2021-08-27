@@ -55,7 +55,7 @@ std::vector<int> RandomIntVector(int a, int b, int n) {
 
 // 返回元素个数为n的数列，且每个元素是[a, b)区间的随机实数
 std::vector<double> RandomDoubleVector(double a, double b, int n) {
-  std::vector<double> v(n);
+  auto v = std::vector<double>(n);
   for (int i = 0; i < n; ++i) {
     v[i] = RandomDouble(a, b);
   }

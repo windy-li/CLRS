@@ -1,7 +1,7 @@
 #include "part3_data_structures/129_stack_on_array.h"
 
 TEST(StackOnArrayTest, Test1) {
-  Stack s(7);
+  auto s = Stack(7);
   s.Push(15);
   s.Push(6);
   s.Push(2);

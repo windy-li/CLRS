@@ -4,7 +4,7 @@ Solution solution;
 
 TEST(PermuteBySortingTest, PermuteBySorting) {
   int n = 10;
-  std::vector<int> nums(n);
+  auto nums = std::vector<int>(n);
   for (int i = 0; i < n; ++i) {
     nums[i] = i;
   }

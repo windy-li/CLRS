@@ -58,16 +58,16 @@ class HashTable {
 };
 
 int main() {
-  HashTable table(13);
+  auto t = HashTable(13);
   int keys[] = {79, 69, 98, 72, 14, 50};
   for (int key : keys) {
-    table.Insert(key);
+    t.Insert(key);
   }
-  std::cout << table.Search(98)->key << std::endl;
-  table.Remove(98);
-  std::cout << table.Search(98) << std::endl;
-  table.Insert(98);
-  std::cout << table.Search(98)->key << std::endl;
+  std::cout << t.Search(98)->key << std::endl;
+  t.Remove(98);
+  std::cout << t.Search(98) << std::endl;
+  t.Insert(98);
+  std::cout << t.Search(98)->key << std::endl;
 }
 
 /*

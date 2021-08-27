@@ -27,9 +27,9 @@ class Solution {
       return {left, right, nums[left]};
     }
     int mid = (left + right) / 2;
-    auto left_result = DivideAndConquer(nums, left, mid);
-    auto right_result = DivideAndConquer(nums, mid + 1, right);
-    auto cross_result = MaxCrossingSubarray(nums, left, mid, right);
+    std::tuple<int, int, int> left_result = DivideAndConquer(nums, left, mid);
+    std::tuple<int, int, int> right_result = DivideAndConquer(nums, mid + 1, right);
+    std::tuple<int, int, int> cross_result = MaxCrossingSubarray(nums, left, mid, right);
     int left_sum = std::get<2>(left_result);
     int right_sum = std::get<2>(right_result);
     int cross_sum = std::get<2>(cross_result);

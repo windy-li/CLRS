@@ -7,7 +7,7 @@ class Solution {
  public:
   std::vector<int> BinaryIntegerAdding(const std::vector<int>& a, const std::vector<int>& b) {
     int n = a.size();
-    std::vector<int> c(n + 1);
+    auto c = std::vector<int>(n + 1);
     int bit = 0;
     for (int i = n - 1; i >= 0; --i) {
       int y = a[i] + b[i] + bit;

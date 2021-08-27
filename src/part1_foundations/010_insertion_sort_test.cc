@@ -1,6 +1,6 @@
 #include "part1_foundations/010_insertion_sort.h"
 
-Solution solution;
+auto solution = Solution();
 
 TEST(InsertionSortTest, InsertionSort) {
   std::vector<int> nums = RandomIntVector();

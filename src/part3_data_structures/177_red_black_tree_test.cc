@@ -1,12 +1,12 @@
 #include "part3_data_structures/177_red_black_tree.h"
 
 TEST(RedBlackTreeTest, TestRedBlackTree) {
-  RedBlackTree tree;
+  auto t = RedBlackTree();
   std::vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
   for (int key : keys) {
-    tree.Insert(key);
+    t.Insert(key);
   }
-  printf("%d\n", tree.root()->key);
+  printf("%d\n", t.root()->key);
 }
 
 RUN_TESTS()

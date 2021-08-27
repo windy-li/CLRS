@@ -121,7 +121,7 @@ void PrintLinkedList(LinkedList* list) {
 }
 
 void TestLinkedList() {
-  LinkedList list;
+  auto list = LinkedList();
   list.PushFront(1);
   list.PushFront(4);
   list.PushFront(16);

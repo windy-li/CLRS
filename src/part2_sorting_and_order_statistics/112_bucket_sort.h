@@ -7,7 +7,8 @@ class Solution {
  public:
   void BucketSort(std::vector<double>& nums) {
     int n = nums.size();
-    std::vector<std::vector<double>> buckets(n, std::vector<double>());
+    auto buckets = std::vector<std::vector<double>>(n, std::vector<double>());
+    //    std::vector<std::vector<double>> buckets(n, std::vector<double>());
     for (int i = 0; i < n; ++i) {
       buckets[static_cast<int>(n * nums[i])].push_back(nums[i]);
     }

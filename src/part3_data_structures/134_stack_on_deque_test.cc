@@ -22,14 +22,14 @@ class Stack {
 };
 
 int main() {
-  Stack self;
-  self.Push(15);
-  self.Push(6);
-  self.Push(2);
-  self.Push(9);
-  self.Push(17);
-  self.Push(3);
-  auto [result, err] = self.Pop();
+  auto s = Stack();
+  s.Push(15);
+  s.Push(6);
+  s.Push(2);
+  s.Push(9);
+  s.Push(17);
+  s.Push(3);
+  auto [result, err] = s.Pop();
   std::cout << result << std::endl;
 }
 

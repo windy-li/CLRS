@@ -35,7 +35,7 @@ class Stack {
 };
 
 int main() {
-  Stack s;
+  auto s = Stack();
   s.Push(15);
   s.Push(6);
   s.Push(2);

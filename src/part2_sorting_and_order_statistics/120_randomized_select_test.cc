@@ -35,7 +35,7 @@ class Solution {
 
  private:
   int RandomizedPartition(std::vector<int>& nums, int p, int r) {
-    int i = clrs::RandomInt(p, r + 1);
+    int i = RandomInt(p, r + 1);
     std::swap(nums[i], nums[r]);
     return Partition(nums, p, r);
   }

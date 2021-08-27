@@ -18,8 +18,8 @@ class Solution {
     int count = 0;
     int n1 = q - p + 1;
     int n2 = r - q;
-    std::vector<int> left(n1);
-    std::vector<int> right(n2);
+    auto left = std::vector<int>(n1);
+    auto right = std::vector<int>(n2);
     for (int i = 0; i < n1; ++i) {
       left[i] = nums[p + i];
     }

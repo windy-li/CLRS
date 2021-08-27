@@ -2,12 +2,12 @@
 
 TEST(AvlTreeTest, TestAvlTree) {
   std::vector<int> keys = {9, 5, 10, 0, 6, 11, -1, 1, 2};
-  AvlTree tree;
+  auto t = AvlTree();
   for (int key : keys) {
-    tree.InsertKey(key);
+    t.InsertKey(key);
   }
-  ASSERT_TRUE(tree.IsAvlStructure());
-  ASSERT_EQ(tree.root()->key, 9);
+  ASSERT_TRUE(t.IsAvlStructure());
+  ASSERT_EQ(t.root()->key, 9);
 }
 
 RUN_TESTS()

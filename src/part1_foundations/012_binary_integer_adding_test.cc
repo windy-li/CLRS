@@ -1,6 +1,6 @@
 #include "part1_foundations/012_binary_integer_adding.h"
 
-Solution solution;
+auto solution = Solution();
 
 TEST(BinaryIntegerAddingTest, BinaryIntegerAdding) {
   std::vector<int> a = {1, 0, 1, 1, 1, 0};

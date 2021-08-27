@@ -29,8 +29,8 @@ class Solution {
   void Merge(std::vector<int>& nums, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
-    std::vector<int> left(n1);
-    std::vector<int> right(n2);
+    auto left = std::vector<int>(n1);
+    auto right = std::vector<int>(n2);
     for (int i = 0; i < n1; ++i) {
       left[i] = nums[p + i];
     }
@@ -56,8 +56,8 @@ class Solution {
   void MergeBySentinels(std::vector<int>& nums, int p, int q, int r) {
     int n1 = q - p + 1;
     int n2 = r - q;
-    std::vector<int> left(n1 + 1);
-    std::vector<int> right(n2 + 1);
+    auto left = std::vector<int>(n1 + 1);
+    auto right = std::vector<int>(n2 + 1);
     for (int i = 0; i < n1; ++i) {
       left[i] = nums[p + i];
     }

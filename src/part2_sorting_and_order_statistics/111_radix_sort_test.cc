@@ -3,7 +3,7 @@
 Solution solution;
 
 TEST(RadixSortTest, TestRadixSort) {
-  std::vector<int> nums = {73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
+  auto nums = std::vector<int>{73, 22, 93, 43, 55, 14, 28, 65, 39, 81};
   ASSERT_FALSE(std::is_sorted(nums.begin(), nums.end()));
   solution.RadixSort(nums);
   ASSERT_TRUE(std::is_sorted(nums.begin(), nums.end()));

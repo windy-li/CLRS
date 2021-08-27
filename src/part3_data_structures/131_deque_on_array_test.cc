@@ -76,13 +76,13 @@ class Deque {
 };
 
 void TestDeque() {
-  Deque q(5);
-  q.PushBack(5);
-  q.PushBack(10);
-  std::cout << q.PopBack() << std::endl;
-  q.PushFront(15);
-  std::cout << q.PopFront() << std::endl;
-  std::cout << q.PopFront() << std::endl;
+  auto dq = Deque(5);
+  dq.PushBack(5);
+  dq.PushBack(10);
+  std::cout << dq.PopBack() << std::endl;
+  dq.PushFront(15);
+  std::cout << dq.PopFront() << std::endl;
+  std::cout << dq.PopFront() << std::endl;
 }
 
 int main() { TestDeque(); }

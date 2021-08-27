@@ -7,7 +7,7 @@ class Solution {
  public:
   int BinaryBaseRandom(int a, int b) {
     int n = std::ceil(std::log(2) / std::log(b - a + 1));
-    std::vector<int> nums(n);
+    auto nums = std::vector<int>(n);
     while (true) {
       for (int i = 0; i < n; ++i) {
         nums[i] = RandomInt(0, 2);
