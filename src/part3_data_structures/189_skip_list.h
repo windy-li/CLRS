@@ -16,7 +16,7 @@ class SkipList {
 
   void Insert(int key) {
     Node* current_node = head_;
-    std::vector<Node*> update_list(max_level_ + 1, nullptr);
+    auto update_list = std::vector<Node*>(max_level_ + 1, nullptr);
     for (int i = current_level_; i >= 0; --i) {
       while (current_node->forward[i] != nullptr && current_node->forward[i]->key < key) {
         current_node = current_node->forward[i];
@@ -32,7 +32,7 @@ class SkipList {
         }
         current_level_ = random_level;
       }
-      Node* node = new Node(key, random_level);
+      auto node = new Node(key, random_level);
       for (int i = 0; i <= random_level; ++i) {
         node->forward[i] = update_list[i]->forward[i];
         update_list[i]->forward[i] = node;
