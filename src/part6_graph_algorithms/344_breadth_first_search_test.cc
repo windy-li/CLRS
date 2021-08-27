@@ -1,21 +1,21 @@
 #include "part6_graph_algorithms/344_breadth_first_search.h"
 
-Solution solution;
+auto solution = Solution();
 
 TEST(BFSTest, TestBFS) {
-  Graph graph(7);
-  graph.AddEdge(0, 1);
-  graph.AddEdge(0, 2);
-  graph.AddEdge(1, 3);
-  graph.AddEdge(2, 3);
-  graph.AddEdge(3, 4);
-  graph.AddEdge(3, 5);
-  solution.BFS(&graph, 0);
-  graph_util::PrintPath(graph.vertices[0], graph.vertices[5]);
+  auto g = Graph(7);
+  g.AddEdge(0, 1);
+  g.AddEdge(0, 2);
+  g.AddEdge(1, 3);
+  g.AddEdge(2, 3);
+  g.AddEdge(3, 4);
+  g.AddEdge(3, 5);
+  solution.BFS(&g, 0);
+  graph_util::PrintPath(g.vertices[0], g.vertices[5]);
   std::cout << std::endl;
-  graph_util::PrintPath(graph.vertices[0], graph.vertices[6]);
+  graph_util::PrintPath(g.vertices[0], g.vertices[6]);
   std::cout << std::endl;
-  std::cout << Graph::ToString(&graph) << std::endl;
+  std::cout << Graph::ToString(&g) << std::endl;
 }
 
 /*

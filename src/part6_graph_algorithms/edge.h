@@ -30,7 +30,7 @@ struct Edge {
     if (edge == nullptr) {
       return "nullptr";
     }
-    std::string str;
+    auto str = std::string();
     return str + std::to_string(edge->start_id) + ", " + std::to_string(edge->end_id) + ", " +
            std::to_string(edge->weight);
   }

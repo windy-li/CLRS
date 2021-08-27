@@ -33,21 +33,21 @@ struct Graph {
   }
 
   void AddEdge(int start_id, int end_id) {
-    auto* e = new Edge(start_id, end_id);
+    auto e = new Edge(start_id, end_id);
     adj[start_id].push_back(e);
     adj[end_id].push_back(e);
     E += 2;
   }
 
   void AddEdge(int start_id, int end_id, int weight) {
-    auto* e = new Edge(start_id, end_id, weight);
+    auto e = new Edge(start_id, end_id, weight);
     adj[start_id].push_back(e);
     adj[end_id].push_back(e);
     E += 2;
   }
 
   std::vector<Edge*> AllEdges() {
-    std::vector<Edge*> edges(E);
+    auto edges = std::vector<Edge*>(E);
     int i = 0;
     for (int j = 0; j < V; j++) {
       for (Edge* e : adj[j]) {
@@ -61,7 +61,7 @@ struct Graph {
     if (graph == nullptr) {
       return "nullptr";
     }
-    std::string str;
+    auto str = std::string();
     for (int i = 0; i < graph->V; i++) {
       str += Vertex::ToString(graph->vertices[i]) + ": ";
       for (Edge* e : graph->adj[i]) {

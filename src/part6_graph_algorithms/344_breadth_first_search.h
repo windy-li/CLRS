@@ -18,7 +18,7 @@ class Solution {
     Vertex* src = graph->vertices[src_id];
     src->visited = true;
     src->depth = 0;
-    std::queue<Vertex*> q;
+    auto q = std::queue<Vertex*>();
     q.push(src);
     while (!q.empty()) {
       Vertex* u = q.front();

@@ -2,11 +2,11 @@
 
 TEST(RedBlackTreeTest, TestRedBlackTree) {
   auto t = RedBlackTree();
-  std::vector<int> keys = {11, 2, 14, 1, 7, 15, 5, 8};
+  auto keys = std::vector<int>{11, 2, 14, 1, 7, 15, 5, 8};
   for (int key : keys) {
     t.Insert(key);
   }
-  printf("%d\n", t.root()->key);
+  ASSERT_EQ(t.root()->key, 11);
 }
 
 RUN_TESTS()

@@ -2,7 +2,7 @@
 
 TEST(TreapTest, TestTreap) {
   auto t = Treap();
-  std::vector<int> keys{5, 3, 2, 4, 7, 6, 1, 8};
+  auto keys = std::vector<int>{5, 3, 2, 4, 7, 6, 1, 8};
   for (int key : keys) {
     t.Insert(key);
   }

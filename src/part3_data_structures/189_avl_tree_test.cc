@@ -1,7 +1,7 @@
 #include "part3_data_structures/189_avl_tree.h"
 
 TEST(AvlTreeTest, TestAvlTree) {
-  std::vector<int> keys = {9, 5, 10, 0, 6, 11, -1, 1, 2};
+  auto keys = std::vector<int>{9, 5, 10, 0, 6, 11, -1, 1, 2};
   auto t = AvlTree();
   for (int key : keys) {
     t.InsertKey(key);

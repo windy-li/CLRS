@@ -34,13 +34,13 @@ struct Digraph {
   }
 
   void AddEdge(int start_id, int end_id) {
-    auto* e = new Edge(start_id, end_id);
+    auto e = new Edge(start_id, end_id);
     adj[start_id].push_back(e);
     E += 1;
   }
 
   void AddEdge(int start_id, int end_id, int weight) {
-    auto* e = new Edge(start_id, end_id, weight);
+    auto e = new Edge(start_id, end_id, weight);
     adj[start_id].push_back(e);
     E += 1;
   }
@@ -75,7 +75,7 @@ struct Digraph {
     if (digraph == nullptr) {
       return "nullptr";
     }
-    std::string str;
+    auto str = std::string();
     for (int i = 0; i < digraph->V; i++) {
       str += Vertex::ToString(digraph->vertices[i]) + ": ";
       for (Edge* e : digraph->adj[i]) {
