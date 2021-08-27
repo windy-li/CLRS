@@ -1,6 +1,6 @@
 #include "part2_sorting_and_order_statistics/112_bucket_sort.h"
 
-Solution solution;
+auto solution = Solution();
 
 TEST(BucketSortTest, TestBucketSort) {
   std::vector<double> nums = RandomDoubleVector();
