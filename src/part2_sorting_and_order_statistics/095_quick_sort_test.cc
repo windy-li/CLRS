@@ -1,6 +1,6 @@
 #include "part2_sorting_and_order_statistics/095_quick_sort.h"
 
-Solution solution;
+auto solution = Solution();
 
 TEST(QuickSortTest, TestQuickSort) {
   std::vector<int> nums = RandomIntVector();

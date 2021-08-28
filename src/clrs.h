@@ -30,17 +30,17 @@
 
 // 返回[a, b]区间的随机整数
 int RandomInt(int a, int b) {
-  static auto rd = std::random_device();
-  static auto engine = std::mt19937(rd());
-  static auto distribution = std::uniform_int_distribution<int>(a, b);
+  static auto device = std::random_device();
+  static auto engine = std::mt19937(device());
+  auto distribution = std::uniform_int_distribution<int>(a, b);
   return distribution(engine);
 }
 
 // 返回[a, b)区间的随机实数
 double RandomDouble(double a, double b) {
-  static auto rd = std::random_device();
-  static auto engine = std::mt19937(rd());
-  static auto distribution = std::uniform_real_distribution<double>(a, b);
+  static auto device = std::random_device();
+  static auto engine = std::mt19937(device());
+  auto distribution = std::uniform_real_distribution<double>(a, b);
   return distribution(engine);
 }
 
