@@ -7,7 +7,7 @@ struct Node {
   std::vector<Node*> children;
 
   explicit Node(int t)
-      : n(0), leaf(false), keys(std::vector<int>(2 * t - 1, 0)), children(std::vector<Node*>(2 * t, nullptr)) {}
+      : n(0), leaf(false), keys(std::vector<int>(2 * t - 1)), children(std::vector<Node*>(2 * t, nullptr)) {}
 };
 
 class BTree {
