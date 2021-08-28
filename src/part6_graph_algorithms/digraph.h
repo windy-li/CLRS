@@ -76,7 +76,7 @@ struct Digraph {
       return "nullptr";
     }
     auto str = std::string();
-    for (int i = 0; i < digraph->V; i++) {
+    for (int i = 0; i < digraph->V; ++i) {
       str += Vertex::ToString(digraph->vertices[i]) + ": ";
       for (Edge* e : digraph->adj[i]) {
         str += Vertex::ToString(digraph->vertices[e->Other(i)]) + " ";
