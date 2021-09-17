@@ -125,9 +125,9 @@ class Solution {
   }
 
   int MedianOfThreePartition(std::vector<int>& nums, int p, int r) {
-    int a = p + RandomInt(0, r - p + 1);
-    int b = p + RandomInt(0, r - p + 1);
-    int c = p + RandomInt(0, r - p + 1);
+    int a = p + RandomInt(0, r - p);
+    int b = p + RandomInt(0, r - p);
+    int c = p + RandomInt(0, r - p);
     int m = MedianOfThree(nums, a, b, c);
     std::swap(nums[m], nums[r]);
     return Partition(nums, p, r);
